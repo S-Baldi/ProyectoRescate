@@ -1,4 +1,5 @@
-var config = {
+var config = 
+{
   type: Phaser.WEBGL,
   scale: {
     mode: Phaser.Scale.FIT,
@@ -12,7 +13,7 @@ var config = {
         debug: true
       }
   },
-  scene: [mp1]
+  scene: [mp1, info]
 };
 var game = new Phaser.Game(config);
 
