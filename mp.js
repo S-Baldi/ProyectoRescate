@@ -14,18 +14,23 @@ class mp1 extends Phaser.Scene{
 
     this.load.image('mapaArgentina', 'assets/Mapa/mapa.png');
     this.load.image('botonMenuPpal', 'assets/MenuPrincipal/Botones/botonMenu.png')
+
+    this.load.audio('sonidoBoton', '/audio/boton.mp3')
   }
 
   create(){
+    button = this.sound.add('sonidoBoton');
+
     fondoMenu = this.add.image(683, 384, 'menu').setScale(0.75);
     buttonPlay = this.add.image(900, 650, 'botonPlay')
     .setInteractive()
-    .on('pointerdown', () => this.scene.start('menuMapa'))
+    .on('pointerdown', () => this.scene.start('menuMapa') && button.play({volume:0.5}));
 
     buttonPremio = this.add.image(700, 650, 'botonDesbloqueable');
     buttonInfo = this.add.image(500, 650, 'botonInfo');
     buttonMusica = this.add.image(90, 90, 'botonMusica').setScale(0.7);
     banderaArg = this.add.image(90, 200, 'botonIdiomaEspañol').setScale(0.2);
+
   }
 
   update(){

@@ -25,3 +25,5 @@ var banderaArg;
 
 var mapaArg;
 var buttonMenu;
+
+var button;
