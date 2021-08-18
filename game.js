@@ -17,3 +17,8 @@ var config = {
 var game = new Phaser.Game(config);
 
 var fondoMenu;
+var buttonPlay;
+var buttonInfo;
+var buttonPremio;
+var buttonMusica;
+var banderaArg;
