@@ -1,19 +1,24 @@
-var config = {
+var config = 
+{
   type: Phaser.WEBGL,
-  scale: {
+  scale: 
+  {
     mode: Phaser.Scale.FIT,
     width: 1366,
     height: 768,
-    },
-  physics: {
-      default: 'arcade',
-      arcade: {
-        gravity: { y: 350 },
-        debug: true
-      }
   },
-  scene: [mp1, mapa]
+  physics: 
+  {
+    default: 'arcade',
+    arcade:
+    {
+      gravity: { y: 350 },
+      debug: true
+    }
+  },
+  scene: [mp1, info, mapa]
 };
+
 var game = new Phaser.Game(config);
 
 var fondoMenu;

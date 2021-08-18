@@ -26,8 +26,13 @@ class mp1 extends Phaser.Scene{
     .setInteractive()
     .on('pointerdown', () => this.scene.start('menuMapa') && button.play({volume:0.5}));
 
+
     buttonPremio = this.add.image(700, 650, 'botonDesbloqueable');
+
     buttonInfo = this.add.image(500, 650, 'botonInfo');
+    .setInteractive()
+    .on('pointerdown', () => this.scene.start('informacion'));
+
     buttonMusica = this.add.image(90, 90, 'botonMusica').setScale(0.7);
     banderaArg = this.add.image(90, 200, 'botonIdiomaEspañol').setScale(0.2);
 
