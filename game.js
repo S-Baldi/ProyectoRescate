@@ -12,7 +12,7 @@ var config = {
         debug: true
       }
   },
-  scene: [mp1]
+  scene: [mp1, mapa]
 };
 var game = new Phaser.Game(config);
 
@@ -22,3 +22,6 @@ var buttonInfo;
 var buttonPremio;
 var buttonMusica;
 var banderaArg;
+
+var mapaArg;
+var buttonMenu;
