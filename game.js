@@ -31,4 +31,4 @@ var banderaArg;
 var mapaArg;
 var buttonMenu;
 
-var button;
+var sonidoButton;
