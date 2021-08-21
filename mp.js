@@ -24,7 +24,7 @@ class mp1 extends Phaser.Scene{
     fondoMenu = this.add.image(683, 384, 'menu').setScale(0.75);
     buttonPlay = this.add.image(900, 650, 'botonPlay')
     .setInteractive()
-    .on('pointerdown', () => this.scene.start('menuMapa') && button.play({volume:0.5}));
+    .on('pointerdown', () => this.scene.start('menuMapa') && sonidoButton.play({volume:0.5}));
 
     buttonPremio = this.add.image(700, 650, 'botonDesbloqueable');
 
