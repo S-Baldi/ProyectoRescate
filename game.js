@@ -13,7 +13,7 @@ var config =
     arcade:
     {
       gravity: { y: 350 },
-      debug: true
+      debug: false
     }
   },
   scene: [mp1, info, mapa, nivel_1]
@@ -44,3 +44,5 @@ var fondo_nivel1;
 var yaguarete_nivel1;
 var carne_nivel1;
 var suelo_nivel1;
+var puntaje_nivel1 = 0;
+var texto_puntaje_nivel1;
