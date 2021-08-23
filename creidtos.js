@@ -1,8 +1,8 @@
-class ayuda extends Phaser.Scene
+class creditos extends Phaser.Scene
 {
   constructor()
   {
-    super('ayuda');
+    super('credit2');
   }
 
   preload(){    
@@ -10,7 +10,7 @@ class ayuda extends Phaser.Scene
 
   create()
   {
-    fondoMenu = this.add.image(683, 384, 'menuAyuda').setScale(0.75);
+    fondoMenu = this.add.image(683, 384, 'menuCreditos').setScale(0.75);
 
     buttonAtras = this.add.image(1285, 80, 'botonatras')
     .setInteractive()

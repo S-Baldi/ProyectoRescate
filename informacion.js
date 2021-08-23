@@ -7,20 +7,23 @@ class info extends Phaser.Scene
 
   preload()
   {
-    this.load.image('fondoinfo', 'assets/INFO.png');
-    this.load.image('botonayuda', 'assets/AYUDA.png');
-    this.load.image('botoncreditos', 'assets/CREDITOS.png');
+    
   }
 
   create()
   {
     fondoMenu = this.add.image(683, 384, 'fondoinfo').setScale(0.75);
 
-    teclaAyuda = this.add.image(400, 300, 'botonayuda').setScale(0.4);
-    teclaCreditos = this.add.image(600, 300, 'botoncredito').setScale(0.4);
-
-    volverMenu2 = this.add.image(50, 500, 'Atrás')
+    teclaAyuda = this.add.image(450, 350, 'botonayuda').setScale(0.6)
     .setInteractive()
-    .on('pointerdown', () => this.scene.start('menu'))
+    .on('pointerdown', () => this.scene.start('ayuda'));
+
+    teclaCreditos = this.add.image(900, 350, 'botoncreditos').setScale(0.6)
+    .setInteractive()
+    .on('pointerdown', () => this.scene.start('credit2'));
+
+    buttonAtras = this.add.image(1285, 80, 'botonatras')
+    .setInteractive()
+    .on('pointerdown', () => this.scene.start('menuPpal'))
   }
 }
