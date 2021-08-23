@@ -24,13 +24,13 @@ class mp1 extends Phaser.Scene{
     fondoMenu = this.add.image(683, 384, 'menu').setScale(0.75);
     buttonPlay = this.add.image(900, 650, 'botonPlay')
     .setInteractive()
-    .on('pointerdown', () => this.scene.start('menuMapa') && button.play({volume:0.5}));
+    .on('pointerdown', () => this.scene.start('menuMapa') && button.play({volume:1}));
 
     buttonPremio = this.add.image(700, 650, 'botonDesbloqueable');
 
     buttonInfo = this.add.image(500, 650, 'botonInfo')
     .setInteractive()
-    .on('pointerdown', () => this.scene.start('informacion'));
+    .on('pointerdown', () => this.scene.start('informacion') && button.play({volume:1}));
 
     buttonMusica = this.add.image(90, 90, 'botonMusica').setScale(0.7);
     banderaArg = this.add.image(90, 200, 'botonIdiomaEspañol').setScale(0.2);
