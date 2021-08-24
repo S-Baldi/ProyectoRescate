@@ -4,21 +4,33 @@ class nivel_1 extends Phaser.Scene{
   }
 
   preload(){
-    this.load.image('nivel1Fondo', 'assets/Nivel1/nivel1_fondo.png');
+    this.load.tilemapTiledJSON('mapa_nivel1', 'assets/Nivel1/nivel_Yaguarete.json')
+    this.load.image('nivel1Fondoo','assets/Nivel1/nivel1_fondo.png')
+    this.load.image('nivel1Sueloo','assets/Nivel1/nivel1_suelo.png')
+    this.load.image('nivel1Carnee','assets/Nivel1/nivel1_carne.png')
+    this.load.image('nivel1Trampaa','assets/Nivel1/nivel1_trampa.png')
+
     this.load.spritesheet('nivel1Yaguarete', 'assets/Nivel1/nivel1_yaguarete.png', 
     {frameWidth:538 , frameHeight:300 });
-    this.load.image('nivel1Suelo', 'assets/Nivel1/nivel1_suelo.png');
-    this.load.image('nivel1Carne', 'assets/Nivel1/nivel1_carne2.png');
   }
 
   create(){
-    fondo_nivel1 = this.add.image(683, 384, 'nivel1Fondo').setScale(0.72);
-    suelo_nivel1 = this.physics.add.staticGroup();
-    suelo_nivel1.create(470, 730, 'nivel1Suelo').setScale(0.5).setSize(10000, 3);
-    carne_nivel1 = this.physics.add.staticGroup();
-    carne_nivel1.create(500, 631, 'nivel1Carne').setSize(50, 50);
-    carne_nivel1.create(900, 631, 'nivel1Carne').setSize(50, 50);
+    /* Tiled Nivel 1 */
+/*     addTilesetImage(tilesetName [, key] 
+  [, tileWidth] [, tileHeight] [, tileMargin] [, tileSpacing] [, gid])
+ */    mapa_nivel1 = this.make.tilemap({key: "mapa_nivel1"});
+    var fondo_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_fondo', 'nivel1Fondoo');
+    var suelo_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_suelo', 'nivel1Sueloo');
+    var carne_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_carne', 'nivel1Carnee');
+    var trampa_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_trampa', 'nivel1Trampaa');
 
+     /* Capas tiled */
+    fondo_nivel1 = mapa_nivel1.createLayer('nivel1Fondo', fondo_nivel1_tiled, 0, 0);
+    suelo_nivel1 = mapa_nivel1.createLayer('nivel1Suelo', suelo_nivel1_tiled, 0, 0);
+    suelo_nivel1.setCollisionByProperty({solido: true});
+    carne_nivel1 = mapa_nivel1.createLayer('nivel1Alimento', carne_nivel1_tiled, 0, 0);
+    trampa_nivel1 = mapa_nivel1.createLayer('nivel1Trampa', trampa_nivel1_tiled, 0, 0);
+  
     if (cursors =! undefined){
       cursors = this.input.keyboard.createCursorKeys();
       teclaR = this.input.keyboard.addKey('R');
@@ -39,10 +51,13 @@ class nivel_1 extends Phaser.Scene{
       frameRate: 10
     });
 
-    yaguarete_nivel1 = this.physics.add.sprite(150, 631, 'nivel1Yaguarete');
+    yaguarete_nivel1 = this.physics.add.sprite(150, 200, 'nivel1Yaguarete');
     yaguarete_nivel1.setScale(0.3)
     /* yaguarete_nivel1.setVelocityX(200) *//* 
     yaguarete_nivel1.playAnimation('correr') */
+
+    this.cameras.main.setBounds(0, 0, mapa.widthInPixels, mapa.heightInPixels);
+    this.cameras.main.startFollow(yaguarete_nivel1);
     
     this.physics.add.collider(yaguarete_nivel1, suelo_nivel1);
     this.physics.add.overlap(yaguarete_nivel1, carne_nivel1, this.juntarComidaNivel1, null, this);
@@ -86,10 +101,10 @@ class nivel_1 extends Phaser.Scene{
     }
   }
 
-  juntarComidaNivel1 (yaguarete_nivel1, carne_nivel1){
+  /* juntarComidaNivel1 (yaguarete_nivel1, carne_nivel1){
     carne_nivel1.disableBody(true, true);
-    puntaje_nivel1 += 15;
+    puntaje_nivel1 += 15; 
     texto_puntaje_nivel1.setText('Puntaje : ' + puntaje_nivel1);
-  }
+  } */
   
 }
