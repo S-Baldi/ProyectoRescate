@@ -1,10 +1,10 @@
-var fondoMenu;
+
+var fondoMp;
 var buttonPlay;
 var buttonInfo;
 var buttonPremio;
 var buttonMusica;
 var banderaArg;
-
 var mapaArg;
 var buttonMenu;
 
@@ -31,4 +31,5 @@ var trampa_nivel1;
 var mapa_nivel1;
 var puntaje_nivel1 = 0;
 var texto_puntaje_nivel1;
+
 
