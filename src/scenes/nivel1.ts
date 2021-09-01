@@ -1,4 +1,6 @@
-class nivel_1 extends Phaser.Scene{
+import Phaser from 'phaser'
+export default class nivel_1 extends Phaser.Scene
+{
   constructor(){
     super('nivelYaguarete')
   }

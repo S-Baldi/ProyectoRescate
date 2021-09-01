@@ -1,4 +1,5 @@
-class creditos extends Phaser.Scene
+import Phaser from 'phaser'
+export default class creditos extends Phaser.Scene
 {
   constructor()
   {

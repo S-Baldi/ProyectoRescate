@@ -1,4 +1,5 @@
-class info extends Phaser.Scene
+import Phaser from 'phaser'
+export default class info extends Phaser.Scene
 {
   constructor()
   {

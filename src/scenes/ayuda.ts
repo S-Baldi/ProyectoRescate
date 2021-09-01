@@ -1,4 +1,5 @@
-class ayuda extends Phaser.Scene
+import Phaser from 'phaser'
+export default class ayuda extends Phaser.Scene
 {
   constructor()
   {
