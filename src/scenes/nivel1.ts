@@ -12,13 +12,7 @@ class nivel_1 extends Phaser.Scene{
   }
 
   create(){
-    fondo_nivel1 = this.add.image(683, 384, 'nivel1Fondo').setScale(0.72);
-    suelo_nivel1 = this.physics.add.staticGroup();
-    suelo_nivel1.create(470, 730, 'nivel1Suelo').setScale(0.5).setSize(10000, 3);
-    carne_nivel1 = this.physics.add.staticGroup();
-    carne_nivel1.create(500, 631, 'nivel1Carne').setSize(50, 50);
-    carne_nivel1.create(900, 631, 'nivel1Carne').setSize(50, 50);
-
+    
     if (cursors =! undefined){
       cursors = this.input.keyboard.createCursorKeys();
       teclaR = this.input.keyboard.addKey('R');
