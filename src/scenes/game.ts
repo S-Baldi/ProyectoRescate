@@ -16,6 +16,13 @@ var teclaAyuda;
 var teclaCreditos;
 var buttonAtras;
 
+//Desbloqueable
+var buttonDesbloqueableYaguarete;
+var buttonDesbloqueableMono;
+var buttonDesbloqueableCondor;
+var buttonDesbloqueableBallena;
+var buttonDesbloqueablePinguino;
+
 //Teclas
 var cursors;
 var teclaR;

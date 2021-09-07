@@ -2,14 +2,7 @@ import Phaser from 'phaser'
 export default class mp1 extends Phaser.Scene
 
 
-{
-  private fondoMenu;
-  private buttonPlay;
-  private buttonPremio;
-  private buttonInfo;
-  private buttonMusica;
-  private banderaArg;
-  
+{  
   constructor()
   {
     super('menuPpal');
@@ -32,49 +25,59 @@ export default class mp1 extends Phaser.Scene
 
     //Menu info
     this.load.image('fondoinfo', 'assets/MenuPrincipal/INFO.png');
+    //botones
     this.load.image('botonayuda', 'assets/MenuPrincipal/Botones/AYUDA.png');
     this.load.image('botoncreditos', 'assets/MenuPrincipal/Botones/CREDITOS.png');
     this.load.image('botonatras', 'assets/MenuPrincipal/Botones/atras.png');
-              //Menu ayuda
+             //Menu ayuda
     this.load.image('menuAyuda','assets/MenuPrincipal/MenuAyuda.png');
-              //Menu Creditos
+              //Menu creditos
     this.load.image('menuCreditos','assets/MenuPrincipal/MenuCreditos.png');
+    //Menu extras
+    this.load.image('menuExtras', 'assets/MenuPrincipal/extras.png');
+             //Botones de desbloqueables
+    this.load.image('botonYaguarete', 'assets/MenuPrincipal/Botones/1erDesbloqueable.png');
+    this.load.image('botonMono', 'assets/MenuPrincipal/Botones/2doDesbloqueable.png');
+    this.load.image('botonCondor', 'assets/MenuPrincipal/Botones/3erDesbloqueable.png');
+    this.load.image('botonBallena', 'assets/MenuPrincipal/Botones/4toDesbloqueable.png');
+    this.load.image('botonPinguino', 'assets/MenuPrincipal/Botones/5toDesbloqueable.png');
+              
   }
 
   create()
   {
-    //sonidoButton = this.sound.add('sonidoBoton');
+    const sonidoButton = this.sound.add('sonidoBoton');
 
     //Fondo del Mp
-    this.fondoMenu = this.add.image(683, 384, 'menu').setScale(0.75);
+    const fondoMenu = this.add.image(683, 384, 'menu').setScale(0.75);
 
     //Boton Play
-    this.buttonPlay = this.add.image(900, 650, 'botonPlay')
+    const buttonPlay = this.add.image(900, 650, 'botonPlay')
     .setInteractive()
-    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () =>
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
       this.scene.start('menuMapa') && sonidoButton.play({volume:0.5})
     });
 
     //Boton Premio
-    this.buttonPremio = this.add.image(700, 650, 'botonDesbloqueable')
+    const buttonPremio = this.add.image(700, 650, 'botonDesbloqueable')
     .setInteractive()
-    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () =>
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
-      this.scene.start('premio') && sonidoButton.play({volume:0.5})
+      this.scene.start('extras') && sonidoButton.play({volume:0.5})
     });
 
     //Boton Info
-    this.buttonInfo = this.add.image(500, 650, 'botonInfo')
+    const buttonInfo = this.add.image(500, 650, 'botonInfo')
     .setInteractive()
-    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => 
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
     { 
       this.scene.start('informacion')
     });
 
     
-    this.buttonMusica = this.add.image(90, 90, 'botonMusica').setScale(0.7);
-    this.banderaArg = this.add.image(90, 200, 'botonIdiomaEspañol').setScale(0.2);
+    const buttonMusica = this.add.image(90, 90, 'botonMusica').setScale(0.7);
+    const banderaArg = this.add.image(90, 200, 'botonIdiomaEspañol').setScale(0.2);
 
   }
 
