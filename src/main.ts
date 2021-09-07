@@ -6,7 +6,7 @@ import mapa from './scenes/mapa'
 import mp1 from './scenes/mp'
 import nivel_1 from './scenes/nivel1'
 
-const config = 
+const config : Phaser.Types.Core.GameConfig =
 {
   type: Phaser.WEBGL,
   scale: 
@@ -17,11 +17,11 @@ const config =
   },
   physics: 
   {
-    default: 'arcade',
-    arcade:
+    default: 'matter',
+    matter:
     {
       gravity: { y: 350 },
-      debug: false
+      debug: true
     }
   },
   scene: [mp1, info, mapa, ayuda, creditos, nivel_1]

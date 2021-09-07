@@ -34,38 +34,38 @@ export default class mp1 extends Phaser.Scene
 
   create()
   {
-    //sonidoButton = this.sound.add('sonidoBoton');
+    const sonidoButton = this.sound.add('sonidoBoton');
 
     //Fondo del Mp
-    fondoMenu = this.add.image(683, 384, 'menu').setScale(0.75);
+    const fondoMenu = this.add.image(683, 384, 'menu').setScale(0.75);
 
     //Boton Play
-    buttonPlay = this.add.image(900, 650, 'botonPlay')
+    const buttonPlay = this.add.image(900, 650, 'botonPlay')
     .setInteractive()
-    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () =>
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
       this.scene.start('menuMapa') && sonidoButton.play({volume:0.5})
     });
 
     //Boton Premio
-    buttonPremio = this.add.image(700, 650, 'botonDesbloqueable')
+    const buttonPremio = this.add.image(700, 650, 'botonDesbloqueable')
     .setInteractive()
-    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () =>
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
       this.scene.start('premio') && sonidoButton.play({volume:0.5})
     });
 
     //Boton Info
-    buttonInfo = this.add.image(500, 650, 'botonInfo')
+    const buttonInfo = this.add.image(500, 650, 'botonInfo')
     .setInteractive()
-    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => 
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
     { 
       this.scene.start('informacion')
     });
 
     
-    buttonMusica = this.add.image(90, 90, 'botonMusica').setScale(0.7);
-    banderaArg = this.add.image(90, 200, 'botonIdiomaEspañol').setScale(0.2);
+    const buttonMusica = this.add.image(90, 90, 'botonMusica').setScale(0.7);
+    const banderaArg = this.add.image(90, 200, 'botonIdiomaEspañol').setScale(0.2);
 
   }
 
