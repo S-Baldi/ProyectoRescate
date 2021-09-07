@@ -1,6 +1,8 @@
 import Phaser from 'phaser'
 export default class creditos extends Phaser.Scene
 {
+  private fondoMenu;
+  private buttonAtras;
   constructor()
   {
     super('credit2');
@@ -11,9 +13,9 @@ export default class creditos extends Phaser.Scene
 
   create()
   {
-    fondoMenu = this.add.image(683, 384, 'menuCreditos').setScale(0.75);
+    this.fondoMenu = this.add.image(683, 384, 'menuCreditos').setScale(0.75);
 
-    buttonAtras = this.add.image(1285, 80, 'botonatras')
+    this.buttonAtras = this.add.image(1285, 80, 'botonatras')
     .setInteractive()
     .on('pointerdown', () => this.scene.start('informacion'))    
     

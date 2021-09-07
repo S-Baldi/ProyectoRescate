@@ -1,6 +1,15 @@
 import Phaser from 'phaser'
 export default class mp1 extends Phaser.Scene
+
+
 {
+  private fondoMenu;
+  private buttonPlay;
+  private buttonPremio;
+  private buttonInfo;
+  private buttonMusica;
+  private banderaArg;
+  
   constructor()
   {
     super('menuPpal');
@@ -37,10 +46,10 @@ export default class mp1 extends Phaser.Scene
     //sonidoButton = this.sound.add('sonidoBoton');
 
     //Fondo del Mp
-    fondoMenu = this.add.image(683, 384, 'menu').setScale(0.75);
+    this.fondoMenu = this.add.image(683, 384, 'menu').setScale(0.75);
 
     //Boton Play
-    buttonPlay = this.add.image(900, 650, 'botonPlay')
+    this.buttonPlay = this.add.image(900, 650, 'botonPlay')
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () =>
     { 
@@ -48,7 +57,7 @@ export default class mp1 extends Phaser.Scene
     });
 
     //Boton Premio
-    buttonPremio = this.add.image(700, 650, 'botonDesbloqueable')
+    this.buttonPremio = this.add.image(700, 650, 'botonDesbloqueable')
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () =>
     { 
@@ -56,7 +65,7 @@ export default class mp1 extends Phaser.Scene
     });
 
     //Boton Info
-    buttonInfo = this.add.image(500, 650, 'botonInfo')
+    this.buttonInfo = this.add.image(500, 650, 'botonInfo')
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => 
     { 
@@ -64,8 +73,8 @@ export default class mp1 extends Phaser.Scene
     });
 
     
-    buttonMusica = this.add.image(90, 90, 'botonMusica').setScale(0.7);
-    banderaArg = this.add.image(90, 200, 'botonIdiomaEspañol').setScale(0.2);
+    this.buttonMusica = this.add.image(90, 90, 'botonMusica').setScale(0.7);
+    this.banderaArg = this.add.image(90, 200, 'botonIdiomaEspañol').setScale(0.2);
 
   }
 
