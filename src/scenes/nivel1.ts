@@ -12,15 +12,16 @@ export default class nivel_1 extends Phaser.Scene
   }
 
   preload(){
-    this.load.tilemapTiledJSON('mapa_nivel1', '/assets/Nivel1/nivel_Yaguarete.json')
-    this.load.image('nivel1Fondoo','/assets/Nivel1/nivel1_suelo.png')
-    this.load.image('nivel1Sueloo','/assets/Nivel1/nivel1_suelo.png')
-    this.load.image('nivel1Carnee','/assets/Nivel1/nivel1_carne.png')
-    this.load.image('nivel1Trampaa','/assets/Nivel1/nivel1_trampa.png')
+    this.load.tilemapTiledJSON('mapa_nivel1', 'assets/Nivel1/nivel_Yaguarete.json');
+    this.load.image('nivel1Fondoo','assets/Nivel1/nivel1_suelo.png');
+    this.load.image('nivel1Fondoo2', 'assets/Nivel1/nivel1_fondo2.png');
+    this.load.image('nivel1Fondoo3','assets/Nivel1/nivel1_suelo.png');
+    this.load.image('nivel1Sueloo','assets/Nivel1/nivel1_suelo.png');
+    /* this.load.image('nivel1Carnee','assets/Nivel1/nivel1_carne.png');
+    this.load.image('nivel1Trampaa','assets/Nivel1/nivel1_trampa.png'); */
 
     this.load.spritesheet('nivel1Yaguarete', '/assets/Nivel1/nivel1_yaguarete.png', 
-    {frameWidth:538 , frameHeight:300 });
-    
+    {frameWidth:538 , frameHeight:300 });    
    
   }
 
@@ -30,17 +31,30 @@ export default class nivel_1 extends Phaser.Scene
   [, tileWidth] [, tileHeight] [, tileMargin] [, tileSpacing] [, gid])
  */ const mapa_nivel1 = this.make.tilemap({key: 'mapa_nivel1'});
     const fondo_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_fondo', 'nivel1Fondoo');
+    const fondo2_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_fondo2', 'nivel1Fondoo2');
+    const fondo3_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_fondo3', 'nivel1Fondoo3');
     const suelo_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_suelo', 'nivel1Sueloo');
-    const carne_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_carne', 'nivel1Carnee');
-    const trampa_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_trampa', 'nivel1Trampaa');
 
+   /*  const carne_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_carne', 'nivel1Carnee');
+    const trampa_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_trampa', 'nivel1Trampaa');
+ */
      /* Capas tiled */
-    const fondo_nivel1 = mapa_nivel1.createLayer('nivel1Fondo', fondo_nivel1_tiled, 0, 0);
-    const suelo_nivel1 = mapa_nivel1.createLayer('nivel1Suelo', suelo_nivel1_tiled, 0, 0);
+    const fondo_nivel1 : Phaser.Tilemaps.TilemapLayer = 
+    mapa_nivel1.createLayer('nivel1Fondo', fondo_nivel1_tiled, 0, 0);
+
+    const fondo2_nivel1 : Phaser.Tilemaps.TilemapLayer = 
+    mapa_nivel1.createLayer('nivel1Fondo', fondo2_nivel1_tiled, 0, 0);
+
+    const fondo3_nivel1 : Phaser.Tilemaps.TilemapLayer = 
+    mapa_nivel1.createLayer('nivel1Fondo', fondo3_nivel1_tiled, 0, 0);
+
+    const suelo_nivel1 : Phaser.Tilemaps.TilemapLayer = 
+    mapa_nivel1.createLayer('nivel1Suelo', suelo_nivel1_tiled, 0, 0);    
     suelo_nivel1.setCollisionByProperty({solido: true});
-    const carne_nivel1 = mapa_nivel1.createLayer('nivel1Alimento', carne_nivel1_tiled, 0, 0);
+
+    /* const carne_nivel1 = mapa_nivel1.createLayer('nivel1Alimento', carne_nivel1_tiled, 0, 0);
     const trampa_nivel1 = mapa_nivel1.createLayer('nivel1Trampa', trampa_nivel1_tiled, 0, 0);
-  
+   */
     /* if (cursors =! undefined){
       cursors = this.input.keyboard.createCursorKeys();
       teclaR = this.input.keyboard.addKey('R');
@@ -100,7 +114,7 @@ export default class nivel_1 extends Phaser.Scene
       this.scene.start('menuMapa');
     } */
 
-    if (cursors.right.isDown)
+    /* if (cursors.right.isDown)
     {
       yaguarete_nivel1.setVelocityX(200);
       yaguarete_nivel1.anims.play('correr', true);
@@ -109,7 +123,7 @@ export default class nivel_1 extends Phaser.Scene
     if ((cursors.up.isDown) && yaguarete_nivel1.body.blocked.down)
     {     
       yaguarete_nivel1.setVelocityY(-300);           
-    }
+    } */
   }
 
   /* juntarComidaNivel1 (yaguarete_nivel1, carne_nivel1){
