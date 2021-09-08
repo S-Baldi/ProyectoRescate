@@ -23,7 +23,7 @@ export default class info extends Phaser.Scene
     .setInteractive()
     .on('pointerdown', () => this.scene.start('credit2'));
 
-    const buttonAtras = this.add.image(1260, 105, 'botonatras')
+    const buttonAtras = this.add.image(1260, 105, 'botonatras').setScale(0.8)
     .setInteractive()
     .on('pointerdown', () => this.scene.start('menuPpal'))
   }
