@@ -1,6 +1,8 @@
 import Phaser from 'phaser'
 export default class mp1 extends Phaser.Scene
-{
+
+
+{  
   constructor()
   {
     super('menuPpal');
@@ -23,13 +25,23 @@ export default class mp1 extends Phaser.Scene
 
     //Menu info
     this.load.image('fondoinfo', 'assets/MenuPrincipal/INFO.png');
+    //botones
     this.load.image('botonayuda', 'assets/MenuPrincipal/Botones/AYUDA.png');
     this.load.image('botoncreditos', 'assets/MenuPrincipal/Botones/CREDITOS.png');
     this.load.image('botonatras', 'assets/MenuPrincipal/Botones/atras.png');
-              //Menu ayuda
+             //Menu ayuda
     this.load.image('menuAyuda','assets/MenuPrincipal/MenuAyuda.png');
-              //Menu Creditos
+              //Menu creditos
     this.load.image('menuCreditos','assets/MenuPrincipal/MenuCreditos.png');
+    //Menu extras
+    this.load.image('menuExtras', 'assets/MenuPrincipal/extras.png');
+             //Botones de desbloqueables
+    this.load.image('botonYaguarete', 'assets/MenuPrincipal/Botones/1erDesbloqueable.png');
+    this.load.image('botonMono', 'assets/MenuPrincipal/Botones/2doDesbloqueable.png');
+    this.load.image('botonCondor', 'assets/MenuPrincipal/Botones/3erDesbloqueable.png');
+    this.load.image('botonBallena', 'assets/MenuPrincipal/Botones/4toDesbloqueable.png');
+    this.load.image('botonPinguino', 'assets/MenuPrincipal/Botones/5toDesbloqueable.png');
+              
   }
 
   create()
@@ -52,7 +64,7 @@ export default class mp1 extends Phaser.Scene
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
-      this.scene.start('premio') && sonidoButton.play({volume:0.5})
+      this.scene.start('extras') && sonidoButton.play({volume:0.5})
     });
 
     //Boton Info
