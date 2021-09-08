@@ -41,6 +41,7 @@ export default class mp1 extends Phaser.Scene
     this.load.image('botonCondor', 'assets/MenuPrincipal/Botones/3erDesbloqueable.png');
     this.load.image('botonBallena', 'assets/MenuPrincipal/Botones/4toDesbloqueable.png');
     this.load.image('botonPinguino', 'assets/MenuPrincipal/Botones/5toDesbloqueable.png');
+    this.load.image('infoYaguarete', 'assets/MenuPrincipal/Botones/infoYaguarete.png');
               
   }
 

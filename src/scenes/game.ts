@@ -22,6 +22,7 @@ var buttonDesbloqueableMono;
 var buttonDesbloqueableCondor;
 var buttonDesbloqueableBallena;
 var buttonDesbloqueablePinguino;
+var buttonInfoYaguarete;
 
 //Teclas
 var cursors;
