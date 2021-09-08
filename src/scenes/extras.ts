@@ -13,7 +13,7 @@ export default class extras extends Phaser.Scene
   {
     const fondoMenu = this.add.image(683, 384, 'menuExtras').setScale(0.75);
 
-    const buttonAtras = this.add.image(1260, 105, 'botonatras')
+    const buttonAtras = this.add.image(1260, 105, 'botonatras').setScale(0.8)
     .setInteractive()
     .on('pointerdown', () => this.scene.start('menuPpal'));
     
