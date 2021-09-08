@@ -7,9 +7,12 @@ export default class mapa extends Phaser.Scene
 
   preload(){
     this.load.image('botonNivel', 'assets/Mapa/botonMapa.png');
+    this.load.image('fondoMapa', 'assets/Mapa/fondoMapa.png')
   }
 
   create(){
+    const fondo_Mapa = this.add.image(600, 350, 'fondoMapa'); 
+
     const mapaArg = this.add.image(750, 384, 'mapaArgentina');
 
     const buttonMenu = this.add.image(65, 80, 'botonMenuPpal').setScale(0.7)
