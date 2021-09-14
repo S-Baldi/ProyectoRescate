@@ -43,17 +43,6 @@
                  "y":549
                 }, 
                 {
-                 "height":0,
-                 "id":2,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":593,
-                 "y":-80
-                }, 
-                {
                  "height":56,
                  "id":5,
                  "name":"trampa",
@@ -151,6 +140,17 @@
                  "width":0,
                  "x":2547,
                  "y":-40
+                }, 
+                {
+                 "height":74.4556962025317,
+                 "id":18,
+                 "name":"yaguarete",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":100.379746835443,
+                 "x":164.025316455696,
+                 "y":529.79746835443
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -159,10 +159,10 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":18,
+ "nextobjectid":19,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.7.2",
+ "tiledversion":"1.7.0",
  "tileheight":8,
  "tilesets":[
         {
