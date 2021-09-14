@@ -7,6 +7,7 @@ import mapa from './scenes/mapa'
 import mp1 from './scenes/mp'
 import nivel_1 from './scenes/nivel1'
 
+
 const config : Phaser.Types.Core.GameConfig =
 {
   type: Phaser.WEBGL,

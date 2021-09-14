@@ -1,7 +1,13 @@
 import Phaser from 'phaser'
+import ObstaclesController from './obstaclesController'
+import obstaclesController from './obstaclesController'
+import yaguareteController from './yaguareteController'
 export default class nivel_1 extends Phaser.Scene
 {
-  private cursors!: Phaser.Types.Input.Keyboard.CursorKeys
+  private cursors!: Phaser.Types.Input.Keyboard.CursorKeys	
+	private yaguarete?: Phaser.Physics.Matter.Sprite
+  private yaguareteController?: yaguareteController
+  private obstacles!: ObstaclesController
 
   constructor(){
     super('nivelYaguarete')
@@ -9,6 +15,9 @@ export default class nivel_1 extends Phaser.Scene
   init()
   {
     this.cursors = this.input.keyboard.createCursorKeys()  
+    this.obstacles = new obstaclesController()
+
+    
   }
 
   preload(){
@@ -20,7 +29,7 @@ export default class nivel_1 extends Phaser.Scene
     /* this.load.image('nivel1Carnee','assets/Nivel1/nivel1_carne.png');
     this.load.image('nivel1Trampaa','assets/Nivel1/nivel1_trampa.png'); */
 
-    this.load.spritesheet('nivel1Yaguarete', '/assets/Nivel1/nivel1_yaguarete.png', 
+    this.load.spritesheet('yaguarete', '/assets/Nivel1/yaguarete_y_cria.png', 
     {frameWidth:538 , frameHeight:300 });    
    
   }
@@ -62,20 +71,8 @@ export default class nivel_1 extends Phaser.Scene
       teclaF = this.input.keyboard.addKey('F');
     } */
 
-    this.anims.create({
-      key: 'correr',
-      frames: this.anims.generateFrameNumbers('nivel1Yaguarete', 
-      {start:0, end: 2,}),
-      frameRate: 10,
-      repeat: -1
-    })
-    this.anims.create({
-      key: 'turn',
-      frames: [ { key: 'nivel1Yaguarete', frame: 1 } ],
-      frameRate: 10
-    });
-
-    const yaguarete_nivel1 = this.matter.add.sprite(150, 200, 'nivel1Yaguarete');
+    
+    const yaguarete_nivel1 = this.matter.add.sprite(150, 200, 'yaguarete');
     yaguarete_nivel1.setScale(0.3)
     /* yaguarete_nivel1.setVelocityX(200) *//* 
     yaguarete_nivel1.playAnimation('correr') */
@@ -89,6 +86,35 @@ export default class nivel_1 extends Phaser.Scene
     var texto_puntaje_nivel1 = this.add.text(200, 200, 'Puntaje: ' + puntaje_nivel1 ,
     { font: 'bold 30pt Arial', fontSize: '36px', align:'center',})
     var puntaje_nivel1: any = 0;
+
+    //EMPEZANDO LA MAQUINA DE ESTADO
+
+    const objectsLayer = map.getObjectLayer('objects')
+
+		 objectsLayer.objects.forEach(objData => {
+			const { x = 0, y = 0, name, width = 0, height = 0 } = objData
+
+			switch (name)
+			{
+				case 'yaguarete-spawn':
+				{
+					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete')
+						.setFixedRotation()
+
+					this.yaguareteController = new yaguareteController(
+						this,
+						this.yaguarete,
+						this.cursors,
+						this.obstacles
+					)
+
+					this.cameras.main.startFollow(this.yaguarete, true)
+					break
+				}			
+      }
+		 })
+
+		this.matter.world.convertTilemapLayer(ground)
   }
 
   update(){
@@ -131,5 +157,6 @@ export default class nivel_1 extends Phaser.Scene
     puntaje_nivel1 += 15; 
     texto_puntaje_nivel1.setText('Puntaje : ' + puntaje_nivel1);
   } */
+  
   
 }
