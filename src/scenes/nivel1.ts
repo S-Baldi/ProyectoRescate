@@ -22,7 +22,7 @@ export default class nivel_1 extends Phaser.Scene
 
     this.load.spritesheet('nivel1Yaguarete', '/assets/Nivel1/nivel1_yaguarete.png', 
     {frameWidth:538 , frameHeight:300 });    
-   
+  
   }
 
   create(){
