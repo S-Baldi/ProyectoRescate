@@ -8,6 +8,7 @@ export default class nivel_1 extends Phaser.Scene
 	private yaguarete?: Phaser.Physics.Matter.Sprite
   private yaguareteController?: yaguareteController
   private obstacles!: ObstaclesController
+  
 
   constructor(){
     super('nivelYaguarete')
@@ -28,7 +29,7 @@ export default class nivel_1 extends Phaser.Scene
     this.load.image('nivel1Trampaa','assets/Nivel1/nivel1_trampa.png'); 
 
     this.load.spritesheet('yaguarete', '/assets/Nivel1/yaguarete_y_cria.png', 
-    {frameWidth:538 , frameHeight:300 });    
+    {frameWidth:726 , frameHeight:508 });    
   
   }
 
@@ -97,7 +98,7 @@ export default class nivel_1 extends Phaser.Scene
 				case 'yaguarete':
 				{
 					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete')
-          .setScale(0.3)
+          .setScale(0.1)
 				  .setFixedRotation()
 
 					this.yaguareteController = new yaguareteController(
@@ -113,19 +114,20 @@ export default class nivel_1 extends Phaser.Scene
 
         case 'trampa':
         {
-          const trampa = this.matter.add.rectangle(x + (width * 0.5), y + (height * 0.5), width, height, {
-						isStatic: true
-					})
-					this.obstacles.add('nivel1Trampaa', trampa)
+          const trampa = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel1Trampaa', undefined, {
+						isStatic: true,
+            isSensor: true
+					}).setScale(0.15)
 					break
         }
-
+        
         case 'carne':
         {
-          const carne = this.matter.add.rectangle(x + (width * 0.5), y + (height * 0.5), width, height, {
-						isStatic: true 
-          }) 
-          this.obstacles.add('nivel1Carnee', carne)
+          const carne = this.matter.add.sprite(x, y, 'nivel1Carnee', undefined, {
+						isStatic: true,
+            isSensor: true 
+          })
+          
           break
         }
       }

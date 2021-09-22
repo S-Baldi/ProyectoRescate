@@ -60,7 +60,7 @@ export default class yaguareteController
 				return
 			} */
       const gameObject = body.gameObject
-
+			
 			if (!gameObject)
 			{
 				return
