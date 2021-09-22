@@ -8,6 +8,7 @@ export default class nivel_1 extends Phaser.Scene
 	private yaguarete?: Phaser.Physics.Matter.Sprite
   private yaguareteController?: yaguareteController
   private obstacles!: ObstaclesController
+  
 
   constructor(){
     super('nivelYaguarete')
@@ -15,19 +16,17 @@ export default class nivel_1 extends Phaser.Scene
   init()
   {
     this.cursors = this.input.keyboard.createCursorKeys()  
-    this.obstacles = new obstaclesController()
-
-    
+    this.obstacles = new obstaclesController()    
   }
 
   preload(){
     this.load.tilemapTiledJSON('mapa_nivel1', 'assets/Nivel1/nivel_Yaguarete.json');
     this.load.image('nivel1Fondoo','assets/Nivel1/nivel1_fondo.png');
-  /*    this.load.image('nivel1Fondoo2', 'assets/Nivel1/nivel1_fondo2.png');
+  /*this.load.image('nivel1Fondoo2', 'assets/Nivel1/nivel1_fondo2.png');
     this.load.image('nivel1Fondoo3','assets/Nivel1/nivel1_suelo.png'); */
     this.load.image('nivel1Sueloo','assets/Nivel1/nivel1_suelo.png');
-    /* this.load.image('nivel1Carnee','assets/Nivel1/nivel1_carne.png');
-    this.load.image('nivel1Trampaa','assets/Nivel1/nivel1_trampa.png'); */
+    this.load.image('nivel1Carnee','assets/Nivel1/nivel1_carne.png');
+    this.load.image('nivel1Trampaa','assets/Nivel1/nivel1_trampa.png'); 
 
     this.load.spritesheet('yaguarete', '/assets/Nivel1/yaguarete_y_cria.png', 
     {frameWidth:726 , frameHeight:508 });    
@@ -99,7 +98,7 @@ export default class nivel_1 extends Phaser.Scene
 				case 'yaguarete':
 				{
 					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete')
-          .setScale(0.3)
+          .setScale(0.1)
 				  .setFixedRotation()
 
 					this.yaguareteController = new yaguareteController(
@@ -112,7 +111,28 @@ export default class nivel_1 extends Phaser.Scene
 					this.cameras.main.startFollow(this.yaguarete, true)
 					break
 				}			
+
+        case 'trampa':
+        {
+          const trampa = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel1Trampaa', undefined, {
+						isStatic: true,
+            isSensor: true
+					}).setScale(0.15)
+					break
+        }
+        
+        case 'carne':
+        {
+          const carne = this.matter.add.sprite(x, y, 'nivel1Carnee', undefined, {
+						isStatic: true,
+            isSensor: true 
+          })
+          
+          break
+        }
       }
+
+        
 		})
 
 		this.matter.world.convertTilemapLayer(suelo_nivel1)
