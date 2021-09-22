@@ -23,14 +23,14 @@ export default class nivel_1 extends Phaser.Scene
   preload(){
     this.load.tilemapTiledJSON('mapa_nivel1', 'assets/Nivel1/nivel_Yaguarete.json');
     this.load.image('nivel1Fondoo','assets/Nivel1/nivel1_fondo.png');
- /*    this.load.image('nivel1Fondoo2', 'assets/Nivel1/nivel1_fondo2.png');
+  /*    this.load.image('nivel1Fondoo2', 'assets/Nivel1/nivel1_fondo2.png');
     this.load.image('nivel1Fondoo3','assets/Nivel1/nivel1_suelo.png'); */
     this.load.image('nivel1Sueloo','assets/Nivel1/nivel1_suelo.png');
     /* this.load.image('nivel1Carnee','assets/Nivel1/nivel1_carne.png');
     this.load.image('nivel1Trampaa','assets/Nivel1/nivel1_trampa.png'); */
 
     this.load.spritesheet('yaguarete', '/assets/Nivel1/yaguarete_y_cria.png', 
-    {frameWidth:538 , frameHeight:300 });    
+    {frameWidth:726 , frameHeight:508 });    
   
   }
 
