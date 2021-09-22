@@ -16,7 +16,10 @@ export default class yaguareteController
 	private health = 1
   private obstacles: ObstaclesController
 
-  constructor(scene: Phaser.Scene, sprite: Phaser.Physics.Matter.Sprite, cursors: CursorKeys, obstacles: ObstaclesController) 
+  constructor(scene: Phaser.Scene, 
+		sprite: Phaser.Physics.Matter.Sprite, 
+		cursors: CursorKeys, 
+		obstacles: ObstaclesController) 
   {
     this.scene = scene
 		this.sprite = sprite
@@ -40,9 +43,6 @@ export default class yaguareteController
 			onEnter: this.jumpOnEnter,
 			onUpdate: this.jumpOnUpdate
 		})
-		/* .addState('spike-hit', {
-			onEnter: this.spikeHitOnEnter
-		}) */
 		.addState('dead', {
 			onEnter: this.deadOnEnter
 		})
@@ -51,12 +51,12 @@ export default class yaguareteController
     this.sprite.setOnCollide((data: MatterJS.ICollisionPair) => 
     {
       const body = data.bodyB as MatterJS.BodyType
-
-			if (this.obstacles.is('spikes', body))
+/* 
+			if (this.obstacles.is('trampa', body))
 			{
-				this.stateMachine.setState('spike-hit')
+				this.stateMachine.setState('trampa-hit')
 				return
-			}
+			} */
       const gameObject = body.gameObject
 
 			if (!gameObject)
@@ -82,6 +82,13 @@ export default class yaguareteController
 				{
 					events.emit('crias-collected')
 					sprite.destroy()
+					break
+				}
+
+				case 'carne':
+				{
+					events.emit('comida-collected')
+					sprite.destroy
 					break
 				}
 			}

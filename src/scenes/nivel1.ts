@@ -22,9 +22,9 @@ export default class nivel_1 extends Phaser.Scene
 
   preload(){
     this.load.tilemapTiledJSON('mapa_nivel1', 'assets/Nivel1/nivel_Yaguarete.json');
-    this.load.image('nivel1Fondoo','assets/Nivel1/nivel1_suelo.png');
-    this.load.image('nivel1Fondoo2', 'assets/Nivel1/nivel1_fondo2.png');
-    this.load.image('nivel1Fondoo3','assets/Nivel1/nivel1_suelo.png');
+    this.load.image('nivel1Fondoo','assets/Nivel1/nivel1_fondo.png');
+ /*    this.load.image('nivel1Fondoo2', 'assets/Nivel1/nivel1_fondo2.png');
+    this.load.image('nivel1Fondoo3','assets/Nivel1/nivel1_suelo.png'); */
     this.load.image('nivel1Sueloo','assets/Nivel1/nivel1_suelo.png');
     /* this.load.image('nivel1Carnee','assets/Nivel1/nivel1_carne.png');
     this.load.image('nivel1Trampaa','assets/Nivel1/nivel1_trampa.png'); */
@@ -40,23 +40,23 @@ export default class nivel_1 extends Phaser.Scene
   [, tileWidth] [, tileHeight] [, tileMargin] [, tileSpacing] [, gid])
  */ const mapa_nivel1 = this.make.tilemap({key: 'mapa_nivel1'});
     const fondo_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_fondo', 'nivel1Fondoo');
-    const fondo2_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_fondo2', 'nivel1Fondoo2');
+   /*  const fondo2_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_fondo2', 'nivel1Fondoo2');
     const fondo3_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_fondo3', 'nivel1Fondoo3');
-    const suelo_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_suelo', 'nivel1Sueloo');
+    */ const suelo_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_suelo', 'nivel1Sueloo');
 
-   /*  const carne_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_carne', 'nivel1Carnee');
+  /*  const carne_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_carne', 'nivel1Carnee');
     const trampa_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_trampa', 'nivel1Trampaa');
  */
-     /* Capas tiled */
+  /* Capas tiled */
     const fondo_nivel1 : Phaser.Tilemaps.TilemapLayer = 
     mapa_nivel1.createLayer('nivel1Fondo', fondo_nivel1_tiled, 0, 0);
 
-    const fondo2_nivel1 : Phaser.Tilemaps.TilemapLayer = 
+    /* const fondo2_nivel1 : Phaser.Tilemaps.TilemapLayer = 
     mapa_nivel1.createLayer('nivel1Fondo', fondo2_nivel1_tiled, 0, 0);
 
     const fondo3_nivel1 : Phaser.Tilemaps.TilemapLayer = 
     mapa_nivel1.createLayer('nivel1Fondo', fondo3_nivel1_tiled, 0, 0);
-
+ */
     const suelo_nivel1 : Phaser.Tilemaps.TilemapLayer = 
     mapa_nivel1.createLayer('nivel1Suelo', suelo_nivel1_tiled, 0, 0);    
     suelo_nivel1.setCollisionByProperty({solido: true});
@@ -72,14 +72,14 @@ export default class nivel_1 extends Phaser.Scene
     } */
 
     
-    const yaguarete_nivel1 = this.matter.add.sprite(150, 200, 'yaguarete');
-    yaguarete_nivel1.setScale(0.3)
+  /*   const yaguarete_nivel1 = this.matter.add.sprite(150, 200, 'yaguarete');
+    yaguarete_nivel1.setScale(0.3) */
     /* yaguarete_nivel1.setVelocityX(200) *//* 
     yaguarete_nivel1.playAnimation('correr') */
 
     this.cameras.main.setBounds(0, 0, mapa_nivel1.widthInPixels, mapa_nivel1.heightInPixels);
-    this.cameras.main.startFollow(yaguarete_nivel1);
-    
+/*     this.cameras.main.startFollow(yaguarete_nivel1);
+ */    
     /* this.matter.add.collider(yaguarete_nivel1, suelo_nivel1); */
     /* this.physics.add.overlap(yaguarete_nivel1, carne_nivel1, this.juntarComidaNivel1, null, this); */
 
@@ -89,17 +89,18 @@ export default class nivel_1 extends Phaser.Scene
 
     //EMPEZANDO LA MAQUINA DE ESTADO
 
-    const objectsLayer = map.getObjectLayer('objects')
+    const objectsLayer = mapa_nivel1.getObjectLayer('nivel1Objetos')
 
-		 objectsLayer.objects.forEach(objData => {
+		objectsLayer.objects.forEach(objData => {
 			const { x = 0, y = 0, name, width = 0, height = 0 } = objData
 
 			switch (name)
 			{
-				case 'yaguarete-spawn':
+				case 'yaguarete':
 				{
 					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete')
-						.setFixedRotation()
+          .setScale(0.3)
+				  .setFixedRotation()
 
 					this.yaguareteController = new yaguareteController(
 						this,
@@ -112,9 +113,9 @@ export default class nivel_1 extends Phaser.Scene
 					break
 				}			
       }
-		 })
+		})
 
-		this.matter.world.convertTilemapLayer(ground)
+		this.matter.world.convertTilemapLayer(suelo_nivel1)
   }
 
   update(){
@@ -160,3 +161,7 @@ export default class nivel_1 extends Phaser.Scene
   
   
 }
+function ground(ground: any) {
+  throw new Error('Function not implemented.')
+}
+
