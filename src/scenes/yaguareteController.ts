@@ -51,6 +51,8 @@ export default class yaguareteController
     this.sprite.setOnCollide((data: MatterJS.ICollisionPair) => 
     {
       const body = data.bodyB as MatterJS.BodyType
+
+			
 /* 
 			if (this.obstacles.is('trampa', body))
 			{

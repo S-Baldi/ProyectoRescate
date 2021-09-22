@@ -38,7 +38,7 @@ export default class nivel_1 extends Phaser.Scene
   [, tileWidth] [, tileHeight] [, tileMargin] [, tileSpacing] [, gid])
  */ const mapa_nivel1 = this.make.tilemap({key: 'mapa_nivel1'});
     const fondo_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_fondo', 'nivel1Fondoo');
-   /*  const fondo2_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_fondo2', 'nivel1Fondoo2');
+  /*  const fondo2_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_fondo2', 'nivel1Fondoo2');
     const fondo3_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_fondo3', 'nivel1Fondoo3');
     */ const suelo_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_suelo', 'nivel1Sueloo');
 
@@ -94,7 +94,7 @@ export default class nivel_1 extends Phaser.Scene
 
 			switch (name)
 			{
-				/* case 'yaguarete':
+				case 'yaguarete':
 				{
 					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete')
           .setScale(0.3)
@@ -109,7 +109,7 @@ export default class nivel_1 extends Phaser.Scene
 
 					this.cameras.main.startFollow(this.yaguarete, true)
 					break
-				}	 */		
+				}			
 
         case 'trampa':
         {
@@ -137,49 +137,8 @@ export default class nivel_1 extends Phaser.Scene
   }
 
   update(){
-    /* teclaF.on('down', function (){
-      if (this.scale.isFullscreen)
-      {
-          this.scale.stopFullscreen();
-      }
-      else
-      {
-          this.scale.startFullscreen();
-      }
-    }, this); */
 
-  /*   if (teclaR.isDown)
-    {
-      this.scene.restart();
-      puntaje_nivel1 = 0
-    }
-
-    if (teclaP.isDown)
-    {
-      this.scene.start('menuMapa');
-    } */
-
-    /* if (cursors.right.isDown)
-    {
-      yaguarete_nivel1.setVelocityX(200);
-      yaguarete_nivel1.anims.play('correr', true);
-    }
-
-    if ((cursors.up.isDown) && yaguarete_nivel1.body.blocked.down)
-    {     
-      yaguarete_nivel1.setVelocityY(-300);           
-    } */
-  }
-
-  /* juntarComidaNivel1 (yaguarete_nivel1, carne_nivel1){
-    carne_nivel1.disableBody(true, true);
-    puntaje_nivel1 += 15; 
-    texto_puntaje_nivel1.setText('Puntaje : ' + puntaje_nivel1);
-  } */
+  }  
   
-  
-}
-function ground(ground: any) {
-  throw new Error('Function not implemented.')
 }
 
