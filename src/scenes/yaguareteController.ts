@@ -1,7 +1,7 @@
 import Phaser from 'phaser' 
 import StateMachine from '../statemachine/StateMachine'
-import { sharedInstance as events } from './EventCenter'
-import ObstaclesController from './ObstaclesController'
+import { sharedInstance as events } from './eventCenter'
+import ObstaclesController from './obstaclesController'
 
 
 type CursorKeys = Phaser.Types.Input.Keyboard.CursorKeys
@@ -45,6 +45,9 @@ export default class yaguareteController
 		})
 		.addState('dead', {
 			onEnter: this.deadOnEnter
+		})
+		.addState('trampaHit',{
+			onEnter: this.trampaHitOnEnter
 		})
 		.setState('idle')
 
@@ -116,12 +119,12 @@ export default class yaguareteController
 
   private idleOnEnter()
 	{
-		this.sprite.play('player-idle')
+		this.sprite.play('yaguarete-idle')
 	}
 
   private idleOnUpdate()
 	{
-		if (this.cursors.left.isDown || this.cursors.right.isDown)
+		if (this.cursors.right.isDown)
 		{
 			this.stateMachine.setState('walk')
 		}
@@ -135,32 +138,20 @@ export default class yaguareteController
 
   private walkOnEnter()
 	{
-		this.sprite.play('player-walk')
+		this.sprite.play('yaguarete-walk')
 	}
 
   private walkOnUpdate()
 	{
     const speed = 5
-    if (this.cursors.left.isDown)
+		if (this.cursors.right.isDown)
 		{
-			this.sprite.flipX = true
-			this.sprite.setVelocityX(speed)
-		}
-		else if (this.cursors.right.isDown)
-		{
-			this.sprite.flipX = false
 			this.sprite.setVelocityX(speed)
 		}
 		else
 		{
 			this.sprite.setVelocityX(0)
 			this.stateMachine.setState('idle')
-		}
-
-		const spaceJustPressed = Phaser.Input.Keyboard.JustDown(this.cursors.space)
-		if (spaceJustPressed)
-		{
-			this.stateMachine.setState('jump')
 		}
 	}
 
@@ -171,7 +162,12 @@ export default class yaguareteController
 
   private jumpOnEnter()
 	{
-		this.sprite.setVelocityY(-12)
+		this.stateMachine.setState('jump')
+		if (this.cursors.up.isDown)
+		{
+			this.sprite.setVelocityY(-12)
+		}
+		
 	}
 
   private jumpOnUpdate()
@@ -183,10 +179,18 @@ export default class yaguareteController
 
   private deadOnEnter()
 	{
-		this.sprite.play('player-death')
+		this.sprite.play('yaguarete-death')
 
 		this.sprite.setOnCollide(() => {})
 
+		this.scene.time.delayedCall(1500, () => {
+			this.scene.scene.start('game-over')
+		})
+	}
+
+	private trampaHitOnEnter(){
+		this.sprite.play('yaguarete-death')
+		
 		this.scene.time.delayedCall(1500, () => {
 			this.scene.scene.start('game-over')
 		})
@@ -195,44 +199,43 @@ export default class yaguareteController
   private createAnimations()
 	{
 		this.sprite.anims.create({
-			key: 'player-idle',
-			frames: [{ key: 'yaguarete', frame: 'yaguarete_y_cria.png' }]
+			key: 'yaguarete-idle',
+			frames: [{ key: 'yaguarete', frame: 'yaguarete_Nro01.png' }]
 		})
 
 		this.sprite.anims.create({
-			key: 'player-walk',
-			frameRate: 10,
+			key: 'yaguarete-walk',
+			frameRate: 5,
 			frames: this.sprite.anims.generateFrameNames('yaguarete', {
 				start: 1,
-				end: 3,
-				prefix: 'yaguarete_y_cria',
+				end: 4,
+				prefix: 'yaguarete_Nro0',
 				suffix: '.png'
 			}),
 			repeat: -1
 		})
 
     this.sprite.anims.create({
-			key: 'player-jump',
-			frameRate: 10,
+			key: 'yaguarete-jump',
+			frameRate: 5,
 			frames: this.sprite.anims.generateFrameNames('yaguarete', {
-				start: 4,
-				end: 7,
-				prefix: 'yaguarete_y_cria',
+				start: 1,
+				end: 4,
+				prefix: 'yaguareteSalto0',
 				suffix: '.png'
 			}),
 			repeat: -1
 		})
 
 		this.sprite.anims.create({
-			key: 'player-death',
+			key: 'yaguarete-death',
 			frames: this.sprite.anims.generateFrameNames('yaguarete', {
-				start: 8,
-				end: 10,
-				prefix: 'yaguarete_y_cria',
-				zeroPad: 2,
+				start: 1,
+				end: 3,
+				prefix: 'yaguareteMuerte0',
 				suffix: '.png'
 			}),
-			frameRate: 10
+			frameRate: 3
 		})
 	}
 }
