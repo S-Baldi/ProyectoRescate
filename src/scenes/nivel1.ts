@@ -1,5 +1,4 @@
 import Phaser from 'phaser'
-import ObstaclesController from './obstaclesController'
 import obstaclesController from './obstaclesController'
 import yaguareteController from './yaguareteController'
 export default class nivel_1 extends Phaser.Scene
@@ -7,7 +6,7 @@ export default class nivel_1 extends Phaser.Scene
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys	
 	private yaguarete?: Phaser.Physics.Matter.Sprite
   private yaguareteController?: yaguareteController
-  private obstacles!: ObstaclesController
+  private obstacles!: obstaclesController
   
 
   constructor(){
@@ -58,7 +57,8 @@ export default class nivel_1 extends Phaser.Scene
  */
     const suelo_nivel1 : Phaser.Tilemaps.TilemapLayer = 
     mapa_nivel1.createLayer('nivel1Suelo', suelo_nivel1_tiled, 0, 0);    
-    suelo_nivel1.setCollisionByProperty({solido: true});
+    suelo_nivel1.setCollisionByProperty({collides: true});
+    
 
     /* const carne_nivel1 = mapa_nivel1.createLayer('nivel1Alimento', carne_nivel1_tiled, 0, 0);
     const trampa_nivel1 = mapa_nivel1.createLayer('nivel1Trampa', trampa_nivel1_tiled, 0, 0);
@@ -97,9 +97,7 @@ export default class nivel_1 extends Phaser.Scene
 			{
 				case 'yaguarete':
 				{
-					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete')
-          .setScale(0.1)
-				  .setFixedRotation()
+					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete').setScale(0.2).setFixedRotation()
 
 					this.yaguareteController = new yaguareteController(
 						this,
@@ -123,10 +121,11 @@ export default class nivel_1 extends Phaser.Scene
         
         case 'carne':
         {
-          const carne = this.matter.add.sprite(x, y, 'nivel1Carnee', undefined, {
+          const carne = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel1Carnee', undefined, {
 						isStatic: true,
             isSensor: true 
           })
+          carne.setData('type', 'carne')
           
           break
         }
@@ -138,9 +137,17 @@ export default class nivel_1 extends Phaser.Scene
 		this.matter.world.convertTilemapLayer(suelo_nivel1)
   }
 
-  update(){
-
+  update(t:number, dt:number){
+    this.yaguareteController?.update(dt)
   }  
   
+}
+
+function isSensor(arg0: number, y: number, arg2: string, isSensor: any, arg4: boolean) {
+  throw new Error('Function not implemented.')
+}
+
+function setCollisionByProperty(arg0: { collides: boolean }): Phaser.Physics.Matter.Sprite {
+  throw new Error('Function not implemented.')
 }
 

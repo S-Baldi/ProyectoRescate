@@ -1,7 +1,7 @@
 import Phaser from 'phaser' 
 import StateMachine from '../statemachine/StateMachine'
-import { sharedInstance as events } from './EventCenter'
-import ObstaclesController from './ObstaclesController'
+import { sharedInstance as events } from './eventCenter'
+import ObstaclesController from './obstaclesController'
 
 
 type CursorKeys = Phaser.Types.Input.Keyboard.CursorKeys
@@ -53,7 +53,8 @@ export default class yaguareteController
       const body = data.bodyB as MatterJS.BodyType
 
 			
-/* 
+			
+			/* 
 			if (this.obstacles.is('trampa', body))
 			{
 				this.stateMachine.setState('trampa-hit')
@@ -196,7 +197,14 @@ export default class yaguareteController
 	{
 		this.sprite.anims.create({
 			key: 'player-idle',
-			frames: [{ key: 'yaguarete', frame: 'yaguarete_y_cria.png' }]
+			frameRate: 10,
+			frames: this.sprite.anims.generateFrameNames('yaguarete', {
+				start: 0,
+				end: 0,
+				prefix: 'yaguarete_y_cria',
+				suffix: '.png'
+			}),
+			repeat: -1
 		})
 
 		this.sprite.anims.create({
