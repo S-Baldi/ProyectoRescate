@@ -3,7 +3,6 @@ import StateMachine from '../statemachine/StateMachine'
 import { sharedInstance as events } from './eventCenter'
 import ObstaclesController from './obstaclesController'
 
-
 type CursorKeys = Phaser.Types.Input.Keyboard.CursorKeys
 
 export default class yaguareteController 
@@ -41,7 +40,7 @@ export default class yaguareteController
 		})
 		.addState('jump', {
 			onEnter: this.jumpOnEnter,
-			onUpdate: this.jumpOnUpdate
+			onUpdate: this.jumpOnUpdate,
 		})
 		.addState('dead', {
 			onEnter: this.deadOnEnter
@@ -51,17 +50,17 @@ export default class yaguareteController
 		})
 		.setState('idle')
 
-    this.sprite.setOnCollide((data: MatterJS.ICollisionPair) => 
+    /* this.sprite.setOnCollide((data: MatterJS.ICollisionPair) => 
     {
       const body = data.bodyB as MatterJS.BodyType
 
 			
-/* 
+
 			if (this.obstacles.is('trampa', body))
 			{
 				this.stateMachine.setState('trampa-hit')
 				return
-			} */
+			}
       const gameObject = body.gameObject
 			
 			if (!gameObject)
@@ -97,14 +96,14 @@ export default class yaguareteController
 					break
 				}
 			}
-		})
+		}) */
   }
   update(dt: number)
 	{
 		this.stateMachine.update(dt)
 	}
 
-  private setHealth(value: number)
+  /* private setHealth(value: number)
 	{
 		this.health = Phaser.Math.Clamp(value, 0, 100)
 
@@ -115,7 +114,7 @@ export default class yaguareteController
 		{
 			this.stateMachine.setState('dead')
 		}
-	}
+	} */
 
   private idleOnEnter()
 	{
@@ -153,6 +152,12 @@ export default class yaguareteController
 			this.sprite.setVelocityX(0)
 			this.stateMachine.setState('idle')
 		}
+
+		const spaceJustPressed = Phaser.Input.Keyboard.JustDown(this.cursors.space)
+		if (spaceJustPressed)
+		{
+			this.stateMachine.setState('jump')
+		}
 	}
 
   private walkOnExit()
@@ -162,11 +167,7 @@ export default class yaguareteController
 
   private jumpOnEnter()
 	{
-		this.stateMachine.setState('jump')
-		if (this.cursors.up.isDown)
-		{
 			this.sprite.setVelocityY(-12)
-		}
 		
 	}
 
@@ -174,8 +175,14 @@ export default class yaguareteController
 	{
 		const speed = 5
 
-		this.sprite.setVelocityX(speed)		
+		if (this.cursors.right.isDown)
+		{
+			this.sprite.flipX = false
+			this.sprite.setVelocityX(speed)
+		}	
 	}
+
+	
 
   private deadOnEnter()
 	{
