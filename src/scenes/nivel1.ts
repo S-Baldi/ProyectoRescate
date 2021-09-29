@@ -24,7 +24,7 @@ export default class nivel_1 extends Phaser.Scene
     this.load.image('nivel1Fondoo','assets/Nivel1/nivel1_fondo.png');
     this.load.image('nivel1Sueloo','assets/Nivel1/nivel1_suelo.png');
     this.load.image('nivel1Carnee','assets/Nivel1/nivel1_carne.png');
-    this.load.image('nivel1Trampaa','assets/Nivel1/nivel1_trampa.png'); 
+    this.load.atlas('nivel1Trampaa','assets/Nivel1/trampa.png','assets/Nivel1/trampa.json'); 
     this.load.image('nivel1Cria', 'assets/Nivel1/criaYaguarete.png');
     this.load.atlas('yaguarete' , 'assets/Nivel1/yaguarete.png', 'assets/Nivel1/yaguarete.json')
   }
@@ -54,7 +54,7 @@ export default class nivel_1 extends Phaser.Scene
     yaguarete_nivel1.playAnimation('correr') */
 
     this.cameras.main.setBounds(0, 0, mapa_nivel1.widthInPixels, mapa_nivel1.heightInPixels);     
-    
+
     //EMPEZANDO LA MAQUINA DE ESTADO
     const objectsLayer = mapa_nivel1.getObjectLayer('nivel1Objetos')
 
@@ -66,10 +66,10 @@ export default class nivel_1 extends Phaser.Scene
 				case 'yaguarete':
 				{
 					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete', undefined, {
-						isStatic: true
-					}) 
+						isStatic: true,
+            isSensor: true 
+          }) 
           .setFixedRotation()
-          
 
 					this.yaguareteController = new yaguareteController(
 						this,
@@ -88,7 +88,7 @@ export default class nivel_1 extends Phaser.Scene
           'nivel1Trampaa', undefined, {
 						isStatic: true,
             isSensor: true
-					}).setScale(0.1)
+					})
 					break
         }
         
@@ -97,7 +97,7 @@ export default class nivel_1 extends Phaser.Scene
           const carne = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel1Carnee', undefined, {
 						isStatic: true,
             isSensor: true 
-          }).setScale(0.9)
+          })
           
           break
         }
@@ -107,7 +107,7 @@ export default class nivel_1 extends Phaser.Scene
           const yaguareteCria = this.matter.add.sprite(x, y, 'nivel1Cria', undefined,{
             isStatic : true,
             isSensor: true
-          }).setScale(0.15)
+          }).setScale(0.2)
 
         }
       }    

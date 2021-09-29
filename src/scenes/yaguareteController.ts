@@ -56,12 +56,6 @@ export default class yaguareteController
       const body = data.bodyB as MatterJS.BodyType
 
 			
-<<<<<<< HEAD
-			
-			/* 
-=======
-
->>>>>>> de9e31f91264f2faabf222c20ac78bf43dc1e9cf
 			if (this.obstacles.is('trampa', body))
 			{
 				this.stateMachine.setState('trampaHit')
