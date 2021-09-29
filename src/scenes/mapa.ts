@@ -24,16 +24,14 @@ export default class mapa extends Phaser.Scene
     .on('pointerdown', () => this.scene.start('menuPpal'));
 
     const buttonMusica = this.add.image(180, 80, 'botonMusica').setScale(0.7)
-    
+
+    //NIVEL YAGUARETE    
     const buttonNivel1 = this.add.image(1130, 170, 'botonNivel').setScale(0.25)
     .setInteractive()
     .on('pointerdown', () => this.scene.start('nivelYaguarete'))
-
     const text_yagua = this.add.image(1122, 130, 'textYaguarete').setScale(0.8);
 
-
-
-                         //NIVEL BONUS 
+    //NIVEL MONO
     const buttonNivel2 = this.add.image(420,80, 'botonNivel').setScale(0.25)
     .setInteractive()
     .on('pointerdown', () => this.scene.start('nivelBonus'))
@@ -42,14 +40,17 @@ export default class mapa extends Phaser.Scene
 
 
 
+    //NIVEL CONDOR
     const buttonNivel3 = this.add.image(360,300, 'botonNivel').setScale(0.25)
   /*   .setInteractive()
     .on('pointerdown', () => this.scene start('nivelCondor')) */
 
+    //NIVEL BALLENA
     const buttonNivel4 = this.add.image(980,470, 'botonNivel').setScale(0.25)
    /*  .setInteractive()
     .on('pointerdown', () => this.scene start('nivelBallena')) */
 
+    //NIVEL PINGUINO
     const buttonNivel5 = this.add.image(380,650, 'botonNivel').setScale(0.25)
     /* .setInteractive()
     .on('pointerdown', () => this.scene start('nivelPinguino')) */

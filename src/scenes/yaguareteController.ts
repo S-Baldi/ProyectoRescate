@@ -41,6 +41,7 @@ export default class yaguareteController
 		.addState('jump', {
 			onEnter: this.jumpOnEnter,
 			onUpdate: this.jumpOnUpdate,
+			onExit: this.jumpOnExit
 		})
 		.addState('dead', {
 			onEnter: this.deadOnEnter
@@ -50,7 +51,7 @@ export default class yaguareteController
 		})
 		.setState('idle')
 
-    /* this.sprite.setOnCollide((data: MatterJS.ICollisionPair) => 
+    this.sprite.setOnCollide((data: MatterJS.ICollisionPair) => 
     {
       const body = data.bodyB as MatterJS.BodyType
 
@@ -63,7 +64,7 @@ export default class yaguareteController
 >>>>>>> de9e31f91264f2faabf222c20ac78bf43dc1e9cf
 			if (this.obstacles.is('trampa', body))
 			{
-				this.stateMachine.setState('trampa-hit')
+				this.stateMachine.setState('trampaHit')
 				return
 			}
       const gameObject = body.gameObject
@@ -101,7 +102,7 @@ export default class yaguareteController
 					break
 				}
 			}
-		}) */
+		})
   }
   update(dt: number)
 	{
@@ -121,6 +122,8 @@ export default class yaguareteController
 		}
 	} */
 
+	//	IDLE
+
   private idleOnEnter()
 	{
 		this.sprite.play('yaguarete-idle')
@@ -133,12 +136,13 @@ export default class yaguareteController
 			this.stateMachine.setState('walk')
 		}
 
-		const spaceJustPressed = Phaser.Input.Keyboard.JustDown(this.cursors.space)
-		if (spaceJustPressed)
+		if (this.cursors.up.isDown)
 		{
 			this.stateMachine.setState('jump')
 		}
 	}
+
+		//CORRIDA
 
   private walkOnEnter()
 	{
@@ -158,8 +162,7 @@ export default class yaguareteController
 			this.stateMachine.setState('idle')
 		}
 
-		const spaceJustPressed = Phaser.Input.Keyboard.JustDown(this.cursors.space)
-		if (spaceJustPressed)
+		if (this.cursors.up.isDown)
 		{
 			this.stateMachine.setState('jump')
 		}
@@ -170,24 +173,28 @@ export default class yaguareteController
 		this.sprite.stop()
 	}
 
+		//SALTO
   private jumpOnEnter()
-	{
-			this.sprite.setVelocityY(-12)
-		
+	{		
+		this.sprite.play('yaguarete-jump')		
 	}
 
   private jumpOnUpdate()
 	{
-		const speed = 5
-
-		if (this.cursors.right.isDown)
+		if (this.cursors.up.isDown)
 		{
-			this.sprite.flipX = false
-			this.sprite.setVelocityX(speed)
-		}	
-	}
+			this.sprite.setVelocityY(-12)		
+		}			
+		else 
+		{
+			this.sprite.setVelocityY(0)
+			this.stateMachine.setState('idle')
+		}}
 
-	
+	private jumpOnExit()
+	{
+		this.sprite.stop()
+	}	
 
   private deadOnEnter()
 	{
@@ -201,10 +208,11 @@ export default class yaguareteController
 	}
 
 	private trampaHitOnEnter(){
+		console.log('muerto')
 		this.sprite.play('yaguarete-death')
 		
 		this.scene.time.delayedCall(1500, () => {
-			this.scene.scene.start('game-over')
+			this.scene.scene.start('gameOver')
 		})
 	}
   
@@ -247,7 +255,7 @@ export default class yaguareteController
 				prefix: 'yaguareteMuerte0',
 				suffix: '.png'
 			}),
-			frameRate: 3
+			frameRate: 4
 		})
 	}
 }

@@ -1,0 +1,100 @@
+{"frames": [
+
+{
+	"filename": "yaguarete_Nro01.png",
+	"frame": {"x":0,"y":0,"w":800,"h":550},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":550},
+	"sourceSize": {"w":800,"h":550}
+},
+{
+	"filename": "yaguarete_Nro02.png",
+	"frame": {"x":800,"y":0,"w":800,"h":550},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":550},
+	"sourceSize": {"w":800,"h":550}
+},
+{
+	"filename": "yaguarete_Nro03.png",
+	"frame": {"x":0,"y":550,"w":800,"h":550},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":550},
+	"sourceSize": {"w":800,"h":550}
+},
+{
+	"filename": "yaguarete_Nro04.png",
+	"frame": {"x":800,"y":550,"w":800,"h":550},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":550},
+	"sourceSize": {"w":800,"h":550}
+},
+{
+	"filename": "yaguareteMuerte01.png",
+	"frame": {"x":0,"y":1100,"w":800,"h":550},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":550},
+	"sourceSize": {"w":800,"h":550}
+},
+{
+	"filename": "yaguareteMuerte02.png",
+	"frame": {"x":800,"y":1100,"w":800,"h":550},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":550},
+	"sourceSize": {"w":800,"h":550}
+},
+{
+	"filename": "yaguareteMuerte03.png",
+	"frame": {"x":0,"y":1650,"w":800,"h":550},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":550},
+	"sourceSize": {"w":800,"h":550}
+},
+{
+	"filename": "yaguareteSalto01.png",
+	"frame": {"x":800,"y":1650,"w":800,"h":550},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":550},
+	"sourceSize": {"w":800,"h":550}
+},
+{
+	"filename": "yaguareteSalto02.png",
+	"frame": {"x":0,"y":2200,"w":800,"h":550},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":550},
+	"sourceSize": {"w":800,"h":550}
+},
+{
+	"filename": "yaguareteSalto03.png",
+	"frame": {"x":800,"y":2200,"w":800,"h":550},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":550},
+	"sourceSize": {"w":800,"h":550}
+},
+{
+	"filename": "yaguareteSalto04.png",
+	"frame": {"x":0,"y":2750,"w":800,"h":550},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":550},
+	"sourceSize": {"w":800,"h":550}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "yaguarete.png",
+	"format": "RGBA8888",
+	"size": {"w":1600,"h":3300},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:5856998d4649c6dbb9cb958a52228684:aa821acf6ca4d9d867f32c09307e8e79:ba7b43c4e7351fe481006cd23ace5ec3$"
+}
+}

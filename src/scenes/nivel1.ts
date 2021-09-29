@@ -46,26 +46,15 @@ export default class nivel_1 extends Phaser.Scene
     suelo_nivel1.setCollisionByProperty({solido: true}); 
 
     /* const carne_nivel1 = mapa_nivel1.createLayer('nivel1Alimento', carne_nivel1_tiled, 0, 0);
-    const trampa_nivel1 = mapa_nivel1.createLayer('nivel1Trampa', trampa_nivel1_tiled, 0, 0);
-   */
-    /* if (cursors =! undefined){
-      cursors = this.input.keyboard.createCursorKeys();
-      teclaR = this.input.keyboard.addKey('R');
-      teclaP = this.input.keyboard.addKey('P');
-      teclaF = this.input.keyboard.addKey('F');
-   } */
+    const trampa_nivel1 = mapa_nivel1.createLayer('nivel1Trampa', trampa_nivel1_tiled, 0, 0); */    
     
-  /*   const yaguarete_nivel1 = this.matter.add.sprite(150, 200, 'yaguarete');
-    yaguarete_nivel1.setScale(0.3) */
-    /* yaguarete_nivel1.setVelocityX(200) *//* 
+    /*const yaguarete_nivel1 = this.matter.add.sprite(150, 200, 'yaguarete');
+    yaguarete_nivel1.setScale(0.3) 
+    yaguarete_nivel1.setVelocityX(200) 
     yaguarete_nivel1.playAnimation('correr') */
 
-    /* this.cameras.main.setBounds(0, 0, mapa_nivel1.widthInPixels, mapa_nivel1.heightInPixels); */     
+    this.cameras.main.setBounds(0, 0, mapa_nivel1.widthInPixels, mapa_nivel1.heightInPixels);     
     
-    /* var texto_puntaje_nivel1 = this.add.text(200, 200, 'Puntaje: ' + puntaje_nivel1 ,
-    { font: 'bold 30pt Arial', fontSize: '36px', align:'center',})
-    var puntaje_nivel1: any = 0; */
-
     //EMPEZANDO LA MAQUINA DE ESTADO
     const objectsLayer = mapa_nivel1.getObjectLayer('nivel1Objetos')
 
@@ -76,8 +65,10 @@ export default class nivel_1 extends Phaser.Scene
 			{
 				case 'yaguarete':
 				{
-					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete')          
-          
+					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete', undefined, {
+						isStatic: true
+					}) 
+          .setFixedRotation()
           
 
 					this.yaguareteController = new yaguareteController(
@@ -93,7 +84,8 @@ export default class nivel_1 extends Phaser.Scene
 
         case 'trampa':
         {
-          const trampa = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel1Trampaa', undefined, {
+          const trampa = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 
+          'nivel1Trampaa', undefined, {
 						isStatic: true,
             isSensor: true
 					}).setScale(0.1)
