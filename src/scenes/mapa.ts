@@ -36,24 +36,20 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on('pointerdown', () => this.scene.start('nivelBonus'))
 
-
-
-
-
     //NIVEL CONDOR
     const buttonNivel3 = this.add.image(360,300, 'botonNivel').setScale(0.25)
-  /*   .setInteractive()
-    .on('pointerdown', () => this.scene start('nivelCondor')) */
+    .setInteractive()
+    .on('pointerdown', () => this.scene.start('gameOver'))
 
     //NIVEL BALLENA
     const buttonNivel4 = this.add.image(980,470, 'botonNivel').setScale(0.25)
-   /*  .setInteractive()
-    .on('pointerdown', () => this.scene start('nivelBallena')) */
+    /*  .setInteractive()
+    .on('pointerdown', () => this.scene.start('nivelBallena')) */
 
     //NIVEL PINGUINO
     const buttonNivel5 = this.add.image(380,650, 'botonNivel').setScale(0.25)
     /* .setInteractive()
-    .on('pointerdown', () => this.scene start('nivelPinguino')) */
+    .on('pointerdown', () => this.scene.start('nivelPinguino')) */
     
     const estrellas_Mapa : Phaser.Physics.Matter.Sprite = this.matter.add.sprite
     (1130,170, 'estrellasYaguarete')
