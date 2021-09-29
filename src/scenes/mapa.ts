@@ -11,6 +11,7 @@ export default class mapa extends Phaser.Scene
     this.load.spritesheet('estrellasYaguarete','assets/Mapa/estrellasMapa.png',
     {frameWidth:269 , frameHeight:114 });
     this.load.image('textYaguarete', 'assets/Mapa/mapaYagua.png');
+    this.load.image('nivelBonus', 'assets/Mapa/NivelBonus.png');
   }
 
   create(){
@@ -30,9 +31,16 @@ export default class mapa extends Phaser.Scene
 
     const text_yagua = this.add.image(1122, 130, 'textYaguarete').setScale(0.8);
 
+
+
+                         //NIVEL BONUS 
     const buttonNivel2 = this.add.image(420,80, 'botonNivel').setScale(0.25)
-    /* .setInteractive()
-    .on('pointerdown', () => this.scene start('nivelMono')) */
+    .setInteractive()
+    .on('pointerdown', () => this.scene.start('nivelBonus'))
+
+
+
+
 
     const buttonNivel3 = this.add.image(360,300, 'botonNivel').setScale(0.25)
   /*   .setInteractive()
