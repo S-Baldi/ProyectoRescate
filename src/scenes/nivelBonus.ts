@@ -18,8 +18,10 @@ export default class bonus extends Phaser.Scene
     const buttonAtras = this.add.image(1260, 105, 'botonatras').setScale(0.8)
     .setInteractive()
     .on('pointerdown', () => this.scene.start('menuMapa'))
+
+    this.add.text(245, 360, '¿Cuál es la causa por la cual \n el yaguareté se encuentra en vía de extición?', {font: 'bold 30pt Arial', fontSize: '10px', align:'center',});  
     
-    let respuesta = Phaser.Math.Between(4, 4);
+    let respuesta = Phaser.Math.Between(1, 4);
 
     if (respuesta == 1)
     {
