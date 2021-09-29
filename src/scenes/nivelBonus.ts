@@ -23,12 +23,13 @@ export default class bonus extends Phaser.Scene
     
     let respuesta = Phaser.Math.Between(1, 4);
     console.log(respuesta)
-    
+
     if (respuesta == 1)
     {
       this.add.text(280, 515, 'Caza furtiva', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
       this.add.text(280, 660, 'Deforestación', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'}) 
       this.add.text(805, 515, 'Reducción de sus presas', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
+
       this.add.text(850, 660, 'Todas son correctas', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
     }
 
