@@ -14,14 +14,14 @@ export default class gameOver extends Phaser.Scene{
     console.log('gameover')
     const gameLose = this.add.image(683, 384, 'lose')
 
-    const buttonRestart = this.add.image(300, 300,  'botonatras')
+    const buttonRestart = this.add.image(800, 520,  'botonInfo')
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
-      this.scene.start('menuPpal') && sonidoButton.play({volume:0.5})
+      this.scene.start('menuPpal')
     });
 
-    const buttonMapa = this.add.image(300, 300, 'botonMenuPpal')
+    const buttonMapa = this.add.image(600, 520, 'botonMenuPpal')
     .setInteractive()
   }
 

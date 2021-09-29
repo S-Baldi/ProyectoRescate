@@ -2,6 +2,7 @@ import Phaser from 'phaser'
 import ayuda from './scenes/ayuda'
 import creditos from './scenes/creditos'
 import extras from './scenes/extras'
+import gameOver from './scenes/gameOver'
 import info from './scenes/informacion'
 import mapa from './scenes/mapa'
 import mp1 from './scenes/mp'
@@ -26,7 +27,7 @@ const config : Phaser.Types.Core.GameConfig =
       debug: false
     }
   },
-  scene: [mp1, info, mapa, ayuda, creditos, extras, nivel_1]
+  scene: [mp1, info, mapa, ayuda, creditos, extras, nivel_1, gameOver]
 };
 
 export default new Phaser.Game(config)
