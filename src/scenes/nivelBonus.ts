@@ -22,11 +22,8 @@ export default class bonus extends Phaser.Scene
     this.add.text(245, 360, '¿Cuál es la causa por la cual \n el yaguareté se encuentra en vía de extición?', {font: 'bold 30pt Arial', fontSize: '10px', align:'center',});  
     
     let respuesta = Phaser.Math.Between(1, 4);
-<<<<<<< HEAD
-=======
     console.log(respuesta)
->>>>>>> 45979c7d1ff4a0c7917a32162fb082c85eeef218
-
+    
     if (respuesta == 1)
     {
       this.add.text(280, 515, 'Caza furtiva', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
