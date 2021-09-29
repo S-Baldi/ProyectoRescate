@@ -53,8 +53,9 @@ export default class yaguareteController
 
     this.sprite.setOnCollide((data: MatterJS.ICollisionPair) => 
     {
-      const body = data.bodyB as MatterJS.BodyType	
+      const body = data.bodyB as MatterJS.BodyType
 
+			
 			if (this.obstacles.is('trampa', body))
 			{
 				this.stateMachine.setState('trampaHit')
@@ -191,7 +192,7 @@ export default class yaguareteController
 
   private deadOnEnter()
 	{
-		this.sprite.play('yaguarete-death')	
+		this.sprite.play('yaguarete-death')
 
 		this.sprite.setOnCollide(() => {})
 
@@ -249,19 +250,6 @@ export default class yaguareteController
 				suffix: '.png'
 			}),
 			frameRate: 4
-		})
-
-		this.sprite.anims.create({
-			key: 'trampa-cerrada',
-			frameRate: 10,
-			frames: this.sprite.anims.generateFrameNames('nivel1Trampaa', {
-				start: 1,
-				end: 2,
-				prefix: 'trampa_Nro0',
-				suffix: '.png'
-			}),
-			
-			repeat: -1
 		})
 	}
 }

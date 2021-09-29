@@ -78,7 +78,7 @@ export default class nivel_1 extends Phaser.Scene
 						this.obstacles
 					)
 
-					this.cameras.main.startFollow(this.yaguarete, true)
+					//this.cameras.main.startFollow(this.yaguarete, true)
 					break
 				}			
 
@@ -94,7 +94,7 @@ export default class nivel_1 extends Phaser.Scene
         
         case 'carne':
         {
-          const carne = this.matter.add.sprite(x, y, 'nivel1Carnee', undefined, {
+          const carne = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel1Carnee', undefined, {
 						isStatic: true,
             isSensor: true 
           })
@@ -122,5 +122,13 @@ export default class nivel_1 extends Phaser.Scene
 
   }  
   
+}
+
+function isSensor(arg0: number, y: number, arg2: string, isSensor: any, arg4: boolean) {
+  throw new Error('Function not implemented.')
+}
+
+function setCollisionByProperty(arg0: { collides: boolean }): Phaser.Physics.Matter.Sprite {
+  throw new Error('Function not implemented.')
 }
 

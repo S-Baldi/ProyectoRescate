@@ -11,6 +11,7 @@ export default class mapa extends Phaser.Scene
     this.load.spritesheet('estrellasYaguarete','assets/Mapa/estrellasMapa.png',
     {frameWidth:269 , frameHeight:114 });
     this.load.image('textYaguarete', 'assets/Mapa/mapaYagua.png');
+    this.load.image('nivelBonus', 'assets/Mapa/NivelBonus.png');
   }
 
   create(){
@@ -32,23 +33,23 @@ export default class mapa extends Phaser.Scene
 
     //NIVEL MONO
     const buttonNivel2 = this.add.image(420,80, 'botonNivel').setScale(0.25)
-    /* .setInteractive()
-    .on('pointerdown', () => this.scene start('nivelMono')) */
+    .setInteractive()
+    .on('pointerdown', () => this.scene.start('nivelBonus'))
 
     //NIVEL CONDOR
     const buttonNivel3 = this.add.image(360,300, 'botonNivel').setScale(0.25)
-  /*   .setInteractive()
-    .on('pointerdown', () => this.scene start('nivelCondor')) */
+    .setInteractive()
+    .on('pointerdown', () => this.scene.start('gameOver'))
 
     //NIVEL BALLENA
     const buttonNivel4 = this.add.image(980,470, 'botonNivel').setScale(0.25)
-   /*  .setInteractive()
-    .on('pointerdown', () => this.scene start('nivelBallena')) */
+    /*  .setInteractive()
+    .on('pointerdown', () => this.scene.start('nivelBallena')) */
 
     //NIVEL PINGUINO
     const buttonNivel5 = this.add.image(380,650, 'botonNivel').setScale(0.25)
     /* .setInteractive()
-    .on('pointerdown', () => this.scene start('nivelPinguino')) */
+    .on('pointerdown', () => this.scene.start('nivelPinguino')) */
     
     const estrellas_Mapa : Phaser.Physics.Matter.Sprite = this.matter.add.sprite
     (1130,170, 'estrellasYaguarete')

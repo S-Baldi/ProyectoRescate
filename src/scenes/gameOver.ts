@@ -18,7 +18,7 @@ export default class gameOver extends Phaser.Scene{
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
-      this.scene.start('menuPpal')
+      this.scene.start('menuMapa')
     });
 
     const buttonMapa = this.add.image(600, 520, 'botonMenuPpal')
