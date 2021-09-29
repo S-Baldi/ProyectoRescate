@@ -1,17 +1,17 @@
 import Phaser from 'phaser'
 
-export default class gameOver extends Phaser.Scene{
+export default class gameWin extends Phaser.Scene{
   constructor()
   {
-    super('gameOver');
+    super('gameWin');
   }
 
   preload(){
-    this.load.image('lose', 'assets/GameWinLose/lose.png');
+    this.load.image('win', 'assets/GameWinLose/win.png');
   }
   
   create(){
-    const gameLose = this.add.image(683, 384, 'lose')
+    const gameLose = this.add.image(683, 384, 'win')
 
     const buttonRestart = this.add.image(800, 520,  'botonInfo')
     .setInteractive()
@@ -28,4 +28,3 @@ export default class gameOver extends Phaser.Scene{
 
   }
 }
-

@@ -43,8 +43,8 @@ export default class mapa extends Phaser.Scene
 
     //NIVEL BALLENA
     const buttonNivel4 = this.add.image(980,470, 'botonNivel').setScale(0.25)
-    /*  .setInteractive()
-    .on('pointerdown', () => this.scene.start('nivelBallena')) */
+    .setInteractive()
+    .on('pointerdown', () => this.scene.start('gameWin'))
 
     //NIVEL PINGUINO
     const buttonNivel5 = this.add.image(380,650, 'botonNivel').setScale(0.25)

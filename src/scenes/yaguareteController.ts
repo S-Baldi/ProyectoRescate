@@ -170,7 +170,7 @@ export default class yaguareteController
 		//SALTO
   private jumpOnEnter()
 	{		
-		this.sprite.play('yaguarete-jump')		
+		this.sprite.play('yaguarete-jump')
 	}
 
   private jumpOnUpdate()

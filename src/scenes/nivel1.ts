@@ -104,7 +104,7 @@ export default class nivel_1 extends Phaser.Scene
 
         case 'cria':
         {
-          const yaguareteCria = this.matter.add.sprite(x, y, 'nivel1Cria', undefined,{
+          const yaguareteCria = this.matter.add.sprite(x+ (width*0.5), y+(height*0.5), 'nivel1Cria', undefined,{
             isStatic : true,
             isSensor: true
           }).setScale(0.2)
