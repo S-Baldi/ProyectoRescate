@@ -46,6 +46,9 @@ export default class mp1 extends Phaser.Scene
     this.load.image('infoCondor', 'assets/MenuPrincipal/Botones/infoCondor.png');
     this.load.image('infoBallena', 'assets/MenuPrincipal/Botones/infoBallena.png');
     this.load.image('infoPinguino', 'assets/MenuPrincipal/Botones/infoPinguino.png');
+
+    //Botones GameWin/Lose
+    /* this.load.image('botonRestart', '/public/assets/MenuPrincipal/Botones/') */
               
   }
 
