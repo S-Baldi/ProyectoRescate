@@ -146,8 +146,12 @@ export default class bonus extends Phaser.Scene
       this.add.text(200, 515, 'Todas son correctas', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'}) 
       .setInteractive()
       .on('pointerdown', () =>this.add.text(200, 515, 'Todas son correctas', {font: 'bold 30pt Arial', fontSize: '36px', color: "green", align:'center'}));
+<<<<<<< HEAD
     } */
 
+=======
+    }
+>>>>>>> c16c7201041714b9dce63afa9530f8b29c8b17d8
   }
 
 }
