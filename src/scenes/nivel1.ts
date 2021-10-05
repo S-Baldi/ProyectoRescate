@@ -65,10 +65,7 @@ export default class nivel_1 extends Phaser.Scene
 			{
 				case 'yaguarete':
 				{
-					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete', undefined, {
-						isStatic: true,
-            isSensor: true 
-          }) 
+					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete', ) 
           .setFixedRotation()
 
 					this.yaguareteController = new yaguareteController(

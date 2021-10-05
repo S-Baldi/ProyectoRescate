@@ -22,7 +22,51 @@ export default class bonus extends Phaser.Scene
 
     const portada = this.add.image(683, 235, 'yaguaBonus').setScale(1.28);
 
-    this.add.text(245, 360, '¿Cuál es la causa por la cual \n el yaguareté se encuentra en vía de extición?', {font: 'bold 30pt Arial', fontSize: '10px', align:'center',});  
+    const pregunta = 
+    [
+      '¿Cuál es la causa por la cual el \n yaguareté se encuentra en vía de extición?',
+      '¿Cuantas crias tienen al año?'
+
+    ];
+
+     
+
+    const respuesta = 
+    [
+      ['Todas son correctas', 'Caza furtiva', 'Deforestación', 'Reducción de sus presas'],
+      ['1', '2', '3', 'Todas son correctas']
+
+    ]
+
+    let indice_aleatorio = Math.floor(Math.random()*pregunta.length);
+    
+    const respuestas_posibles= respuesta[indice_aleatorio];
+
+    const posiciones= [0, 1, 2, 3];
+    const reordenamiento_respuestas = [];
+    
+
+    for( i in respuestas_posibles) 
+    {
+      const posicionAleatoria = Math.floor(Math.random()*posiciones.length);
+      reordenamiento_respuestas[i] = respuestas_posibles[posiciones [posicionAleatoria]];
+      posiciones.splice(posicionAleatoria, 1);
+    }
+    
+    
+    /* let txt_respuesta = "";
+    for(const i in respuestas_posibles) 
+    {
+      txt_respuesta += '<input typ ="radio"<>label>' +respuestas_posibles[i]+'</label>';
+    } */
+
+    const text_pregunta = this.add.text(245, 360, pregunta[indice_aleatorio], {font: 'bold 30pt Arial', fontSize: '10px', align:'center',});
+
+    const text_respuestas= this.add.text(280, 515, respuesta[indice_aleatorio], {font: 'bold 30pt Arial', fontSize: '10px', align:'center',});
+
+    
+
+    /* this.add.text(245, 360, '¿Cuál es la causa por la cual \n el yaguareté se encuentra en vía de extición?', {font: 'bold 30pt Arial', fontSize: '10px', align:'center',});  
     
     let respuesta = Phaser.Math.Between(1, 4);
     console.log(respuesta)
@@ -102,7 +146,7 @@ export default class bonus extends Phaser.Scene
       this.add.text(200, 515, 'Todas son correctas', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'}) 
       .setInteractive()
       .on('pointerdown', () =>this.add.text(200, 515, 'Todas son correctas', {font: 'bold 30pt Arial', fontSize: '36px', color: "green", align:'center'}));
-    }
+    } */
 
   }
 
