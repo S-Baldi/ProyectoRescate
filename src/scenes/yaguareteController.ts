@@ -1,6 +1,7 @@
 import Phaser from 'phaser' 
 import StateMachine from '../statemachine/StateMachine'
 import { sharedInstance as events } from './eventCenter'
+import gameWin from './gameWin'
 import ObstaclesController from './obstaclesController'
 
 type CursorKeys = Phaser.Types.Input.Keyboard.CursorKeys
@@ -206,7 +207,7 @@ export default class yaguareteController
 		this.sprite.play('yaguarete-death')
 		
 		this.scene.time.delayedCall(1500, () => {
-			this.scene.scene.start('gameOver')
+			this.scene.scene.launch('gameOver')
 		})
 	}
   
@@ -222,7 +223,7 @@ export default class yaguareteController
 			frameRate: 5,
 			frames: this.sprite.anims.generateFrameNames('yaguarete', {
 				start: 1,
-				end: 4,
+				end: 6,
 				prefix: 'yaguarete_Nro0',
 				suffix: '.png'
 			}),

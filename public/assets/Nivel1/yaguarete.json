@@ -2,6 +2,54 @@
 
 {
 	"filename": "yaguarete_Nro01.png",
+	"frame": {"x":253,"y":489,"w":254,"h":164},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":254,"h":164},
+	"sourceSize": {"w":254,"h":164}
+},
+{
+	"filename": "yaguarete_Nro02.png",
+	"frame": {"x":0,"y":653,"w":254,"h":164},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":254,"h":164},
+	"sourceSize": {"w":254,"h":164}
+},
+{
+	"filename": "yaguarete_Nro03.png",
+	"frame": {"x":0,"y":989,"w":277,"h":164},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":277,"h":164},
+	"sourceSize": {"w":277,"h":164}
+},
+{
+	"filename": "yaguarete_Nro04.png",
+	"frame": {"x":254,"y":653,"w":254,"h":164},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":254,"h":164},
+	"sourceSize": {"w":254,"h":164}
+},
+{
+	"filename": "yaguarete_Nro05.png",
+	"frame": {"x":244,"y":817,"w":260,"h":164},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":260,"h":164},
+	"sourceSize": {"w":260,"h":164}
+},
+{
+	"filename": "yaguarete_Nro06.png",
+	"frame": {"x":0,"y":817,"w":244,"h":172},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":244,"h":172},
+	"sourceSize": {"w":244,"h":172}
+},
+{
+	"filename": "yaguareteMuerte01.png",
 	"frame": {"x":0,"y":0,"w":253,"h":163},
 	"rotated": false,
 	"trimmed": false,
@@ -9,40 +57,8 @@
 	"sourceSize": {"w":253,"h":163}
 },
 {
-	"filename": "yaguarete_Nro02.png",
-	"frame": {"x":0,"y":163,"w":253,"h":163},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":253,"h":163},
-	"sourceSize": {"w":253,"h":163}
-},
-{
-	"filename": "yaguarete_Nro03.png",
-	"frame": {"x":0,"y":326,"w":253,"h":163},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":253,"h":163},
-	"sourceSize": {"w":253,"h":163}
-},
-{
-	"filename": "yaguarete_Nro04.png",
-	"frame": {"x":0,"y":489,"w":253,"h":163},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":253,"h":163},
-	"sourceSize": {"w":253,"h":163}
-},
-{
-	"filename": "yaguareteMuerte01.png",
-	"frame": {"x":0,"y":652,"w":253,"h":163},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":253,"h":163},
-	"sourceSize": {"w":253,"h":163}
-},
-{
 	"filename": "yaguareteMuerte02.png",
-	"frame": {"x":0,"y":815,"w":253,"h":163},
+	"frame": {"x":253,"y":0,"w":253,"h":163},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":253,"h":163},
@@ -50,7 +66,7 @@
 },
 {
 	"filename": "yaguareteMuerte03.png",
-	"frame": {"x":0,"y":978,"w":253,"h":163},
+	"frame": {"x":0,"y":163,"w":253,"h":163},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":253,"h":163},
@@ -58,7 +74,7 @@
 },
 {
 	"filename": "yaguareteSalto01.png",
-	"frame": {"x":0,"y":1141,"w":253,"h":163},
+	"frame": {"x":253,"y":163,"w":253,"h":163},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":253,"h":163},
@@ -66,7 +82,7 @@
 },
 {
 	"filename": "yaguareteSalto02.png",
-	"frame": {"x":0,"y":1304,"w":253,"h":163},
+	"frame": {"x":0,"y":326,"w":253,"h":163},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":253,"h":163},
@@ -74,7 +90,7 @@
 },
 {
 	"filename": "yaguareteSalto03.png",
-	"frame": {"x":0,"y":1467,"w":253,"h":163},
+	"frame": {"x":253,"y":326,"w":253,"h":163},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":253,"h":163},
@@ -82,7 +98,7 @@
 },
 {
 	"filename": "yaguareteSalto04.png",
-	"frame": {"x":0,"y":1630,"w":253,"h":163},
+	"frame": {"x":0,"y":489,"w":253,"h":163},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":253,"h":163},
@@ -93,8 +109,8 @@
 	"version": "1.0",
 	"image": "yaguarete.png",
 	"format": "RGBA8888",
-	"size": {"w":253,"h":1793},
+	"size": {"w":508,"h":1153},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:213bba222a702e90f9bf71382372e52d:a60a9fb6aa390136b69041ada62618f7:ba7b43c4e7351fe481006cd23ace5ec3$"
+	"smartupdate": "$TexturePacker:SmartUpdate:b7b60eebf853884cd77e86e08504192e:6498b4678364c6f695d4bad552cfd05c:ba7b43c4e7351fe481006cd23ace5ec3$"
 }
 }

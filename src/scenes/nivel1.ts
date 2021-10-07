@@ -6,17 +6,16 @@ export default class nivel_1 extends Phaser.Scene
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys	
 	private yaguarete?: Phaser.Physics.Matter.Sprite
   private yaguareteController?: yaguareteController
-  private obstacles!: obstaclesController
-  
+  private obstacles!: obstaclesController  
 
   constructor(){
     super('nivelYaguarete')
   }
+
   init()
   {
     this.cursors = this.input.keyboard.createCursorKeys()  
-    this.obstacles = new obstaclesController()  
-      
+    this.obstacles = new obstaclesController()        
   }
 
   preload(){
@@ -30,6 +29,8 @@ export default class nivel_1 extends Phaser.Scene
   }
 
   create(){
+    this.scene.launch('ui')
+
     /* Tiled Nivel 1 */
 /*     addTilesetImage(tilesetName [, key] 
   [, tileWidth] [, tileHeight] [, tileMargin] [, tileSpacing] [, gid])*/ 
@@ -42,19 +43,11 @@ export default class nivel_1 extends Phaser.Scene
     = mapa_nivel1.createLayer('nivel1Fondo', fondo_nivel1_tiled, 0, 0);
 
     const suelo_nivel1 : Phaser.Tilemaps.TilemapLayer = 
-    mapa_nivel1.createLayer('nivel1Suelo', suelo_nivel1_tiled, 0, 0);       
-    suelo_nivel1.setCollisionByProperty({solido: true}); 
+    mapa_nivel1.createLayer('nivel1Suelo', suelo_nivel1_tiled, 0, 0);
+    suelo_nivel1.setCollisionByProperty({solido: true});
 
-    /* const carne_nivel1 = mapa_nivel1.createLayer('nivel1Alimento', carne_nivel1_tiled, 0, 0);
-    const trampa_nivel1 = mapa_nivel1.createLayer('nivel1Trampa', trampa_nivel1_tiled, 0, 0); */    
+    this.cameras.main.setBounds(0, 0, mapa_nivel1.widthInPixels, mapa_nivel1.heightInPixels);   
     
-    /*const yaguarete_nivel1 = this.matter.add.sprite(150, 200, 'yaguarete');
-    yaguarete_nivel1.setScale(0.3) 
-    yaguarete_nivel1.setVelocityX(200) 
-    yaguarete_nivel1.playAnimation('correr') */
-
-    this.cameras.main.setBounds(0, 0, mapa_nivel1.widthInPixels, mapa_nivel1.heightInPixels);     
-
     //EMPEZANDO LA MAQUINA DE ESTADO
     const objectsLayer = mapa_nivel1.getObjectLayer('nivel1Objetos')
 
@@ -65,7 +58,7 @@ export default class nivel_1 extends Phaser.Scene
 			{
 				case 'yaguarete':
 				{
-					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete', ) 
+					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete') 
           .setFixedRotation()
 
 					this.yaguareteController = new yaguareteController(
@@ -114,9 +107,7 @@ export default class nivel_1 extends Phaser.Scene
   }
 
   update(t: number, dt: number){
-
     this.yaguareteController?.update(dt)
-
   }  
   
 }

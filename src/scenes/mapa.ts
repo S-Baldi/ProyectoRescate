@@ -53,7 +53,6 @@ export default class mapa extends Phaser.Scene
     
     const estrellas_Mapa : Phaser.Physics.Matter.Sprite = this.matter.add.sprite
     (1130,170, 'estrellasYaguarete')
-
   }
 
   update(){
