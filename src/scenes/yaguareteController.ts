@@ -113,7 +113,7 @@ export default class yaguareteController
 
   private idleOnUpdate()
 	{	
-		this.sprite.setVelocityX(19)
+		this.sprite.setVelocityX(10)
 		if (this.cursors.right.isDown)
 		{
 			this.stateMachine.setState('trampaHit')
@@ -161,6 +161,7 @@ export default class yaguareteController
 		this.sprite.stop()
 		this.sprite.play('yaguarete-jump')
 		this.sprite.setVelocityY(-80)
+		this.sprite.setVelocityX(15)
 	}
 
   private jumpOnUpdate()
