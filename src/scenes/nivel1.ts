@@ -60,11 +60,13 @@ export default class nivel_1 extends Phaser.Scene
 				case 'yaguarete':
 				{
 					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete')
-          .setFixedRotation()
-          this.yaguarete.setBounce(0)
-          this.yaguarete.setSize(300, 300)
-          
+          this.yaguarete.setBounce(0)          
+          this.yaguarete.setRectangle(150,150)
+          this.yaguarete.setFixedRotation()
 
+          /* this.yaguarete.setDisplaySize(200, 200) */
+          //Ocupar "setDisplaySize" en vez de "setScale"
+          //"setRectangle" para cambiar la caja de colision
 					this.yaguareteController = new yaguareteController(
 						this,
 						this.yaguarete,
@@ -84,6 +86,7 @@ export default class nivel_1 extends Phaser.Scene
             isSensor: true
 					})
           .setScale(0.9)
+          //.setSensor(true)
 					break
         }
         
