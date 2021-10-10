@@ -17,11 +17,17 @@ export default class gameOver extends Phaser.Scene{
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
-      this.scene.start('menuMapa')
+      this.scene.stop('nivelYaguarete')
+      this.scene.start('nivelYaguarete')
     });
 
     const buttonMapa = this.add.image(600, 520, 'botonMenuPpal')
     .setInteractive()
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+    { 
+      this.scene.stop('nivelYaguarete')
+      this.scene.start('menuMapa')
+    });
   }
 
   update(){

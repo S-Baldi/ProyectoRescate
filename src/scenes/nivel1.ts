@@ -19,7 +19,7 @@ export default class nivel_1 extends Phaser.Scene
   }
 
   preload(){
-    this.load.tilemapTiledJSON('mapa_nivel1', 'assets/Nivel1/nivel_Yaguarete.json');
+    this.load.tilemapTiledJSON('mapa_nivel1', 'assets/Nivel1/nivel_Yaguarete2.json');
     this.load.image('nivel1Fondoo','assets/Nivel1/nivel1_fondo.png');
     this.load.image('nivel1Sueloo','assets/Nivel1/nivel1_suelo.png');
     this.load.image('nivel1Carnee','assets/Nivel1/nivel1_carne.png');
@@ -30,6 +30,7 @@ export default class nivel_1 extends Phaser.Scene
 
   create(){
     this.scene.launch('ui')
+
 
     /* Tiled Nivel 1 */
 /*     addTilesetImage(tilesetName [, key] 
@@ -58,8 +59,11 @@ export default class nivel_1 extends Phaser.Scene
 			{
 				case 'yaguarete':
 				{
-					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete') 
+					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete')
           .setFixedRotation()
+          this.yaguarete.setBounce(0)
+          this.yaguarete.setSize(300, 300)
+          
 
 					this.yaguareteController = new yaguareteController(
 						this,
@@ -68,17 +72,18 @@ export default class nivel_1 extends Phaser.Scene
 						this.obstacles
 					)
 
-					//this.cameras.main.startFollow(this.yaguarete, true)
+					this.cameras.main.startFollow(this.yaguarete, true)
 					break
 				}			
 
         case 'trampa':
-        {
+        { //La Y de trampa en capa de objetos es: Y=629
           const trampa = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 
           'nivel1Trampaa', undefined, {
 						isStatic: true,
             isSensor: true
 					})
+          .setScale(0.9)
 					break
         }
         

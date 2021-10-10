@@ -51,8 +51,9 @@ export default class mapa extends Phaser.Scene
     /* .setInteractive()
     .on('pointerdown', () => this.scene.start('nivelPinguino')) */
     
-    const estrellas_Mapa : Phaser.Physics.Matter.Sprite = this.matter.add.sprite
+    var estrellas_Mapa : Phaser.Physics.Matter.Sprite = this.matter.add.sprite
     (1130,170, 'estrellasYaguarete')
+    estrellas_Mapa.isStatic
   }
 
   update(){
