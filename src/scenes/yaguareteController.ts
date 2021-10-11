@@ -1,6 +1,7 @@
 import Phaser from 'phaser' 
 import StateMachine from '../statemachine/StateMachine'
 import { sharedInstance as events } from './eventCenter'
+import gameWin from './gameWin'
 import ObstaclesController from './obstaclesController'
 
 type CursorKeys = Phaser.Types.Input.Keyboard.CursorKeys
@@ -33,31 +34,30 @@ export default class yaguareteController
 			onEnter: this.idleOnEnter,
 			onUpdate: this.idleOnUpdate
 		})
-		.addState('walk', {
+	/* 	.addState('walk', {
 			onEnter: this.walkOnEnter,
 			onUpdate: this.walkOnUpdate,
 			onExit: this.walkOnExit
-		})
+		}) */
 		.addState('jump', {
 			onEnter: this.jumpOnEnter,
 			onUpdate: this.jumpOnUpdate,
 			onExit: this.jumpOnExit
 		})
-		.addState('dead', {
+		/* .addState('dead', {
 			onEnter: this.deadOnEnter
-		})
+		}) */
 		.addState('trampaHit',{
 			onEnter: this.trampaHitOnEnter
 		})
 		.setState('idle')
 
-    this.sprite.setOnCollide((data: MatterJS.ICollisionPair) => 
-    {
+    this.sprite.setOnCollide((data: MatterJS.ICollisionPair) => {
       const body = data.bodyB as MatterJS.BodyType
-
 			
 			if (this.obstacles.is('trampa', body))
 			{
+				console.log('MUERTO')
 				this.stateMachine.setState('trampaHit')
 				return
 			}
@@ -103,31 +103,20 @@ export default class yaguareteController
 		this.stateMachine.update(dt)
 	}
 
-  /* private setHealth(value: number)
-	{
-		this.health = Phaser.Math.Clamp(value, 0, 100)
-
-		events.emit('health-changed', this.health)
-
-		// TODO: check for death
-		if (this.health <= 0)
-		{
-			this.stateMachine.setState('dead')
-		}
-	} */
-
 	//	IDLE
-
   private idleOnEnter()
 	{
-		this.sprite.play('yaguarete-idle')
+		this.sprite.play('yaguarete-walk')
+		
+			
 	}
 
   private idleOnUpdate()
-	{
+	{	
+		this.sprite.setVelocityX(10)
 		if (this.cursors.right.isDown)
 		{
-			this.stateMachine.setState('walk')
+			this.stateMachine.setState('trampaHit')
 		}
 
 		if (this.cursors.up.isDown)
@@ -137,15 +126,14 @@ export default class yaguareteController
 	}
 
 		//CORRIDA
-
-  private walkOnEnter()
+  /* private walkOnEnter()
 	{
 		this.sprite.play('yaguarete-walk')
 	}
 
   private walkOnUpdate()
 	{
-    const speed = 5
+    const speed = 50
 		if (this.cursors.right.isDown)
 		{
 			this.sprite.setVelocityX(speed)
@@ -155,7 +143,7 @@ export default class yaguareteController
 			this.sprite.setVelocityX(0)
 			this.stateMachine.setState('idle')
 		}
-
+		
 		if (this.cursors.up.isDown)
 		{
 			this.stateMachine.setState('jump')
@@ -165,31 +153,27 @@ export default class yaguareteController
   private walkOnExit()
 	{
 		this.sprite.stop()
-	}
+	} */
 
 		//SALTO
   private jumpOnEnter()
 	{		
+		this.sprite.stop()
 		this.sprite.play('yaguarete-jump')
+		this.sprite.setVelocityY(-80)
+		this.sprite.setVelocityX(15)
 	}
 
   private jumpOnUpdate()
 	{
-		if (this.cursors.up.isDown)
-		{
-			this.sprite.setVelocityY(-12)		
-		}			
-		else 
-		{
-			this.sprite.setVelocityY(0)
-			this.stateMachine.setState('idle')
-		}}
+		
+	}
 
 	private jumpOnExit()
 	{
 		this.sprite.stop()
 	}	
-
+/* 
   private deadOnEnter()
 	{
 		this.sprite.play('yaguarete-death')
@@ -199,17 +183,21 @@ export default class yaguareteController
 		this.scene.time.delayedCall(1500, () => {
 			this.scene.scene.start('game-over')
 		})
-	}
+	} */
 
 	private trampaHitOnEnter(){
 		console.log('muerto')
-		this.sprite.play('yaguarete-death')
+		this.sprite.play('yaguarete-death')		
 		
 		this.scene.time.delayedCall(1500, () => {
-			this.scene.scene.start('gameOver')
+			this.scene.scene.launch('gameOver')
+			this.scene.scene.pause()
+			
 		})
 	}
   
+	//  									ANIMACIONES 	
+	
   private createAnimations()
 	{
 		this.sprite.anims.create({
@@ -222,7 +210,7 @@ export default class yaguareteController
 			frameRate: 5,
 			frames: this.sprite.anims.generateFrameNames('yaguarete', {
 				start: 1,
-				end: 4,
+				end: 6,
 				prefix: 'yaguarete_Nro0',
 				suffix: '.png'
 			}),
@@ -231,7 +219,7 @@ export default class yaguareteController
 
     this.sprite.anims.create({
 			key: 'yaguarete-jump',
-			frameRate: 5,
+			frameRate: 10,
 			frames: this.sprite.anims.generateFrameNames('yaguarete', {
 				start: 1,
 				end: 4,

@@ -9,6 +9,7 @@ import mapa from './scenes/mapa'
 import mp1 from './scenes/mp'
 import nivel_1 from './scenes/nivel1'
 import bonus from './scenes/nivelBonus'
+import UI from './scenes/UI'
 
 const config : Phaser.Types.Core.GameConfig =
 {
@@ -24,11 +25,11 @@ const config : Phaser.Types.Core.GameConfig =
     default: 'matter',
     matter:
     {
-      gravity: { y: 350 },
-      debug: false
+      gravity: { y: 30 },
+      debug: true
     }
   },
-  scene: [mp1, info, mapa, ayuda, creditos, extras, nivel_1, gameOver, gameWin, bonus]
+  scene: [mp1, info, mapa, ayuda, creditos, extras,UI, nivel_1, gameOver, gameWin, bonus]
 };
 
 export default new Phaser.Game(config)
