@@ -73,6 +73,8 @@ export default class bonus extends Phaser.Scene
     .setInteractive()
     .on('pointerdown', () => boton4.setColor(preguntasBonus[0].revisarResp(boton4.text))); 
 
+    // Santi 
+
   }
 
 }
