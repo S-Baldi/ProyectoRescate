@@ -15,7 +15,7 @@ export default class mapa extends Phaser.Scene
   }
 
   create(){
-    const fondo_Mapa = this.add.image(600, 350, 'fondoMapa'); 
+    const fondo_Mapa = this.add.image(600, 350, 'fondoMapa');
 
     const mapaArg = this.add.image(750, 384, 'mapaArgentina');
 
@@ -26,10 +26,22 @@ export default class mapa extends Phaser.Scene
     const buttonMusica = this.add.image(180, 80, 'botonMusica').setScale(0.7)
 
     //NIVEL YAGUARETE    
+    
     const buttonNivel1 = this.add.image(1130, 170, 'botonNivel').setScale(0.25)
     .setInteractive()
-    .on('pointerdown', () => this.scene.start('nivelYaguarete'))
+
+    .on('pointerdown', () => 
+    this.add.image(680, 350, 'botonNivel').setScale(0.7) && 
+    this.add.text(680, 400, '   NIVEL \nPRINCIPAL', {fontSize: '45px bold', color: 'black'})
+    .setInteractive().on('pointerdown', () => this.scene.start('nivelYaguarete')) &&
+    this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'black'})
+    .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus'))
+
+    )
+
+    //this.scene.start('nivelYaguarete'))
     const text_yagua = this.add.image(1122, 130, 'textYaguarete').setScale(0.8);
+    
 
     //NIVEL MONO
     const buttonNivel2 = this.add.image(420,80, 'botonNivel').setScale(0.25)

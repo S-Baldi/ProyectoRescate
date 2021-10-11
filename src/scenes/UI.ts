@@ -28,6 +28,8 @@ export default class UI extends Phaser.Scene
 	{
 		events.on('crias-collected', this.handleCriasCollected, this)
     events.on('comida-collected', this.handleComidaCollected, this)
+/* 		events.on('bandera-collected', this.handleBanderaCollected, this)
+ */
 
 		this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
 			events.off('crias-collected', this.handleCriasCollected, this)
@@ -35,6 +37,10 @@ export default class UI extends Phaser.Scene
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
 			events.off('comida-collected', this.handleComidaCollected, this)
 		})
+		/* this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+			events.off('bandera-collected', this.handleBanderaCollected, this)
+		}) */
+
 
     //TEXTO PARA CORROBORAR
     this.criasLabel = this.add.text(100, 505, 'Crias: 0', {
@@ -61,4 +67,9 @@ export default class UI extends Phaser.Scene
     console.log('Funciona comidaaaa')
 	}
 
+/* 	private handleBanderaCollected ()
+	{
+		console.log('GANASTEEEEEEEE')
+
+	} */
 }

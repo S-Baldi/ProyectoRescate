@@ -25,7 +25,8 @@ export default class nivel_1 extends Phaser.Scene
     this.load.image('nivel1Carnee','assets/Nivel1/nivel1_carne.png');
     this.load.atlas('nivel1Trampaa','assets/Nivel1/trampa.png','assets/Nivel1/trampa.json'); 
     this.load.image('nivel1Cria', 'assets/Nivel1/criaYaguarete.png');
-    this.load.atlas('yaguarete' , 'assets/Nivel1/yaguarete.png', 'assets/Nivel1/yaguarete.json')
+    this.load.image('nivel1Bandera', 'assets/Nivel1/bandera.png');
+    this.load.atlas('yaguarete' , 'assets/Nivel1/yaguarete.png', 'assets/Nivel1/yaguarete.json');
   }
 
   create(){
@@ -60,8 +61,9 @@ export default class nivel_1 extends Phaser.Scene
 				case 'yaguarete':
 				{
 					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete')
+          this.yaguarete.setScale(0.8)
           this.yaguarete.setBounce(0)          
-          this.yaguarete.setRectangle(150,150)
+          this.yaguarete.setRectangle(120,90)
           this.yaguarete.setFixedRotation()
 
           /* this.yaguarete.setDisplaySize(200, 200) */
@@ -80,14 +82,37 @@ export default class nivel_1 extends Phaser.Scene
 
         case 'trampa':
         { //La Y de trampa en capa de objetos es: Y=629
-          const trampa = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 
-          'nivel1Trampaa', undefined, {
-						isStatic: true,
-            isSensor: true
+          //La Y de trampa en 0.85 es de Y=660
+          const trampa = this.matter.add.rectangle(x + (width * 0.5), y + (height * 0.5), width, height, {
+						isStatic: true
 					})
-          .setScale(0.9)
-          //.setSensor(true)
+          this.obstacles.add('trampa', trampa)
+          const trampas = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel1Trampaa', undefined, {
+            isStatic: true,
+            isSensor:true
+          }).setScale(0.85)
+				
 					break
+          /* const trampa = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel1Trampaa', undefined, {
+						isStatic: true ,
+            isSensor: true 
+					})  
+          .setScale(0.85)
+					break */
+        }
+        case 'bandera':
+        {
+          const bandera = this.matter.add.rectangle(x + (width * 0.5), y + (height * 0.5), width, height, {
+						isStatic: true
+					})
+          this.obstacles.add('bandera', bandera)
+          //Altura en Y de la bandera Y=458
+          const banderas = this.matter.add.sprite(x+ (width*0.5), y+(height*0.4), 'nivel1Bandera',
+          undefined,{
+            isStatic : true,
+            isSensor: true
+          }).setScale(0.4)
+          break
         }
         
         case 'carne':
@@ -96,7 +121,7 @@ export default class nivel_1 extends Phaser.Scene
 						isStatic: true,
             isSensor: true 
           })
-          
+          carne.setData('type', 'carne')
           break
         }
 
@@ -106,8 +131,11 @@ export default class nivel_1 extends Phaser.Scene
             isStatic : true,
             isSensor: true
           }).setScale(0.2)
-
+          
+          yaguareteCria.setData('type', 'cria')
+          break
         }
+
       }    
 		})
   

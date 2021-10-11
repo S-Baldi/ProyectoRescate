@@ -50,6 +50,9 @@ export default class yaguareteController
 		.addState('trampaHit',{
 			onEnter: this.trampaHitOnEnter
 		})
+		.addState('banderaCollected',{
+			onEnter: this.banderaCollected
+		})
 		.setState('idle')
 
     this.sprite.setOnCollide((data: MatterJS.ICollisionPair) => {
@@ -61,6 +64,14 @@ export default class yaguareteController
 				this.stateMachine.setState('trampaHit')
 				return
 			}
+			
+			if (this.obstacles.is('bandera', body))
+			{
+				console.log('ganasteeeee')
+				this.stateMachine.setState('banderaCollected')
+				return
+			}
+
       const gameObject = body.gameObject
 			
 			if (!gameObject)
@@ -82,17 +93,25 @@ export default class yaguareteController
       
       switch (type)
 			{
-				case 'crias':
+				case 'cria':
 				{
-					events.emit('crias-collected')
+					console.log('CRIAS CRIAS CRIAS CRIAS')
 					sprite.destroy()
+					events.emit('crias-collected')
 					break
 				}
+				
 
 				case 'carne':
 				{
 					events.emit('comida-collected')
-					sprite.destroy
+					sprite.destroy()
+					break
+				}
+
+				case 'bandera':
+				{
+					events.emit('bandera-collected')
 					break
 				}
 			}
@@ -113,7 +132,7 @@ export default class yaguareteController
 
   private idleOnUpdate()
 	{	
-		this.sprite.setVelocityX(10)
+		this.sprite.setVelocityX(15)
 		if (this.cursors.right.isDown)
 		{
 			this.stateMachine.setState('trampaHit')
@@ -160,8 +179,8 @@ export default class yaguareteController
 	{		
 		this.sprite.stop()
 		this.sprite.play('yaguarete-jump')
-		this.sprite.setVelocityY(-80)
-		this.sprite.setVelocityX(15)
+		this.sprite.setVelocityY(-40)
+		//this.sprite.setVelocityX(18)
 	}
 
   private jumpOnUpdate()
@@ -192,8 +211,16 @@ export default class yaguareteController
 		this.scene.time.delayedCall(1500, () => {
 			this.scene.scene.launch('gameOver')
 			this.scene.scene.pause()
+			this.scene.scene.stop('ui')
 			
 		})
+	}
+
+	private banderaCollected(){
+		console.log('GANASTEEE')		
+		this.scene.scene.launch('gameWin')
+		this.scene.scene.pause()
+		this.scene.scene.stop('ui')
 	}
   
 	//  									ANIMACIONES 	
