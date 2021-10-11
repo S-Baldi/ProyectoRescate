@@ -1,6 +1,15 @@
 import Phaser from 'phaser'
+import preguntas from './preguntas'
 export default class bonus extends Phaser.Scene
+
+
 {
+  private respuesta1?: string
+  private respuesta2?: string
+  private respuesta3?: string
+  private respuesta4?: string
+
+
   constructor()
   {
     super('nivelBonus');
@@ -21,137 +30,58 @@ export default class bonus extends Phaser.Scene
     .on('pointerdown', () => this.scene.start('menuMapa'))
 
     const portada = this.add.image(683, 235, 'yaguaBonus').setScale(1.28);
+    
+    let preguntasBonus= new Array<preguntas>()
+    preguntasBonus.push(new preguntas('¿Cuál es la causa por la cual el \n yaguareté se encuentra en vía de extición?', 'Todas son correctas', 'Caza\nfurtiva', 'Deforestación', 'Reducción de \nsus presas'))
+
 
     const pregunta = 
     [
-      '¿Cuál es la causa por la cual el \n yaguareté se encuentra en vía de extición?',
+      '¿Cuál es la causa por la cual el \n yaguareté se encuentra en vía de extición?', 
       '¿Cuantas crias tienen al año?'
-
     ];
 
-     
-
-    const respuesta = 
-    [
-      ['Todas son correctas', 'Caza furtiva', 'Deforestación', 'Reducción de sus presas'],
-      ['1', '2', '3', 'Todas son correctas']
-
-    ]
+    
+    this.respuesta1 = 'Caza furtiva'
+    this.respuesta2 = 'Deforestación'
+    this.respuesta3 = 'Reducción de \n sus presas'
+    this.respuesta4 = 'Todas son correctas'
 
     let indice_aleatorio = Math.floor(Math.random()*pregunta.length);
     
-    const respuestas_posibles= respuesta[indice_aleatorio];
+    const text_pregunta = this.add.text(245, 360, preguntasBonus[0].pregunta, {font: 'bold 30pt Arial', fontSize: '10px', align:'center',});
 
-    const posiciones= [0, 1, 2, 3];
-    const reordenamiento_respuestas = [];
-    
-
-    for( i in respuestas_posibles) 
+    if(indice_aleatorio==1)
     {
-      const posicionAleatoria = Math.floor(Math.random()*posiciones.length);
-      reordenamiento_respuestas[i] = respuestas_posibles[posiciones [posicionAleatoria]];
-      posiciones.splice(posicionAleatoria, 1);
-    }
-    
-    
-    /* let txt_respuesta = "";
-    for(const i in respuestas_posibles) 
-    {
-      txt_respuesta += '<input typ ="radio"<>label>' +respuestas_posibles[i]+'</label>';
-    } */
+      this.respuesta1 = '1'
+      this.respuesta2 = '2'
+      this.respuesta3 = '3'
+      this.respuesta4 = 'Todas son correctas'
+    };
+   
 
-    const text_pregunta = this.add.text(245, 360, pregunta[indice_aleatorio], {font: 'bold 30pt Arial', fontSize: '10px', align:'center',});
-
-    const text_respuestas= this.add.text(280, 515, respuesta[indice_aleatorio], {font: 'bold 30pt Arial', fontSize: '10px', align:'center',});
+    preguntasBonus[0].respuestasRandom()
 
     
+    let boton1= this.add.text(280, 515, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
+    .setInteractive()
+    .on('pointerdown', () => boton1.setColor(preguntasBonus[0].revisarResp(boton1.text)));
 
-    /* this.add.text(245, 360, '¿Cuál es la causa por la cual \n el yaguareté se encuentra en vía de extición?', {font: 'bold 30pt Arial', fontSize: '10px', align:'center',});  
     
-    let respuesta = Phaser.Math.Between(1, 4);
-    console.log(respuesta)
+    let boton2 = this.add.text(280, 660, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
+    .setInteractive()
+    .on('pointerdown', () => boton2.setColor(preguntasBonus[0].revisarResp(boton2.text)));
 
-    if (respuesta == 1)
-    {
-      this.add.text(280, 515, 'Caza furtiva', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
-      .setInteractive()
-      .on('pointerdown', () => this.add.text(280, 515, 'Caza furtiva', {font: 'bold 30pt Arial', fontSize: '36px', color: "red", align:'center'}));
+    let boton3 = this.add.text(805, 515, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
+    .setInteractive()
+    .on('pointerdown', () => boton3.setColor(preguntasBonus[0].revisarResp(boton3.text)));
 
-      this.add.text(280, 660, 'Deforestación', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
-      .setInteractive()
-      .on('pointerdown', () => this.add.text(280, 660, 'Deforestación', {font: 'bold 30pt Arial', fontSize: '36px', color: "red", align:'center'}));   
+    let boton4= this.add.text(850, 660, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
+    .setInteractive()
+    .on('pointerdown', () => boton4.setColor(preguntasBonus[0].revisarResp(boton4.text))); 
 
-      this.add.text(805, 515, 'Reducción de sus presas', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
-      .setInteractive()
-      .on('pointerdown', () => this.add.text(805, 515, 'Reducción de sus presas', {font: 'bold 30pt Arial', fontSize: '36px', color: "red", align:'center'}));
-
-      this.add.text(850, 660, 'Todas son correctas', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
-      .setInteractive()
-      .on('pointerdown', () => this.add.text(850, 660, 'Todas son correctas', {font: 'bold 30pt Arial', fontSize: '36px', color: "green", align:'center'}));
-
-    }
-      
-    if (respuesta == 2)
-    {
-      this.add.text(280, 660, 'Caza furtiva', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
-      .setInteractive()
-      .on('pointerdown', () => this.add.text(280, 660, 'Caza furtiva', {font: 'bold 30pt Arial', fontSize: '36px', color: "green", align:'center'}));
-
-      this.add.text(280, 515, 'Deforestación', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'}) 
-      .setInteractive()
-      .on('pointerdown', () => this.add.text(280, 515, 'Deforestación', {font: 'bold 30pt Arial', fontSize: '36px', color: "red", align:'center'}));
-
-      this.add.text(805, 660, 'Reducción de sus presas', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
-      .setInteractive()
-      .on('pointerdown', () => this.add.text(805, 660, 'Reducción de sus presas', {font: 'bold 30pt Arial', fontSize: '36px', color: "red", align:'center'}));
-
-      this.add.text(850, 515, 'Todas son correctas', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
-      .setInteractive()
-      .on('pointerdown', () => this.add.text(850, 515, 'Todas son correctas', {font: 'bold 30pt Arial', fontSize: '36px', color: "green", align:'center'}));
-    }
-
-    if (respuesta == 3)
-    {
-      this.add.text(930, 515, 'Caza furtiva', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
-      .setInteractive()
-      .on('pointerdown', () => this.add.text(930, 515, 'Caza furtiva', {font: 'bold 30pt Arial', fontSize: '36px', color: "red", align:'center'}));
-
-      this.add.text(930, 660, 'Deforestación', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
-      .setInteractive()
-      .on('pointerdown', () => this.add.text(930, 660, 'Deforestación', {font: 'bold 30pt Arial', fontSize: '36px', color: "red", align:'center'}));
-
-      this.add.text(155, 515, 'Reducción de sus presas', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'}) 
-      .setInteractive()
-      .on('pointerdown', () => this.add.text(155, 515, 'Reducción de sus presas', {font: 'bold 30pt Arial', fontSize: '36px', color: "red", align:'center'}));
-
-      this.add.text(200, 660, 'Todas son correctas', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
-      .setInteractive()
-      .on('pointerdown', () => this.add.text(200, 660, 'Todas son correctas', {font: 'bold 30pt Arial', fontSize: '36px', color: "green", align:'center'}));
-    }
-
-    if (respuesta == 4)
-    {
-      this.add.text(930, 660, 'Caza furtiva', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
-      .setInteractive()
-      .on('pointerdown', () => this.add.text(930, 660, 'Caza furtiva', {font: 'bold 30pt Arial', fontSize: '36px', color: "red", align:'center'}));
-
-      this.add.text(930, 515, 'Deforestación', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
-      .setInteractive()
-      .on('pointerdown', () =>  this.add.text(930, 515, 'Deforestación', {font: 'bold 30pt Arial', fontSize: '36px', color: "red", align:'center'}));
-
-      this.add.text(155, 660, 'Reducción de sus presas', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
-      .setInteractive()
-      .on('pointerdown', () => this.add.text(155, 660, 'Reducción de sus presas', {font: 'bold 30pt Arial', fontSize: '36px', color: "red", align:'center'}));
-
-      this.add.text(200, 515, 'Todas son correctas', {font: 'bold 30pt Arial', fontSize: '36px', align:'center'}) 
-      .setInteractive()
-      .on('pointerdown', () =>this.add.text(200, 515, 'Todas son correctas', {font: 'bold 30pt Arial', fontSize: '36px', color: "green", align:'center'}));
-<<<<<<< HEAD
-    } */
-
-=======
-    }
->>>>>>> c16c7201041714b9dce63afa9530f8b29c8b17d8
   }
 
 }
+
+

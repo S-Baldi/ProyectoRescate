@@ -43,7 +43,7 @@ export default class nivel_1 extends Phaser.Scene
 
     const suelo_nivel1 : Phaser.Tilemaps.TilemapLayer = 
     mapa_nivel1.createLayer('nivel1Suelo', suelo_nivel1_tiled, 0, 0);       
-    suelo_nivel1.setCollisionByProperty({solido: true}); 
+    suelo_nivel1.setCollisionByProperty({collides: true}); 
 
     /* const carne_nivel1 = mapa_nivel1.createLayer('nivel1Alimento', carne_nivel1_tiled, 0, 0);
     const trampa_nivel1 = mapa_nivel1.createLayer('nivel1Trampa', trampa_nivel1_tiled, 0, 0); */    
@@ -67,6 +67,7 @@ export default class nivel_1 extends Phaser.Scene
 				{
 					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete', ) 
           .setFixedRotation()
+          
 
 					this.yaguareteController = new yaguareteController(
 						this,
@@ -111,7 +112,7 @@ export default class nivel_1 extends Phaser.Scene
 		})
   
 		this.matter.world.convertTilemapLayer(suelo_nivel1)
-  }
+}
 
   update(t: number, dt: number){
 
