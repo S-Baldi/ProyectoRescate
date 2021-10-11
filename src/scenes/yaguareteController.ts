@@ -60,14 +60,12 @@ export default class yaguareteController
 			
 			if (this.obstacles.is('trampa', body))
 			{
-				console.log('MUERTO')
 				this.stateMachine.setState('trampaHit')
 				return
 			}
 			
 			if (this.obstacles.is('bandera', body))
 			{
-				console.log('ganasteeeee')
 				this.stateMachine.setState('banderaCollected')
 				return
 			}
@@ -95,7 +93,6 @@ export default class yaguareteController
 			{
 				case 'cria':
 				{
-					console.log('CRIAS CRIAS CRIAS CRIAS')
 					sprite.destroy()
 					events.emit('crias-collected')
 					break
@@ -120,6 +117,8 @@ export default class yaguareteController
   update(dt: number)
 	{
 		this.stateMachine.update(dt)
+
+		
 	}
 
 	//	IDLE
@@ -205,7 +204,6 @@ export default class yaguareteController
 	} */
 
 	private trampaHitOnEnter(){
-		console.log('muerto')
 		this.sprite.play('yaguarete-death')		
 		
 		this.scene.time.delayedCall(1500, () => {

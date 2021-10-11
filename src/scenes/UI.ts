@@ -3,6 +3,7 @@ import {sharedInstance as events} from './eventCenter'
 
 export default class UI extends Phaser.Scene
 {
+	
   //Texto para corroborar
   private criasLabel!: Phaser.GameObjects.Text
   private comidaLabel!: Phaser.GameObjects.Text
@@ -10,6 +11,10 @@ export default class UI extends Phaser.Scene
 
 	private criasCollected = 0
   private comidaCollected = 0
+
+	private criasTotales = 5
+
+	private estrellasNivel = 0
 
 	constructor()
 	{
@@ -22,14 +27,19 @@ export default class UI extends Phaser.Scene
 	{
 		this.criasCollected = 0
     this.comidaCollected = 0
+
+		this.criasTotales = 5
+		console.log(this.criasTotales)
+
+		this.estrellasNivel = 0
+
 	}
 
 	create()
 	{
 		events.on('crias-collected', this.handleCriasCollected, this)
     events.on('comida-collected', this.handleComidaCollected, this)
-/* 		events.on('bandera-collected', this.handleBanderaCollected, this)
- */
+		/*events.on('bandera-collected', this.handleBanderaCollected, this */
 
 		this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
 			events.off('crias-collected', this.handleCriasCollected, this)
@@ -46,12 +56,22 @@ export default class UI extends Phaser.Scene
     this.criasLabel = this.add.text(100, 505, 'Crias: 0', {
 			fontSize: '32px'
 		})
-    console.log(this.criasCollected)
     
     this.comidaLabel = this.add.text(100, 555, 'Comida: 0', {
 			fontSize: '32px'
 		})
-    console.log(this.comidaCollected)
+	}
+
+	update(){
+		if (this.criasCollected === this.criasTotales) {
+			this.sumarUnaEstrella
+		}	
+	}
+
+  private sumarUnaEstrella(){		
+		console.log('JUNTASTE TODAS LAS CRIAS :D')
+		++this.estrellasNivel
+		console.log(this.estrellasNivel)
 	}
 	
 	private handleCriasCollected()
@@ -64,7 +84,6 @@ export default class UI extends Phaser.Scene
 	{
 		++this.comidaCollected
     this.comidaLabel.text = `Comida: ${this.comidaCollected}`
-    console.log('Funciona comidaaaa')
 	}
 
 /* 	private handleBanderaCollected ()
