@@ -140,7 +140,7 @@ export default class nivel_1 extends Phaser.Scene
 		})
   
 		this.matter.world.convertTilemapLayer(suelo_nivel1)
-  }
+}
 
   update(t: number, dt: number){
     this.yaguareteController?.update(dt)
