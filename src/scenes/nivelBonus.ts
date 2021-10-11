@@ -2,13 +2,11 @@ import Phaser from 'phaser'
 import preguntas from './preguntas'
 export default class bonus extends Phaser.Scene
 
-
 {
   private respuesta1?: string
   private respuesta2?: string
   private respuesta3?: string
   private respuesta4?: string
-
 
   constructor()
   {
@@ -34,13 +32,11 @@ export default class bonus extends Phaser.Scene
     let preguntasBonus= new Array<preguntas>()
     preguntasBonus.push(new preguntas('¿Cuál es la causa por la cual el \n yaguareté se encuentra en vía de extición?', 'Todas son correctas', 'Caza\nfurtiva', 'Deforestación', 'Reducción de \nsus presas'))
 
-
     const pregunta = 
     [
       '¿Cuál es la causa por la cual el \n yaguareté se encuentra en vía de extición?', 
       '¿Cuantas crias tienen al año?'
     ];
-
     
     this.respuesta1 = 'Caza furtiva'
     this.respuesta2 = 'Deforestación'
@@ -57,16 +53,13 @@ export default class bonus extends Phaser.Scene
       this.respuesta2 = '2'
       this.respuesta3 = '3'
       this.respuesta4 = 'Todas son correctas'
-    };
-   
+    }; 
 
     preguntasBonus[0].respuestasRandom()
-
     
     let boton1= this.add.text(280, 515, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
     .setInteractive()
     .on('pointerdown', () => boton1.setColor(preguntasBonus[0].revisarResp(boton1.text)));
-
     
     let boton2 = this.add.text(280, 660, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
     .setInteractive()
