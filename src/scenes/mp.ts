@@ -49,6 +49,8 @@ export default class mp1 extends Phaser.Scene
 
     //Botones GameWin/Lose
     /* this.load.image('botonRestart', '/public/assets/MenuPrincipal/Botones/') */
+
+    
               
   }
 

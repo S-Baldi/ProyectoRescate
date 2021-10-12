@@ -148,11 +148,5 @@ export default class nivel_1 extends Phaser.Scene
   
 }
 
-function isSensor(arg0: number, y: number, arg2: string, isSensor: any, arg4: boolean) {
-  throw new Error('Function not implemented.')
-}
 
-function setCollisionByProperty(arg0: { collides: boolean }): Phaser.Physics.Matter.Sprite {
-  throw new Error('Function not implemented.')
-}
 

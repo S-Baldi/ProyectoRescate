@@ -1,11 +1,13 @@
 import arrayShuffle from 'array-shuffle';
-export default class preguntas {
+import Phaser from 'phaser'
+export default class preguntas extends Phaser.Scene {
   private _pregunta: string
   private respuestaCorrecta: string
   private respuestasIncorrectas: Array<string>
 
   constructor(pregunta: string, respuestaCorrecta: string, respuestaIncorrecta1: string, respuestaIncorrecta2: string, respuestaIncorrecta3: string)
   {
+    super('nivelBonus')
     this._pregunta=pregunta
     this.respuestaCorrecta=respuestaCorrecta
     this.respuestasIncorrectas=new Array<string>()
@@ -14,9 +16,15 @@ export default class preguntas {
     this.respuestasIncorrectas.push(respuestaIncorrecta2)
     this.respuestasIncorrectas.push(respuestaIncorrecta3)
     this.respuestasIncorrectas.push(respuestaCorrecta)
- 
+     
   }
 
+  preload() 
+  {
+    this.load.image('botonNivel', 'assets/Mapa/botonMapa.png');
+  }
+
+  
   public respuestasRandom()
   {
     this.respuestasIncorrectas = arrayShuffle(this.respuestasIncorrectas)
@@ -27,14 +35,25 @@ export default class preguntas {
     return this.respuestasIncorrectas.pop()
   }
 
-  public revisarResp(respuestaJuego:string): string
+  public revisarResp(respuestaJuego: string): string
   {
     if (respuestaJuego == this.respuestaCorrecta) 
     {
-      //agregar pop-up
-      return 'green'
+      /* const pop_up_bonus = this.add.image(680, 350, 'botonNivel').setScale(0.7)
+      .setInteractive()
+      .on('pointerdown', () => 
+  
+      this.add.text(680, 400, 'VOLVER AL MAPA', {fontSize: '45px bold', color: 'black'})
+      .setInteractive().on('pointerdown', () => this.scene.start('menuMapa'))) */
+      return 'green'      
     }
-    return 'red'
+    /* const pop_up_bonus = this.add.image(680, 350, 'botonNivel').setScale(0.7)
+    .setInteractive()
+    .on('pointerdown', () => 
+  
+    this.add.text(680, 400, 'VOLVER AL MAPA', {fontSize: '45px bold', color: 'black'})
+    .setInteractive().on('pointerdown', () => this.scene.start('menuMapa'))) */
+    return 'red'    
   }
 
 
