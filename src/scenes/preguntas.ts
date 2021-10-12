@@ -15,15 +15,8 @@ export default class preguntas extends Phaser.Scene {
     this.respuestasIncorrectas.push(respuestaIncorrecta1)
     this.respuestasIncorrectas.push(respuestaIncorrecta2)
     this.respuestasIncorrectas.push(respuestaIncorrecta3)
-    this.respuestasIncorrectas.push(respuestaCorrecta)
-     
+    this.respuestasIncorrectas.push(respuestaCorrecta) 
   }
-
-  preload() 
-  {
-    this.load.image('botonNivel', 'assets/Mapa/botonMapa.png');
-  }
-
   
   public respuestasRandom()
   {
@@ -56,11 +49,9 @@ export default class preguntas extends Phaser.Scene {
     return 'red'    
   }
 
-
   public set pregunta(v : string) {
     this._pregunta = v;
-  }
-  
+  }  
   
   public get pregunta() : string {
     return this._pregunta

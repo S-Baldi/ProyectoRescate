@@ -1,11 +1,14 @@
 import Phaser from 'phaser'
 import obstaclesController from './obstaclesController'
 import yaguareteController from './yaguareteController'
+import cazadorController from './cazadorController'
 export default class nivel_1 extends Phaser.Scene
 {
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys	
 	private yaguarete?: Phaser.Physics.Matter.Sprite
   private yaguareteController?: yaguareteController
+  private cazador?: Phaser.Physics.Matter.Sprite
+  private cazadorController?: cazadorController
   private obstacles!: obstaclesController  
 
   constructor(){
@@ -23,15 +26,15 @@ export default class nivel_1 extends Phaser.Scene
     this.load.image('nivel1Fondoo','assets/Nivel1/nivel1_fondo.png');
     this.load.image('nivel1Sueloo','assets/Nivel1/nivel1_suelo.png');
     this.load.image('nivel1Carnee','assets/Nivel1/nivel1_carne.png');
-    this.load.atlas('nivel1Trampaa','assets/Nivel1/trampa.png','assets/Nivel1/trampa.json'); 
     this.load.image('nivel1Cria', 'assets/Nivel1/criaYaguarete.png');
     this.load.image('nivel1Bandera', 'assets/Nivel1/bandera.png');
     this.load.atlas('yaguarete' , 'assets/Nivel1/yaguarete.png', 'assets/Nivel1/yaguarete.json');
+    this.load.atlas('nivel1Trampaa','assets/Nivel1/trampa.png','assets/Nivel1/trampa.json'); 
+    this.load.atlas('cazador', 'assets/Nivel1/cazador.png', 'assets/Nivel1/cazador.json');
   }
 
   create(){
     this.scene.launch('ui')
-
 
     /* Tiled Nivel 1 */
 /*     addTilesetImage(tilesetName [, key] 
@@ -62,13 +65,14 @@ export default class nivel_1 extends Phaser.Scene
 				{
 					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete')
           this.yaguarete.setScale(0.8)
-          this.yaguarete.setBounce(0)          
+          this.yaguarete.setBounce(0)
           this.yaguarete.setRectangle(120,90)
           this.yaguarete.setFixedRotation()
 
           /* this.yaguarete.setDisplaySize(200, 200) */
           //Ocupar "setDisplaySize" en vez de "setScale"
           //"setRectangle" para cambiar la caja de colision
+
 					this.yaguareteController = new yaguareteController(
 						this,
 						this.yaguarete,
@@ -78,7 +82,22 @@ export default class nivel_1 extends Phaser.Scene
 
 					this.cameras.main.startFollow(this.yaguarete, true)
 					break
-				}			
+				}
+        
+        case 'cazador':
+        {
+          this.cazador = this.matter.add.sprite(x+ (width*0.5), y+(height*0.5), 'cazador', undefined)
+          this.cazador.setScale(0.7)
+          this.cazador.setFixedRotation()
+          
+          this.cazadorController = new cazadorController(
+            this,
+            this.cazador,
+            this.obstacles
+          )
+
+          break
+        }
 
         case 'trampa':
         { //La Y de trampa en capa de objetos es: Y=629
@@ -90,8 +109,7 @@ export default class nivel_1 extends Phaser.Scene
           const trampas = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel1Trampaa', undefined, {
             isStatic: true,
             isSensor:true
-          }).setScale(0.85)
-				
+          }).setScale(0.85)				
 					break
           /* const trampa = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel1Trampaa', undefined, {
 						isStatic: true ,
@@ -100,6 +118,7 @@ export default class nivel_1 extends Phaser.Scene
           .setScale(0.85)
 					break */
         }
+
         case 'bandera':
         {
           const bandera = this.matter.add.rectangle(x + (width * 0.5), y + (height * 0.5), width, height, {
@@ -119,7 +138,7 @@ export default class nivel_1 extends Phaser.Scene
         {
           const carne = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel1Carnee', undefined, {
 						isStatic: true,
-            isSensor: true 
+            isSensor: true
           })
           carne.setData('type', 'carne')
           break
@@ -130,12 +149,10 @@ export default class nivel_1 extends Phaser.Scene
           const yaguareteCria = this.matter.add.sprite(x+ (width*0.5), y+(height*0.5), 'nivel1Cria', undefined,{
             isStatic : true,
             isSensor: true
-          }).setScale(0.2)
-          
+          }).setScale(0.2)  
           yaguareteCria.setData('type', 'cria')
           break
         }
-
       }    
 		})
   
@@ -144,8 +161,8 @@ export default class nivel_1 extends Phaser.Scene
 
   update(t: number, dt: number){
     this.yaguareteController?.update(dt)
+    this.cazadorController?.update(dt)
   }  
-  
 }
 
 

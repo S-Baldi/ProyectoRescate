@@ -25,8 +25,7 @@ export default class mapa extends Phaser.Scene
 
     const buttonMusica = this.add.image(180, 80, 'botonMusica').setScale(0.7)
 
-    //NIVEL YAGUARETE    
-   
+    //NIVEL YAGUARETE 
 
     const buttonNivel1 = this.add.image(1130, 170, 'botonNivel').setScale(0.25)
     .setInteractive()
