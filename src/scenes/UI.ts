@@ -2,18 +2,19 @@ import Phaser from "phaser"
 import {sharedInstance as events} from './eventCenter'
 
 export default class UI extends Phaser.Scene
-{
-	
+{	
   //Texto para corroborar
   private criasLabel!: Phaser.GameObjects.Text
   private comidaLabel!: Phaser.GameObjects.Text
-  //FIN
-
+  
 	private criasCollected = 0
   private comidaCollected = 0
 
+	//Totales del nivel
 	private criasTotales = 5
-
+	private comidaTotales = 0
+	
+	//Estrellas totales [0 a 3]
 	private estrellasNivel = 0
 
 	constructor()
@@ -29,6 +30,7 @@ export default class UI extends Phaser.Scene
     this.comidaCollected = 0
 
 		this.criasTotales = 5
+		this.comidaTotales = 0
 		console.log(this.criasTotales)
 
 		this.estrellasNivel = 0

@@ -1,7 +1,6 @@
 import Phaser from 'phaser' 
 import StateMachine from '../statemachine/StateMachine'
 import { sharedInstance as events } from './eventCenter'
-import gameWin from './gameWin'
 import ObstaclesController from './obstaclesController'
 
 type CursorKeys = Phaser.Types.Input.Keyboard.CursorKeys
@@ -116,17 +115,13 @@ export default class yaguareteController
   }
   update(dt: number)
 	{
-		this.stateMachine.update(dt)
-
-		
+		this.stateMachine.update(dt)	
 	}
 
 	//	IDLE
   private idleOnEnter()
 	{
-		this.sprite.play('yaguarete-walk')
-		
-			
+		this.sprite.play('yaguarete-walk')		
 	}
 
   private idleOnUpdate()
@@ -209,8 +204,7 @@ export default class yaguareteController
 		this.scene.time.delayedCall(1500, () => {
 			this.scene.scene.launch('gameOver')
 			this.scene.scene.pause()
-			this.scene.scene.stop('ui')
-			
+			this.scene.scene.stop('ui')	
 		})
 	}
 

@@ -13,10 +13,9 @@ export default class preguntas {
     this.respuestasIncorrectas.push(respuestaIncorrecta1)
     this.respuestasIncorrectas.push(respuestaIncorrecta2)
     this.respuestasIncorrectas.push(respuestaIncorrecta3)
-    this.respuestasIncorrectas.push(respuestaCorrecta)
- 
+    this.respuestasIncorrectas.push(respuestaCorrecta) 
   }
-
+  
   public respuestasRandom()
   {
     this.respuestasIncorrectas = arrayShuffle(this.respuestasIncorrectas)
@@ -37,11 +36,9 @@ export default class preguntas {
     return 'red'
   }
 
-
   public set pregunta(v : string) {
     this._pregunta = v;
-  }
-  
+  }  
   
   public get pregunta() : string {
     return this._pregunta
