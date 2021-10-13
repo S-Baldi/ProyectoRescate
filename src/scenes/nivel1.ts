@@ -63,6 +63,7 @@ export default class nivel_1 extends Phaser.Scene
 			{
 				case 'yaguarete':
 				{
+          //X=156,97
 					this.yaguarete = this.matter.add.sprite(x + (width * 0.5), y, 'yaguarete')
           this.yaguarete.setScale(0.8)
           this.yaguarete.setBounce(0)
