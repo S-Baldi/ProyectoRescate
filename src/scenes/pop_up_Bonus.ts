@@ -12,13 +12,14 @@ export default class pop_up extends Phaser.Scene{
   preload()
   {
     this.load.image('botonNivel', 'assets/Mapa/botonMapa.png');
+    this.load.image('botonMapa', 'assets/MenuPrincipal/Botones/botonMenu.png');
   }
   
   create()
   {
-    const fondoPopUp = this.add.image(680, 400, 'botonNivel').setScale(0.7);
+    const fondoPopUp = this.add.image(680, 250, 'botonNivel').setScale(0.7);
 
-    const volverMapa = this.add.text(500, 350, 'VOLVER AL MAPA', {fontSize: '45px bold', color: 'black'})
+    const volverMapa = this.add.image(680, 350, 'botonMapa')
     .setInteractive()  
     .on('pointerdown', () => this.scene.start('menuMapa') && this.scene.stop('nivelBonus'));
 
