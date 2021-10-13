@@ -13,7 +13,7 @@ export default class gameOver extends Phaser.Scene{
   create(){
     const gameLose = this.add.image(683, 384, 'lose')
 
-    const buttonRestart = this.add.image(800, 520,  'botonInfo')
+    const buttonRestart = this.add.image(800, 520,  'botonReset')
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
@@ -21,7 +21,7 @@ export default class gameOver extends Phaser.Scene{
       this.scene.start('nivelYaguarete')
     });
 
-    const buttonMapa = this.add.image(600, 520, 'botonMenuPpal')
+    const buttonMapa = this.add.image(600, 520, 'botonMapa')
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
