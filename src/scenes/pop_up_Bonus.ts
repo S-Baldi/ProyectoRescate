@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import bonus from './nivelBonus';
 import preguntas from './preguntas';
 
 export default class pop_up extends Phaser.Scene{
@@ -24,13 +25,15 @@ export default class pop_up extends Phaser.Scene{
     let tipoRespuestaBonus= new Array<preguntas>()
     tipoRespuestaBonus.push(new preguntas('¿Cuál es la causa por la cual el \n yaguareté se encuentra en vía de extición?', 'Todas son correctas', 'Caza\nfurtiva', 'Deforestación', 'Reducción de \nsus presas'))
 
-    if (tipoRespuestaBonus[0].revisarResp(respuestaCorrecta)) 
+
+    if (tipoRespuestaBonus[0].revisarResp(this.scene[12])) 
     {
-      const respCorrecta = this.add.text(500, 400, 'Respuesta Correcta', {fontSize: '45px bold', color: 'green'})
+      
+      //this.scene[12].add.text(520, 450, 'Respuesta Correcta', {fontSize: '45px bold', color: 'green'})
     } 
     else 
     {
-      const respIncorrecta = this.add.text(500, 400, 'Respuesta Incorrecta', {fontSize: '45px bold', color: 'red'})
+      //this.scene[12].add.text(520, 450, 'Respuesta Incorrecta', {fontSize: '45px bold', color: 'red'})
     }
     
   }

@@ -7,7 +7,7 @@ export default class preguntas extends Phaser.Scene {
 
   constructor(pregunta: string, respuestaCorrecta: string, respuestaIncorrecta1: string, respuestaIncorrecta2: string, respuestaIncorrecta3: string)
   {
-    super('nivelBonus')
+    super('preguntasBonus')
     this._pregunta=pregunta
     this.respuestaCorrecta=respuestaCorrecta
     this.respuestasIncorrectas=new Array<string>()
@@ -28,13 +28,14 @@ export default class preguntas extends Phaser.Scene {
     return this.respuestasIncorrectas.pop()
   }
 
-  public revisarResp(respuestaJuego: any): any
+  public revisarResp(respuestaJuego: string, escena:any): string
   {
     if (respuestaJuego == this.respuestaCorrecta) 
     {
+      this.scene[0].add
       return 'green'      
     }
-    
+    this.add
     return 'red'    
   }
 

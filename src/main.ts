@@ -11,6 +11,7 @@ import nivel_1 from './scenes/nivel1'
 import bonus from './scenes/nivelBonus'
 import UI from './scenes/UI'
 import pop_up from './scenes/pop_up_Bonus'
+import preguntas from './scenes/preguntas'
 
 const config : Phaser.Types.Core.GameConfig =
 {
@@ -30,7 +31,7 @@ const config : Phaser.Types.Core.GameConfig =
       debug: true
     }
   },
-  scene: [mp1, info, mapa, ayuda, creditos, extras,UI, nivel_1, gameOver, gameWin, bonus, pop_up]
+  scene: [mp1, info, mapa, ayuda, creditos, extras,UI, nivel_1, gameOver, gameWin, bonus, pop_up, preguntas]
 };
 
 export default new Phaser.Game(config)
