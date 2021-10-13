@@ -28,10 +28,10 @@ const config : Phaser.Types.Core.GameConfig =
     matter:
     {
       gravity: { y: 10 },
-      debug: true
+      debug: false
     }
   },
-  scene: [mp1, info, mapa, ayuda, creditos, extras,UI, nivel_1, gameOver, gameWin, bonus, pop_up, preguntas]
+  scene: [mp1, info, mapa, ayuda, creditos, extras, nivel_1, UI, gameOver, gameWin, bonus, pop_up, preguntas]
 };
 
 export default new Phaser.Game(config)
