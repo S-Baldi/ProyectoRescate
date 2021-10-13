@@ -28,24 +28,13 @@ export default class preguntas extends Phaser.Scene {
     return this.respuestasIncorrectas.pop()
   }
 
-  public revisarResp(respuestaJuego: string): string
+  public revisarResp(respuestaJuego: any): any
   {
     if (respuestaJuego == this.respuestaCorrecta) 
     {
-      /* const pop_up_bonus = this.add.image(680, 350, 'botonNivel').setScale(0.7)
-      .setInteractive()
-      .on('pointerdown', () => 
-  
-      this.add.text(680, 400, 'VOLVER AL MAPA', {fontSize: '45px bold', color: 'black'})
-      .setInteractive().on('pointerdown', () => this.scene.start('menuMapa'))) */
       return 'green'      
     }
-    /* const pop_up_bonus = this.add.image(680, 350, 'botonNivel').setScale(0.7)
-    .setInteractive()
-    .on('pointerdown', () => 
-  
-    this.add.text(680, 400, 'VOLVER AL MAPA', {fontSize: '45px bold', color: 'black'})
-    .setInteractive().on('pointerdown', () => this.scene.start('menuMapa'))) */
+    
     return 'red'    
   }
 
