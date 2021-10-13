@@ -34,7 +34,6 @@ export default class UI extends Phaser.Scene
 		console.log(this.criasTotales)
 
 		this.estrellasNivel = 0
-
 	}
 
 	create()
