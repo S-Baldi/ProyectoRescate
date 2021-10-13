@@ -12,7 +12,6 @@ export default class bonus extends Phaser.Scene
   {
     this.load.image('Bonus', 'assets/Mapa/NivelBonus.png');
     this.load.image('yaguaBonus', 'assets/Mapa/imagenYagua.png');
-    
   }
 
   create()
@@ -27,7 +26,7 @@ export default class bonus extends Phaser.Scene
     
     let preguntasBonus= new Array<preguntas>()
     preguntasBonus.push(new preguntas('¿Cuál es la causa por la cual el \n yaguareté se encuentra en vía de extición?', 'Todas son correctas', 'Caza\nfurtiva', 'Deforestación', 'Reducción de \nsus presas'))
-         
+    
     const text_pregunta = this.add.text(245, 360, preguntasBonus[0].pregunta, {font: 'bold 30pt Arial', fontSize: '10px', align:'center',});
 
     preguntasBonus[0].respuestasRandom()
@@ -55,9 +54,7 @@ export default class bonus extends Phaser.Scene
     .setInteractive()
     .on('pointerdown', () => boton4.setColor(preguntasBonus[0].revisarResp(boton4.text)) &&
     this.scene.launch('pop_up_B') && this.scene.pause())
-
   }
-
 }
 
 
