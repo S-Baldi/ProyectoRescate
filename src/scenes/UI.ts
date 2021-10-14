@@ -44,9 +44,14 @@ export default class UI extends Phaser.Scene
 	{
 		const botonPausa = this.add.image(100, 100, 'botonPausa');
 		botonPausa.setInteractive()
+		botonPausa.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+		{
+			this.scene.pause('nivelYaguarete');
+			this.scene.launch('pause');
+		});
 
 		
-		botonPausa.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+		/* botonPausa.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
 		{
 			if(this.pause === false){
 			this.scene.pause('nivelYaguarete')
@@ -56,7 +61,7 @@ export default class UI extends Phaser.Scene
 			this.scene.resume('nivelYaguarete')
 			this.pause = false
 			}
-		});
+		}); */
 
 
 		events.on('crias-collected', this.handleCriasCollected, this)
