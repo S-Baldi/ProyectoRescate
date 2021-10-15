@@ -33,24 +33,24 @@ export default class bonus extends Phaser.Scene
 
     ////////////////////////////////////////////////////////BOTONES//////////////////////////////////////////////////////////////////////////////////
     
-    let boton1= this.add.text(280, 515, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
+    let boton1= this.add.text(280, 500, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
     .setInteractive()
     .on('pointerdown', () => boton1.setColor(preguntasBonus[0].revisarResp(boton1.text)) &&
     this.scene.launch('pop_up_B') && this.scene.pause())
 
     
-    let boton2 = this.add.text(280, 660, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
+    let boton2 = this.add.text(280, 645, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
     .setInteractive()
     .on('pointerdown', () => boton2.setColor(preguntasBonus[0].revisarResp(boton2.text)) &&
     
     this.scene.launch('pop_up_B') && this.scene.pause())
 
-    let boton3 = this.add.text(805, 515, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
+    let boton3 = this.add.text(805, 500, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
     .setInteractive()
     .on('pointerdown', () => boton3.setColor(preguntasBonus[0].revisarResp(boton3.text)) &&
     this.scene.launch('pop_up_B') && this.scene.pause())
 
-    let boton4= this.add.text(850, 660, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
+    let boton4= this.add.text(850, 645, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
     .setInteractive()
     .on('pointerdown', () => boton4.setColor(preguntasBonus[0].revisarResp(boton4.text)) &&
     this.scene.launch('pop_up_B') && this.scene.pause())

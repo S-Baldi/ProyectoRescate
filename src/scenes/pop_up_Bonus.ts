@@ -27,14 +27,14 @@ export default class pop_up extends Phaser.Scene{
     tipoRespuestaBonus.push(new preguntas('¿Cuál es la causa por la cual el \n yaguareté se encuentra en vía de extición?', 'Todas son correctas', 'Caza\nfurtiva', 'Deforestación', 'Reducción de \nsus presas'))
 
 
-    if (tipoRespuestaBonus[0].revisarResp(this.scene[12])) 
+    if (tipoRespuestaBonus[0].revisarResp()) 
     {
       
-      //this.scene[12].add.text(520, 450, 'Respuesta Correcta', {fontSize: '45px bold', color: 'green'})
+      this.scene.manager.scenes[12].add.text(520, 450, 'Respuesta Correcta', {fontSize: '45px bold', color: 'green'})
     } 
     else 
     {
-      //this.scene[12].add.text(520, 450, 'Respuesta Incorrecta', {fontSize: '45px bold', color: 'red'})
+      this.scene.manager.scenes[12].add.text(520, 450, 'Respuesta Incorrecta', {fontSize: '45px bold', color: 'red'})
     }
     
   }
