@@ -35,25 +35,26 @@ export default class bonus extends Phaser.Scene
     
     let boton1= this.add.text(280, 500, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
     .setInteractive()
-    .on('pointerdown', () => boton1.setColor(preguntasBonus[0].revisarResp(boton1.text)) &&
-    this.scene.launch('pop_up_B') && this.scene.pause())
+    .on('pointerdown', () => boton1.setColor(this.scene.launch('pop_up_B') && this.scene.manager.scenes[12].mostrar_Texto(preguntasBonus[0].revisarResp(boton1.text))) &&
+    
+    this.scene.pause())
 
     
     let boton2 = this.add.text(280, 645, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
     .setInteractive()
-    .on('pointerdown', () => boton2.setColor(preguntasBonus[0].revisarResp(boton2.text)) &&
+    .on('pointerdown', () => boton2.setColor(this.scene.launch('pop_up_B') && this.scene.manager.scenes[12].mostrar_Texto(preguntasBonus[0].revisarResp(boton2.text))) &&
     
-    this.scene.launch('pop_up_B') && this.scene.pause())
+    this.scene.pause())
 
     let boton3 = this.add.text(805, 500, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
     .setInteractive()
-    .on('pointerdown', () => boton3.setColor(preguntasBonus[0].revisarResp(boton3.text)) &&
-    this.scene.launch('pop_up_B') && this.scene.pause())
+    .on('pointerdown', () => boton3.setColor(this.scene.launch('pop_up_B') && this.scene.manager.scenes[12].mostrar_Texto(preguntasBonus[0].revisarResp(boton3.text))) &&
+    this.scene.pause())
 
     let boton4= this.add.text(850, 645, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px', align:'center'})
     .setInteractive()
-    .on('pointerdown', () => boton4.setColor(preguntasBonus[0].revisarResp(boton4.text)) &&
-    this.scene.launch('pop_up_B') && this.scene.pause())
+    .on('pointerdown', () => boton4.setColor(this.scene.launch('pop_up_B') && this.scene.manager.scenes[12].mostrar_Texto(preguntasBonus[0].revisarResp(boton4.text))) &&
+    this.scene.pause())
   }
 }
 

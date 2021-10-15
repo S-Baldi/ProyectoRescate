@@ -25,18 +25,21 @@ export default class pop_up extends Phaser.Scene{
 
     let tipoRespuestaBonus= new Array<preguntas>()
     tipoRespuestaBonus.push(new preguntas('¿Cuál es la causa por la cual el \n yaguareté se encuentra en vía de extición?', 'Todas son correctas', 'Caza\nfurtiva', 'Deforestación', 'Reducción de \nsus presas'))
-
-
-    if (tipoRespuestaBonus[0].revisarResp()) 
+  }
+  
+  public mostrar_Texto(rta:string)
+  {
+    console.log(this)
+    if (rta=='green')
     {
-      
-      this.scene.manager.scenes[12].add.text(520, 450, 'Respuesta Correcta', {fontSize: '45px bold', color: 'green'})
-    } 
-    else 
-    {
-      this.scene.manager.scenes[12].add.text(520, 450, 'Respuesta Incorrecta', {fontSize: '45px bold', color: 'red'})
+      this.add.text(520, 300, 'Respuesta Correcta', {fontSize: '45px bold', color: 'green'}).setDepth(3)
     }
-    
+    else
+    {
+      this.add.text(520, 300, 'Respuesta Incorrecta', {fontSize: '45px bold', color: 'red'}).setDepth(3) //esto trae hacia delante o atras las cosas
+    }
+    return rta
+
   }
 
   update()

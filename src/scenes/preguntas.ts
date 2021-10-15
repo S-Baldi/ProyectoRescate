@@ -28,14 +28,12 @@ export default class preguntas extends Phaser.Scene {
     return this.respuestasIncorrectas.pop()
   }
 
-  public revisarResp(respuestaJuego: string, escena:any): string
+  public revisarResp(respuestaJuego: string): string
   {
     if (respuestaJuego == this.respuestaCorrecta) 
-    {
-      
+    {     
       return 'green'      
-    }
-    
+    }   
     return 'red'    
   }
 

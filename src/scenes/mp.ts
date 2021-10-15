@@ -16,6 +16,10 @@ export default class mp1 extends Phaser.Scene
     this.load.image('botonDesbloqueable', 'assets/MenuPrincipal/Botones/botonDesbloqueable.png');
     this.load.image('botonInfo', 'assets/MenuPrincipal/Botones/botonInfo.png');
     this.load.image('botonMusica', 'assets/MenuPrincipal/Botones/botonSonido.png');
+    this.load.image('botonReset', 'assets/MenuPrincipal/Botones/botonReset.png');
+    this.load.image('botonMapa', 'assets/MenuPrincipal/Botones/botonMapa.png');    
+    this.load.image('botonatras', 'assets/MenuPrincipal/Botones/botonAtras.png');
+    this.load.image('botonPausa', 'assets/MenuPrincipal/Botones/botonPausa.png');
     this.load.image('botonIdiomaEspañol', 'assets/MenuPrincipal/bandera.png');
 
     this.load.image('mapaArgentina', 'assets/Mapa/mapa.png');
@@ -28,7 +32,6 @@ export default class mp1 extends Phaser.Scene
     //botones
     this.load.image('botonayuda', 'assets/MenuPrincipal/Botones/AYUDA.png');
     this.load.image('botoncreditos', 'assets/MenuPrincipal/Botones/CREDITOS.png');
-    this.load.image('botonatras', 'assets/MenuPrincipal/Botones/atras.png');
              //Menu ayuda
     this.load.image('menuAyuda','assets/MenuPrincipal/MenuAyuda.png');
               //Menu creditos

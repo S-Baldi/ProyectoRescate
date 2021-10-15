@@ -17,6 +17,8 @@ export default class UI extends Phaser.Scene
 	//Estrellas totales [0 a 3]
 	private estrellasNivel = 0
 
+	private pause = false
+
 	constructor()
 	{
 		super({
@@ -26,6 +28,8 @@ export default class UI extends Phaser.Scene
 
 	init()
 	{
+		this.pause = false
+
 		this.criasCollected = 0
     this.comidaCollected = 0
 
@@ -38,6 +42,28 @@ export default class UI extends Phaser.Scene
 
 	create()
 	{
+		const botonPausa = this.add.image(100, 100, 'botonPausa');
+		botonPausa.setInteractive()
+		botonPausa.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+		{
+			this.scene.pause('nivelYaguarete');
+			this.scene.launch('pause');
+		});
+
+		
+		/* botonPausa.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+		{
+			if(this.pause === false){
+			this.scene.pause('nivelYaguarete')
+			this.pause = true
+			}
+			else if (this.pause === true) {
+			this.scene.resume('nivelYaguarete')
+			this.pause = false
+			}
+		}); */
+
+
 		events.on('crias-collected', this.handleCriasCollected, this)
     events.on('comida-collected', this.handleComidaCollected, this)
 		/*events.on('bandera-collected', this.handleBanderaCollected, this */
@@ -48,10 +74,6 @@ export default class UI extends Phaser.Scene
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
 			events.off('comida-collected', this.handleComidaCollected, this)
 		})
-		/* this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
-			events.off('bandera-collected', this.handleBanderaCollected, this)
-		}) */
-
 
     //TEXTO PARA CORROBORAR
     this.criasLabel = this.add.text(100, 505, 'Crias: 0', {
@@ -86,10 +108,4 @@ export default class UI extends Phaser.Scene
 		++this.comidaCollected
     this.comidaLabel.text = `Comida: ${this.comidaCollected}`
 	}
-
-/* 	private handleBanderaCollected ()
-	{
-		console.log('GANASTEEEEEEEE')
-
-	} */
 }

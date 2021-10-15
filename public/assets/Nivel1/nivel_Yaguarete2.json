@@ -437,6 +437,17 @@
                  "width":58,
                  "x":12693,
                  "y":407.5
+                }, 
+                {
+                 "height":56,
+                 "id":80,
+                 "name":"trampa",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":69,
+                 "x":12970.5,
+                 "y":660
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -445,7 +456,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":80,
+ "nextobjectid":82,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
