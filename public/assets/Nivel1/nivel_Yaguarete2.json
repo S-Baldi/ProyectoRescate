@@ -1064,6 +1064,17 @@
                  "width":58,
                  "x":26622.5151515152,
                  "y":521.954545454545
+                }, 
+                {
+                 "height":215.152,
+                 "id":147,
+                 "name":"bandera",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":118.182,
+                 "x":556.909,
+                 "y":460.424
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1072,7 +1083,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":147,
+ "nextobjectid":148,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
