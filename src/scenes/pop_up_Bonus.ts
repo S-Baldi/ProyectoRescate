@@ -1,7 +1,4 @@
 import Phaser from 'phaser'
-
-import preguntas from './preguntas';
-
 export default class pop_up extends Phaser.Scene{
   
   constructor()
@@ -21,10 +18,7 @@ export default class pop_up extends Phaser.Scene{
 
     const volverMapa = this.add.image(680, 350, 'botonMapa')
     .setInteractive()  
-    .on('pointerdown', () => this.scene.start('menuMapa') && this.scene.stop('nivelBonus'));
-
-    let tipoRespuestaBonus= new Array<preguntas>()
-    tipoRespuestaBonus.push(new preguntas('¿Cuál es la causa por la cual el \n yaguareté se encuentra en vía de extición?', 'Todas son correctas', 'Caza\nfurtiva', 'Deforestación', 'Reducción de \nsus presas'))
+    .on('pointerdown', () => this.scene.start('menuMapa') && this.scene.stop('nivelBonus'));    
   }
   
   public mostrar_Texto(rta:string)
