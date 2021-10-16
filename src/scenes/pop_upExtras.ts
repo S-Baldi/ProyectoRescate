@@ -11,7 +11,7 @@ export default class pop_upExt extends Phaser.Scene
 
   preload()
   {
-    this.load.image('botonNivel', 'assets/Mapa/botonMapa.png');    
+    
   }
   
   create()
