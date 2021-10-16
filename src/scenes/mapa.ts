@@ -16,11 +16,12 @@ export default class mapa extends Phaser.Scene
   }
   private buttonNivel1
   private textoYaguarete
-  private yaguareteBonus(text:any)
-  
+
+  public yaguareteBonus(text:any)  
   {
     this.textoYaguarete = text
-    console.log(this.textoYaguarete)
+    
+    
   }
 
   create(){
@@ -49,8 +50,8 @@ export default class mapa extends Phaser.Scene
       isStatic:true
       }).setScale(1.8) &&
 
-      this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'Gray'})
-      .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus')).setActive(false).setDepth(4).setVisible(true))
+      this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'gray'})
+      .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus')))
     )
 
     
@@ -83,21 +84,16 @@ export default class mapa extends Phaser.Scene
     //NIVEL PINGUINO
     const buttonNivel5 = this.add.image(380,650, 'botonNivel').setScale(0.25)
     /* .setInteractive()
-    .on('pointerdown', () => this.scene.start('nivelPinguino')) */
-    
-    
+    .on('pointerdown', () => this.scene.start('nivelPinguino')) */  
   }
  
   public ganarYaguarete()
-  {
-    console.log(this.textoYaguarete)
-    
-    this.textoYaguarete.setColor('black')    
+  {      
+    this.textoYaguarete              
   }
-
-
-
-  update(){
-
+  
+  update()
+  {
+    
   }
 }

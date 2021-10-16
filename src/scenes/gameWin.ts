@@ -26,11 +26,11 @@ export default class gameWin extends Phaser.Scene{
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
       this.scene.manager.scenes[2].ganarYaguarete()
-      
       this.scene.stop('nivelYaguarete')
       this.scene.start('menuMapa')
     });
   }
+  
 
   update(){
 
