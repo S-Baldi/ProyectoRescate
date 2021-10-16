@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import bonus from './nivelBonus';
+
 import preguntas from './preguntas';
 
 export default class pop_up extends Phaser.Scene{
@@ -17,7 +17,7 @@ export default class pop_up extends Phaser.Scene{
   
   create()
   {
-    const fondoPopUp = this.add.image(680, 250, 'botonNivel').setScale(0.7);
+    const fondoPopUpBonus = this.add.image(680, 250, 'botonNivel').setScale(0.7);
 
     const volverMapa = this.add.image(680, 350, 'botonMapa')
     .setInteractive()  

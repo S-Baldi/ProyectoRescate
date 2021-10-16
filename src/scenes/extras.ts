@@ -26,7 +26,11 @@ export default class extras extends Phaser.Scene
     }
     else
     {
-      const buttonInfoYaguarete = this.add.image(300, 250, 'infoYaguarete').setScale(0.35);  
+      let buttonInfoYaguarete = this.add.image(200, 250, 'infoYaguarete').setScale(0.9) &&
+      this.add.text(300, 220, 'YAGUARETÉ', {font: 'bold 40pt Arial', fontSize: '10px', align:'center'})
+      .setInteractive() 
+      .on('pointerdown', () => this.scene.launch('pop_up_E'))
+      
     }
 
     //Mono
@@ -36,7 +40,8 @@ export default class extras extends Phaser.Scene
     }
     else
     {
-      const buttonInfoMono = this.add.image(300, 450, 'infoMono').setScale(0.35);  
+      const buttonInfoMono = this.add.image(200, 450, 'infoMono').setScale(1.1) &&
+      this.add.text(300, 420, 'MONO', {font: 'bold 40pt Arial', fontSize: '10px', align:'center'});  
     }
 
     //Condor
@@ -46,7 +51,8 @@ export default class extras extends Phaser.Scene
     }
     else
     {
-      const buttonInfoCondor = this.add.image(300, 650, 'infoCondor').setScale(0.35);  
+      const buttonInfoCondor = this.add.image(200, 650, 'infoCondor').setScale(0.8) &&
+      this.add.text(300, 620, 'CONDOR', {font: 'bold 40pt Arial', fontSize: '10px', align:'center'});   
     }
 
     //Ballena
@@ -56,7 +62,8 @@ export default class extras extends Phaser.Scene
     }
     else
     {
-      const buttonInfoBallena = this.add.image(1000, 350, 'infoBallena').setScale(0.35);  
+      const buttonInfoBallena = this.add.image(950, 350, 'infoBallena').setScale(1) &&
+      this.add.text(1050, 320, 'BALLENA', {font: 'bold 40pt Arial', fontSize: '10px', align:'center'});  
     }
 
     //Pingüino
@@ -66,7 +73,8 @@ export default class extras extends Phaser.Scene
     }
     else
     {
-      const buttonInfoPinguino = this.add.image(1000, 550, 'infoPinguino').setScale(0.35);  
+      const buttonInfoPinguino = this.add.image(950, 550, 'infoPinguino').setScale(0.9) &&
+      this.add.text(1050, 520, 'PINGÜINO', {font: 'bold 40pt Arial', fontSize: '10px', align:'center'});  
     }  
   }
 }

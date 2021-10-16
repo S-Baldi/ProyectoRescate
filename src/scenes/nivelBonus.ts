@@ -12,7 +12,7 @@ export default class bonus extends Phaser.Scene
   {
     this.load.image('Bonus', 'assets/Mapa/NivelBonus.png');
     this.load.image('yaguaBonus', 'assets/Mapa/imagenYagua.png');
-    this.load.image('yaguarete', 'assets/Mapa/yaguarete.png');
+    this.load.image('yaguaretePic', 'assets/Mapa/yaguarete.png');
   }
 
   create()
@@ -23,7 +23,7 @@ export default class bonus extends Phaser.Scene
     .setInteractive()
     .on('pointerdown', () => this.scene.start('menuMapa'))
 
-    const portada = this.add.image(874, 235, 'yaguarete').setScale(0.7);
+    const portada = this.add.image(874, 235, 'yaguaretePic').setScale(0.7);
     const portada2 = this.add.image(496, 235, 'yaguaBonus').setScale(1.35);
     
     let preguntasBonus= new Array<preguntas>()
