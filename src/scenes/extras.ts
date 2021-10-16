@@ -6,7 +6,9 @@ export default class extras extends Phaser.Scene
     super('extras');
   }
 
-  preload(){    
+  preload()
+  {    
+    this.load.image('fotoYaguarete', 'assets/MenuPrincipal/YaguareteExtras2.png');
   }
 
   create()

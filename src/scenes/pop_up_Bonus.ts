@@ -26,11 +26,11 @@ export default class pop_up extends Phaser.Scene{
     console.log(this)
     if (rta=='green')
     {
-      this.add.text(520, 300, 'Respuesta Correcta', {fontSize: '45px bold', color: 'green'}).setDepth(3)
+      this.add.text(520, 180, 'Respuesta Correcta', {fontSize: '45px bold', color: 'green'}).setDepth(3)
     }
     else
     {
-      this.add.text(520, 300, 'Respuesta Incorrecta', {fontSize: '45px bold', color: 'red'}).setDepth(3) //esto trae hacia delante o atras las cosas
+      this.add.text(520, 180, 'Respuesta Incorrecta', {fontSize: '45px bold', color: 'red'}).setDepth(3) //esto trae hacia delante o atras las cosas
     }
     return rta
 
