@@ -8,7 +8,11 @@ export default class extras extends Phaser.Scene
 
   preload()
   {    
-    this.load.image('fotoYaguarete', 'assets/MenuPrincipal/YaguareteExtras2.png');
+    this.load.image('fotoYaguarete', 'assets/MenuPrincipal/Extras/YaguareteExtras.png');
+    this.load.image('fotoMono', 'assets/MenuPrincipal/Extras/MonoExtras.png');
+    this.load.image('fotoBallena', 'assets/MenuPrincipal/Extras/BallenaExtras.png');
+    this.load.image('fotoPinguino', 'assets/MenuPrincipal/Extras/PinguinoExtras.png');
+    this.load.image('fotoCondor', 'assets/MenuPrincipal/Extras/CondorExtras.png');
   }
 
   create()
