@@ -29,7 +29,7 @@ export default class extras extends Phaser.Scene
       let buttonInfoYaguarete = this.add.image(200, 250, 'infoYaguarete').setScale(0.9) &&
       this.add.text(300, 220, 'YAGUARETÉ', {font: 'bold 40pt Arial', fontSize: '10px', align:'center'})
       .setInteractive() 
-      .on('pointerdown', () => this.scene.launch('pop_up_E'))
+      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause()) ;
       
     }
 
