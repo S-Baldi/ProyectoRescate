@@ -19,7 +19,7 @@ export default class pop_upExt extends Phaser.Scene
     const fondoPopUpExtras = this.add.image(680, 425, 'botonNivel').setScale(1.1);
     const buttonAtras = this.add.image(1000, 150, 'botonatras').setScale(0.8)
     .setInteractive()
-    .on('pointerdown', () => this.scene.start('menuPpal') && this.scene.start('extras'));
+    .on('pointerdown', () => this.scene.stop() && this.scene.resume('extras'));
 
     const fotoFamiliarY = this.add.image(350, 435, 'fotoYaguarete').setScale(0.8);
 
