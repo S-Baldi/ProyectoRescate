@@ -76,12 +76,16 @@ export default class UI extends Phaser.Scene
 		})
 
     //TEXTO PARA CORROBORAR
-    this.criasLabel = this.add.text(100, 505, 'Crias: 0', {
-			fontSize: '32px'
+    this.criasLabel = this.add.text(950, 30, 'Crias: 0/3', {
+			fontSize: '32px',
+			color: 'black',			
+      font: '40pt Helvetica neue black', 
 		})
     
-    this.comidaLabel = this.add.text(100, 555, 'Comida: 0', {
-			fontSize: '32px'
+    this.comidaLabel = this.add.text(950, 80, 'Comida: 0/25', {
+			fontSize: '32px',
+			color: 'black',
+      font: '40pt Helvetica neue black',
 		})
 	}
 
@@ -100,12 +104,12 @@ export default class UI extends Phaser.Scene
 	private handleCriasCollected()
 	{
 		++this.criasCollected
-    this.criasLabel.text = `Crias: ` + this.criasCollected
+    this.criasLabel.text = `Crias: ` + this.criasCollected + '/3'
 	}
 
   private handleComidaCollected()
 	{
 		++this.comidaCollected
-    this.comidaLabel.text = `Comida: ${this.comidaCollected}`
+    this.comidaLabel.text = `Comida: ${this.comidaCollected}`+ '/25'
 	}
 }
