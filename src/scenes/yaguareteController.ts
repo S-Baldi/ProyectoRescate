@@ -69,6 +69,8 @@ export default class yaguareteController
 				return				
 			}
 
+			
+
       const gameObject = body.gameObject
 			
 			if (!gameObject)
@@ -209,10 +211,11 @@ export default class yaguareteController
 	}
 
 	private banderaCollected(){
-		console.log('GANASTEEE')		
+		console.log('GANASTEEE')
+				
 		this.scene.scene.launch('gameWin')
 		this.scene.scene.pause()
-		this.scene.scene.stop('ui')
+		this.scene.scene.stop('ui')		
 	}
   
 	//  									ANIMACIONES 	

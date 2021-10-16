@@ -25,8 +25,8 @@ export default class gameWin extends Phaser.Scene{
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
-      this.scene.manager.scenes[2].buttonNivel1.on('pointerdown', () => this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'black'})
-      .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus')))
+      this.scene.manager.scenes[2].ganarYaguarete()
+      
       this.scene.stop('nivelYaguarete')
       this.scene.start('menuMapa')
     });
