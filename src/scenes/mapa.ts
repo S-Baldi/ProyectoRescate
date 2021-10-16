@@ -13,6 +13,7 @@ export default class mapa extends Phaser.Scene
     this.load.image('textYaguarete', 'assets/Mapa/mapaYagua.png');
     this.load.image('nivelBonus', 'assets/Mapa/NivelBonus.png');
   }
+  public buttonNivel1;
 
   create(){
     const fondo_Mapa = this.add.image(600, 350, 'fondoMapa');
@@ -27,7 +28,7 @@ export default class mapa extends Phaser.Scene
 
     //NIVEL YAGUARETE 
 
-    const buttonNivel1 = this.add.image(1130, 170, 'botonNivel').setScale(0.25)
+    this.buttonNivel1 = this.add.image(1130, 170, 'botonNivel').setScale(0.25)
     .setInteractive()
 
     .on('pointerdown', () => 
@@ -36,14 +37,15 @@ export default class mapa extends Phaser.Scene
     this.add.text(680, 400, '   NIVEL \nPRINCIPAL', {fontSize: '45px bold', color: 'black'})
     .setInteractive().on('pointerdown', () => this.scene.start('nivelYaguarete')) &&
 
-    this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'black'})
-    .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus')) &&
-
     this.matter.add.sprite(720, 280, 'estrellasYaguarete', undefined, {
       isStatic:true
     }).setScale(1.8)
 
     )
+
+    
+    
+
     var estrellas_Mapa : Phaser.Physics.Matter.Sprite = this.matter.add.sprite
     (1150,195, 'estrellasYaguarete', undefined, {
       isStatic: true

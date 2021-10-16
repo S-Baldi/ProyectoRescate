@@ -66,7 +66,7 @@ export default class yaguareteController
 			if (this.obstacles.is('bandera', body))
 			{
 				this.stateMachine.setState('banderaCollected')
-				return
+				return				
 			}
 
       const gameObject = body.gameObject
