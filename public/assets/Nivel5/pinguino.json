@@ -1,7 +1,7 @@
 {"frames": [
 
 {
-	"filename": "Pingu_Nro01.png",
+	"filename": "pingu_Nro01.png",
 	"frame": {"x":0,"y":0,"w":161,"h":92},
 	"rotated": false,
 	"trimmed": false,
@@ -9,7 +9,7 @@
 	"sourceSize": {"w":161,"h":92}
 },
 {
-	"filename": "Pingu_Nro02.png",
+	"filename": "pingu_Nro02.png",
 	"frame": {"x":161,"y":0,"w":161,"h":92},
 	"rotated": false,
 	"trimmed": false,
@@ -17,7 +17,7 @@
 	"sourceSize": {"w":161,"h":92}
 },
 {
-	"filename": "Pingu_Nro03.png",
+	"filename": "pingu_Nro03.png",
 	"frame": {"x":322,"y":0,"w":161,"h":92},
 	"rotated": false,
 	"trimmed": false,
@@ -25,7 +25,7 @@
 	"sourceSize": {"w":161,"h":92}
 },
 {
-	"filename": "Pingu_Nro04.png",
+	"filename": "pingu_Nro04.png",
 	"frame": {"x":483,"y":0,"w":161,"h":92},
 	"rotated": false,
 	"trimmed": false,
@@ -33,7 +33,7 @@
 	"sourceSize": {"w":161,"h":92}
 },
 {
-	"filename": "Pingu_Nro05.png",
+	"filename": "pingu_Nro05.png",
 	"frame": {"x":644,"y":0,"w":161,"h":92},
 	"rotated": false,
 	"trimmed": false,
@@ -41,7 +41,7 @@
 	"sourceSize": {"w":161,"h":92}
 },
 {
-	"filename": "Pingu_Nro06.png",
+	"filename": "pingu_Nro06.png",
 	"frame": {"x":805,"y":0,"w":161,"h":92},
 	"rotated": false,
 	"trimmed": false,
@@ -49,7 +49,7 @@
 	"sourceSize": {"w":161,"h":92}
 },
 {
-	"filename": "Pingu_Nro07.png",
+	"filename": "pingu_Nro07.png",
 	"frame": {"x":966,"y":0,"w":161,"h":92},
 	"rotated": false,
 	"trimmed": false,
@@ -57,7 +57,7 @@
 	"sourceSize": {"w":161,"h":92}
 },
 {
-	"filename": "Pingu_Nro08.png",
+	"filename": "pingu_Nro08.png",
 	"frame": {"x":1127,"y":0,"w":161,"h":92},
 	"rotated": false,
 	"trimmed": false,
@@ -65,7 +65,7 @@
 	"sourceSize": {"w":161,"h":92}
 },
 {
-	"filename": "Pingu_Nro09.png",
+	"filename": "pingu_Nro09.png",
 	"frame": {"x":1288,"y":0,"w":161,"h":92},
 	"rotated": false,
 	"trimmed": false,
@@ -73,7 +73,7 @@
 	"sourceSize": {"w":161,"h":92}
 },
 {
-	"filename": "Pingu_Nro010.png",
+	"filename": "pingu_Nro010.png",
 	"frame": {"x":1449,"y":0,"w":161,"h":92},
 	"rotated": false,
 	"trimmed": false,
@@ -81,7 +81,7 @@
 	"sourceSize": {"w":161,"h":92}
 },
 {
-	"filename": "PinguMuerte01.png",
+	"filename": "pinguMuerte01.png",
 	"frame": {"x":1610,"y":0,"w":161,"h":92},
 	"rotated": false,
 	"trimmed": false,
@@ -89,7 +89,7 @@
 	"sourceSize": {"w":161,"h":92}
 },
 {
-	"filename": "PinguMuerte02.png",
+	"filename": "pinguMuerte02.png",
 	"frame": {"x":1771,"y":0,"w":161,"h":92},
 	"rotated": false,
 	"trimmed": false,

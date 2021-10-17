@@ -29,30 +29,22 @@ export default class yaguareteController
 
 		this.stateMachine = new StateMachine(this, 'yaguarete')
 
-		this.stateMachine.addState('idle', {
-			onEnter: this.idleOnEnter,
-			onUpdate: this.idleOnUpdate
-		})
-	/* 	.addState('walk', {
+		this.stateMachine.addState('walk', {
 			onEnter: this.walkOnEnter,
-			onUpdate: this.walkOnUpdate,
-			onExit: this.walkOnExit
-		}) */
+			onUpdate: this.walkOnUpdate
+		})
 		.addState('jump', {
 			onEnter: this.jumpOnEnter,
 			onUpdate: this.jumpOnUpdate,
 			onExit: this.jumpOnExit
 		})
-		/* .addState('dead', {
-			onEnter: this.deadOnEnter
-		}) */
 		.addState('trampaHit',{
 			onEnter: this.trampaHitOnEnter
 		})
 		.addState('banderaCollected',{
 			onEnter: this.banderaCollected
 		})
-		.setState('idle')
+		.setState('walk')
 
     this.sprite.setOnCollide((data: MatterJS.ICollisionPair) => {
       const body = data.bodyB as MatterJS.BodyType
@@ -68,9 +60,6 @@ export default class yaguareteController
 				this.stateMachine.setState('banderaCollected')
 				return				
 			}
-
-			
-
       const gameObject = body.gameObject
 			
 			if (!gameObject)
@@ -82,7 +71,7 @@ export default class yaguareteController
 			{
 				if (this.stateMachine.isCurrentState('jump'))
 				{
-					this.stateMachine.setState('idle')
+					this.stateMachine.setState('walk')
 				}
 				return
 			}
@@ -97,8 +86,7 @@ export default class yaguareteController
 					sprite.destroy()
 					events.emit('crias-collected')
 					break
-				}
-				
+				}	
 
 				case 'carne':
 				{
@@ -107,11 +95,6 @@ export default class yaguareteController
 					break
 				}
 
-				case 'bandera':
-				{
-					events.emit('bandera-collected')
-					break
-				}
 			}
 		})
   }
@@ -120,55 +103,20 @@ export default class yaguareteController
 		this.stateMachine.update(dt)	
 	}
 
-	//	IDLE
-  private idleOnEnter()
+	//	WALK  
+  private walkOnEnter()
 	{
 		this.sprite.play('yaguarete-walk')		
 	}
 
-  private idleOnUpdate()
+  private walkOnUpdate()
 	{	
 		this.sprite.setVelocityX(15)
-		if (this.cursors.right.isDown)
-		{
-			this.stateMachine.setState('trampaHit')
-		}
-
 		if (this.cursors.up.isDown)
 		{
 			this.stateMachine.setState('jump')
 		}
 	}
-
-		//CORRIDA
-  /* private walkOnEnter()
-	{
-		this.sprite.play('yaguarete-walk')
-	}
-
-  private walkOnUpdate()
-	{
-    const speed = 50
-		if (this.cursors.right.isDown)
-		{
-			this.sprite.setVelocityX(speed)
-		}
-		else
-		{
-			this.sprite.setVelocityX(0)
-			this.stateMachine.setState('idle')
-		}
-		
-		if (this.cursors.up.isDown)
-		{
-			this.stateMachine.setState('jump')
-		}
-	}
-
-  private walkOnExit()
-	{
-		this.sprite.stop()
-	} */
 
 		//SALTO
   private jumpOnEnter()
@@ -181,24 +129,13 @@ export default class yaguareteController
 
   private jumpOnUpdate()
 	{
-		
+
 	}
 
 	private jumpOnExit()
 	{
 		this.sprite.stop()
-	}	
-/* 
-  private deadOnEnter()
-	{
-		this.sprite.play('yaguarete-death')
-
-		this.sprite.setOnCollide(() => {})
-
-		this.scene.time.delayedCall(1500, () => {
-			this.scene.scene.start('game-over')
-		})
-	} */
+	}
 
 	private trampaHitOnEnter(){
 		this.sprite.play('yaguarete-death')		
@@ -222,11 +159,6 @@ export default class yaguareteController
 	
   private createAnimations()
 	{
-		this.sprite.anims.create({
-			key: 'yaguarete-idle',
-			frames: [{ key: 'yaguarete', frame: 'yaguarete_Nro01.png' }]
-		})
-
 		this.sprite.anims.create({
 			key: 'yaguarete-walk',
 			frameRate: 5,
