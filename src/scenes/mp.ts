@@ -27,17 +27,12 @@ export default class mp1 extends Phaser.Scene
 
     this.load.audio('sonidoBoton', 'audio/boton.mp3')
 
-    //Menu info
-    this.load.image('fondoinfo', 'assets/MenuPrincipal/INFO.png');
-    //botones
-    this.load.image('botonayuda', 'assets/MenuPrincipal/Botones/AYUDA.png');
-    this.load.image('botoncreditos', 'assets/MenuPrincipal/Botones/CREDITOS.png');
+                    //FONDO
+    this.load.image('fondoLimpio', 'assets/MenuPrincipal/fondoLimpio.png');
              //Menu ayuda
     this.load.image('menuAyuda','assets/MenuPrincipal/MenuAyuda.png');
               //Menu creditos
     this.load.image('menuCreditos','assets/MenuPrincipal/MenuCreditos.png');
-    //Menu extras
-    this.load.image('menuExtras', 'assets/MenuPrincipal/extras.png');
              //Botones de desbloqueables
     this.load.image('botonYaguarete', 'assets/MenuPrincipal/Botones/1erDesbloqueable.png');
     this.load.image('botonMono', 'assets/MenuPrincipal/Botones/2doDesbloqueable.png');
@@ -51,10 +46,7 @@ export default class mp1 extends Phaser.Scene
     this.load.image('infoPinguino', 'assets/MenuPrincipal/Botones/infoPinguino1.png');
 
     //Botones GameWin/Lose
-    /* this.load.image('botonRestart', '/public/assets/MenuPrincipal/Botones/') */
-
-    
-              
+    /* this.load.image('botonRestart', '/public/assets/MenuPrincipal/Botones/') */           
   }
 
   create()

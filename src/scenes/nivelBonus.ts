@@ -27,7 +27,7 @@ export default class bonus extends Phaser.Scene
     const portada2 = this.add.image(496, 235, 'yaguaBonus').setScale(1.35);
     
     let preguntasBonus= new Array<preguntas>()
-    preguntasBonus.push(new preguntas('¿Cuál es la causa por la cual el \n yaguareté se encuentra en vía de extición?', 'Todas son correctas', 'Caza furtiva', 'Deforestación del hábitad', 'Reducción de sus presas'))
+    preguntasBonus.push(new preguntas('¿Cuál es la causa por la cual el \n yaguareté se encuentra en vía de extición?', 'Todas son correctas', 'Caza furtiva', 'Deforestación del hábitat', 'Reducción de sus presas'))
     
     const text_pregunta = this.add.text(245, 360, preguntasBonus[0].pregunta, {font: 'bold 30pt Arial', fontSize: '10px', align:'center'});
 

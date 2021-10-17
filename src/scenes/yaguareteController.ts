@@ -5,14 +5,13 @@ import ObstaclesController from './obstaclesController'
 
 type CursorKeys = Phaser.Types.Input.Keyboard.CursorKeys
 
-export default class yaguareteController 
+export default class yaguareteController
 {
   private scene: Phaser.Scene
 	private sprite: Phaser.Physics.Matter.Sprite
 	private cursors: CursorKeys
 
   private stateMachine: StateMachine
-	private health = 1
   private obstacles: ObstaclesController
 
   constructor(scene: Phaser.Scene, 
@@ -213,9 +212,9 @@ export default class yaguareteController
 	private banderaCollected(){
 		console.log('GANASTEEE')
 				
-		this.scene.scene.launch('gameWin')
 		this.scene.scene.pause()
 		this.scene.scene.stop('ui')		
+		this.scene.scene.launch('gameWin')
 	}
   
 	//  									ANIMACIONES 	

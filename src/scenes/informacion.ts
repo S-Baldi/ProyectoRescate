@@ -13,13 +13,23 @@ export default class info extends Phaser.Scene
 
   create()
   {
-    const fondoMenu = this.add.image(683, 384, 'fondoinfo').setScale(0.75);
+    const fondoMenu = this.add.image(683, 384, 'fondoLimpio').setScale(0.75);
+    this.add.text(450, 100, 'INFORMACIÓN', {
+      font: '50pt Helvetica neue black',
+      color: 'yellow'
+    })
 
-    const teclaAyuda = this.add.image(450, 350, 'botonayuda').setScale(0.6)
+    const teclaAyuda = this.add.text(350, 350, 'AYUDA', {
+      font: '40pt Helvetica neue black',
+      color: 'yellow'
+    })
     .setInteractive()
     .on('pointerdown', () => this.scene.start('ayuda'));
 
-    const teclaCreditos = this.add.image(900, 350, 'botoncreditos').setScale(0.6)
+    const teclaCreditos = this.add.text(800, 350, 'CRÉDITOS', {
+      font: '40pt Helvetica neue black',
+      color: 'yellow'
+    })
     .setInteractive()
     .on('pointerdown', () => this.scene.start('credit2'));
 

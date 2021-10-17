@@ -18,7 +18,11 @@ export default class extras extends Phaser.Scene
 
   create()
   {
-    const fondoMenu = this.add.image(683, 384, 'menuExtras').setScale(0.75);
+    const fondoMenu = this.add.image(683, 384, 'fondoLimpio').setScale(0.75);
+    this.add.text(550, 50, 'EXTRAS', {
+      font: '60pt Helvetica neue black',
+      color: 'yellow'
+    })
 
     const buttonAtras = this.add.image(1260, 105, 'botonatras').setScale(0.8)
     .setInteractive()
