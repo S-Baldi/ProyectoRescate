@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import obstaclesController from './obstaclesController'
+import obstaclesController from '../obstaclesController'
 import yaguareteController from './yaguareteController'
 import cazadorController from './cazadorController'
 export default class nivel_1 extends Phaser.Scene
@@ -22,7 +22,7 @@ export default class nivel_1 extends Phaser.Scene
   }
 
   preload(){
-    this.load.tilemapTiledJSON('mapa_nivel1', 'assets/Nivel1/nivel_Yaguarete2.json');
+    this.load.tilemapTiledJSON('mapa_nivel1', 'assets/Nivel1/nivel_Yaguarete.json');
     this.load.image('nivel1Fondoo','assets/Nivel1/nivel1_fondo.png');
     this.load.image('nivel1Sueloo','assets/Nivel1/nivel1_suelo.png');
     this.load.image('nivel1Carnee','assets/Nivel1/nivel1_carne.png');

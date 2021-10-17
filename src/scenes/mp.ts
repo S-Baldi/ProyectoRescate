@@ -23,7 +23,7 @@ export default class mp1 extends Phaser.Scene
     this.load.image('botonIdiomaEspañol', 'assets/MenuPrincipal/bandera.png');
 
     this.load.image('mapaArgentina', 'assets/Mapa/mapa.png');
-    this.load.image('botonMenuPpal', 'assets/MenuPrincipal/Botones/botonMenu.png')
+    this.load.image('botonMenuPpal', 'assets/MenuPrincipal/Botones/botonMenu.png');
 
     this.load.audio('sonidoBoton', 'audio/boton.mp3')
 

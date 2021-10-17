@@ -1,7 +1,8 @@
+import { Body } from 'matter'
 import Phaser from 'phaser' 
-import StateMachine from '../statemachine/StateMachine'
-import { sharedInstance as events } from './eventCenter'
-import ObstaclesController from './obstaclesController'
+import StateMachine from '../../statemachine/StateMachine'
+import { sharedInstance as events } from '../eventCenter'
+import ObstaclesController from '../obstaclesController'
 
 type CursorKeys = Phaser.Types.Input.Keyboard.CursorKeys
 
