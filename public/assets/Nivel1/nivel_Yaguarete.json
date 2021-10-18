@@ -1077,17 +1077,6 @@
                  "y":406.5
                 }, 
                 {
-                 "height":47,
-                 "id":149,
-                 "name":"carne",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":58,
-                 "x":1091,
-                 "y":404.5
-                }, 
-                {
                  "height":215.152,
                  "id":151,
                  "name":"bandera",
@@ -1097,6 +1086,17 @@
                  "width":118.182,
                  "x":1384.909,
                  "y":164.424
+                }, 
+                {
+                 "height":63,
+                 "id":152,
+                 "name":"cria",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":78,
+                 "x":1081,
+                 "y":372.5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1105,7 +1105,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":152,
+ "nextobjectid":153,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
