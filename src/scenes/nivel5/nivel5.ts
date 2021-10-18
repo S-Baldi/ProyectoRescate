@@ -26,8 +26,11 @@ export default class nivel_5 extends Phaser.Scene
     this.load.image('nivel5Pez','assets/Nivel5/nivel5_comida.png');
     this.load.image('nivel5Cria', 'assets/Nivel5/criaPinguino.png');
     this.load.image('nivel5Bandera', 'assets/Nivel5/bandera.png');
-    this.load.image('barco','assets/Nivel5/barco2.png'); 
+    this.load.image('barco','assets/Nivel5/barco.png'); 
+    this.load.image('barco2','assets/Nivel5/barco2.png');
+    this.load.image('red', 'assets/Nivel5/red.png');
     this.load.image('petroleo', 'assets/Nivel5/petroleo.png');
+    this.load.image('nivel5Bandera', 'assets/Nivel5/banderaPinguino.png')
 
     this.load.atlas('pinguino', 'assets/Nivel5/pinguino.png', 'assets/Nivel5/pinguino.json');
 
@@ -104,6 +107,34 @@ export default class nivel_5 extends Phaser.Scene
           break
         }
 
+        case 'barco2':
+        {
+          const barco2 = this.matter.add.rectangle(x + (width * 0.9), y + (height * 0.4), 390, 270 , {
+            isStatic: true
+          })
+          this.obstacles.add('barco2', barco2)
+
+          const barcos2 = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'barco2', undefined, {
+            isStatic: true,
+            isSensor:true
+          })				
+          break
+        }
+
+        case 'red':
+        {
+          const red = this.matter.add.rectangle(x + (width * 0.4), y + (height * 0.5), width, 400, {
+            isStatic: true
+          })          
+          this.obstacles.add('red', red)
+
+          const reds = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'red', undefined, {
+            isStatic: true,
+            isSensor:true
+          }).setScale(1.4)
+          break
+        }
+
         case 'petroleo':
         { 
           const petroleo = this.matter.add.rectangle(x + (width * 0.5), y + (height * 0.5), 90, 200, {
@@ -113,7 +144,20 @@ export default class nivel_5 extends Phaser.Scene
           const petroleos = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'petroleo', undefined, {
             isStatic: true,
             isSensor:true
-          }).setScale(0.85)				
+          }).setScale(1)
+					break
+        }
+
+        case 'petroleo2':
+        { 
+          const petroleo2 = this.matter.add.rectangle(x + (width * 0.5), y + (height * 0.5), 110, 270, {
+          isStatic: true
+					})
+          this.obstacles.add('petroleo2', petroleo2)
+          const petroleos2 = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'petroleo', undefined, {
+            isStatic: true,
+            isSensor:true
+          }).setScale(1, 1.3)
 					break
         }
 
@@ -123,7 +167,7 @@ export default class nivel_5 extends Phaser.Scene
 						isStatic: true
 					})
           this.obstacles.add('bandera', bandera)
-          const banderas = this.matter.add.sprite(x+ (width*0.5), y+(height*0.4), 'nivel1Bandera',
+          const banderas = this.matter.add.sprite(x+ (width*0.5), y+(height*0.4), 'nivel5Bandera',
           undefined,{
             isStatic : true,
             isSensor: true
@@ -136,7 +180,7 @@ export default class nivel_5 extends Phaser.Scene
           const pez = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel5Pez', undefined, {
 						isStatic: true,
             isSensor: true
-          })
+          }).setScale(1.5)
           pez.setData('type', 'pez')
           break
         }
@@ -149,6 +193,14 @@ export default class nivel_5 extends Phaser.Scene
           })
           pinguinoCria.setData('type', 'cria')
           break
+        }
+
+        case 'hitBoxCielo':
+        {
+          const hitBoxCielo = this.matter.add.rectangle(x + (width * 0.5), y + (height * 0.5), width, height, {
+						isStatic: true
+					})
+          this.obstacles.add('hitBoxCielo', hitBoxCielo)
         }
       }    
 		})

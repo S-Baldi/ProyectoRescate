@@ -55,7 +55,27 @@ export default class pipnguinoController
 				return
 			}
 
-      if(this.obstacles.is('petroleo', body)){
+      if (this.obstacles.is('barco2', body)){
+        this.stateMachine.setState('barcoHit')
+        return
+      }
+
+      if (this.obstacles.is('petroleo', body)){
+        this.stateMachine.setState('barcoHit')
+        return
+      }  
+
+      if(this.obstacles.is('petroleo2', body)){
+        this.stateMachine.setState('barcoHit')
+        return
+      }
+
+      if (this.obstacles.is('red', body)){
+        this.stateMachine.setState('barcoHit')
+        return
+      }
+
+      if (this.obstacles.is('hitBoxCielo', body)){
         this.stateMachine.setState('barcoHit')
         return
       }
@@ -161,6 +181,7 @@ export default class pipnguinoController
 		this.scene.time.delayedCall(1500, () => {
 			//this.scene.scene.launch('gameOver') 
 			this.scene.scene.pause()
+      this.scene.scene.restart()
 			//this.scene.scene.stop('ui')	
 		})
 	}
