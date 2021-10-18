@@ -11,8 +11,8 @@ export default class UI extends Phaser.Scene
   private comidaCollected = 0
 
 	//Totales del nivel
-	private criasTotales = 5
-	private comidaTotales = 0
+	public criasTotales = 0
+	public comidaTotales = 0
 	
 	//Estrellas totales [0 a 3]
 	private estrellasNivel1 = 0

@@ -29,6 +29,7 @@ export default class gameOver extends Phaser.Scene{
       this.scene.start('menuMapa')
     });
   }
+  
 
   update(){
 
