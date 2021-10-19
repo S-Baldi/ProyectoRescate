@@ -102,21 +102,23 @@ export default class yaguareteController
 
 			}
 			
-			events.on('sumaEstrella', this.sumadorEstrellas, this)
-			this.cantEstrellas=1
+		
 		})
+		
+		events.removeAllListeners();
+		events.on('sumaEstrella', this.sumadorEstrellas, this)
+		this.cantEstrellas=0
   }
   update(dt: number)
 	{
 		this.stateMachine.update(dt)
-		
 	}
 
 	sumadorEstrellas()
 	{
-		
-    this.cantEstrellas= this.cantEstrellas+1
-		
+		console.log('Sumador de estrellas')
+    this.cantEstrellas = this.cantEstrellas+1
+		console.log(this.cantEstrellas)	
 	}
 
 	//	WALK  
@@ -127,7 +129,7 @@ export default class yaguareteController
 
   private walkOnUpdate()
 	{	
-		this.sprite.setVelocityX(15)
+		this.sprite.setVelocityX(1)
 		if (this.cursors.up.isDown)
 		{
 			this.stateMachine.setState('jump')
@@ -164,27 +166,30 @@ export default class yaguareteController
 	}
 
 	private banderaCollected(){
-		console.log('GANASTEEE')
-				
 		this.scene.scene.pause()
-		this.scene.scene.stop('ui')		
+		this.scene.scene.stop('ui')
 		this.scene.scene.launch('gameWin')	
+		
+		/* let cat2 = localStorage.getItem('nivelPasado');
+		if (cat2 < 1){
+			localStorage.setItem('nivelPasado', '1');
+		} */
 		
 
 		if (this.cantEstrellas == 2) 
 		{
 			console.log('2 estrellas')
-			events.emit('2estrella')
+			events.emit('estrella', 2)
 		}
 		else if (this.cantEstrellas == 3) 
 		{
 			console.log('3 estrellas')
-			events.emit('3estrella')
+			events.emit('estrella', 3)
 		} 
 		else
 		{
 			console.log('1 estrellas')
-			events.emit('1estrella')
+			events.emit('estrella', 1)
 		}
 	}
   

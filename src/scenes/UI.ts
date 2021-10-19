@@ -32,8 +32,8 @@ export default class UI extends Phaser.Scene
 	{
 		this.pause = false
 
-		this.criasCollected = 1
-    this.comidaCollected = 1
+		this.criasCollected = 0
+    this.comidaCollected = 0
 
 		this.criasTotales = 0
 		this.comidaTotales = 0
@@ -98,7 +98,7 @@ export default class UI extends Phaser.Scene
 		
 		if (this.criasCollected > 0) 
 		{
-			console.log('COMIDA')
+			console.log('JUNTASTE CRIA')
 			events.emit('sumaEstrella')
 		}
 	}
@@ -110,7 +110,7 @@ export default class UI extends Phaser.Scene
 		
 		if (this.comidaCollected > 0) 
 		{
-			console.log('COMIDA')
+			console.log('JUNTASTE COMIDA')
 			events.emit('sumaEstrella')
 		}
 	}
