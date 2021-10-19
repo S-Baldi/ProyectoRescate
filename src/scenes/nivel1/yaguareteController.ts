@@ -3,6 +3,7 @@ import Phaser from 'phaser'
 import StateMachine from '../../statemachine/StateMachine'
 import { sharedInstance as events } from '../eventCenter'
 import ObstaclesController from '../obstaclesController'
+import UI from '../UI'
 
 type CursorKeys = Phaser.Types.Input.Keyboard.CursorKeys
 
@@ -14,6 +15,10 @@ export default class yaguareteController
 
   private stateMachine: StateMachine
   private obstacles: ObstaclesController
+
+	public cantEstrellas=0
+	private controlEstrellas?:UI
+	
 
   constructor(scene: Phaser.Scene, 
 		sprite: Phaser.Physics.Matter.Sprite, 
@@ -96,11 +101,22 @@ export default class yaguareteController
 				}
 
 			}
+			
+			events.on('sumaEstrella', this.sumadorEstrellas, this)
+			this.cantEstrellas=1
 		})
   }
   update(dt: number)
 	{
-		this.stateMachine.update(dt)	
+		this.stateMachine.update(dt)
+		
+	}
+
+	sumadorEstrellas()
+	{
+		
+    this.cantEstrellas= this.cantEstrellas+1
+		
 	}
 
 	//	WALK  
@@ -152,7 +168,24 @@ export default class yaguareteController
 				
 		this.scene.scene.pause()
 		this.scene.scene.stop('ui')		
-		this.scene.scene.launch('gameWin')
+		this.scene.scene.launch('gameWin')	
+		
+
+		if (this.cantEstrellas == 2) 
+		{
+			console.log('2 estrellas')
+			events.emit('2estrella')
+		}
+		else if (this.cantEstrellas == 3) 
+		{
+			console.log('3 estrellas')
+			events.emit('3estrella')
+		} 
+		else
+		{
+			console.log('1 estrellas')
+			events.emit('1estrella')
+		}
 	}
   
 	//  									ANIMACIONES 	

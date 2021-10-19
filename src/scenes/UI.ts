@@ -9,10 +9,11 @@ export default class UI extends Phaser.Scene
   
 	private criasCollected = 0
   private comidaCollected = 0
+	
 
 	//Totales del nivel
-	public criasTotales = 0
-	public comidaTotales = 0
+	private criasTotales = 3
+	private comidaTotales = 0
 	
 	//Estrellas totales [0 a 3]
 	private estrellasNivel1 = 0
@@ -24,23 +25,25 @@ export default class UI extends Phaser.Scene
 		super({
 			key: 'ui'
 		})
+
 	}
 
 	init()
 	{
 		this.pause = false
 
-		this.criasCollected = 0
-    this.comidaCollected = 0
+		this.criasCollected = 1
+    this.comidaCollected = 1
 
-		this.criasTotales = 3
-		this.comidaTotales = 30
+		this.criasTotales = 0
+		this.comidaTotales = 0
 
 		this.estrellasNivel1 = 0
 	}
 
 	create()
 	{
+		
 		const botonPausa = this.add.image(100, 100, 'botonPausa');
 		botonPausa.setInteractive()
 		botonPausa.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
@@ -71,10 +74,13 @@ export default class UI extends Phaser.Scene
 			color: 'black',
       font: '40pt Helvetica neue black',
 		})
+		
 	}
 
-	update(){
-		if (this.criasCollected === this.criasTotales) {
+	update()
+	{
+		if (this.criasCollected === this.criasTotales) 
+		{
 			this.sumarUnaEstrella
 		}	
 	}
@@ -82,18 +88,30 @@ export default class UI extends Phaser.Scene
   private sumarUnaEstrella(){		
 		console.log('JUNTASTE TODAS LAS CRIAS :D')
 		++this.estrellasNivel1
-		console.log(this.estrellasNivel1)
+		console.log(this.estrellasNivel1)		
 	}
 	
 	private handleCriasCollected()
 	{
 		++this.criasCollected
     this.criasLabel.text = `Crias: ` + this.criasCollected + '/3'
+		
+		if (this.criasCollected > 0) 
+		{
+			console.log('COMIDA')
+			events.emit('sumaEstrella')
+		}
 	}
 
   private handleComidaCollected()
 	{
 		++this.comidaCollected
     this.comidaLabel.text = `Comida: ${this.comidaCollected}`+ '/25'
+		
+		if (this.comidaCollected > 0) 
+		{
+			console.log('COMIDA')
+			events.emit('sumaEstrella')
+		}
 	}
 }

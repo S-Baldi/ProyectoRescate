@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 import UI from '../UI'; 
+import {sharedInstance as events} from '../eventCenter'
 
 export default class gameWin extends Phaser.Scene{
   constructor()
@@ -14,6 +15,8 @@ export default class gameWin extends Phaser.Scene{
   }
   
   create(){
+    
+    
     const gameLose = this.add.image(683, 384, 'win')
 
     const buttonRestart = this.add.image(800, 520,  'botonReset')
@@ -32,47 +35,94 @@ export default class gameWin extends Phaser.Scene{
       this.scene.stop('nivelYaguarete')
       this.scene.start('menuMapa')
     });
-
-    const estrellitas= this.add.sprite(700, 400, 'estrellasYaguarete')
-
+    events.on('1estrella', this.cantidadEstrellas1, this)
+    events.on('2estrella', this.cantidadEstrellas2, this)
+    events.on('3estrella', this.cantidadEstrellas3, this)
+  }
+ 
+  cantidadEstrellas1()
+  {
+    console.log('capturo al vecino')
+    this.add.sprite(700, 400, 'estrellasYaguarete', 1).setDepth(7)
   }
 
-  public mostrarEstrella(criasTotales:number, comidaTotales: number)
+  cantidadEstrellas2()
   {
-    switch (this.mostrarEstrella) 
+    console.log('capturo ')
+    const estrellita = this.add.sprite(700, 400, 'estrellasYaguarete', 2).setDepth(7)
+  }
+  cantidadEstrellas3()
+  {
+    console.log('capturo al abajo')
+    const estrellita = this.add.sprite(700, 400, 'estrellasYaguarete', 3).setDepth(7)
+  }
+
+
+   
+
+
+
+  /* public mostrarEstrella(criasTotales:number, comidaTotales:number)
+  {
+    if (criasTotales=1) 
     {
-      case criasTotales = 3:
-        this.add.sprite(700, 400, 'yaguarete', 2)
+      this.add.sprite(700, 400, 'estrellasYaguarete', 2)
+    } else 
+    {  
+      this.add.sprite(700, 400, 'estrellasYaguarete', 1)
+    }
+    if (comidaTotales=1) 
+    {
+      this.add.sprite(700, 400, 'estrellasYaguarete', 2)
+    } else 
+    {
+      this.add.sprite(700, 400, 'estrellasYaguarete', 1)
+    }
+    if (criasTotales=1, comidaTotales=1) 
+    {
+      this.add.sprite(700, 400, 'estrellasYaguarete', 3)
+    } else 
+    {
+      this.add.sprite(700, 400, 'estrellasYaguarete', 1)
+    }
+     switch ('estrellasYaguarete') 
+    {
+      case 'crias':
+        
+        this.add.sprite(700, 400, 'estrellasYaguarete', 2).setDepth(5)
         
         break;
-      case comidaTotales=20:
-        this.add.sprite(700, 400, 'yaguarete', 2)
+      case 'comida':
+        this.add.sprite(700, 400, 'estrellasYaguarete', 2).setDepth(5)
         break;
-      case comidaTotales=3 && comidaTotales=20:
-        this.add.sprite(700, 400, 'yaguarete', 4)
+      case 'comida' && 'crias':
+        this.add.sprite(700, 400, 'estrellasYaguarete', 3).setDepth(5)
         break;
     
       default:
-        this.add.sprite(700, 400, 'yaguarete', 1)
+        this.add.sprite(700, 400, 'estrellasYaguarete', 1).setDepth(5)
         break;
-    }
-    
-    /* if (criasTotales = 3) 
-    {
-      this.add.sprite(700, 400, 'yaguarete', 2)
-    }else
-    {
-      if (comidaTotales = 20) 
-      {
-        this.add.sprite(700, 400, 'yaguarete', 2) 
-      }
-    }
+    } 
+  } */
 
-    if (comidaTotales = 20) 
+  /* switch ('estrellasYaguarete') 
     {
-      this.add.sprite(700, 400, 'yaguarete', 3) 
+      case criasTotales=1:
+        
+        this.add.sprite(700, 400, 'estrellasYaguarete', 2).setDepth(5)
+        
+        break;
+      case comidaTotales=1:
+        this.add.sprite(700, 400, 'estrellasYaguarete', 2).setDepth(5)
+        break;
+      case comidaTotales=1 && comidaTotales=1:
+        this.add.sprite(700, 400, 'estrellasYaguarete', 4).setDepth(5)
+        break;
+    
+      default:
+        this.add.sprite(700, 400, 'estrellasYaguarete', 1).setDepth(5)
+        break;
     } */
-  }
 
 /*   public gameWinLose (finalNivel: string){
     //SI PIERDE YAGUARETE
