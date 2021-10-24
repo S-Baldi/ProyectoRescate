@@ -99,10 +99,7 @@ export default class yaguareteController
 					sprite.destroy()
 					break
 				}
-
 			}
-			
-		
 		})
 		
 		events.removeAllListeners();
