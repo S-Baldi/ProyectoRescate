@@ -102,8 +102,8 @@ export default class yaguareteController
 
 			}
 			
-			events.on('sumaEstrella', this.sumadorEstrellas, this)
-			this.cantEstrellas=1
+			events.on('sumaEstrella', this.sumadorEstrellas)
+			this.cantEstrellas = 1 
 		})
   }
   update(dt: number)
@@ -113,10 +113,10 @@ export default class yaguareteController
 	}
 
 	sumadorEstrellas()
-	{
+	{	
+    this.cantEstrellas= +1 	
 		
-    this.cantEstrellas= this.cantEstrellas+1
-		
+		console.log(this.cantEstrellas)
 	}
 
 	//	WALK  
@@ -163,13 +163,12 @@ export default class yaguareteController
 		})
 	}
 
-	private banderaCollected(){
-		console.log('GANASTEEE')
+	public banderaCollected(){
+		
 				
 		this.scene.scene.pause()
 		this.scene.scene.stop('ui')		
-		this.scene.scene.launch('gameWin')	
-		
+		this.scene.scene.launch('gameWin')		
 
 		if (this.cantEstrellas == 2) 
 		{
@@ -185,7 +184,7 @@ export default class yaguareteController
 		{
 			console.log('1 estrellas')
 			events.emit('1estrella')
-		}
+		}	
 	}
   
 	//  									ANIMACIONES 	

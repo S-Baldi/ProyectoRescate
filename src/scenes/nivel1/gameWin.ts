@@ -42,18 +42,15 @@ export default class gameWin extends Phaser.Scene{
  
   cantidadEstrellas1()
   {
-    console.log('capturo al vecino')
     this.add.sprite(700, 400, 'estrellasYaguarete', 1).setDepth(7)
   }
 
   cantidadEstrellas2()
-  {
-    console.log('capturo ')
+  {    
     const estrellita = this.add.sprite(700, 400, 'estrellasYaguarete', 2).setDepth(7)
   }
   cantidadEstrellas3()
-  {
-    console.log('capturo al abajo')
+  {  
     const estrellita = this.add.sprite(700, 400, 'estrellasYaguarete', 3).setDepth(7)
   }
 
