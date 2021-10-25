@@ -16,7 +16,7 @@ export default class yaguareteController
   private stateMachine: StateMachine
   private obstacles: ObstaclesController
 
-	public cantEstrellas=0
+	public cantEstrellas = 0
 	private controlEstrellas?:UI
 	
 
@@ -104,7 +104,7 @@ export default class yaguareteController
 		
 		events.removeAllListeners();
 		events.on('sumaEstrella', this.sumadorEstrellas, this)
-		this.cantEstrellas=0
+		this.cantEstrellas = 0
   }
   update(dt: number)
 	{
