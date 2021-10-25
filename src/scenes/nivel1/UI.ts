@@ -38,7 +38,6 @@ export default class UI extends Phaser.Scene
 		this.criasTotales = 3
 		this.comidaTotales = 0
 
-		this.estrellasNivel1 = 0
 	}
 
 	create()
@@ -75,20 +74,6 @@ export default class UI extends Phaser.Scene
       font: '40pt Helvetica neue black',
 		})
 		
-	}
-
-	update()
-	{
-		if (this.criasCollected === this.criasTotales) 
-		{
-			this.sumarUnaEstrella
-		}	
-	}
-
-  private sumarUnaEstrella(){		
-		console.log('JUNTASTE TODAS LAS CRIAS :D')
-		++this.estrellasNivel1
-		console.log(this.estrellasNivel1)		
 	}
 	
 	private handleCriasCollected()
