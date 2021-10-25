@@ -69,7 +69,7 @@ export default class UI extends Phaser.Scene
       font: '40pt Helvetica neue black', 
 		})
     
-    this.comidaLabel = this.add.text(950, 80, 'Comida: 0/25', {
+    this.comidaLabel = this.add.text(950, 80, 'Comida: 0/48', {
 			fontSize: '32px',
 			color: 'black',
       font: '40pt Helvetica neue black',

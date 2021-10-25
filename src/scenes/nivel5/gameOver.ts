@@ -7,11 +7,11 @@ export default class gameOverPinguino extends Phaser.Scene{
   }
 
   preload(){
-    this.load.image('lose', 'assets/GameWinLose/lose.png');
+    this.load.image('losePinguino', 'assets/GameWinLose/losePinguino.png');
   }
   
   create(){
-    const gameLose = this.add.image(683, 384, 'lose')
+    const gameLose = this.add.image(683, 384, 'losePinguino')
 
     const buttonRestart = this.add.image(800, 520,  'botonReset')
     .setInteractive()
