@@ -113,12 +113,6 @@ export default class nivel_1 extends Phaser.Scene
             isSensor:true
           }).setScale(0.85)				
 					break
-          /* const trampa = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel1Trampaa', undefined, {
-						isStatic: true ,
-            isSensor: true 
-					})  
-          .setScale(0.85)
-					break */
         }
 
         case 'bandera':

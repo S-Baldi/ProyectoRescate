@@ -37,7 +37,7 @@ export default class gameWin extends Phaser.Scene{
     });
     events.on('estrella', this.cantidadEstrellas, this)
   }
- 
+
   cantidadEstrellas(cantidad:number)
   {
     const estrellita = this.add.sprite(700, 400, 'estrellasYaguarete', cantidad).setDepth(7)
@@ -66,7 +66,7 @@ export default class gameWin extends Phaser.Scene{
     {
       this.add.sprite(700, 400, 'estrellasYaguarete', 1)
     }
-     switch ('estrellasYaguarete') 
+      switch ('estrellasYaguarete') 
     {
       case 'crias':
         
