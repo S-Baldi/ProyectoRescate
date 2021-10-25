@@ -71,7 +71,7 @@ export default class cazadorController
 	}
 
   private runOnUpdate(){
-    this.sprite.setVelocityX(15)
+    this.sprite.setVelocityX(14)
   }
 
   private trampaHunterOnEnter(){

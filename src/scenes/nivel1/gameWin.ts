@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import UI from '../UI'; 
+import UI from './UI'; 
 import {sharedInstance as events} from '../eventCenter'
 
 export default class gameWin extends Phaser.Scene{

@@ -25,19 +25,18 @@ export default class nivel_5 extends Phaser.Scene
     this.load.image('nivel5Suelo','assets/Nivel5/nivel5_suelo.png');
     this.load.image('nivel5Pez','assets/Nivel5/nivel5_comida.png');
     this.load.image('nivel5Cria', 'assets/Nivel5/criaPinguino.png');
-    this.load.image('nivel5Bandera', 'assets/Nivel5/bandera.png');
     this.load.image('barco','assets/Nivel5/barco.png'); 
     this.load.image('barco2','assets/Nivel5/barco2.png');
     this.load.image('red', 'assets/Nivel5/red.png');
     this.load.image('petroleo', 'assets/Nivel5/petroleo.png');
-    this.load.image('nivel5Bandera', 'assets/Nivel5/banderaPinguino.png')
+    this.load.image('nivel5Bandera', 'assets/Nivel5/banderaPinguino.png');
 
     this.load.atlas('pinguino', 'assets/Nivel5/pinguino.png', 'assets/Nivel5/pinguino.json');
 
   }
 
   create(){
-    //this.scene.launch('ui')
+    this.scene.launch('uiPinguino')
 
     /* Tiled Nivel 5 */
     const mapa_nivel5 = this.make.tilemap({key: 'mapa_nivel5'});
@@ -161,17 +160,18 @@ export default class nivel_5 extends Phaser.Scene
 					break
         }
 
-        case 'bandera':
+        case 'banderaPinguino':
         {
-          const bandera = this.matter.add.rectangle(x + (width * 0.5), y + (height * 0.5), width, height, {
+          const banderaPinguino = this.matter.add.rectangle(x + (width * 0.5), y + (height * 0.5), width, 1200, {
 						isStatic: true
 					})
-          this.obstacles.add('bandera', bandera)
-          const banderas = this.matter.add.sprite(x+ (width*0.5), y+(height*0.4), 'nivel5Bandera',
-          undefined,{
-            isStatic : true,
+          this.obstacles.add('banderaPinguino', banderaPinguino)
+
+          const banderasPinguino = this.matter.add.sprite(x + (width*0.5), y + (height*0.5), 'nivel5Bandera',
+          undefined, {
+            isStatic: true,
             isSensor: true
-          }).setScale(0.4)
+          }).setScale(1)
           break
         }
         

@@ -3,7 +3,7 @@ import Phaser from 'phaser'
 import StateMachine from '../../statemachine/StateMachine'
 import { sharedInstance as events } from '../eventCenter'
 import ObstaclesController from '../obstaclesController'
-import UI from '../UI'
+import UI from './UI'
 
 type CursorKeys = Phaser.Types.Input.Keyboard.CursorKeys
 
@@ -126,7 +126,7 @@ export default class yaguareteController
 
   private walkOnUpdate()
 	{	
-		this.sprite.setVelocityX(1)
+		this.sprite.setVelocityX(15)
 		if (this.cursors.up.isDown)
 		{
 			this.stateMachine.setState('jump')
@@ -137,7 +137,8 @@ export default class yaguareteController
   private jumpOnEnter()
 	{		
 		this.sprite.stop()
-		this.sprite.play('yaguarete-jump')
+		this.sprite.play('yaguarete-jump')		
+		this.sprite.setVelocityX(15)
 		this.sprite.setVelocityY(-40)
 		//this.sprite.setVelocityX(18)
 	}

@@ -160,8 +160,8 @@
                  "type":"",
                  "visible":true,
                  "width":60.6060606060606,
-                 "x":107.151515151515,
-                 "y":558.393939393939
+                 "x":14.151515151515,
+                 "y":583.393939393939
                 }, 
                 {
                  "height":56,
@@ -1064,39 +1064,6 @@
                  "width":58,
                  "x":26622.5151515152,
                  "y":521.954545454545
-                }, 
-                {
-                 "height":215.152,
-                 "id":153,
-                 "name":"bandera",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":118.182,
-                 "x":1496.909,
-                 "y":356.424
-                }, 
-                {
-                 "height":47,
-                 "id":154,
-                 "name":"carne",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":58,
-                 "x":799,
-                 "y":580.5
-                }, 
-                {
-                 "height":63,
-                 "id":155,
-                 "name":"cria",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":78,
-                 "x":1061,
-                 "y":556.5
                 }],
          "opacity":1,
          "type":"objectgroup",

@@ -80,7 +80,7 @@ export default class pipnguinoController
         return
       }
 			
-			if (this.obstacles.is('bandera', body))
+			if (this.obstacles.is('banderaPinguino', body))
 			{
 				this.stateMachine.setState('banderaCollected')
 				return				
@@ -136,7 +136,7 @@ export default class pipnguinoController
 
   private swimOnUpdate()
 	{	
-		this.sprite.setVelocityX(15)
+		this.sprite.setVelocityX(12.5)
 		if (this.cursors.right.isDown)
 		{
 			this.stateMachine.setState('barcoHit')
@@ -160,12 +160,12 @@ export default class pipnguinoController
   private swimUpOnUpdate()
 	{
     if (this.cursors.up.isDown){
-      this.sprite.setVelocityY(-15)      
-      this.sprite.setVelocityX(15)
+      this.sprite.setVelocityY(-12)      
+      this.sprite.setVelocityX(12.5)
     }
     if (this.cursors.up.isUp){
       this.sprite.setVelocityY(+5)
-      this.sprite.setVelocityX(15)
+      this.sprite.setVelocityX(12.5)
     }		
 	}
 
@@ -178,11 +178,10 @@ export default class pipnguinoController
 	private barcoHitOnEnter(){
 		this.sprite.play('pinguino-death')		
 		
-		this.scene.time.delayedCall(1500, () => {
-			//this.scene.scene.launch('gameOver') 
+		this.scene.time.delayedCall(1000, () => {
+			this.scene.scene.launch('gameOverPinguino') 
 			this.scene.scene.pause()
-      this.scene.scene.restart()
-			//this.scene.scene.stop('ui')	
+			this.scene.scene.stop('uiPinguino')	
 		})
 	}
 
@@ -190,8 +189,8 @@ export default class pipnguinoController
 		console.log('GANASTEEE')
 				
 		this.scene.scene.pause()
-		this.scene.scene.stop('ui')		
-		this.scene.scene.launch('gameWin')
+		this.scene.scene.stop('uiPinguino')
+		this.scene.scene.launch('gameWinPinguino')
 	}
   
 	//  									ANIMACIONES

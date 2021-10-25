@@ -19,18 +19,9 @@ export default class pause extends Phaser.Scene{
       stroke: 'black',
       strokeThickness: 3,
       font: '50pt ARCO Regular',
-
     })
 
-    const buttonRestart = this.add.image(790, 440,  'botonReset')
-    .setInteractive()
-    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
-    { 
-      this.scene.stop()
-      this.scene.resume('nivelYaguarete')
-    });
-
-    const buttonMapa = this.add.image(590, 440, 'botonMapa')
+    const buttonMapa = this.add.image(490, 440, 'botonMapa')
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
@@ -38,6 +29,23 @@ export default class pause extends Phaser.Scene{
       this.scene.stop('ui')
       this.scene.start('menuMapa')
     });
+
+    const buttonRestart = this.add.image(690, 440,  'botonReset')
+    .setInteractive()
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+    { 
+      this.scene.stop()
+      this.scene.stop('nivelYaguarete')
+      this.scene.start('nivelYaguarete')
+    });  
+
+    const buttonVolverJugar = this.add.image(890, 440, 'botonPlay')
+    .setInteractive()
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>{
+      this.scene.stop()
+      this.scene.resume('nivelYaguarete')
+    })
+    
   }
 
   update(){
