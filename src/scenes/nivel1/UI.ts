@@ -35,7 +35,7 @@ export default class UI extends Phaser.Scene
 		this.criasCollected = 0
     this.comidaCollected = 0
 
-		this.criasTotales = 0
+		this.criasTotales = 3
 		this.comidaTotales = 0
 
 		this.estrellasNivel1 = 0
@@ -96,7 +96,7 @@ export default class UI extends Phaser.Scene
 		++this.criasCollected
     this.criasLabel.text = `Crias: ` + this.criasCollected + '/3'
 		
-		if (this.criasCollected > 0) 
+		if (this.criasCollected > 2) 
 		{
 			console.log('JUNTASTE CRIA')
 			events.emit('sumaEstrella')
@@ -108,7 +108,7 @@ export default class UI extends Phaser.Scene
 		++this.comidaCollected
     this.comidaLabel.text = `Comida: ${this.comidaCollected}`+ '/48'
 		
-		if (this.comidaCollected > 0) 
+		if (this.comidaCollected > 47) 
 		{
 			console.log('JUNTASTE COMIDA')
 			events.emit('sumaEstrella')

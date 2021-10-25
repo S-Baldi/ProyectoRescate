@@ -137,8 +137,7 @@ export default class yaguareteController
   private jumpOnEnter()
 	{		
 		this.sprite.stop()
-		this.sprite.play('yaguarete-jump')		
-		this.sprite.setVelocityX(15)
+		this.sprite.play('yaguarete-jump')
 		this.sprite.setVelocityY(-40)
 		//this.sprite.setVelocityX(18)
 	}
@@ -167,7 +166,10 @@ export default class yaguareteController
 		this.scene.scene.pause()
 		this.scene.scene.stop('ui')
 		this.scene.scene.launch('gameWin')	
-		
+
+		this.cantEstrellas = this.cantEstrellas+1
+		console.log(this.cantEstrellas)
+				
 		/* let cat2 = localStorage.getItem('nivelPasado');
 		if (cat2 < 1){
 			localStorage.setItem('nivelPasado', '1');
