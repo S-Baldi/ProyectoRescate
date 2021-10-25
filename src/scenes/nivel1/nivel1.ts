@@ -122,12 +122,11 @@ export default class nivel_1 extends Phaser.Scene
         }
 
         case 'bandera':
-        {
+        { //Altura en Y de la bandera Y=458
           const bandera = this.matter.add.rectangle(x + (width * 0.5), y + (height * 0.5), width, height, {
 						isStatic: true
 					})
           this.obstacles.add('bandera', bandera)
-          //Altura en Y de la bandera Y=458
           const banderas = this.matter.add.sprite(x+ (width*0.5), y+(height*0.4), 'nivel1Bandera',
           undefined,{
             isStatic : true,

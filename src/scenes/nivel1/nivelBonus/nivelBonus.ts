@@ -57,7 +57,14 @@ export default class bonus extends Phaser.Scene
     .setInteractive()
     .on('pointerdown', () => boton4.setColor(this.scene.launch('pop_up_B') && this.scene.manager.scenes[12].mostrar_Texto(preguntasBonus[0].revisarResp(boton4.text))) &&
     this.scene.pause())
+
+
+    /* let cat = localStorage.getItem('nivelPasado');
+    if (cat == 1){
+
+    } */
   }
+  
 }
 
 

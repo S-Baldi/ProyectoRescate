@@ -5,13 +5,13 @@ export default class mapa extends Phaser.Scene
   constructor(){
     super ('menuMapa');
   }
+  
 
   preload(){
     this.load.image('botonNivel', 'assets/Mapa/botonMapa.png');
     this.load.image('fondoMapa', 'assets/Mapa/fondoMapa.png');
     this.load.spritesheet('estrellasYaguarete','assets/Mapa/estrellasMapa.png',
     {frameWidth:269 , frameHeight:114 });
-    this.load.image('textYaguarete', 'assets/Mapa/mapaYagua.png');
     this.load.image('nivelBonus', 'assets/Mapa/NivelBonus.png');
   }
   private buttonNivel1
@@ -34,7 +34,6 @@ export default class mapa extends Phaser.Scene
     const buttonMusica = this.add.image(180, 80, 'botonMusica').setScale(0.7)
 
     //NIVEL YAGUARETE 
-
     this.buttonNivel1 = this.add.image(1130, 170, 'botonNivel').setScale(0.25)
     .setInteractive()
 
@@ -57,28 +56,63 @@ export default class mapa extends Phaser.Scene
       isStatic: true
     }).setScale(0.8)
 
-    //this.scene.start('nivelYaguarete'))
-    const text_yagua = this.add.image(1122, 130, 'textYaguarete').setScale(0.8);  
+    this.add.text(1030,115, 'YAGUARETÉ', {
+      fontSize: '250px bold',
+      color: 'yellow',
+      stroke: 'green',
+      strokeThickness: 4,
+      font: '23pt ARCO',
+    })
+    
 
     //NIVEL MONO
     const buttonNivel2 = this.add.image(420,80, 'botonNivel').setScale(0.25)
-    .setInteractive()
-    .on('pointerdown', () => this.scene.start('nivelBonus'))
+
+    this.add.text(320, 25, 'MONO CAPUCHINO', {
+      fontSize: '250px bold',
+      color: 'yellow',
+      stroke: 'green',
+      strokeThickness: 4,
+      font: '16pt ARCO',
+    })
+    
 
     //NIVEL CONDOR
     const buttonNivel3 = this.add.image(360,300, 'botonNivel').setScale(0.25)
-    .setInteractive()
-    .on('pointerdown', () => this.scene.start('gameOver'))
+
+    this.add.text(251,330, 'PRÓXIMAMENTE', {
+      fontSize: '700px',
+      color: 'grey',
+      stroke: 'black',
+      strokeThickness: 4,
+      font: '19pt ARCO Regular',
+      
+    }).angle = -25;
 
     //NIVEL BALLENA
     const buttonNivel4 = this.add.image(980,470, 'botonNivel').setScale(0.25)
-    .setInteractive()
-    .on('pointerdown', () => this.scene.start('gameWin'))
+
+    this.add.text(871,500, 'PRÓXIMAMENTE', {
+      fontSize: '25px',
+      color: 'grey',
+      stroke: 'black',
+      strokeThickness: 4,
+      font: '19pt ARCO Regular',
+    }).angle = -25;
+
 
     //NIVEL PINGUINO
     const buttonNivel5 = this.add.image(380,650, 'botonNivel').setScale(0.25)
     .setInteractive()
     .on('pointerdown', () => this.scene.start('nivelPinguino'))
+
+    this.add.text(295,595, 'PINGÜINO', {
+      fontSize: '250px bold',
+      color: 'yellow',
+      stroke: 'green',
+      strokeThickness: 4,
+      font: '23pt ARCO',
+    })
   }
 
   public ganarYaguarete()

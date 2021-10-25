@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import UI from '../UI'; 
+import UI from './UI'; 
 import {sharedInstance as events} from '../eventCenter'
 
 export default class gameWin extends Phaser.Scene{
@@ -35,29 +35,13 @@ export default class gameWin extends Phaser.Scene{
       this.scene.stop('nivelYaguarete')
       this.scene.start('menuMapa')
     });
-    events.on('1estrella', this.cantidadEstrellas1, this)
-    events.on('2estrella', this.cantidadEstrellas2, this)
-    events.on('3estrella', this.cantidadEstrellas3, this)
+    events.on('estrella', this.cantidadEstrellas, this)
   }
  
-  cantidadEstrellas1()
+  cantidadEstrellas(cantidad:number)
   {
-    this.add.sprite(700, 400, 'estrellasYaguarete', 1).setDepth(7)
+    const estrellita = this.add.sprite(700, 400, 'estrellasYaguarete', cantidad).setDepth(7)
   }
-
-  cantidadEstrellas2()
-  {    
-    const estrellita = this.add.sprite(700, 400, 'estrellasYaguarete', 2).setDepth(7)
-  }
-  cantidadEstrellas3()
-  {  
-    const estrellita = this.add.sprite(700, 400, 'estrellasYaguarete', 3).setDepth(7)
-  }
-
-
-   
-
-
 
   /* public mostrarEstrella(criasTotales:number, comidaTotales:number)
   {

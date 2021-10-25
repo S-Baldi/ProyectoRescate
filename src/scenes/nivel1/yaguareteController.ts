@@ -3,7 +3,7 @@ import Phaser from 'phaser'
 import StateMachine from '../../statemachine/StateMachine'
 import { sharedInstance as events } from '../eventCenter'
 import ObstaclesController from '../obstaclesController'
-import UI from '../UI'
+import UI from './UI'
 
 type CursorKeys = Phaser.Types.Input.Keyboard.CursorKeys
 
@@ -99,24 +99,21 @@ export default class yaguareteController
 					sprite.destroy()
 					break
 				}
-
 			}
-			
-			events.on('sumaEstrella', this.sumadorEstrellas)
-			this.cantEstrellas = 1 
 		})
+		
+		events.removeAllListeners();
+		events.on('sumaEstrella', this.sumadorEstrellas, this)
+		this.cantEstrellas=0
   }
   update(dt: number)
 	{
 		this.stateMachine.update(dt)
-		
 	}
 
 	sumadorEstrellas()
 	{	
-    this.cantEstrellas= +1 	
-		
-		console.log(this.cantEstrellas)
+    this.cantEstrellas = this.cantEstrellas+1			
 	}
 
 	//	WALK  
@@ -163,28 +160,35 @@ export default class yaguareteController
 		})
 	}
 
-	public banderaCollected(){
-		
-				
+	private banderaCollected(){
 		this.scene.scene.pause()
-		this.scene.scene.stop('ui')		
-		this.scene.scene.launch('gameWin')		
+		this.scene.scene.stop('ui')
+		this.scene.scene.launch('gameWin')	
+
+		this.cantEstrellas = this.cantEstrellas+1
+		console.log(this.cantEstrellas)
+				
+		/* let cat2 = localStorage.getItem('nivelPasado');
+		if (cat2 < 1){
+			localStorage.setItem('nivelPasado', '1');
+		} */
+		
 
 		if (this.cantEstrellas == 2) 
 		{
 			console.log('2 estrellas')
-			events.emit('2estrella')
+			events.emit('estrella', 2)
 		}
 		else if (this.cantEstrellas == 3) 
 		{
 			console.log('3 estrellas')
-			events.emit('3estrella')
+			events.emit('estrella', 3)
 		} 
 		else
 		{
 			console.log('1 estrellas')
-			events.emit('1estrella')
-		}	
+			events.emit('estrella', 1)
+		}
 	}
   
 	//  									ANIMACIONES 	

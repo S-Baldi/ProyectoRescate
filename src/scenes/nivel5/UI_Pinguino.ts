@@ -1,7 +1,7 @@
 import Phaser from "phaser"
-import {sharedInstance as events} from './eventCenter'
+import {sharedInstance as events} from '../eventCenter'
 
-export default class UI extends Phaser.Scene
+export default class UI_Pinguino extends Phaser.Scene
 {	
   //Texto para corroborar
   private criasLabel!: Phaser.GameObjects.Text
@@ -18,19 +18,16 @@ export default class UI extends Phaser.Scene
 	//Estrellas totales [0 a 3]
 	private estrellasNivel1 = 0
 
-	private pause = false
-
 	constructor()
 	{
 		super({
-			key: 'ui'
+			key: 'uiPinguino'
 		})
 
 	}
 
 	init()
 	{
-		this.pause = false
 
 		this.criasCollected = 0
     this.comidaCollected = 0
@@ -48,8 +45,8 @@ export default class UI extends Phaser.Scene
 		botonPausa.setInteractive()
 		botonPausa.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
 		{
-			this.scene.pause('nivelYaguarete');
-			this.scene.launch('pause');
+			this.scene.pause('nivelPinguino');
+			this.scene.launch('pausePinguino');
 		});
 
 		events.on('crias-collected', this.handleCriasCollected, this)
@@ -69,7 +66,7 @@ export default class UI extends Phaser.Scene
       font: '40pt Helvetica neue black', 
 		})
     
-    this.comidaLabel = this.add.text(950, 80, 'Comida: 0/25', {
+    this.comidaLabel = this.add.text(950, 80, 'Comida: 0/47', {
 			fontSize: '32px',
 			color: 'black',
       font: '40pt Helvetica neue black',
@@ -96,22 +93,22 @@ export default class UI extends Phaser.Scene
 		++this.criasCollected
     this.criasLabel.text = `Crias: ` + this.criasCollected + '/3'
 		
-		if (this.criasCollected =1) 
+		/* if (this.criasCollected > 0) 
 		{
-			
+			console.log('JUNTASTE CRIA')
 			events.emit('sumaEstrella')
-		}
+		} */
 	}
 
   private handleComidaCollected()
 	{
 		++this.comidaCollected
-    this.comidaLabel.text = `Comida: ${this.comidaCollected}`+ '/25'
+    this.comidaLabel.text = `Comida: ${this.comidaCollected}`+ '/47'
 		
-		if (this.comidaCollected = 1) 
+		/* if (this.comidaCollected > 0) 
 		{
-			
+			console.log('JUNTASTE COMIDA')
 			events.emit('sumaEstrella')
-		}
+		} */
 	}
 }

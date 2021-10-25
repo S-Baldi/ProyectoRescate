@@ -15,10 +15,14 @@ import gameWin from './scenes/nivel1/gameWin'
 import pop_up from './scenes/nivel1/nivelBonus/pop_up_Bonus'
 import preguntas from './scenes/nivel1/nivelBonus/preguntas'
 import pause from './scenes/nivel1/pause'
-import UI from './scenes/UI'
+import UI from './scenes/nivel1/UI'
 
 //NIVEL PINGUINO
 import nivel_5 from './scenes/nivel5/nivel5'
+import gameWinPinguino from './scenes/nivel5/gameWin'
+import gameOverPinguino from './scenes/nivel5/gameOver'
+import UI_Pinguino from './scenes/nivel5/UI_Pinguino'
+import pausePinguino from './scenes/nivel5/pause'
 
 const config : Phaser.Types.Core.GameConfig =
 {
@@ -38,7 +42,9 @@ const config : Phaser.Types.Core.GameConfig =
       debug: false
     }
   },
-  scene: [mp1, info, mapa, ayuda, creditos, extras, nivel_1, UI, gameOver, gameWin, pause, bonus, pop_up, preguntas, pop_upExt, nivel_5]
+  scene: [mp1, info, mapa, ayuda, creditos, extras, 
+    nivel_1, UI, gameOver, gameWin, pause, bonus, pop_up, preguntas, pop_upExt, 
+    nivel_5, UI_Pinguino, gameWinPinguino, gameOverPinguino, pausePinguino]
 };
 
 export default new Phaser.Game(config)
