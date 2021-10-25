@@ -106,7 +106,7 @@ export default class UI extends Phaser.Scene
   private handleComidaCollected()
 	{
 		++this.comidaCollected
-    this.comidaLabel.text = `Comida: ${this.comidaCollected}`+ '/25'
+    this.comidaLabel.text = `Comida: ${this.comidaCollected}`+ '/48'
 		
 		if (this.comidaCollected > 0) 
 		{

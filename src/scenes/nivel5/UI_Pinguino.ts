@@ -103,7 +103,7 @@ export default class UI_Pinguino extends Phaser.Scene
   private handleComidaCollected()
 	{
 		++this.comidaCollected
-    this.comidaLabel.text = `Comida: ${this.comidaCollected}`+ '/25'
+    this.comidaLabel.text = `Comida: ${this.comidaCollected}`+ '/47'
 		
 		/* if (this.comidaCollected > 0) 
 		{

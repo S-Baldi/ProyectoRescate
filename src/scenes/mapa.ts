@@ -56,7 +56,7 @@ export default class mapa extends Phaser.Scene
       isStatic: true
     }).setScale(0.8)
 
-    this.add.text(1030,115, 'YAGUARETE', {
+    this.add.text(1030,115, 'YAGUARETÉ', {
       fontSize: '250px bold',
       color: 'yellow',
       stroke: 'green',
@@ -80,24 +80,24 @@ export default class mapa extends Phaser.Scene
     //NIVEL CONDOR
     const buttonNivel3 = this.add.image(360,300, 'botonNivel').setScale(0.25)
 
-    this.add.text(250,330, 'PROXIMAMENTE', {
+    this.add.text(251,330, 'PRÓXIMAMENTE', {
       fontSize: '700px',
       color: 'grey',
       stroke: 'black',
       strokeThickness: 4,
-      font: '20pt ARCO Regular',
+      font: '19pt ARCO Regular',
       
     }).angle = -25;
 
     //NIVEL BALLENA
     const buttonNivel4 = this.add.image(980,470, 'botonNivel').setScale(0.25)
 
-    this.add.text(870,500, 'PROXIMAMENTE', {
+    this.add.text(871,500, 'PRÓXIMAMENTE', {
       fontSize: '25px',
       color: 'grey',
       stroke: 'black',
       strokeThickness: 4,
-      font: '20pt ARCO Regular',
+      font: '19pt ARCO Regular',
     }).angle = -25;
 
 
@@ -106,7 +106,7 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on('pointerdown', () => this.scene.start('nivelPinguino'))
 
-    this.add.text(295,595, 'PINGUINO', {
+    this.add.text(295,595, 'PINGÜINO', {
       fontSize: '250px bold',
       color: 'yellow',
       stroke: 'green',
