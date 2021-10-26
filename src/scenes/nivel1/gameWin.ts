@@ -8,6 +8,8 @@ export default class gameWin extends Phaser.Scene{
   constructor()
   {
     super('gameWin');
+
+
   }
 
   preload(){
@@ -16,12 +18,14 @@ export default class gameWin extends Phaser.Scene{
     {frameWidth:269 , frameHeight:114 });
   }
   
-  create(){    
+  create(){  
     
     const gameLose = this.add.image(683, 384, 'win')
 
     const buttonRestart = this.add.image(800, 590,  'botonReset')
     .setInteractive()
+    .on('pointerover', () => buttonRestart.setScale(1.1))
+    .on('pointerout', () => buttonRestart.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
       this.scene.stop('nivelYaguarete')
@@ -30,6 +34,8 @@ export default class gameWin extends Phaser.Scene{
 
     const buttonMapa = this.add.image(600, 590, 'botonMapa')
     .setInteractive()
+    .on('pointerover', () => buttonMapa.setScale(1.1))
+    .on('pointerout', () => buttonMapa.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
       this.scene.manager.scenes[2].ganarYaguarete()
@@ -55,7 +61,7 @@ export default class gameWin extends Phaser.Scene{
     {
       this.add.sprite(675, 450, 'estrellasYaguarete', 1).setDepth(7)
     }
-    ¿
+    
   }  
 
 /*   public gameWinLose (finalNivel: string){
@@ -102,10 +108,5 @@ this.scene.start('menuMapa')
 });
 };
 } */
-  
 
-  update()
-  {
-
-  }
 }

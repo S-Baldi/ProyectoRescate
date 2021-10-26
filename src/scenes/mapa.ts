@@ -14,7 +14,6 @@ export default class mapa extends Phaser.Scene
     {frameWidth:269 , frameHeight:114 });
     this.load.image('nivelBonus', 'assets/Mapa/NivelBonus.png');
   }
-  private buttonNivel1
   private textoYaguarete
   private cantidadCiertaEstrellas:any
 
@@ -30,15 +29,23 @@ export default class mapa extends Phaser.Scene
 
     const buttonMenu = this.add.image(65, 80, 'botonMenuPpal').setScale(0.7)
     .setInteractive()
+    .on('pointerover', () => buttonMenu.setScale(0.8))
+    .on('pointerout', () => buttonMenu.setScale(0.7))
     .on('pointerdown', () => this.scene.start('menuPpal'));
 
     const buttonMusica = this.add.image(180, 80, 'botonMusica').setScale(0.7)
 
     //NIVEL YAGUARETE 
-    this.buttonNivel1 = this.add.image(1130, 170, 'botonNivel').setScale(0.25)
+    const buttonNivel1 = this.add.image(1130, 170, 'botonNivel').setScale(0.25)
     .setInteractive()
-
+    .on('pointerover', () => buttonNivel1.setScale(0.28))
+    .on('pointerout', () => buttonNivel1.setScale(0.25))
     .on('pointerdown', () => 
+      this.add.image(900, 250, 'botonatras')
+      .setScale(0.5)
+      .setDepth(10)
+      .setInteractive() &&
+
       this.add.image(680, 350, 'botonNivel').setScale(0.7) &&
 
       this.add.text(680, 400, '   NIVEL \nPRINCIPAL', {fontSize: '45px bold', color: 'black'})
@@ -49,7 +56,9 @@ export default class mapa extends Phaser.Scene
       }).setScale(1.8) &&
 
       this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'gray'})
-      .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus')))
+      .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus'))) 
+
+      
     )  
 
     this.add.text(1030,115, 'YAGUARETÉ', {
@@ -127,6 +136,8 @@ export default class mapa extends Phaser.Scene
     //NIVEL PINGUINO
     const buttonNivel5 = this.add.image(380,650, 'botonNivel').setScale(0.25)
     .setInteractive()
+    .on('pointerover', () => buttonNivel5.setScale(0.28))
+    .on('pointerout', () => buttonNivel5.setScale(0.25))
     .on('pointerdown', () => this.scene.start('nivelPinguino'))
 
     this.add.text(295,595, 'PINGÜINO', {

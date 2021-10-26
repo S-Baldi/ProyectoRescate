@@ -59,6 +59,8 @@ export default class mp1 extends Phaser.Scene
     //Boton Play
     const buttonPlay = this.add.image(900, 650, 'botonPlay')
     .setInteractive()
+    .on('pointerover', () => buttonPlay.setScale(1.1))
+    .on('pointerout', () => buttonPlay.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
       this.scene.start('menuMapa') && sonidoButton.play({volume:0.5})
@@ -67,6 +69,8 @@ export default class mp1 extends Phaser.Scene
     //Boton Premio
     const buttonPremio = this.add.image(700, 650, 'botonDesbloqueable')
     .setInteractive()
+    .on('pointerover', () => buttonPremio.setScale(1.1))
+    .on('pointerout', () => buttonPremio.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
       this.scene.start('extras') && sonidoButton.play({volume:0.5})
@@ -75,6 +79,8 @@ export default class mp1 extends Phaser.Scene
     //Boton Info
     const buttonInfo = this.add.image(500, 650, 'botonInfo')
     .setInteractive()
+    .on('pointerover', () => buttonInfo.setScale(1.1))
+    .on('pointerout', () => buttonInfo.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
     { 
       this.scene.start('informacion')

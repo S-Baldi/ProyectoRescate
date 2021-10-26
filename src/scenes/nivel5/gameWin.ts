@@ -21,6 +21,8 @@ export default class gameWinPinguino extends Phaser.Scene{
 
     const buttonRestart = this.add.image(800, 520,  'botonReset')
     .setInteractive()
+    .on('pointerover', () => buttonRestart.setScale(1.1))
+    .on('pointerout', () => buttonRestart.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
       this.scene.stop('nivelPinguino')
@@ -29,6 +31,8 @@ export default class gameWinPinguino extends Phaser.Scene{
 
     const buttonMapa = this.add.image(600, 520, 'botonMapa')
     .setInteractive()
+    .on('pointerover', () => buttonMapa.setScale(1.1))
+    .on('pointerout', () => buttonMapa.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
       //this.scene.manager.scenes[2].ganarYaguarete()
