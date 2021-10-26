@@ -43,9 +43,12 @@ export default class UI_Pinguino extends Phaser.Scene
 		
 		const botonPausa = this.add.image(100, 100, 'botonPausa');
 		botonPausa.setInteractive()
+		.on('pointerover', () => botonPausa.setScale(1.1))
+    .on('pointerout', () => botonPausa.setScale(1))
 		botonPausa.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
 		{
 			this.scene.pause('nivelPinguino');
+			this.scene.pause('uiPinguino');
 			this.scene.launch('pausePinguino');
 		});
 
