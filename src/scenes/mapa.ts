@@ -15,7 +15,6 @@ export default class mapa extends Phaser.Scene
     this.load.image('nivelBonus', 'assets/Mapa/NivelBonus.png');
   }
   private textoYaguarete
-
   public yaguareteBonus(text:any)
   {
     this.textoYaguarete = text
@@ -40,6 +39,11 @@ export default class mapa extends Phaser.Scene
     .on('pointerover', () => buttonNivel1.setScale(0.28))
     .on('pointerout', () => buttonNivel1.setScale(0.25))
     .on('pointerdown', () => 
+      this.add.image(900, 250, 'botonatras')
+      .setScale(0.5)
+      .setDepth(10)
+      .setInteractive() &&
+
       this.add.image(680, 350, 'botonNivel').setScale(0.7) &&
 
       this.add.text(680, 400, '   NIVEL \nPRINCIPAL', {fontSize: '45px bold', color: 'black'})
@@ -50,7 +54,9 @@ export default class mapa extends Phaser.Scene
       }).setScale(1.8) &&
 
       this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'gray'})
-      .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus')))
+      .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus'))) 
+
+      
     )  
 
     var estrellas_Mapa : Phaser.Physics.Matter.Sprite = this.matter.add.sprite
