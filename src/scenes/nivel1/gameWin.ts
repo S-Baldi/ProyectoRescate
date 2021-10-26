@@ -6,6 +6,8 @@ export default class gameWin extends Phaser.Scene{
   constructor()
   {
     super('gameWin');
+
+
   }
 
   preload(){
@@ -14,8 +16,7 @@ export default class gameWin extends Phaser.Scene{
     {frameWidth:269 , frameHeight:114 });
   }
   
-  create(){
-    
+  create(){  
     
     const gameLose = this.add.image(683, 384, 'win')
 
@@ -35,12 +36,18 @@ export default class gameWin extends Phaser.Scene{
       this.scene.stop('nivelYaguarete')
       this.scene.start('menuMapa')
     });
-    events.on('estrella', this.cantidadEstrellas, this)
+
+    events.on('estrellasMostradas', this.cantidadEstrellas, this)
+
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+			events.off('estrellasMostradas', this.cantidadEstrellas, this)
+		})
   }
 
-  cantidadEstrellas(cantidad:number)
+  private cantidadEstrellas()
   {
-    const estrellita = this.add.sprite(700, 400, 'estrellasYaguarete', cantidad).setDepth(7)
+    console.log('ESTRELLAS MOSTRADAS SI FUNCIONA')
+    const estrellasMostradas = this.add.sprite(700, 400, 'estrellasYaguarete').setDepth(15)
   }
 
   /* public mostrarEstrella(criasTotales:number, comidaTotales:number)
@@ -149,9 +156,5 @@ this.scene.start('menuMapa')
 });
 };
 } */
-  
 
-  update(){
-
-  }
 }

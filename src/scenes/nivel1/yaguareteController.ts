@@ -174,22 +174,20 @@ export default class yaguareteController
 		if (cat2 < 1){
 			localStorage.setItem('nivelPasado', '1');
 		} */
-		
-
 		if (this.cantEstrellas == 2) 
 		{
 			console.log('2 estrellas')
-			events.emit('estrella', 2)
+			events.emit('estrellasMostradas' )
 		}
 		else if (this.cantEstrellas == 3) 
 		{
 			console.log('3 estrellas')
-			events.emit('estrella', 3)
+			events.emit('estrellasMostradas' )
 		} 
 		else
 		{
 			console.log('1 estrellas')
-			events.emit('estrella', 1)
+			events.emit('estrellasMostradas')
 		}
 	}
   
