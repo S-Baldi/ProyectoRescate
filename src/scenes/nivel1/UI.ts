@@ -83,7 +83,7 @@ export default class UI extends Phaser.Scene
 		
 		if (this.criasCollected > 0) 
 		{
-			console.log('JUNTASTE CRIA')
+		
 			events.emit('sumaEstrella')
 		}
 	}
@@ -95,7 +95,7 @@ export default class UI extends Phaser.Scene
 		
 		if (this.comidaCollected > 0) 
 		{
-			console.log('JUNTASTE COMIDA')
+			
 			events.emit('sumaEstrella')
 		}
 	}

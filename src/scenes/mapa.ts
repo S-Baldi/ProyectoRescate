@@ -1,7 +1,7 @@
 import Phaser from 'phaser'
 export default class mapa extends Phaser.Scene
 {
-  
+  private cantidadEstrellasYagua:any
   constructor(){
     super ('menuMapa');
   }
@@ -16,6 +16,7 @@ export default class mapa extends Phaser.Scene
   }
   private buttonNivel1
   private textoYaguarete
+  private cantidadCiertaEstrellas:any
 
   public yaguareteBonus(text:any)
   {
@@ -51,11 +52,6 @@ export default class mapa extends Phaser.Scene
       .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus')))
     )  
 
-    var estrellas_Mapa : Phaser.Physics.Matter.Sprite = this.matter.add.sprite
-    (1150,195, 'estrellasYaguarete', undefined, {
-      isStatic: true
-    }).setScale(0.8)
-
     this.add.text(1030,115, 'YAGUARETÉ', {
       fontSize: '250px bold',
       color: 'yellow',
@@ -63,6 +59,33 @@ export default class mapa extends Phaser.Scene
       strokeThickness: 4,
       font: '23pt ARCO',
     })
+    
+    this.cantidadEstrellasYagua = localStorage.getItem('estrellasYaguarete') || '1';
+
+   //this.cantidadCiertaEstrellas = this.cantidadEstrellasYagua
+
+    if (this.cantidadCiertaEstrellas < this.cantidadEstrellasYagua) 
+    {
+      this.cantidadCiertaEstrellas = this.cantidadEstrellasYagua
+    }
+
+    if (this.cantidadEstrellasYagua==2) 
+    {
+      this.add.sprite(1120, 195, 'estrellasYaguarete', 2).setDepth(7).setScale(0.8)
+      
+    }else if (this.cantidadEstrellasYagua==3) 
+    {
+      this.add.sprite(1105, 195, 'estrellasYaguarete', 3).setDepth(7).setScale(0.8)
+    } else if(this.cantidadEstrellasYagua==1)
+    {
+      this.add.sprite(1137, 195, 'estrellasYaguarete', 1).setDepth(7).setScale(0.8)
+    }  else
+    {
+      this.add.sprite(1150, 195, 'estrellasYaguarete', 0).setDepth(7).setScale(0.8)
+    }
+    
+
+    
     
 
     //NIVEL MONO

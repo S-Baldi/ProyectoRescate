@@ -166,7 +166,7 @@ export default class yaguareteController
 		this.scene.scene.launch('gameWin')	
 
 		this.cantEstrellas = this.cantEstrellas+1
-		console.log(this.cantEstrellas)
+		
 				
 		/* let cat2 = localStorage.getItem('nivelPasado');
 		if (cat2 < 1){
@@ -175,19 +175,16 @@ export default class yaguareteController
 		
 
 		if (this.cantEstrellas == 2) 
-		{
-			console.log('2 estrellas')
-			events.emit('estrella', 2)
+		{			
+			localStorage.setItem('estrellasYaguarete', '2');
 		}
 		else if (this.cantEstrellas == 3) 
-		{
-			console.log('3 estrellas')
-			events.emit('estrella', 3)
+		{			
+			localStorage.setItem('estrellasYaguarete', '3');	
 		} 
 		else
 		{
-			console.log('1 estrellas')
-			events.emit('estrella', 1)
+			localStorage.setItem('estrellasYaguarete', '1');
 		}
 	}
   
