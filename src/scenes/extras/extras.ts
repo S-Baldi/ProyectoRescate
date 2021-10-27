@@ -28,7 +28,7 @@ export default class extras extends Phaser.Scene
     .setInteractive()
     .on('pointerdown', () => this.scene.start('menuPpal'));
     
-    var puntaje= 15;
+    var puntaje= 3;
     
     //Yaguarete
     if(puntaje<3)
@@ -80,7 +80,7 @@ export default class extras extends Phaser.Scene
       let buttonInfoBallena = this.add.image(950, 350, 'infoBallena').setScale(1) &&
       this.add.text(1050, 320, 'BALLENA', {font: 'bold 40pt Arial', fontSize: '10px', align:'center'})
       .setInteractive() 
-      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.manager.scenes[14].mostrarInfo('ballenaInformation') && this.scene.pause() ) ;  
+      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.manager.scenes[14].mostrarInfo('ballenaInformation') && this.scene.pause()  ) ;  
     }
 
     //Pingüino

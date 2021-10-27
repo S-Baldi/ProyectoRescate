@@ -6,7 +6,7 @@ export default class pop_upExt extends Phaser.Scene
   
   constructor()
   {
-    super('pop_up_E');
+    super('this.scene.get("menuMapa").ganarYaguarete()');
   }
 
   preload()

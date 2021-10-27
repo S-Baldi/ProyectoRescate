@@ -3,7 +3,12 @@ import gameWin from './nivel1/gameWin';
 export default class mapa extends Phaser.Scene
 {
   private cantidadEstrellasYagua:any
+  private cantidadEstrellasPingui
   private estrellaMasAlta : number =0
+  private textoYaguarete
+  private textoPinguino 
+  private cantidadCiertaEstrellas:any
+  private contadorEntrarNivel:number=0 
   constructor(){
     super ('menuMapa');
   }
@@ -16,13 +21,15 @@ export default class mapa extends Phaser.Scene
     {frameWidth:269 , frameHeight:114 });
     this.load.image('nivelBonus', 'assets/Mapa/NivelBonus.png');
   }
-  private textoYaguarete
-  private cantidadCiertaEstrellas:any
-  private contadorEntrarNivel:number=0 
+  
 
   public yaguareteBonus(text:any)
   {
     this.textoYaguarete = text
+  }
+  public pinguinoBonus(text:any)
+  {
+    this.textoPinguino = text
   }
 
   create(){
@@ -38,7 +45,7 @@ export default class mapa extends Phaser.Scene
 
     const buttonMusica = this.add.image(180, 80, 'botonMusica').setScale(0.7)
 
-    //NIVEL YAGUARETE 
+    //////////////////////////////////////////////NIVEL YAGUARETE////////////////////////////////////////////// 
     this.cantidadEstrellasYagua = localStorage.getItem('estrellasYaguarete') || '1';  
     
     if (this.cantidadEstrellasYagua>this.estrellaMasAlta) 
@@ -55,19 +62,17 @@ export default class mapa extends Phaser.Scene
       this.add.image(900, 250, 'botonatras')
       .setScale(0.5)
       .setDepth(10)
-      .setInteractive() &&
+      .setInteractive().on('pointerdown', () => this.scene.start('menuMapa')) &&
 
       this.add.image(680, 350, 'botonNivel').setScale(0.7) &&
 
       this.add.text(680, 400, '   NIVEL \nPRINCIPAL', {fontSize: '45px bold', color: 'black'})
       .setInteractive().on('pointerdown', () => this.scene.sleep('menuMapa') /* duermo el mapa para guardar datos */ &&  this.scene.start('nivelYaguarete'))  &&
 
-      this.matter.add.sprite(720, 280, 'estrellasYaguarete', undefined, {
-      isStatic:true
-      }).setScale(1.8) && 
+      this.add.sprite(650, 280, 'estrellasYaguarete', this.estrellaMasAlta).setScale(1.8) && 
       this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'gray'}))         
     ) 
-    buttonNivel1.on('pointerdown', () => {this.activarBotonNivel1(true)})
+    buttonNivel1.on('pointerdown', () => {this.activarBotonNivel(true)})
 
     this.add.text(1030,115, 'YAGUARETÉ', {
       fontSize: '250px bold',
@@ -79,7 +84,7 @@ export default class mapa extends Phaser.Scene
 
     
     
-    //NIVEL MONO
+    //////////////////////////////////////////////NIVEL MONO//////////////////////////////////////////////
     const buttonNivel2 = this.add.image(420,80, 'botonNivel').setScale(0.25)
 
     this.add.text(320, 25, 'MONO CAPUCHINO', {
@@ -91,7 +96,7 @@ export default class mapa extends Phaser.Scene
     })
     
 
-    //NIVEL CONDOR
+    //////////////////////////////////////////////NIVEL CONDOR//////////////////////////////////////////////
     const buttonNivel3 = this.add.image(360,300, 'botonNivel').setScale(0.25)
 
     this.add.text(251,330, 'PRÓXIMAMENTE', {
@@ -103,7 +108,7 @@ export default class mapa extends Phaser.Scene
       
     }).angle = -25;
 
-    //NIVEL BALLENA
+    //////////////////////////////////////////////NIVEL BALLENA//////////////////////////////////////////////
     const buttonNivel4 = this.add.image(980,470, 'botonNivel').setScale(0.25)
 
     this.add.text(871,500, 'PRÓXIMAMENTE', {
@@ -115,12 +120,26 @@ export default class mapa extends Phaser.Scene
     }).angle = -25;
 
 
-    //NIVEL PINGUINO
+    //////////////////////////////////////////////NIVEL PINGUINO//////////////////////////////////////////////
     const buttonNivel5 = this.add.image(380,650, 'botonNivel').setScale(0.25)
     .setInteractive()
     .on('pointerover', () => buttonNivel5.setScale(0.28))
     .on('pointerout', () => buttonNivel5.setScale(0.25))
-    .on('pointerdown', () => this.scene.start('nivelPinguino'))
+    .on('pointerdown', () => 
+      this.add.image(900, 250, 'botonatras')
+        .setScale(0.5)
+        .setDepth(10)
+        .setInteractive().on('pointerdown', () => this.scene.start('menuMapa')) &&
+
+      this.add.image(680, 350, 'botonNivel').setScale(0.7) &&
+
+      this.add.text(680, 400, '   NIVEL \nPRINCIPAL', {fontSize: '45px bold', color: 'black'})
+      .setInteractive().on('pointerdown', () => this.scene.sleep('menuMapa') /* duermo el mapa para guardar datos */ &&  this.scene.start('nivelPinguino'))  &&
+
+      this.add.sprite(650, 280, 'estrellasYaguarete', this.estrellaMasAlta).setScale(1.8) && 
+      this.pinguinoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'gray'}))         
+    ) 
+    buttonNivel5.on('pointerdown', () => {this.activarBotonNivel(true)})
 
     this.add.text(295,595, 'PINGÜINO', {
       fontSize: '250px bold',
@@ -129,12 +148,22 @@ export default class mapa extends Phaser.Scene
       strokeThickness: 4,
       font: '23pt ARCO',
     })
+    ////////////////////////////////////////////////////////////
+    
+
+
+
+
+    /////////////////////////////////////////////////////////////
   }
-  public activarBotonNivel1(visible:boolean)
+  public activarBotonNivel(visible:boolean)
   {
     if (this.contadorEntrarNivel>0)
     {
       this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'black'})
+      .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus')).setDepth(7).setVisible(visible))
+
+      this.pinguinoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'black'})
       .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus')).setDepth(7).setVisible(visible))
     }
   }

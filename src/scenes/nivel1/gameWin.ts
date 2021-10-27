@@ -50,7 +50,7 @@ export default class gameWin extends Phaser.Scene{
     //events.on('estrella', ()=>{console.log('emite estrellas')}, this);
 
     this.cantidadEstrellasYagua = localStorage.getItem('estrellasYaguarete') || '1';
-    this.cantidadCiertaEstrellas=0
+    this.cantidadCiertaEstrellas=0 
 
     if (this.cantidadEstrellasYagua==2) 
     {
