@@ -54,7 +54,7 @@ export default class extras extends Phaser.Scene
       let buttonInfoMono = this.add.image(200, 450, 'infoMono').setScale(1.1) &&
       this.add.text(300, 420, 'MONO', {font: 'bold 40pt Arial', fontSize: '10px', align:'center'})
       .setInteractive() 
-      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.manager.scenes[14].mostrarInfo('monoInformation') && this.scene.pause());  
+      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.manager.scenes[14].mostrarInfo('monoInformation') );  
     }
 
     //Condor
@@ -67,7 +67,7 @@ export default class extras extends Phaser.Scene
       let buttonInfoCondor = this.add.image(200, 650, 'infoCondor').setScale(0.8) &&
       this.add.text(300, 620, 'CONDOR', {font: 'bold 40pt Arial', fontSize: '10px', align:'center'})
       .setInteractive() 
-      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.manager.scenes[14].mostrarInfo('condorInformation') && this.scene.pause() ) ;   
+      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.manager.scenes[14].mostrarInfo('condorInformation') ) ;   
     }
 
     //Ballena
@@ -80,7 +80,7 @@ export default class extras extends Phaser.Scene
       let buttonInfoBallena = this.add.image(950, 350, 'infoBallena').setScale(1) &&
       this.add.text(1050, 320, 'BALLENA', {font: 'bold 40pt Arial', fontSize: '10px', align:'center'})
       .setInteractive() 
-      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.manager.scenes[14].mostrarInfo('ballenaInformation') && this.scene.pause()  ) ;  
+      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.manager.scenes[14].mostrarInfo('ballenaInformation')) ;  
     }
 
     //Pingüino
@@ -93,7 +93,7 @@ export default class extras extends Phaser.Scene
       let buttonInfoPinguino = this.add.image(950, 550, 'infoPinguino').setScale(0.9) &&
       this.add.text(1050, 520, 'PINGÜINO', {font: 'bold 40pt Arial', fontSize: '10px', align:'center'})
       .setInteractive() 
-      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.manager.scenes[14].mostrarInfo('pinguinoInformation') && this.scene.pause() ) ;  
+      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.manager.scenes[14].mostrarInfo('pinguinoInformation')) ;  
     }  
   }
 }
