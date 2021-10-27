@@ -112,10 +112,8 @@ export default class yaguareteController
 	}
 
 	sumadorEstrellas()
-	{
-		console.log('Sumador de estrellas')
-    this.cantEstrellas = this.cantEstrellas+1
-		console.log(this.cantEstrellas)	
+	{	
+    this.cantEstrellas = this.cantEstrellas+1			
 	}
 
 	//	WALK  
@@ -168,26 +166,24 @@ export default class yaguareteController
 		this.scene.scene.launch('gameWin')	
 
 		this.cantEstrellas = this.cantEstrellas+1
-		console.log(this.cantEstrellas)
+		this.scene.scene.get('menuMapa').aumentaContador()
 				
 		/* let cat2 = localStorage.getItem('nivelPasado');
 		if (cat2 < 1){
 			localStorage.setItem('nivelPasado', '1');
 		} */
+
 		if (this.cantEstrellas == 2) 
-		{
-			console.log('2 estrellas')
-			events.emit('estrellasMostradas' )
+		{			
+			localStorage.setItem('estrellasYaguarete', '2');
 		}
 		else if (this.cantEstrellas == 3) 
-		{
-			console.log('3 estrellas')
-			events.emit('estrellasMostradas' )
+		{			
+			localStorage.setItem('estrellasYaguarete', '3');	
 		} 
 		else
 		{
-			console.log('1 estrellas')
-			events.emit('estrellasMostradas')
+			localStorage.setItem('estrellasYaguarete', '1');
 		}
 	}
   

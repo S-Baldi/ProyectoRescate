@@ -16,7 +16,7 @@ export default class bonus extends Phaser.Scene
   }
 
   create()
-  {
+  {  
     const fondoBonus = this.add.image(683, 384, 'Bonus');
 
     const buttonAtras = this.add.image(1260, 105, 'botonatras').setScale(0.8)
@@ -37,25 +37,25 @@ export default class bonus extends Phaser.Scene
     
     let boton1= this.add.text(150, 513, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px'})
     .setInteractive()
-    .on('pointerdown', () => boton1.setColor(this.scene.launch('pop_up_B') && this.scene.manager.scenes[12].mostrar_Texto(preguntasBonus[0].revisarResp(boton1.text))) &&
+    .on('pointerdown', () => boton1.setColor(this.scene.launch('pop_up_B') && this.scene.get("pop_up_B").mostrar_Texto(preguntasBonus[0].revisarResp(boton1.text))) &&
     
     this.scene.pause())
 
     
     let boton2 = this.add.text(150, 655, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px'})
     .setInteractive()
-    .on('pointerdown', () => boton2.setColor(this.scene.launch('pop_up_B') && this.scene.manager.scenes[12].mostrar_Texto(preguntasBonus[0].revisarResp(boton2.text))) &&
+    .on('pointerdown', () => boton2.setColor(this.scene.launch('pop_up_B') && this.scene.get("pop_up_B").mostrar_Texto(preguntasBonus[0].revisarResp(boton2.text))) &&
     
     this.scene.pause())
 
     let boton3 = this.add.text(800, 513, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px'})
     .setInteractive()
-    .on('pointerdown', () => boton3.setColor(this.scene.launch('pop_up_B') && this.scene.manager.scenes[12].mostrar_Texto(preguntasBonus[0].revisarResp(boton3.text))) &&
+    .on('pointerdown', () => boton3.setColor(this.scene.launch('pop_up_B') && this.scene.get("pop_up_B").mostrar_Texto(preguntasBonus[0].revisarResp(boton3.text))) &&
     this.scene.pause())
 
     let boton4= this.add.text(800, 655, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px'})
     .setInteractive()
-    .on('pointerdown', () => boton4.setColor(this.scene.launch('pop_up_B') && this.scene.manager.scenes[12].mostrar_Texto(preguntasBonus[0].revisarResp(boton4.text))) &&
+    .on('pointerdown', () => boton4.setColor(this.scene.launch('pop_up_B') && this.scene.get("pop_up_B").mostrar_Texto(preguntasBonus[0].revisarResp(boton4.text))) &&
     this.scene.pause())
 
 
