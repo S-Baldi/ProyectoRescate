@@ -1104,6 +1104,39 @@
                  "width":60,
                  "x":26664,
                  "y":323
+                }, 
+                {
+                 "height":60.6065,
+                 "id":436,
+                 "name":"banderaPinguino",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":75.7578,
+                 "x":1518.1211,
+                 "y":41.69675
+                }, 
+                {
+                 "height":42,
+                 "id":437,
+                 "name":"pez",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":60,
+                 "x":650,
+                 "y":263
+                }, 
+                {
+                 "height":62,
+                 "id":438,
+                 "name":"cria",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":66,
+                 "x":1095,
+                 "y":193
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1112,7 +1145,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":436,
+ "nextobjectid":439,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
