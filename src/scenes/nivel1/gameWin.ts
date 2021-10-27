@@ -5,6 +5,7 @@ import {sharedInstance as events } from '../eventCenter'
 export default class gameWin extends Phaser.Scene{
   private cantidadEstrellasYagua: any
   private cantidadCiertaEstrellas: any
+ 
   constructor()
   {
     super('gameWin');
@@ -18,8 +19,8 @@ export default class gameWin extends Phaser.Scene{
     {frameWidth:269 , frameHeight:114 });
   }
   
-  create(){  
-    
+  create()
+  {  
     const gameLose = this.add.image(683, 384, 'win')
 
     const buttonRestart = this.add.image(800, 590,  'botonReset')
@@ -37,10 +38,12 @@ export default class gameWin extends Phaser.Scene{
     .on('pointerover', () => buttonMapa.setScale(1.1))
     .on('pointerout', () => buttonMapa.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
-    { 
-      this.scene.manager.scenes[2].ganarYaguarete()
+    {   
+      this.scene.get("menuMapa").ganarYaguarete()
       this.scene.stop('nivelYaguarete')
-      this.scene.start('menuMapa')
+      this.scene.stop('gameWin')
+      this.scene.start('menuMapa')   
+      //this.scene.moveUp('menuMapa') //trae adelante a la escena      
     });
     
     //events.on('estrella', this.cantidadEstrellasGanadas, this);
@@ -57,12 +60,19 @@ export default class gameWin extends Phaser.Scene{
     }else if (this.cantidadEstrellasYagua==3) 
     {
       this.add.sprite(675, 450, 'estrellasYaguarete', 3).setDepth(7)
+      this.cantidadCiertaEstrellas=3
     } else
     {
       this.add.sprite(675, 450, 'estrellasYaguarete', 1).setDepth(7)
-    }
-    
+      this.cantidadCiertaEstrellas=1
+    }    
   }  
+  
+  public cantidadCiertaEstrellasYagua()
+  {
+    this.cantidadCiertaEstrellas=this.cantidadEstrellasYagua
+    console.log('this.cantidadCiertaEstrellasYagua')
+  }
 
 /*   public gameWinLose (finalNivel: string){
     //SI PIERDE YAGUARETE
