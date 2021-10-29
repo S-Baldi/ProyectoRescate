@@ -30,6 +30,10 @@ export default class mapa extends Phaser.Scene
   {
     this.textoYaguarete = text
   }
+  public pinguinoNivel(text:any)
+  {
+    this.textoPinguino = text
+  }
   public pinguinoBonus(text:any)
   {
     this.textoPinguino = text
@@ -55,11 +59,7 @@ export default class mapa extends Phaser.Scene
     {
       this.estrellaMasAltaYagua = this.cantidadEstrellasYagua
     }
-<<<<<<< HEAD
     this.add.sprite(1137, 195, 'estrellasYaguarete', this.estrellaMasAltaYagua).setDepth(7).setScale(0.8);
-=======
-    this.add.sprite(1130, 195, 'estrellasYaguarete', this.estrellaMasAlta).setDepth(7).setScale(0.8);
->>>>>>> dc247b74b786d02d7e6ffa3178b200d9146ec8ad
     
     const buttonNivel1 = this.add.image(1130, 170, 'botonNivel').setScale(0.25)
     .setInteractive()
@@ -148,12 +148,13 @@ export default class mapa extends Phaser.Scene
 
       this.add.image(680, 350, 'botonNivel').setScale(0.7) &&
 
-      this.add.text(680, 400, '   NIVEL \nPRINCIPAL', {fontSize: '45px bold', color: 'black'})
-      .setInteractive().on('pointerdown', () => this.scene.sleep('menuMapa') /* duermo el mapa para guardar datos */ &&  this.scene.start('nivelPinguino'))  &&
+      this.pinguinoNivel(this.add.text(680, 400, '   NIVEL \nPRINCIPAL', {fontSize: '45px bold', color: 'gray'}) &&
 
       this.add.sprite(650, 280, 'estrellasYaguarete', this.estrellaMasAltaPingui).setScale(1.8) && 
+      
       this.pinguinoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'gray'}))         
-    ) 
+    ) )
+    buttonNivel5.on('pointerdown', () => {this.activarBotonNivelPrincipal2(true)})
     buttonNivel5.on('pointerdown', () => {this.activarBotonNivel2(true)})
 
     this.add.text(295,595, 'PINGÜINO', {
@@ -171,7 +172,7 @@ export default class mapa extends Phaser.Scene
     if (this.contadorEntrarNivel1>0)
     {
       this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'black'})
-      .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus')).setDepth(7).setVisible(visible))      
+      .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus')).setDepth(7).setVisible(visible))          
     }
   }
   
@@ -181,6 +182,15 @@ export default class mapa extends Phaser.Scene
   }
 
   /////////////////////// NIVEL 2 ///////////////////////
+  public activarBotonNivelPrincipal2(visible:boolean)
+  {
+    if (this.estrellaMasAltaYagua>0) 
+    {
+      this.pinguinoNivel(this.add.text(680, 400, '   NIVEL \nPRINCIPAL', {fontSize:'45px bold', color: 'black'})
+      .setInteractive().on('pointerdown', () => this.scene.sleep('menuMapa') /* duermo el mapa para guardar datos */ &&  this.scene.start('nivelPinguino')).setDepth(7).setVisible(visible)) 
+    }
+  }
+
   public activarBotonNivel2(visible:boolean)
   {
     if (this.contadorEntrarNivel2>0)
