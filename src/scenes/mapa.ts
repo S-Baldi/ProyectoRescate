@@ -21,7 +21,7 @@ export default class mapa extends Phaser.Scene
     this.load.image('botonNivel', 'assets/Mapa/botonMapa.png');
     this.load.image('fondoMapa', 'assets/Mapa/fondoMapa.png');
     this.load.spritesheet('estrellasYaguarete','assets/Mapa/estrellasMapa.png',
-    {frameWidth:269 , frameHeight:114 });
+    {frameWidth:196 , frameHeight:114 });
     this.load.image('nivelBonus', 'assets/Mapa/NivelBonus.png');
   }
   
@@ -55,7 +55,11 @@ export default class mapa extends Phaser.Scene
     {
       this.estrellaMasAltaYagua = this.cantidadEstrellasYagua
     }
+<<<<<<< HEAD
     this.add.sprite(1137, 195, 'estrellasYaguarete', this.estrellaMasAltaYagua).setDepth(7).setScale(0.8);
+=======
+    this.add.sprite(1130, 195, 'estrellasYaguarete', this.estrellaMasAlta).setDepth(7).setScale(0.8);
+>>>>>>> dc247b74b786d02d7e6ffa3178b200d9146ec8ad
     
     const buttonNivel1 = this.add.image(1130, 170, 'botonNivel').setScale(0.25)
     .setInteractive()
