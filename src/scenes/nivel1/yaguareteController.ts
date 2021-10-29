@@ -166,7 +166,7 @@ export default class yaguareteController
 		this.scene.scene.launch('gameWin')	
 
 		this.cantEstrellas = this.cantEstrellas+1
-		this.scene.scene.get('menuMapa').aumentaContador()
+		this.scene.scene.get('menuMapa').aumentaContador1()
 				
 		/* let cat2 = localStorage.getItem('nivelPasado');
 		if (cat2 < 1){

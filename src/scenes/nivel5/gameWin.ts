@@ -3,6 +3,8 @@ import UI from '../nivel1/UI';
 import {sharedInstance as events} from '../eventCenter'
 
 export default class gameWinPinguino extends Phaser.Scene{
+  private cantidadEstrellasPingui: any
+  private cantidadCiertaEstrellasPinguino: any
   constructor()
   {
     super('gameWinPinguino');
@@ -10,8 +12,8 @@ export default class gameWinPinguino extends Phaser.Scene{
 
   preload(){
     this.load.image('win', 'assets/GameWinLose/win.png');
-    /* this.load.spritesheet('estrellasYaguarete','assets/Mapa/estrellasMapa.png',
-    {frameWidth:269 , frameHeight:114 }) */;
+    this.load.spritesheet('estrellasYaguarete','assets/Mapa/estrellasMapa.png',
+    {frameWidth:269 , frameHeight:114 });
   }
   
   create(){
@@ -19,7 +21,7 @@ export default class gameWinPinguino extends Phaser.Scene{
     
     this.add.image(683, 384, 'win')
 
-    const buttonRestart = this.add.image(800, 520,  'botonReset')
+    const buttonRestart = this.add.image(800, 590,  'botonReset')
     .setInteractive()
     .on('pointerover', () => buttonRestart.setScale(1.1))
     .on('pointerout', () => buttonRestart.setScale(1))
@@ -29,133 +31,41 @@ export default class gameWinPinguino extends Phaser.Scene{
       this.scene.start('nivelPinguino')
     });
 
-    const buttonMapa = this.add.image(600, 520, 'botonMapa')
+    const buttonMapa = this.add.image(600, 590, 'botonMapa')
     .setInteractive()
     .on('pointerover', () => buttonMapa.setScale(1.1))
     .on('pointerout', () => buttonMapa.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
-      //this.scene.manager.scenes[2].ganarYaguarete()
+      this.scene.get("menuMapa").ganar()
       this.scene.stop('nivelPinguino')
       this.scene.start('menuMapa')
     });
-    //events.on('estrella', this.cantidadEstrellas, this)
+
+    this.cantidadEstrellasPingui = localStorage.getItem('estrellasPingui') || '1';
+    this.cantidadCiertaEstrellasPinguino=0 
+
+    if (this.cantidadEstrellasPingui==2) 
+    {
+      this.add.sprite(675, 450, 'estrellasYaguarete', 2).setDepth(7)
+      this.cantidadCiertaEstrellasPinguino=2
+
+    }else if (this.cantidadEstrellasPingui==3) 
+    {
+      this.add.sprite(675, 450, 'estrellasYaguarete', 3).setDepth(7)
+      this.cantidadCiertaEstrellasPinguino=3
+    } else
+    {
+      this.add.sprite(675, 450, 'estrellasYaguarete', 1).setDepth(7)
+      this.cantidadCiertaEstrellasPinguino=1
+    }
   }
 
-  /* cantidadEstrellas(cantidad:number)
+  public cantidadCiertaEstrellasPingui()
   {
-    const estrellita = this.add.sprite(700, 400, 'estrellasYaguarete', cantidad).setDepth(7)
-  } */
-
-  /* public mostrarEstrella(criasTotales:number, comidaTotales:number)
-  {
-    if (criasTotales=1) 
-    {
-      this.add.sprite(700, 400, 'estrellasYaguarete', 2)
-    } else 
-    {  
-      this.add.sprite(700, 400, 'estrellasYaguarete', 1)
-    }
-    if (comidaTotales=1) 
-    {
-      this.add.sprite(700, 400, 'estrellasYaguarete', 2)
-    } else 
-    {
-      this.add.sprite(700, 400, 'estrellasYaguarete', 1)
-    }
-    if (criasTotales=1, comidaTotales=1) 
-    {
-      this.add.sprite(700, 400, 'estrellasYaguarete', 3)
-    } else 
-    {
-      this.add.sprite(700, 400, 'estrellasYaguarete', 1)
-    }
-     switch ('estrellasYaguarete') 
-    {
-      case 'crias':
-        
-        this.add.sprite(700, 400, 'estrellasYaguarete', 2).setDepth(5)
-        
-        break;
-      case 'comida':
-        this.add.sprite(700, 400, 'estrellasYaguarete', 2).setDepth(5)
-        break;
-      case 'comida' && 'crias':
-        this.add.sprite(700, 400, 'estrellasYaguarete', 3).setDepth(5)
-        break;
-    
-      default:
-        this.add.sprite(700, 400, 'estrellasYaguarete', 1).setDepth(5)
-        break;
-    } 
-  } */
-
-  /* switch ('estrellasYaguarete') 
-    {
-      case criasTotales=1:
-        
-        this.add.sprite(700, 400, 'estrellasYaguarete', 2).setDepth(5)
-        
-        break;
-      case comidaTotales=1:
-        this.add.sprite(700, 400, 'estrellasYaguarete', 2).setDepth(5)
-        break;
-      case comidaTotales=1 && comidaTotales=1:
-        this.add.sprite(700, 400, 'estrellasYaguarete', 4).setDepth(5)
-        break;
-    
-      default:
-        this.add.sprite(700, 400, 'estrellasYaguarete', 1).setDepth(5)
-        break;
-    } */
-
-/*   public gameWinLose (finalNivel: string){
-    //SI PIERDE YAGUARETE
-if (finalNivel === 'yaguareteLose'){
-const gameLose = this.add.image(683, 384, 'lose')
-
-const buttonRestart = this.add.image(800, 520,  'botonReset')
-.setInteractive()
-.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
-{ 
-this.scene.stop('nivelYaguarete')
-this.scene.start('nivelYaguarete')
-});
-
-const buttonMapa = this.add.image(600, 520, 'botonMapa')
-.setInteractive()
-.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
-{ 
-this.scene.stop('nivelYaguarete')
-this.scene.start('menuMapa')
-});
-};
-
-    //SI GANA YAGUARETE
-if(finalNivel === 'yaguareteWin'){
-const gameWin = this.add.image(683, 384, 'win')
-
-const buttonRestart = this.add.image(800, 520,  'botonReset')
-.setInteractive()
-.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
-{ 
-this.scene.stop('nivelYaguarete')
-this.scene.start('nivelYaguarete')
-});
-
-const buttonMapa = this.add.image(600, 520, 'botonMapa')
-.setInteractive()
-.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
-{ 
-this.scene.manager.scenes[2].ganarYaguarete()
-this.scene.stop('nivelYaguarete')
-this.scene.start('menuMapa')
-});
-};
-} */
+    this.cantidadCiertaEstrellasPinguino = this.cantidadEstrellasPingui
+    console.log('this.cantidadCiertaEstrellasPinguino')
+  };
   
 
-  update(){
-
-  }
 }

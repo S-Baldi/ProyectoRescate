@@ -1,6 +1,6 @@
 import arrayShuffle from 'array-shuffle';
 import Phaser from 'phaser'
-export default class preguntas extends Phaser.Scene {
+export default class preguntasPingui extends Phaser.Scene {
   private _pregunta: string
   private respuestaCorrecta: string
   private respuestasIncorrectas: Array<string>

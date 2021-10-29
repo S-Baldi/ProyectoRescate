@@ -15,6 +15,8 @@ export default class pipnguinoController
   private stateMachine: StateMachine
   private obstacles: ObstaclesController
 
+	public cantEstrellas = 0
+
   constructor(scene: Phaser.Scene, 
 		sprite: Phaser.Physics.Matter.Sprite, 
 		cursors: CursorKeys, 
@@ -122,10 +124,18 @@ export default class pipnguinoController
 				}
 			}
 		})
+		events.removeAllListeners();
+		events.on('sumaEstrellaPingui', this.sumadorEstrellas, this)
+		this.cantEstrellas = 0
   }
   update(dt: number)
 	{
 		this.stateMachine.update(dt)	
+	}
+
+	sumadorEstrellas()
+	{	
+    this.cantEstrellas = this.cantEstrellas+1			
 	}
 
 	//	IDLE
@@ -187,10 +197,26 @@ export default class pipnguinoController
 
 	private banderaCollected(){
 		console.log('GANASTEEE')
+
+		this.cantEstrellas = this.cantEstrellas+1
+		this.scene.scene.get('menuMapa').aumentaContador2()
 				
 		this.scene.scene.pause()
 		this.scene.scene.stop('uiPinguino')
 		this.scene.scene.launch('gameWinPinguino')
+
+		if (this.cantEstrellas == 2) 
+		{			
+			localStorage.setItem('estrellasPingui', '2');
+		}
+		else if (this.cantEstrellas == 3) 
+		{			
+			localStorage.setItem('estrellasPingui', '3');	
+		} 
+		else
+		{
+			localStorage.setItem('estrellasPingui', '1');
+		}
 	}
   
 	//  									ANIMACIONES

@@ -4,11 +4,14 @@ export default class mapa extends Phaser.Scene
 {
   private cantidadEstrellasYagua:any
   private cantidadEstrellasPingui
-  private estrellaMasAlta : number =0
+  private estrellaMasAltaYagua : number =0
+  private estrellaMasAltaPingui : number =0
   private textoYaguarete
   private textoPinguino 
   private cantidadCiertaEstrellas:any
-  private contadorEntrarNivel:number=0 
+  private contadorEntrarNivel1:number=0 
+  private contadorEntrarNivel2:number=0  
+
   constructor(){
     super ('menuMapa');
   }
@@ -48,11 +51,11 @@ export default class mapa extends Phaser.Scene
     //////////////////////////////////////////////NIVEL YAGUARETE////////////////////////////////////////////// 
     this.cantidadEstrellasYagua = localStorage.getItem('estrellasYaguarete') || '1';  
     
-    if (this.cantidadEstrellasYagua>this.estrellaMasAlta) 
+    if (this.cantidadEstrellasYagua>this.estrellaMasAltaYagua) 
     {
-      this.estrellaMasAlta = this.cantidadEstrellasYagua
+      this.estrellaMasAltaYagua = this.cantidadEstrellasYagua
     }
-    this.add.sprite(1137, 195, 'estrellasYaguarete', this.estrellaMasAlta).setDepth(7).setScale(0.8);
+    this.add.sprite(1137, 195, 'estrellasYaguarete', this.estrellaMasAltaYagua).setDepth(7).setScale(0.8);
     
     const buttonNivel1 = this.add.image(1130, 170, 'botonNivel').setScale(0.25)
     .setInteractive()
@@ -69,10 +72,10 @@ export default class mapa extends Phaser.Scene
       this.add.text(680, 400, '   NIVEL \nPRINCIPAL', {fontSize: '45px bold', color: 'black'})
       .setInteractive().on('pointerdown', () => this.scene.sleep('menuMapa') /* duermo el mapa para guardar datos */ &&  this.scene.start('nivelYaguarete'))  &&
 
-      this.add.sprite(650, 280, 'estrellasYaguarete', this.estrellaMasAlta).setScale(1.8) && 
+      this.add.sprite(650, 280, 'estrellasYaguarete', this.estrellaMasAltaYagua).setScale(1.8) && 
       this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'gray'}))         
     ) 
-    buttonNivel1.on('pointerdown', () => {this.activarBotonNivel(true)})
+    buttonNivel1.on('pointerdown', () => {this.activarBotonNivel1(true)})
 
     this.add.text(1030,115, 'YAGUARETÉ', {
       fontSize: '250px bold',
@@ -121,6 +124,14 @@ export default class mapa extends Phaser.Scene
 
 
     //////////////////////////////////////////////NIVEL PINGUINO//////////////////////////////////////////////
+    this.cantidadEstrellasPingui = localStorage.getItem('estrellasPingui') || '1';  
+    
+    if (this.cantidadEstrellasPingui>this.estrellaMasAltaPingui) 
+    {
+      this.estrellaMasAltaPingui = this.cantidadEstrellasPingui
+    }
+    this.add.sprite(387, 675, 'estrellasYaguarete', this.estrellaMasAltaPingui).setDepth(7).setScale(0.8);
+
     const buttonNivel5 = this.add.image(380,650, 'botonNivel').setScale(0.25)
     .setInteractive()
     .on('pointerover', () => buttonNivel5.setScale(0.28))
@@ -136,10 +147,10 @@ export default class mapa extends Phaser.Scene
       this.add.text(680, 400, '   NIVEL \nPRINCIPAL', {fontSize: '45px bold', color: 'black'})
       .setInteractive().on('pointerdown', () => this.scene.sleep('menuMapa') /* duermo el mapa para guardar datos */ &&  this.scene.start('nivelPinguino'))  &&
 
-      this.add.sprite(650, 280, 'estrellasYaguarete', this.estrellaMasAlta).setScale(1.8) && 
+      this.add.sprite(650, 280, 'estrellasYaguarete', this.estrellaMasAltaPingui).setScale(1.8) && 
       this.pinguinoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'gray'}))         
     ) 
-    buttonNivel5.on('pointerdown', () => {this.activarBotonNivel(true)})
+    buttonNivel5.on('pointerdown', () => {this.activarBotonNivel2(true)})
 
     this.add.text(295,595, 'PINGÜINO', {
       fontSize: '250px bold',
@@ -148,33 +159,41 @@ export default class mapa extends Phaser.Scene
       strokeThickness: 4,
       font: '23pt ARCO',
     })
-    ////////////////////////////////////////////////////////////
     
-
-
-
-
-    /////////////////////////////////////////////////////////////
   }
-  public activarBotonNivel(visible:boolean)
+  /////////////////////// NIVEL 1 //////////////////
+  public activarBotonNivel1(visible:boolean)
   {
-    if (this.contadorEntrarNivel>0)
+    if (this.contadorEntrarNivel1>0)
     {
       this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'black'})
-      .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus')).setDepth(7).setVisible(visible))
-
-      this.pinguinoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'black'})
-      .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus')).setDepth(7).setVisible(visible))
+      .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus')).setDepth(7).setVisible(visible))      
     }
   }
-  public aumentaContador()
+  
+  public aumentaContador1()
   {
-    this.contadorEntrarNivel++
+    this.contadorEntrarNivel1++
   }
 
-  public ganarYaguarete()
+  /////////////////////// NIVEL 2 ///////////////////////
+  public activarBotonNivel2(visible:boolean)
+  {
+    if (this.contadorEntrarNivel2>0)
+    {
+      this.pinguinoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'black'})
+      .setInteractive().on('pointerdown', () => this.scene.start('nivelBonusPin')).setDepth(7).setVisible(visible))
+    }
+  }
+  public aumentaContador2()
+  {
+    this.contadorEntrarNivel2++
+  }
+
+  public ganar()
   {      
-    this.textoYaguarete              
+    this.textoYaguarete
+    this.textoPinguino              
   }
   
   update()

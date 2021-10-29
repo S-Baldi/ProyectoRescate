@@ -4,7 +4,7 @@ import {sharedInstance as events } from '../eventCenter'
 
 export default class gameWin extends Phaser.Scene{
   private cantidadEstrellasYagua: any
-  private cantidadCiertaEstrellas: any
+  private cantidadCiertaEstrellasYaguarete: any
  
   constructor()
   {
@@ -39,84 +39,35 @@ export default class gameWin extends Phaser.Scene{
     .on('pointerout', () => buttonMapa.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     {   
-      this.scene.get("menuMapa").ganarYaguarete()
-      this.scene.stop('nivelYaguarete')
-      this.scene.stop('gameWin')
+      this.scene.get("menuMapa").ganar()
+      this.scene.stop('nivelYaguarete')      
       this.scene.start('menuMapa')   
       //this.scene.moveUp('menuMapa') //trae adelante a la escena      
     });
-    
-    //events.on('estrella', this.cantidadEstrellasGanadas, this);
-    //events.on('estrella', ()=>{console.log('emite estrellas')}, this);
 
     this.cantidadEstrellasYagua = localStorage.getItem('estrellasYaguarete') || '1';
-    this.cantidadCiertaEstrellas=0 
+    this.cantidadCiertaEstrellasYaguarete=0 
 
     if (this.cantidadEstrellasYagua==2) 
     {
       this.add.sprite(675, 450, 'estrellasYaguarete', 2).setDepth(7)
-      this.cantidadCiertaEstrellas=2
+      this.cantidadCiertaEstrellasYaguarete=2
 
     }else if (this.cantidadEstrellasYagua==3) 
     {
       this.add.sprite(675, 450, 'estrellasYaguarete', 3).setDepth(7)
-      this.cantidadCiertaEstrellas=3
+      this.cantidadCiertaEstrellasYaguarete=3
     } else
     {
       this.add.sprite(675, 450, 'estrellasYaguarete', 1).setDepth(7)
-      this.cantidadCiertaEstrellas=1
+      this.cantidadCiertaEstrellasYaguarete=1
     }    
   }  
   
   public cantidadCiertaEstrellasYagua()
   {
-    this.cantidadCiertaEstrellas=this.cantidadEstrellasYagua
+    this.cantidadCiertaEstrellasYaguarete = this.cantidadEstrellasYagua
     console.log('this.cantidadCiertaEstrellasYagua')
   }
-
-/*   public gameWinLose (finalNivel: string){
-    //SI PIERDE YAGUARETE
-if (finalNivel === 'yaguareteLose'){
-const gameLose = this.add.image(683, 384, 'lose')
-
-const buttonRestart = this.add.image(800, 520,  'botonReset')
-.setInteractive()
-.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
-{ 
-this.scene.stop('nivelYaguarete')
-this.scene.start('nivelYaguarete')
-});
-
-const buttonMapa = this.add.image(600, 520, 'botonMapa')
-.setInteractive()
-.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
-{ 
-this.scene.stop('nivelYaguarete')
-this.scene.start('menuMapa')
-});
-};
-
-    //SI GANA YAGUARETE
-if(finalNivel === 'yaguareteWin'){
-const gameWin = this.add.image(683, 384, 'win')
-
-const buttonRestart = this.add.image(800, 520,  'botonReset')
-.setInteractive()
-.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
-{ 
-this.scene.stop('nivelYaguarete')
-this.scene.start('nivelYaguarete')
-});
-
-const buttonMapa = this.add.image(600, 520, 'botonMapa')
-.setInteractive()
-.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
-{ 
-this.scene.manager.scenes[2].ganarYaguarete()
-this.scene.stop('nivelYaguarete')
-this.scene.start('menuMapa')
-});
-};
-} */
 
 }

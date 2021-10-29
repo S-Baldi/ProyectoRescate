@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-export default class pop_up extends Phaser.Scene{
+export default class pop_up_Pingui extends Phaser.Scene{
   
   constructor()
   {
@@ -18,7 +18,8 @@ export default class pop_up extends Phaser.Scene{
 
     const volverMapa = this.add.image(680, 350, 'botonMapa')
     .setInteractive()  
-    .on('pointerdown', () => this.scene.start('menuMapa') && this.scene.stop('nivelBonus'));    
+    .on('pointerdown', () => this.scene.start('menuMapa') && this.scene.stop('nivelBonusPin'));
+    //console.log(this.scene.start('menuMapa'))    
   }
   
   public mostrar_Texto(rta:string)
@@ -33,7 +34,6 @@ export default class pop_up extends Phaser.Scene{
       this.add.text(520, 180, 'Respuesta Incorrecta', {fontSize: '45px bold', color: 'red'}).setDepth(3) //esto trae hacia delante o atras las cosas
     }
     return rta
-
   }
 
   update()

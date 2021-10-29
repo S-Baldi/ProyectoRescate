@@ -10,9 +10,9 @@ export default class bonus extends Phaser.Scene
 
   preload()
   {
-    this.load.image('Bonus', 'assets/Mapa/NivelBonus.png');
-    this.load.image('yaguaBonus', 'assets/Mapa/imagenYagua.png');
-    this.load.image('yaguaretePic', 'assets/Mapa/yaguarete.png');
+    this.load.image('Bonus', 'assets/Mapa/BonusYaguarete/NivelBonus.png');
+    this.load.image('yaguaBonus', 'assets/Mapa/BonusYaguarete/imagenYagua.png');
+    this.load.image('yaguaretePic', 'assets/Mapa/BonusYaguarete/yaguarete.png');
   }
 
   create()
