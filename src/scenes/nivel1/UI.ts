@@ -76,8 +76,7 @@ export default class UI extends Phaser.Scene
 			fontSize: '32px',
 			color: 'black',
       font: '40pt Helvetica neue black',
-		})
-		
+		})		
 	}
 	
 	private handleCriasCollected()
@@ -87,7 +86,6 @@ export default class UI extends Phaser.Scene
 		
 		if (this.criasCollected > 0) 
 		{
-		
 			events.emit('sumaEstrella')
 		}
 	}
@@ -98,8 +96,7 @@ export default class UI extends Phaser.Scene
     this.comidaLabel.text = `Comida: ${this.comidaCollected}`+ '/48'
 		
 		if (this.comidaCollected > 0) 
-		{
-			
+		{	
 			events.emit('sumaEstrella')
 		}
 	}

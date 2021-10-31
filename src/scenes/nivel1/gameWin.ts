@@ -15,7 +15,7 @@ export default class gameWin extends Phaser.Scene{
 
   preload(){
     this.load.image('win', 'assets/GameWinLose/win.png');
-    this.load.spritesheet('estrellasYaguarete','assets/Mapa/estrellasMapa.png',
+    this.load.spritesheet('estrellas','assets/Mapa/estrellasMapa.png',
     {frameWidth:269 , frameHeight:114 });
   }
   
@@ -50,12 +50,12 @@ export default class gameWin extends Phaser.Scene{
 
     if (this.cantidadEstrellasYagua==2) 
     {
-      this.add.sprite(675, 450, 'estrellasYaguarete', 2).setDepth(7)
+      this.add.sprite(675, 450, 'estrellas', 2).setDepth(7)
       this.cantidadCiertaEstrellasYaguarete=2
 
     }else if (this.cantidadEstrellasYagua==3) 
     {
-      this.add.sprite(675, 450, 'estrellasYaguarete', 3).setDepth(7)
+      this.add.sprite(675, 450, 'estrellas', 3).setDepth(7)
       this.cantidadCiertaEstrellasYaguarete=3
     } else
     {
