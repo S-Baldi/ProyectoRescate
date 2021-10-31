@@ -78,6 +78,7 @@ export default class pipnguinoController
       }
 
       if (this.obstacles.is('hitBoxCielo', body)){
+				console.log('Choca cielo')
         this.stateMachine.setState('barcoHit')
         return
       }

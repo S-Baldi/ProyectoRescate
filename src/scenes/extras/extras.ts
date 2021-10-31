@@ -48,7 +48,7 @@ export default class extras extends Phaser.Scene
       stroke: '#00572f',
       strokeThickness: 6,})
       .setInteractive() 
-      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.manager.scenes[14].mostrarInfo('yaguareteInformation'));
+      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.manager.scenes[15].mostrarInfo('yaguareteInformation'));
       
     }
 

@@ -81,6 +81,8 @@ export default class mapa extends Phaser.Scene
     
     //////////////////////////////////////////////NIVEL MONO//////////////////////////////////////////////
     const buttonNivel2 = this.add.image(420,80, 'botonNivel').setScale(0.25)
+    .setInteractive()
+    .on('pointerdown', () => this.scene.start('nivelPinguino'))
 
     this.add.text(320, 25, 'MONO CAÍ', {
       fontFamily: 'Titan One',
