@@ -1,10 +1,17 @@
 import Phaser from 'phaser'
 export default class mapa extends Phaser.Scene
 {
+  //Estrellas totales ganadas
+  private cantidadEstrellasGanadas:any  
+  private estrellasLabel!: Phaser.GameObjects.Text
+
+  //Yaguarete
   private cantidadEstrellasYagua:any
+  private estrellaMasAltaYagua : number =0;
+  
+  //Pinguino
   private cantidadEstrellasPingui:any
-  private estrellaMasAltaYagua : number =0
-  private estrellaMasAltaPingui : number =0
+  private estrellaMasAltaPingui : number =0;
     
 
   constructor(){
@@ -33,10 +40,18 @@ export default class mapa extends Phaser.Scene
     const buttonMusica = this.add.image(180, 80, 'botonMusica').setScale(0.7)
 
     //////////////////////////////////////////////ESTRELLAS GANADAS //////////////////////////////////////////////
-    const textoEstrellasTotal = this.add.text(850, 625, 'Estrellas', {fontSize: '65px bold', color: 'black'})
+    
+    this.estrellasLabel = this.add.text(1040, 625, '=', {
+			fontSize: '32px',
+			color: 'black',
+      font: '40pt Helvetica neue black',
+		})
+    
+    //const textoEstrellasTotal = this.add.text(1050, 625, '=', {fontSize: '65px bold', color: 'black'})
 
-    const estrellasTotales = this.add.sprite(1200, 650, 'estrellas', 3).setDepth(7).setScale(1.2)
+    const estrellasTotales = this.add.sprite(900, 650, 'estrellas', 3).setDepth(7).setScale(1.2)
     //////////////////////////////////////////////NIVEL YAGUARETE////////////////////////////////////////////// 
+    
     this.cantidadEstrellasYagua = localStorage.getItem('estrellasYaguarete') || '1';  
     
     if (this.cantidadEstrellasYagua>this.estrellaMasAltaYagua) 
@@ -123,10 +138,11 @@ export default class mapa extends Phaser.Scene
       stroke: '#00572f',
       strokeThickness: 6,
     })    
-  }  
-  
+  } 
+    
   update()
   {
-    
+    this.cantidadEstrellasGanadas = this.cantidadEstrellasPingui + this.cantidadEstrellasYagua
+		this.estrellasLabel.text = `= ${this.cantidadEstrellasGanadas}`	
   }
 }
