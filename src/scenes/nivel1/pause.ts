@@ -1,5 +1,6 @@
 
 import Phaser from 'phaser'
+import WebFontFile from '../webFontLoader';
 
 export default class pause extends Phaser.Scene{
   constructor()
@@ -9,16 +10,18 @@ export default class pause extends Phaser.Scene{
 
   preload(){
     this.load.image('pause', 'assets/Nivel1/popUpPause.png');
+
+    this.load.addFile(new WebFontFile(this.load, 'Titan One'))
   }
   
   create(){
     const gamePause = this.add.image(683, 384, 'pause')
-    this.add.text(600, 250, 'Pausa', {
-      fontSize: '250px',
-      color: 'yellow',
-      stroke: 'black',
-      strokeThickness: 3,
-      font: '50pt ARCO Regular',
+    this.add.text(580, 250, 'Pausa', {
+      fontFamily: 'Titan One',
+      fontSize: '50pt',
+      color: '#FFBD0D',
+      stroke: '#00572f',
+      strokeThickness: 6,
     })
 
     const buttonMapa = this.add.image(490, 440, 'botonMapa')

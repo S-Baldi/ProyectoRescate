@@ -33,13 +33,6 @@ export default class cazadorController
 
   this.sprite.setOnCollide((data: MatterJS.ICollisionPair) => {
     const body = data.bodyA as MatterJS.BodyType
-    
-    if (this.obstacles.is('trampa', body))
-    {
-      this.stateMachine.setState('trampaHunter')
-      return
-    }
-
     const gameObject = body.gameObject
     
     if (!gameObject)
@@ -47,15 +40,17 @@ export default class cazadorController
       return
     }
 
-    /* if (gameObject instanceof Phaser.Physics.Matter.TileBody)
-    {
-      if (this.stateMachine.isCurrentState('jump'))
-      {
-        this.stateMachine.setState('idle')
-      }
-      return
-    } */
+    const sprite = gameObject as Phaser.Physics.Matter.Sprite
+    const type = sprite.getData('type')
     
+    switch (type)
+    {
+      case 'trampa':
+      {
+        sprite.destroy()
+        break
+      }	
+    }
   
   })
 }
@@ -75,8 +70,6 @@ export default class cazadorController
   }
 
   private trampaHunterOnEnter(){
-    console.log('TRAMPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-    this.sprite.destroy()
   }
 
   private createAnimationHunter(){

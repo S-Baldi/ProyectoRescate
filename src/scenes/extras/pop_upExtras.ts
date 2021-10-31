@@ -1,8 +1,22 @@
 import Phaser from 'phaser'
-import extras from './extras';
 
 export default class pop_upExt extends Phaser.Scene
 {
+  private fuenteTexto =     
+  {fontFamily: 'Viga',
+  fontSize: '20pt',
+  color: '#000000',
+  align: 'justify'
+  };
+
+  private fuenteNombres = 
+  { fontFamily: 'Titan One',
+    fontSize: '50pt',
+    color: '#FFBD0D',
+    stroke: '#00572f',
+    strokeThickness: 6,
+  };
+
   
   constructor()
   {
@@ -11,13 +25,14 @@ export default class pop_upExt extends Phaser.Scene
 
   preload()
   {
-    
+    this.load.image('popUpExtras', 'assets/MenuPrincipal/popUp.png')
+
   }
   
   create()
   {
-    const fondoPopUpExtras = this.add.image(680, 425, 'botonNivel').setScale(1.1);
-    const buttonAtras = this.add.image(1000, 150, 'botonatras').setScale(0.8)
+    const fondoPopUpExtras = this.add.image(680, 390, 'popUpExtras').setScale(1.1 , 1.2);
+    const buttonAtras = this.add.image(1080, 150, 'botonatras')
     .setInteractive()
     .on('pointerdown', () => this.scene.stop() && this.scene.resume('extras'));    
   }  
@@ -26,11 +41,13 @@ export default class pop_upExt extends Phaser.Scene
   {
     if (info=='yaguareteInformation') 
     {
-      const tituloPopUpY= this.add.text(525, 130, 'YAGUARETÉ', {font: 'bold 40pt Arial', align:'center', color: 'black'}).setDepth(3);
+      const tituloPopUpY= this.add.text(500, 130, 'YAGUARETÉ', this.fuenteNombres).setDepth(3);
 
       const fotoY = this.add.image(350, 435, 'fotoYaguarete').setScale(0.8).setDepth(3);
-
-      const txtYagua = this.add.text(500, 250, 'El nombre yaguareté es de origen guaraní y \nsignifica “la verdadera fiera”. Este gato, cuyo \nnombre científico es Panthera onca, es el felino \nmás grande del continente americano y tercero \nen corpulencia a escala mundial, después del tigre \nde bengala y el león. Se destaca por su aspecto \nrobusto y la cabeza proporcionalmente grande con \npoderosa estructura mandibular. Los machos \nalcanzan los 2,50 metros de longitud, incluida la \ncola, y hasta 140 kg de peso. Además el yaguareté \nes un excelente nadador, un caminador incansable, \nsolitario y muy territorial.', {font: 'bold 20pt Arial', color: 'black'}).setDepth(3);
+//DIFERENCIA DE 24 ENTRE TEXTO Y TEXTO
+      this.add.text(500, 250, 'Nombre científico: Panthera onca', this.fuenteTexto).setDepth(3)
+      this.add.text(500, 274, 'Longitud: 1,1 a 2,50m', this.fuenteTexto ).setDepth(3)
+      this.add.text(500, 298, 'Altura: 63 a 76 cm', this.fuenteTexto).setDepth(3)
       
     }     
     
