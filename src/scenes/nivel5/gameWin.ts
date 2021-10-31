@@ -37,7 +37,7 @@ export default class gameWinPinguino extends Phaser.Scene{
     .on('pointerout', () => buttonMapa.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
-      this.scene.get("menuMapa").ganar()
+      this.scene.get("popUpMapa").ganar()
       this.scene.stop('nivelPinguino')
       this.scene.start('menuMapa')
     });

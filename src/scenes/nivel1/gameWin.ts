@@ -37,7 +37,7 @@ export default class gameWin extends Phaser.Scene{
     .on('pointerout', () => buttonMapa.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     {   
-      this.scene.get("menuMapa").ganar()
+      this.scene.get("popUpMapa").ganar()
       this.scene.stop('nivelYaguarete')      
       this.scene.start('menuMapa')   
       //this.scene.moveUp('menuMapa') //trae adelante a la escena      
@@ -57,7 +57,7 @@ export default class gameWin extends Phaser.Scene{
       this.cantidadCiertaEstrellasYaguarete=3
     } else
     {
-      this.add.sprite(675, 450, 'estrellasYaguarete', 1).setDepth(7)
+      this.add.sprite(675, 450, 'estrellas', 1).setDepth(7)
       this.cantidadCiertaEstrellasYaguarete=1
     }    
   }  
