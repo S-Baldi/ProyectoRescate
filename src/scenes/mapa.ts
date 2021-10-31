@@ -139,8 +139,6 @@ export default class mapa extends Phaser.Scene
     
   update()
   {
-    this.cantidadEstrellasPingui.toString
-    this.cantidadEstrellasYagua.toString
     const estrellasTotales = +this.cantidadEstrellasPingui + +this.cantidadEstrellasYagua
     this.add.text(1140, 625,`=` + estrellasTotales,  
     {fontFamily: 'Titan One',
