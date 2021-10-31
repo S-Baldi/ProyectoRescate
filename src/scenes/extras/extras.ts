@@ -31,7 +31,7 @@ export default class extras extends Phaser.Scene
     .setInteractive()
     .on('pointerdown', () => this.scene.start('menuPpal'));
     
-    var puntaje= 15;
+    var puntaje= 3;
     
     //Yaguarete
     if(puntaje<3)

@@ -96,11 +96,10 @@ export default class UI_Pinguino extends Phaser.Scene
 		++this.criasCollected
     this.criasLabel.text = `Crias: ` + this.criasCollected + '/3'
 		
-		/* if (this.criasCollected > 0) 
-		{
-			console.log('JUNTASTE CRIA')
-			events.emit('sumaEstrella')
-		} */
+		if (this.criasCollected > 0) 
+		{			
+			events.emit('sumaEstrellaPingui')
+		}
 	}
 
   private handleComidaCollected()
@@ -108,10 +107,9 @@ export default class UI_Pinguino extends Phaser.Scene
 		++this.comidaCollected
     this.comidaLabel.text = `Comida: ${this.comidaCollected}`+ '/47'
 		
-		/* if (this.comidaCollected > 0) 
-		{
-			console.log('JUNTASTE COMIDA')
-			events.emit('sumaEstrella')
-		} */
+		if (this.comidaCollected > 0) 
+		{			
+			events.emit('sumaEstrellaPingui')
+		}
 	}
 }

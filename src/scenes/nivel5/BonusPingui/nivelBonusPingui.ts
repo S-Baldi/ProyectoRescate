@@ -1,18 +1,18 @@
 import Phaser from 'phaser'
-import preguntas from './preguntas'
-export default class bonus extends Phaser.Scene
+import preguntas from './preguntasPingui';
+export default class bonusPingui extends Phaser.Scene
 
 { 
   constructor()
   {
-    super('nivelBonus');
+    super('nivelBonusPin');
   }
 
   preload()
   {
-    this.load.image('Bonus', 'assets/Mapa/BonusYaguarete/NivelBonus.png');
-    this.load.image('yaguaBonus', 'assets/Mapa/BonusYaguarete/imagenYagua.png');
-    this.load.image('yaguaretePic', 'assets/Mapa/BonusYaguarete/yaguarete.png');
+    this.load.image('Bonus', 'assets/Mapa/BonusPinguino/NivelBonus.png');
+    this.load.image('pinguiBonus', 'assets/Mapa/BonusPinguino/PinguiConCria.png');
+    this.load.image('pinguinoPic', 'assets/Mapa/BonusPinguino/Pinguino1.png');
   }
 
   create()
@@ -23,8 +23,8 @@ export default class bonus extends Phaser.Scene
     .setInteractive()
     .on('pointerdown', () => this.scene.start('menuMapa'))
 
-    const portada = this.add.image(874, 235, 'yaguaretePic').setScale(0.7);
-    const portada2 = this.add.image(496, 235, 'yaguaBonus').setScale(1.35);
+    const portada = this.add.image(874, 235, 'pinguinoPic').setScale(0.45);
+    const portada2 = this.add.image(496, 235, 'pinguiBonus').setScale(1.25);
     
     let preguntasBonus= new Array<preguntas>()
     preguntasBonus.push(new preguntas('¿Cuál es la causa por la cual el \n yaguareté se encuentra en vía de extición?', 'Todas son correctas', 'Caza furtiva', 'Deforestación del hábitat', 'Reducción de sus presas'))
@@ -37,25 +37,25 @@ export default class bonus extends Phaser.Scene
     
     let boton1= this.add.text(150, 513, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px'})
     .setInteractive()
-    .on('pointerdown', () => boton1.setColor(this.scene.launch('pop_up_B') && this.scene.get("pop_up_B").mostrar_Texto(preguntasBonus[0].revisarResp(boton1.text))) &&
+    .on('pointerdown', () => boton1.setColor(this.scene.launch('pop_up_B_Pin') && this.scene.get("pop_up_B_Pin").mostrar_Texto(preguntasBonus[0].revisarResp(boton1.text))) &&
     
     this.scene.pause())
 
     
     let boton2 = this.add.text(150, 655, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px'})
     .setInteractive()
-    .on('pointerdown', () => boton2.setColor(this.scene.launch('pop_up_B') && this.scene.get("pop_up_B").mostrar_Texto(preguntasBonus[0].revisarResp(boton2.text))) &&
+    .on('pointerdown', () => boton2.setColor(this.scene.launch('pop_up_B_Pin') && this.scene.get("pop_up_B_Pin").mostrar_Texto(preguntasBonus[0].revisarResp(boton2.text))) &&
     
     this.scene.pause())
 
     let boton3 = this.add.text(800, 513, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px'})
     .setInteractive()
-    .on('pointerdown', () => boton3.setColor(this.scene.launch('pop_up_B') && this.scene.get("pop_up_B").mostrar_Texto(preguntasBonus[0].revisarResp(boton3.text))) &&
+    .on('pointerdown', () => boton3.setColor(this.scene.launch('pop_up_B_Pin') && this.scene.get("pop_up_B_Pin").mostrar_Texto(preguntasBonus[0].revisarResp(boton3.text))) &&
     this.scene.pause())
 
     let boton4= this.add.text(800, 655, preguntasBonus[0].devolverPregunta()+"", {font: 'bold 30pt Arial', fontSize: '36px'})
     .setInteractive()
-    .on('pointerdown', () => boton4.setColor(this.scene.launch('pop_up_B') && this.scene.get("pop_up_B").mostrar_Texto(preguntasBonus[0].revisarResp(boton4.text))) &&
+    .on('pointerdown', () => boton4.setColor(this.scene.launch('pop_up_B_Pin') && this.scene.get("pop_up_B_Pin").mostrar_Texto(preguntasBonus[0].revisarResp(boton4.text))) &&
     this.scene.pause())
 
 
@@ -66,5 +66,3 @@ export default class bonus extends Phaser.Scene
   }
   
 }
-
-
