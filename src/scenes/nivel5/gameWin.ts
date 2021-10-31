@@ -12,7 +12,7 @@ export default class gameWinPinguino extends Phaser.Scene{
 
   preload(){
     this.load.image('win', 'assets/GameWinLose/win.png');
-    this.load.spritesheet('estrellasYaguarete','assets/Mapa/estrellasMapa.png',
+    this.load.spritesheet('estrellas','assets/Mapa/estrellasMapa.png',
     {frameWidth:269 , frameHeight:114 });
   }
   
@@ -37,7 +37,7 @@ export default class gameWinPinguino extends Phaser.Scene{
     .on('pointerout', () => buttonMapa.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
-      this.scene.get("menuMapa").ganar()
+      this.scene.get("popUpMapa").ganar()
       this.scene.stop('nivelPinguino')
       this.scene.start('menuMapa')
     });
@@ -47,16 +47,16 @@ export default class gameWinPinguino extends Phaser.Scene{
 
     if (this.cantidadEstrellasPingui==2) 
     {
-      this.add.sprite(675, 450, 'estrellasYaguarete', 2).setDepth(7)
+      this.add.sprite(675, 450, 'estrellas', 2).setDepth(7)
       this.cantidadCiertaEstrellasPinguino=2
 
     }else if (this.cantidadEstrellasPingui==3) 
     {
-      this.add.sprite(675, 450, 'estrellasYaguarete', 3).setDepth(7)
+      this.add.sprite(675, 450, 'estrellas', 3).setDepth(7)
       this.cantidadCiertaEstrellasPinguino=3
     } else
     {
-      this.add.sprite(675, 450, 'estrellasYaguarete', 1).setDepth(7)
+      this.add.sprite(675, 450, 'estrellas', 1).setDepth(7)
       this.cantidadCiertaEstrellasPinguino=1
     }
   }

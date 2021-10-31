@@ -46,9 +46,11 @@ const config : Phaser.Types.Core.GameConfig =
       debug: false
     }
   },
-  scene: [mp1, info, mapa, ayuda, creditos, extras, 
-    nivel_1, UI, gameOver, gameWin, pause, bonus, pop_up, preguntas, pop_upExt, popUpMapa,
-    nivel_5, UI_Pinguino, gameWinPinguino, gameOverPinguino, pausePinguino, bonusPingui, pop_up_Pingui, preguntasPingui]
+  scene: [mp1, info, mapa, ayuda, creditos, 
+    extras, nivel_1, UI, gameOver, gameWin, 
+    pause, bonus, pop_up, preguntas, pop_upExt, 
+    popUpMapa, nivel_5, UI_Pinguino, gameWinPinguino, gameOverPinguino, 
+    pausePinguino, bonusPingui, pop_up_Pingui, preguntasPingui]
 };
 
 export default new Phaser.Game(config)

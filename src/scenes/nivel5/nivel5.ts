@@ -33,13 +33,15 @@ export default class nivel_5 extends Phaser.Scene
 
     this.load.atlas('pinguino', 'assets/Nivel5/pinguino.png', 'assets/Nivel5/pinguino.json');
 
+    this.load.tilemapTiledJSON('pinguinoTest', 'assets/Nivel5/nivel_PinguinoTest.json');
+
   }
 
   create(){
     this.scene.launch('uiPinguino')
 
     /* Tiled Nivel 5 */
-    const mapa_nivel5 = this.make.tilemap({key: 'mapa_nivel5'});
+    const mapa_nivel5 = this.make.tilemap({key: 'pinguinoTest'});
     const fondo_nivel5_tiled = mapa_nivel5.addTilesetImage('nivel5_fondo', 'nivel5Fondo');
     const suelo_nivel5_tiled = mapa_nivel5.addTilesetImage('nivel5_suelo', 'nivel5Suelo');
 
