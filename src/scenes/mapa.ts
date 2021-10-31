@@ -6,12 +6,12 @@ export default class mapa extends Phaser.Scene
   private estrellasLabel!: Phaser.GameObjects.Text
 
   //Yaguarete
-  private cantidadEstrellasYagua:any
-  private estrellaMasAltaYagua : number =0;
+  private cantidadEstrellasYagua
+  private estrellaMasAltaYagua : number = 0;
   
   //Pinguino
-  private cantidadEstrellasPingui:any
-  private estrellaMasAltaPingui : number =0;
+  private cantidadEstrellasPingui
+  private estrellaMasAltaPingui : number = 0;
     
 
   constructor(){
@@ -41,15 +41,10 @@ export default class mapa extends Phaser.Scene
 
     //////////////////////////////////////////////ESTRELLAS GANADAS //////////////////////////////////////////////
     
-    this.estrellasLabel = this.add.text(1040, 625, '=', {
-			fontSize: '32px',
-			color: 'black',
-      font: '40pt Helvetica neue black',
-		})
     
     //const textoEstrellasTotal = this.add.text(1050, 625, '=', {fontSize: '65px bold', color: 'black'})
 
-    const estrellasTotales = this.add.sprite(900, 650, 'estrellas', 3).setDepth(7).setScale(1.2)
+    const estrellasTotales = this.add.sprite(1000, 650, 'estrellas', 3).setDepth(7).setScale(1.2)
     //////////////////////////////////////////////NIVEL YAGUARETE////////////////////////////////////////////// 
     
     this.cantidadEstrellasYagua = localStorage.getItem('estrellasYaguarete') || '1';  
@@ -144,7 +139,15 @@ export default class mapa extends Phaser.Scene
     
   update()
   {
-    this.cantidadEstrellasGanadas = this.cantidadEstrellasPingui + this.cantidadEstrellasYagua
-		this.estrellasLabel.text = `= ${this.cantidadEstrellasGanadas}`	
+    this.cantidadEstrellasPingui.toString
+    this.cantidadEstrellasYagua.toString
+    const estrellasTotales = +this.cantidadEstrellasPingui + +this.cantidadEstrellasYagua
+    this.add.text(1140, 625,`=` + estrellasTotales,  
+    {fontFamily: 'Titan One',
+    fontSize: '40pt',
+    color: '#FFBD0D',
+    stroke: '#00572f',
+    strokeThickness: 6,    	
+  })
   }
 }
