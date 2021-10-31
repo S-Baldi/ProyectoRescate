@@ -13,6 +13,24 @@ export default class popUpMapa extends Phaser.Scene
   private textoPinguino   
   private contadorEntrarNivel2:number=0  
   
+  private fuenteTextoMapaDesbloqueado =     
+  {fontFamily: 'Viga',
+  fontSize: '40pt',
+  color: '#FFBD0D',
+  stroke: '#00572f',
+  strokeThickness: 6,
+  align: 'justify',
+  };
+
+  private fuenteTextoMapa =     
+  {fontFamily: 'Viga',
+  fontSize: '40pt',
+  color: '#9b9b9b',
+  stroke: '#000000',
+  strokeThickness: 4,
+  align: 'justify',
+  };
+
   constructor()
   {
     super('popUpMapa');
@@ -64,21 +82,23 @@ export default class popUpMapa extends Phaser.Scene
       }
       this.add.sprite(1137, 195, 'estrellas', this.estrellaMasAltaYagua).setDepth(7).setScale(0.8);      
 
-      this.add.text(680, 400, '   NIVEL \nPRINCIPAL', {fontSize: '45px bold', color: 'black'})
-      .setInteractive().on('pointerdown', () => this.scene.sleep('menuMapa')  
-      &&  this.scene.start('nivelYaguarete'))  &&
-
+      const nivelPpalYagua = this.add.text(680, 400, '   NIVEL \nPRINCIPAL', this.fuenteTextoMapaDesbloqueado)
+      .setInteractive() 
+      nivelPpalYagua.on('pointerover', () => nivelPpalYagua.setScale(1.1))
+      .on('pointerout', () => nivelPpalYagua.setScale(1))
+      .on('pointerdown', () => this.scene.sleep('menuMapa') && 
+      this.scene.start('nivelYaguarete'))  &&
       this.add.sprite(670, 280, 'estrellas', this.estrellaMasAltaYagua).setScale(1.8) && 
-
-      this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'gray'})) 
+      this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapa))  
       
       if (this.contadorEntrarNivel1>0)
       {
-        this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'black'})
+        this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapaDesbloqueado)
         .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus'))) 
               
       }     
     } 
+
     else if (info=='pinguinoNiveles')
     {
       this.cantidadEstrellasPingui = localStorage.getItem('estrellasPingui') || '1';  
@@ -89,21 +109,23 @@ export default class popUpMapa extends Phaser.Scene
       }
       this.add.sprite(387, 675, 'estrellas', this.estrellaMasAltaPingui).setDepth(7).setScale(0.8);      
 
-      this.pinguinoNivel(this.add.text(680, 400, '   NIVEL \nPRINCIPAL', {fontSize: '45px bold', color: 'gray'}) &&
+      this.pinguinoNivel(this.add.text(680, 400, '   NIVEL \nPRINCIPAL', this.fuenteTextoMapa) &&
 
       this.add.sprite(650, 280, 'estrellas', this.estrellaMasAltaPingui).setScale(1.8) && 
       
-      this.pinguinoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'gray'})))
+      this.pinguinoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapa)))
 
       if (this.estrellaMasAltaYagua>0) 
       {
-        this.pinguinoNivel(this.add.text(680, 400, '   NIVEL \nPRINCIPAL', {fontSize:'45px bold', color: 'black'})
-        .setInteractive().on('pointerdown', () => this.scene.sleep('menuMapa') /* duermo el mapa para guardar datos */ &&  this.scene.start('nivelPinguino')).setDepth(7).setVisible(true)) 
+        this.pinguinoNivel(this.add.text(680, 400, '   NIVEL \nPRINCIPAL', this.fuenteTextoMapaDesbloqueado)
+        .setInteractive()
+        .on('pointerdown', () => this.scene.sleep('menuMapa') /* duermo el mapa para guardar datos */ && 
+        this.scene.start('nivelPinguino')).setDepth(7).setVisible(true)) 
       }
 
       if (this.contadorEntrarNivel2>0)
       {
-        this.pinguinoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'black'})
+        this.pinguinoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapaDesbloqueado)
         .setInteractive().on('pointerdown', () => this.scene.start('nivelBonusPin')).setDepth(7).setVisible(true))
       }
 

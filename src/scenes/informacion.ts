@@ -1,6 +1,14 @@
 import Phaser from 'phaser'
 export default class info extends Phaser.Scene
 {
+  private fuenteTexto = 
+  {
+    fontFamily: 'Titan One',
+    fontSize: '50pt',
+    color: '#FFBD0D',
+    stroke: '#00572f',
+    strokeThickness: 6,
+  }
   constructor()
   {
     super('informacion');
@@ -21,25 +29,13 @@ export default class info extends Phaser.Scene
       strokeThickness: 6,
     })
 
-    const teclaAyuda = this.add.text(250, 350, 'AYUDA', {
-      fontFamily: 'Titan One',
-      fontSize: '50pt',
-      color: '#FFBD0D',
-      stroke: '#00572f',
-      strokeThickness: 6,
-    })
+    const teclaAyuda = this.add.text(250, 350, 'AYUDA', this.fuenteTexto)
     .setInteractive()
     .on('pointerover', () => teclaAyuda.setScale(1.1))    
     .on('pointerout', () => teclaAyuda.setScale(1))
     .on('pointerdown', () => this.scene.start('ayuda'));
 
-    const teclaCreditos = this.add.text(800, 350, 'CRÉDITOS', {
-      fontFamily: 'Titan One',
-      fontSize: '50pt',
-      color: '#FFBD0D',
-      stroke: '#00572f',
-      strokeThickness: 6,
-    })
+    const teclaCreditos = this.add.text(800, 350, 'CRÉDITOS', this.fuenteTexto )
     .setInteractive()
     .on('pointerover', () => teclaCreditos.setScale(1.1))
     .on('pointerout', () => teclaCreditos.setScale(1))
