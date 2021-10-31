@@ -96,8 +96,7 @@ export default class UI extends Phaser.Scene
     this.comidaLabel.text = `Comida: ${this.comidaCollected}`+ '/48'
 		
 		if (this.comidaCollected > 0) 
-		{
-			
+		{			
 			events.emit('sumaEstrella')
 		}
 	}
