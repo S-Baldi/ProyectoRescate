@@ -20,11 +20,14 @@ export default class extras extends Phaser.Scene
   {
     const fondoMenu = this.add.image(683, 384, 'fondoLimpio').setScale(0.75);
     this.add.text(550, 50, 'EXTRAS', {
-      font: '60pt Helvetica neue black',
-      color: 'yellow'
+      fontFamily: 'Titan One',
+      fontSize: '60pt',
+      color: '#FFBD0D',
+      stroke: '#00572f',
+      strokeThickness: 6,
     })
 
-    const buttonAtras = this.add.image(1260, 105, 'botonatras').setScale(0.8)
+    const buttonAtras = this.add.image(1260, 105, 'botonatras')
     .setInteractive()
     .on('pointerdown', () => this.scene.start('menuPpal'));
     
@@ -38,7 +41,12 @@ export default class extras extends Phaser.Scene
     else
     {
       let buttonInfoYaguarete = this.add.image(200, 250, 'infoYaguarete').setScale(0.9) &&
-      this.add.text(300, 220, 'YAGUARETÉ', {font: 'bold 40pt Arial', fontSize: '10px', align:'center'})
+      this.add.text(300, 220, 'YAGUARETÉ', 
+      { fontFamily: 'Titan One',
+      fontSize: '40pt',
+      color: '#FFBD0D',
+      stroke: '#00572f',
+      strokeThickness: 6,})
       .setInteractive() 
       .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.manager.scenes[14].mostrarInfo('yaguareteInformation'));
       
@@ -52,7 +60,12 @@ export default class extras extends Phaser.Scene
     else
     {
       let buttonInfoMono = this.add.image(200, 450, 'infoMono').setScale(1.1) &&
-      this.add.text(300, 420, 'MONO', {font: 'bold 40pt Arial', fontSize: '10px', align:'center'})
+      this.add.text(300, 420, 'MONO', 
+      {fontFamily: 'Titan One',
+      fontSize: '40pt',
+      color: '#FFBD0D',
+      stroke: '#00572f',
+      strokeThickness: 6,})
       .setInteractive() 
       .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.manager.scenes[14].mostrarInfo('monoInformation') );  
     }
@@ -62,10 +75,14 @@ export default class extras extends Phaser.Scene
     {
       const buttonDesbloqueableCondor = this.add.image(300, 650, 'botonCondor').setScale(0.75);
     }
-    else
-    {
-      let buttonInfoCondor = this.add.image(200, 650, 'infoCondor').setScale(0.8) &&
-      this.add.text(300, 620, 'CONDOR', {font: 'bold 40pt Arial', fontSize: '10px', align:'center'})
+    else{
+      let buttonInfoCondor = this.add.image(950, 550, 'infoCondor').setScale(0.8) &&
+      this.add.text(1050, 520, 'CONDOR', 
+      {fontFamily: 'Titan One',
+      fontSize: '40pt',
+      color: '#FFBD0D',
+      stroke: '#00572f',
+      strokeThickness: 6,})
       .setInteractive() 
       .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.manager.scenes[14].mostrarInfo('condorInformation') ) ;   
     }
@@ -78,7 +95,12 @@ export default class extras extends Phaser.Scene
     else
     {
       let buttonInfoBallena = this.add.image(950, 350, 'infoBallena').setScale(1) &&
-      this.add.text(1050, 320, 'BALLENA', {font: 'bold 40pt Arial', fontSize: '10px', align:'center'})
+      this.add.text(1050, 320, 'BALLENA', 
+      {fontFamily: 'Titan One',
+      fontSize: '40pt',
+      color: '#FFBD0D',
+      stroke: '#00572f',
+      strokeThickness: 6,})
       .setInteractive() 
       .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.manager.scenes[14].mostrarInfo('ballenaInformation')) ;  
     }
@@ -90,8 +112,13 @@ export default class extras extends Phaser.Scene
     }
     else
     {
-      let buttonInfoPinguino = this.add.image(950, 550, 'infoPinguino').setScale(0.9) &&
-      this.add.text(1050, 520, 'PINGÜINO', {font: 'bold 40pt Arial', fontSize: '10px', align:'center'})
+      let buttonInfoPinguino = this.add.image(200, 650, 'infoPinguino').setScale(0.9) &&
+      this.add.text(300, 620, 'PINGÜINO', 
+      {fontFamily: 'Titan One',
+      fontSize: '40pt',
+      color: '#FFBD0D',
+      stroke: '#00572f',
+      strokeThickness: 6,})
       .setInteractive() 
       .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.manager.scenes[14].mostrarInfo('pinguinoInformation')) ;  
     }  

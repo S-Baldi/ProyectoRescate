@@ -1,5 +1,4 @@
 import Phaser from 'phaser'
-import gameWin from './nivel1/gameWin';
 export default class mapa extends Phaser.Scene
 {
   private cantidadEstrellasYagua:any
@@ -15,7 +14,6 @@ export default class mapa extends Phaser.Scene
   constructor(){
     super ('menuMapa');
   }
-  
 
   preload(){
     this.load.image('botonNivel', 'assets/Mapa/botonMapa.png');
@@ -69,41 +67,32 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on('pointerover', () => buttonNivel1.setScale(0.28))
     .on('pointerout', () => buttonNivel1.setScale(0.25))
-    .on('pointerdown', () => 
-      this.add.image(900, 250, 'botonatras')
-      .setScale(0.5)
-      .setDepth(10)
-      .setInteractive().on('pointerdown', () => this.scene.start('menuMapa')) &&
-
-      this.add.image(680, 350, 'botonNivel').setScale(0.7) &&
-
-      this.add.text(680, 400, '   NIVEL \nPRINCIPAL', {fontSize: '45px bold', color: 'black'})
-      .setInteractive().on('pointerdown', () => this.scene.sleep('menuMapa') /* duermo el mapa para guardar datos */ &&  this.scene.start('nivelYaguarete'))  &&
-
-      this.add.sprite(650, 280, 'estrellas', this.estrellaMasAltaYagua).setScale(1.8) && 
-      this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', {fontSize:'45px bold', color: 'gray'}))         
-    ) 
+    .on('pointerdown', () => this.scene.launch('popUpMapa')
+    && this.scene.pause() 
+    && this.scene.manager.scenes[15].mostrarNiveles('yaguareteNiveles'))
     buttonNivel1.on('pointerdown', () => {this.activarBotonNivel1(true)})
 
     this.add.text(1030,115, 'YAGUARETÉ', {
-      fontSize: '250px bold',
-      color: 'yellow',
-      stroke: 'green',
-      strokeThickness: 4,
-      font: '23pt ARCO',
+      fontFamily: 'Titan One', //COLOCAMOS LA FAMILIA DE LA FUENTE QUE QUEREMOS
+      fontSize: '25pt',
+      color: '#FFBD0D',
+      stroke: '#00572f',
+      strokeThickness: 6,
     })
+      
 
     
     
     //////////////////////////////////////////////NIVEL MONO//////////////////////////////////////////////
     const buttonNivel2 = this.add.image(420,80, 'botonNivel').setScale(0.25)
 
-    this.add.text(320, 25, 'MONO CAPUCHINO', {
-      fontSize: '250px bold',
-      color: 'yellow',
-      stroke: 'green',
-      strokeThickness: 4,
-      font: '16pt ARCO',
+    this.add.text(320, 25, 'MONO CAÍ', {
+      fontFamily: 'Titan One',
+      fontSize: '25pt',
+      color: '#FFBD0D',
+      stroke: '#00572f',
+      strokeThickness: 6,
+      align: 'center'
     })
     
 
@@ -162,11 +151,11 @@ export default class mapa extends Phaser.Scene
     buttonNivel5.on('pointerdown', () => {this.activarBotonNivel2(true)})
 
     this.add.text(295,595, 'PINGÜINO', {
-      fontSize: '250px bold',
-      color: 'yellow',
-      stroke: 'green',
-      strokeThickness: 4,
-      font: '23pt ARCO',
+      fontFamily: 'Titan One',
+      fontSize: '25pt',
+      color: '#FFBD0D',
+      stroke: '#00572f',
+      strokeThickness: 6,
     })
     
   }

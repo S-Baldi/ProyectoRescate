@@ -84,7 +84,7 @@ export default class UI extends Phaser.Scene
 		++this.criasCollected
     this.criasLabel.text = `Crias: ` + this.criasCollected + '/3'
 		
-		if (this.criasCollected > 0) 
+		if (this.criasCollected > 2) 
 		{
 			events.emit('sumaEstrella')
 		}
@@ -95,8 +95,9 @@ export default class UI extends Phaser.Scene
 		++this.comidaCollected
     this.comidaLabel.text = `Comida: ${this.comidaCollected}`+ '/48'
 		
-		if (this.comidaCollected > 0) 
-		{	
+		if (this.comidaCollected > 47) 
+		{
+			
 			events.emit('sumaEstrella')
 		}
 	}

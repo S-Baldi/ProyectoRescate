@@ -1,5 +1,5 @@
 import { Body } from 'matter'
-import Phaser from 'phaser' 
+import Phaser, { LEFT } from 'phaser' 
 import StateMachine from '../../statemachine/StateMachine'
 import { sharedInstance as events } from '../eventCenter'
 import ObstaclesController from '../obstaclesController'

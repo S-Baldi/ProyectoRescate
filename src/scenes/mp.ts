@@ -1,4 +1,6 @@
 import Phaser from 'phaser'
+//IMPORTAMOS WEB FONT FILE
+import WebFontFile from './webFontLoader';
 export default class mp1 extends Phaser.Scene
 
 
@@ -45,8 +47,12 @@ export default class mp1 extends Phaser.Scene
     this.load.image('infoBallena', 'assets/MenuPrincipal/Botones/infoBallena1.png');
     this.load.image('infoPinguino', 'assets/MenuPrincipal/Botones/infoPinguino1.png');
 
-    //Botones GameWin/Lose
-    /* this.load.image('botonRestart', '/public/assets/MenuPrincipal/Botones/') */           
+    //CARGAMOS EN UN ARRAY TODAS LAS FUENTES QUE SE QUIEREN PARA EL JUEGO
+    this.load.addFile(new WebFontFile(this.load, [
+      'Titan One',
+      'Viga',
+      'Ubuntu'
+    ]))         
   }
 
   create()

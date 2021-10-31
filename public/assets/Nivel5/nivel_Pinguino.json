@@ -68,8 +68,8 @@
                  "type":"",
                  "visible":true,
                  "width":96,
-                 "x":4419.89255454545,
-                 "y":-465.575586363636
+                 "x":4503.89255454545,
+                 "y":-429.575586363636
                 }, 
                 {
                  "height":54.5455,
@@ -79,8 +79,8 @@
                  "type":"",
                  "visible":true,
                  "width":57.5758,
-                 "x":4843.80255454545,
-                 "y":-320.969186363636
+                 "x":4927.80255454545,
+                 "y":-284.969186363636
                 }, 
                 {
                  "height":56,
@@ -1104,39 +1104,6 @@
                  "width":60,
                  "x":26664,
                  "y":323
-                }, 
-                {
-                 "height":60.6065,
-                 "id":436,
-                 "name":"banderaPinguino",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":75.7578,
-                 "x":1518.1211,
-                 "y":41.69675
-                }, 
-                {
-                 "height":42,
-                 "id":437,
-                 "name":"pez",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":60,
-                 "x":650,
-                 "y":263
-                }, 
-                {
-                 "height":62,
-                 "id":438,
-                 "name":"cria",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":66,
-                 "x":1095,
-                 "y":193
                 }],
          "opacity":1,
          "type":"objectgroup",

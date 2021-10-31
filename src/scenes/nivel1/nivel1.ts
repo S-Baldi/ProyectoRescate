@@ -2,6 +2,7 @@ import Phaser from 'phaser'
 import obstaclesController from '../obstaclesController'
 import yaguareteController from './yaguareteController'
 import cazadorController from './cazadorController'
+import trampaController from './trampaController'
 import { sharedInstance as events } from '../eventCenter'
 export default class nivel_1 extends Phaser.Scene
 {
@@ -10,6 +11,8 @@ export default class nivel_1 extends Phaser.Scene
   private yaguareteController?: yaguareteController
   private cazador?: Phaser.Physics.Matter.Sprite
   private cazadorController?: cazadorController
+  private trampas?: Phaser.Physics.Matter.Sprite
+  private trampaController?: trampaController
   private obstacles!: obstaclesController  
 
   constructor(){
@@ -82,7 +85,7 @@ export default class nivel_1 extends Phaser.Scene
 						this.obstacles
 					)
 
-					this.cameras.main.startFollow(this.yaguarete, true)
+					this.cameras.main.startFollow(this.yaguarete, true, 1, 1, -400)
 					break
 				}
         
@@ -108,10 +111,16 @@ export default class nivel_1 extends Phaser.Scene
 						isStatic: true
 					})
           this.obstacles.add('trampa', trampa)
-          const trampas = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel1Trampaa', undefined, {
+          this.trampas = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel1Trampaa', undefined, {
             isStatic: true,
             isSensor:true
-          }).setScale(0.85)				
+          }).setScale(0.85).setData('type', 'trampa')	
+          
+          this.trampaController = new trampaController(
+            this,
+            this.trampas,
+            this.obstacles
+          )
 					break
         }
 
@@ -157,7 +166,9 @@ export default class nivel_1 extends Phaser.Scene
   update(t: number, dt: number){
     this.yaguareteController?.update(dt)
     this.cazadorController?.update(dt)
+    this.trampaController?.update(dt)
   }  
+  
 }
 
 
