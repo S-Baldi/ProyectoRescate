@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import {sharedInstance as events} from './eventCenter'
 export default class mapa extends Phaser.Scene
 {
   //Estrellas totales ganadas
@@ -7,10 +8,12 @@ export default class mapa extends Phaser.Scene
 
   //Yaguarete
   private cantidadEstrellasYagua
+  private cantidadEstrellasYaguaBonus
   private estrellaMasAltaYagua : number = 0;
   
   //Pinguino
   private cantidadEstrellasPingui
+  private cantidadEstrellasPinguiBonus
   private estrellaMasAltaPingui : number = 0;
     
 
@@ -24,6 +27,8 @@ export default class mapa extends Phaser.Scene
     this.load.spritesheet('estrellas','assets/Mapa/estrellasMapa.png',
     {frameWidth:196 , frameHeight:114 });
     this.load.image('nivelBonus', 'assets/Mapa/NivelBonus.png');
+    this.load.spritesheet('estrellaBonus', 'assets/Mapa/estrellasBonus.png',
+    {frameWidth:202, frameHeight:190});
   }
 
   create(){
@@ -54,6 +59,8 @@ export default class mapa extends Phaser.Scene
       this.estrellaMasAltaYagua = this.cantidadEstrellasYagua
     }
     this.add.sprite(1137, 195, 'estrellas', this.estrellaMasAltaYagua).setDepth(7).setScale(0.8);
+
+    this.cantidadEstrellasYaguaBonus= localStorage.getItem('estrellasYaguareteBonus') || '1'; 
     
     const buttonNivel1 = this.add.image(1130, 170, 'botonNivel').setScale(0.25)
     .setInteractive()
@@ -119,6 +126,8 @@ export default class mapa extends Phaser.Scene
     }
     this.add.sprite(387, 675, 'estrellas', this.estrellaMasAltaPingui).setDepth(7).setScale(0.8);
 
+    this.cantidadEstrellasPinguiBonus = localStorage.getItem('estrellasPinguinoBonus') || '1';
+
     const buttonNivel5 = this.add.image(380,650, 'botonNivel').setScale(0.25)
     .setInteractive()
     .on('pointerover', () => buttonNivel5.setScale(0.28))
@@ -139,13 +148,15 @@ export default class mapa extends Phaser.Scene
     
   update()
   {
-    const estrellasTotales = +this.cantidadEstrellasPingui + +this.cantidadEstrellasYagua
+    const estrellasTotales = +this.cantidadEstrellasPingui + +this.cantidadEstrellasYagua + 
+    +this.cantidadEstrellasYaguaBonus + +this.cantidadEstrellasPinguiBonus
+    
     this.add.text(1140, 625,`= ` + estrellasTotales,  
     {fontFamily: 'Titan One',
-    fontSize: '40pt',
-    color: '#FFBD0D',
-    stroke: '#00572f',
-    strokeThickness: 6,    	
-  })
-  }
+      fontSize: '40pt',
+      color: '#FFBD0D',
+      stroke: '#00572f',
+      strokeThickness: 6,    	
+    })    
+  }  
 }

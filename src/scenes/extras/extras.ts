@@ -1,11 +1,17 @@
 import Phaser from 'phaser'
+import {sharedInstance as events} from '../eventCenter'
 export default class extras extends Phaser.Scene
 {
+  private cantidadEstrellasYagua
+  private cantidadEstrellasYaguaBonus
+  private cantidadEstrellasPingui
+  private cantidadEstrellasPinguiBonus
+
   constructor()
   {
     super('extras');
   }
-
+  
   preload()
   {
     this.load.image('fotoYaguarete', 'assets/MenuPrincipal/Extras/YaguareteExtras.png');
@@ -31,11 +37,17 @@ export default class extras extends Phaser.Scene
     .on('pointerover', () => buttonAtras.setScale(1.1))
     .on('pointerout', () => buttonAtras.setScale(1))
     .on('pointerdown', () => this.scene.start('menuPpal'));
-    
-    var puntaje= 3;
+
+    this.cantidadEstrellasYagua = localStorage.getItem('estrellasYaguarete') || '1';
+    this.cantidadEstrellasYaguaBonus= localStorage.getItem('estrellasYaguareteBonus') || '1';
+    this.cantidadEstrellasPingui = localStorage.getItem('estrellasPingui') || '1';
+    this.cantidadEstrellasPinguiBonus = localStorage.getItem('estrellasPinguinoBonus') || '1';
+
+    const estrellasTotales = +this.cantidadEstrellasYagua + +this.cantidadEstrellasYaguaBonus + 
+    +this.cantidadEstrellasPingui + +this.cantidadEstrellasPinguiBonus
     
     //Yaguarete
-    if(puntaje<3)
+    if(estrellasTotales<3)
     {
       const buttonDesbloqueableYaguarete = this.add.image(300, 250, 'botonYaguarete').setScale(0.75);
     }
@@ -54,7 +66,7 @@ export default class extras extends Phaser.Scene
     }
 
     //Mono
-    if(puntaje<6)
+    if(estrellasTotales<6)
     {
       const buttonDesbloqueableMono = this.add.image(300, 450, 'botonMono').setScale(0.75);
     }
@@ -72,7 +84,7 @@ export default class extras extends Phaser.Scene
     }
 
     //Condor
-    if(puntaje<9)
+    if(estrellasTotales<9)
     {
       const buttonDesbloqueableCondor = this.add.image(300, 650, 'botonCondor').setScale(0.75);
     }
@@ -89,7 +101,7 @@ export default class extras extends Phaser.Scene
     }
 
     //Ballena
-    if(puntaje<12)
+    if(estrellasTotales<12)
     {
       const buttonDesbloqueableBallena= this.add.image(1000, 350, 'botonBallena').setScale(0.75);
     }
@@ -107,7 +119,7 @@ export default class extras extends Phaser.Scene
     }
 
     //Pingüino
-    if(puntaje<15)
+    if(estrellasTotales<15)
     {
       const buttonDesbloqueablePinguino = this.add.image(1000, 550, 'botonPinguino').setScale(0.75);
     }
@@ -122,6 +134,6 @@ export default class extras extends Phaser.Scene
       strokeThickness: 6,})
       .setInteractive() 
       .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.manager.scenes[14].mostrarInfo('pinguinoInformation')) ;  
-    }  
-  }
+    }      
+  }  
 }
