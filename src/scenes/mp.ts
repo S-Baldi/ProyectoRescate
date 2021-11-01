@@ -14,7 +14,6 @@ export default class mp1 extends Phaser.Scene
   {
     this.load.image('menu', 'assets/MenuPrincipal/menuPpal.png');
     this.load.image('botonPlay', 'assets/MenuPrincipal/Botones/botonPlay.png');
-    this.load.image('botonPlay2', 'assets/MenuPrincipal/Botones/botonPlay2.png');
     this.load.image('botonDesbloqueable', 'assets/MenuPrincipal/Botones/botonDesbloqueable.png');
     this.load.image('botonInfo', 'assets/MenuPrincipal/Botones/botonInfo.png');
     this.load.image('botonMusica', 'assets/MenuPrincipal/Botones/botonSonido.png');
@@ -26,26 +25,28 @@ export default class mp1 extends Phaser.Scene
 
     this.load.image('mapaArgentina', 'assets/Mapa/mapa.png');
     this.load.image('botonMenuPpal', 'assets/MenuPrincipal/Botones/botonMenu.png');
-
-    this.load.audio('sonidoBoton', 'audio/boton.mp3')
-
-                    //FONDO
-    this.load.image('fondoLimpio', 'assets/MenuPrincipal/fondoLimpio.png');
+    //Menu Limpio
+    this.load.image('fondoLimpio', 'assets/MenuPrincipal/fondoLimpio.png')
+              //Menu Informacion
+    this.load.image('menuInfo', 'assets/MenuPrincipal/MenuInformacion.png');
              //Menu ayuda
     this.load.image('menuAyuda','assets/MenuPrincipal/MenuAyuda.png');
               //Menu creditos
     this.load.image('menuCreditos','assets/MenuPrincipal/MenuCreditos.png');
              //Botones de desbloqueables
-    this.load.image('botonYaguarete', 'assets/MenuPrincipal/Botones/1erDesbloqueable.png');
-    this.load.image('botonMono', 'assets/MenuPrincipal/Botones/2doDesbloqueable.png');
-    this.load.image('botonCondor', 'assets/MenuPrincipal/Botones/3erDesbloqueable.png');
-    this.load.image('botonBallena', 'assets/MenuPrincipal/Botones/4toDesbloqueable.png');
-    this.load.image('botonPinguino', 'assets/MenuPrincipal/Botones/5toDesbloqueable.png');
-    this.load.image('infoYaguarete', 'assets/MenuPrincipal/Botones/infoYaguarete1.png');
-    this.load.image('infoMono', 'assets/MenuPrincipal/Botones/infoMono1.png');
-    this.load.image('infoCondor', 'assets/MenuPrincipal/Botones/infoCondor1.png');
-    this.load.image('infoBallena', 'assets/MenuPrincipal/Botones/infoBallena1.png');
-    this.load.image('infoPinguino', 'assets/MenuPrincipal/Botones/infoPinguino1.png');
+    this.load.image('botonYaguarete', 'assets/MenuPrincipal/Botones/Extras/1erDesbloqueable.png');
+    this.load.image('botonMono', 'assets/MenuPrincipal/Botones/Extras/2doDesbloqueable.png');
+    this.load.image('botonCondor', 'assets/MenuPrincipal/Botones/Extras/3erDesbloqueable.png');
+    this.load.image('botonBallena', 'assets/MenuPrincipal/Botones/Extras/4toDesbloqueable.png');
+    this.load.image('botonPinguino', 'assets/MenuPrincipal/Botones/Extras/5toDesbloqueable.png');
+    this.load.image('infoYaguarete', 'assets/MenuPrincipal/Botones/Extras/infoYaguarete1.png');
+    this.load.image('infoMono', 'assets/MenuPrincipal/Botones/Extras/infoMono1.png');
+    this.load.image('infoCondor', 'assets/MenuPrincipal/Botones/Extras/infoCondor1.png');
+    this.load.image('infoBallena', 'assets/MenuPrincipal/Botones/Extras/infoBallena1.png');
+    this.load.image('infoPinguino', 'assets/MenuPrincipal/Botones/Extras/infoPinguino1.png');
+
+    ////////////SONIDOS
+    this.load.audio('sonidoBoton', 'audio/boton.mp3')
 
     //CARGAMOS EN UN ARRAY TODAS LAS FUENTES QUE SE QUIEREN PARA EL JUEGO
     this.load.addFile(new WebFontFile(this.load, [

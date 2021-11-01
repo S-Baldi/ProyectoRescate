@@ -1,6 +1,13 @@
 import Phaser from 'phaser'
 export default class pop_up extends Phaser.Scene{
   
+  private fuenteTexto =     
+  {fontFamily: 'Viga',
+  fontSize: '35pt',
+  color: '#000000',
+  align: 'justify'
+  };
+
   constructor()
   {
     super('pop_up_B');
@@ -18,6 +25,8 @@ export default class pop_up extends Phaser.Scene{
 
     const volverMapa = this.add.image(680, 350, 'botonMapa')
     .setInteractive()  
+    .on('pointerover', () => volverMapa.setScale(1.1))
+    .on('pointerout', () => volverMapa.setScale(1))
     .on('pointerdown', () => this.scene.start('menuMapa') && this.scene.stop('nivelBonus'));    
   }
   
@@ -26,19 +35,15 @@ export default class pop_up extends Phaser.Scene{
     console.log(this)
     if (rta=='green')
     {
-      this.add.text(520, 180, 'Respuesta Correcta', {fontSize: '45px bold', color: 'green'}).setDepth(3)
+      this.add.text(480, 90, 'Respuesta Correcta', this.fuenteTexto).setDepth(3)
     }
     else
     {
-      this.add.text(520, 180, 'Respuesta Incorrecta', {fontSize: '45px bold', color: 'red'}).setDepth(3) //esto trae hacia delante o atras las cosas
+      this.add.text(460, 90, 'Respuesta Incorrecta', this.fuenteTexto).setDepth(3) //esto trae hacia delante o atras las cosas
     }
     return rta
 
   }
 
-  update()
-  {
-
-  }
 }
 

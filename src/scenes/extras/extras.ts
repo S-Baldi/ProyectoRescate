@@ -7,8 +7,7 @@ export default class extras extends Phaser.Scene
   }
 
   preload()
-  {    
-    this.load.image('botonNivel', 'assets/Mapa/botonMapa.png');
+  {
     this.load.image('fotoYaguarete', 'assets/MenuPrincipal/Extras/YaguareteExtras.png');
     this.load.image('fotoMono', 'assets/MenuPrincipal/Extras/MonoExtras.png');
     this.load.image('fotoBallena', 'assets/MenuPrincipal/Extras/BallenaExtras.png');
@@ -18,8 +17,8 @@ export default class extras extends Phaser.Scene
 
   create()
   {
-    const fondoMenu = this.add.image(683, 384, 'fondoLimpio').setScale(0.75);
-    this.add.text(550, 50, 'EXTRAS', {
+    const fondoMenu = this.add.image(683, 384, 'fondoLimpio').setScale(0.72);
+    this.add.text(550, 50, 'EXTRAS', {  
       fontFamily: 'Titan One',
       fontSize: '60pt',
       color: '#FFBD0D',
@@ -29,6 +28,8 @@ export default class extras extends Phaser.Scene
 
     const buttonAtras = this.add.image(1260, 105, 'botonatras')
     .setInteractive()
+    .on('pointerover', () => buttonAtras.setScale(1.1))
+    .on('pointerout', () => buttonAtras.setScale(1))
     .on('pointerdown', () => this.scene.start('menuPpal'));
     
     var puntaje= 3;
@@ -48,7 +49,7 @@ export default class extras extends Phaser.Scene
       stroke: '#00572f',
       strokeThickness: 6,})
       .setInteractive() 
-      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.manager.scenes[15].mostrarInfo('yaguareteInformation'));
+      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.manager.scenes[14].mostrarInfo('yaguareteInformation'));
       
     }
 

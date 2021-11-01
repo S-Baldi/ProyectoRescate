@@ -8,6 +8,7 @@ type CursorKeys = Phaser.Types.Input.Keyboard.CursorKeys
 
 export default class pipnguinoController
 {
+	private pointer: any
   private scene: Phaser.Scene
 	private sprite: Phaser.Physics.Matter.Sprite
 	private cursors: CursorKeys
@@ -22,6 +23,7 @@ export default class pipnguinoController
 		cursors: CursorKeys, 
 		obstacles: ObstaclesController) 
   {
+		this.pointer = scene.input.activePointer;
     this.scene = scene
 		this.sprite = sprite
 		this.cursors = cursors
@@ -148,12 +150,8 @@ export default class pipnguinoController
   private swimOnUpdate()
 	{	
 		this.sprite.setVelocityX(12.5)
-		if (this.cursors.right.isDown)
-		{
-			this.stateMachine.setState('barcoHit')
-		}
 
-		if (this.cursors.up.isDown)
+		if (this.cursors.up.isDown || this.pointer.isDown)
 		{
 			this.stateMachine.setState('swimUp')
 		}
@@ -170,11 +168,11 @@ export default class pipnguinoController
 
   private swimUpOnUpdate()
 	{
-    if (this.cursors.up.isDown){
+    if (this.cursors.up.isDown || this.pointer.isDown){
       this.sprite.setVelocityY(-12)      
       this.sprite.setVelocityX(12.5)
     }
-    if (this.cursors.up.isUp){
+    else if (this.cursors.up.isUp || this.pointer.isUp){
       this.sprite.setVelocityY(+5)
       this.sprite.setVelocityX(12.5)
     }		

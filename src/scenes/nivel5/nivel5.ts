@@ -1,12 +1,14 @@
 import Phaser from 'phaser'
 import obstaclesController from '../obstaclesController'
 import pinguinoController from './pinguinoController'
+import petroleoController from './petroleoController'
 export default class nivel_5 extends Phaser.Scene
 {
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys	
 	private pinguino?: Phaser.Physics.Matter.Sprite
   private pinguinoController?: pinguinoController
-  private barco?: Phaser.Physics.Matter.Sprite
+  private petroleos?: Phaser.Physics.Matter.Sprite
+  private petroleoController?: petroleoController
   private obstacles!: obstaclesController  
 
   constructor(){
@@ -28,7 +30,7 @@ export default class nivel_5 extends Phaser.Scene
     this.load.image('barco','assets/Nivel5/barco.png'); 
     this.load.image('barco2','assets/Nivel5/barco2.png');
     this.load.image('red', 'assets/Nivel5/red.png');
-    this.load.image('petroleo', 'assets/Nivel5/petroleo.png');
+    this.load.atlas('petroleo', 'assets/Nivel5/petroleo.png', 'assets/Nivel5/petroleo.json');
     this.load.image('nivel5Bandera', 'assets/Nivel5/banderaPinguino.png');
 
     this.load.atlas('pinguino', 'assets/Nivel5/pinguino.png', 'assets/Nivel5/pinguino.json');
@@ -41,7 +43,7 @@ export default class nivel_5 extends Phaser.Scene
     this.scene.launch('uiPinguino')
 
     /* Tiled Nivel 5 */
-    const mapa_nivel5 = this.make.tilemap({key: 'pinguinoTest'});
+    const mapa_nivel5 = this.make.tilemap({key: 'mapa_nivel5'});
     const fondo_nivel5_tiled = mapa_nivel5.addTilesetImage('nivel5_fondo', 'nivel5Fondo');
     const suelo_nivel5_tiled = mapa_nivel5.addTilesetImage('nivel5_suelo', 'nivel5Suelo');
 
@@ -142,10 +144,16 @@ export default class nivel_5 extends Phaser.Scene
           isStatic: true
 					})
           this.obstacles.add('petroleo', petroleo)
-          const petroleos = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'petroleo', undefined, {
+          
+          this.petroleos = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'petroleo', undefined, {
             isStatic: true,
             isSensor:true
           }).setScale(1)
+
+          this.petroleoController = new petroleoController(
+            this,
+            this.petroleos,
+          )
 					break
         }
 
@@ -155,10 +163,16 @@ export default class nivel_5 extends Phaser.Scene
           isStatic: true
 					})
           this.obstacles.add('petroleo2', petroleo2)
-          const petroleos2 = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'petroleo', undefined, {
+
+          this.petroleos = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'petroleo', undefined, {
             isStatic: true,
             isSensor:true
           }).setScale(1, 1.3)
+
+          this.petroleoController = new petroleoController(
+            this,
+            this.petroleos,
+          )
 					break
         }
 
@@ -212,6 +226,7 @@ export default class nivel_5 extends Phaser.Scene
 
   update(t: number, dt: number){
     this.pinguinoController?.update(dt)
+    this.petroleoController?.update(dt)
   }  
 }
 

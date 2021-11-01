@@ -1,4 +1,4 @@
-import Phaser from 'phaser' 
+import Phaser, { GameObjects } from 'phaser' 
 import StateMachine from '../../statemachine/StateMachine'
 import ObstaclesController from '../obstaclesController'
 import { sharedInstance as events } from '../eventCenter'
@@ -33,6 +33,7 @@ export default class cazadorController
 
   this.sprite.setOnCollide((data: MatterJS.ICollisionPair) => {
     const body = data.bodyA as MatterJS.BodyType
+
     const gameObject = body.gameObject
     
     if (!gameObject)
@@ -75,7 +76,7 @@ export default class cazadorController
   private createAnimationHunter(){
     this.sprite.anims.create({
 			key: 'hunter-run',
-			frameRate: 5,
+			frameRate: 10,
 			frames: this.sprite.anims.generateFrameNames('cazador', {
 				start: 1,
 				end: 5,

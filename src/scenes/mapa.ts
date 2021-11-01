@@ -140,7 +140,7 @@ export default class mapa extends Phaser.Scene
   update()
   {
     const estrellasTotales = +this.cantidadEstrellasPingui + +this.cantidadEstrellasYagua
-    this.add.text(1140, 625,`=` + estrellasTotales,  
+    this.add.text(1140, 625,`= ` + estrellasTotales,  
     {fontFamily: 'Titan One',
     fontSize: '40pt',
     color: '#FFBD0D',

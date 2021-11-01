@@ -20,7 +20,7 @@ export default class info extends Phaser.Scene
 
   create()
   {
-    const fondoMenu = this.add.image(683, 384, 'fondoLimpio').setScale(0.75);
+    const fondoMenu = this.add.image(683, 384, 'menuInfo').setScale(0.72);
     this.add.text(380, 100, 'INFORMACIÓN', {
       fontFamily: 'Titan One',
       fontSize: '60pt',
@@ -43,6 +43,8 @@ export default class info extends Phaser.Scene
 
     const buttonAtras = this.add.image(1260, 105, 'botonatras')
     .setInteractive()
+    .on('pointerover', () => buttonAtras.setScale(1.1))
+    .on('pointerout', () => buttonAtras.setScale(1))
     .on('pointerdown', () => this.scene.start('menuPpal'))
   }
 }

@@ -9,6 +9,7 @@ type CursorKeys = Phaser.Types.Input.Keyboard.CursorKeys
 
 export default class yaguareteController
 {
+	private pointer: any //COLOCAMOS UN POINTER PARA EL MOUSE
   private scene: Phaser.Scene
 	private sprite: Phaser.Physics.Matter.Sprite
 	private cursors: CursorKeys
@@ -25,6 +26,7 @@ export default class yaguareteController
 		cursors: CursorKeys, 
 		obstacles: ObstaclesController) 
   {
+		this.pointer = scene.input.activePointer; //LE COLOCAMOS AL POINTER UN ACTIVEPOINTER
     this.scene = scene
 		this.sprite = sprite
 		this.cursors = cursors
@@ -125,7 +127,7 @@ export default class yaguareteController
   private walkOnUpdate()
 	{	
 		this.sprite.setVelocityX(15)
-		if (this.cursors.up.isDown)
+		if (this.cursors.up.isDown|| this.pointer.isDown) //POINTER IS DOWN INDICA SI SE REALIZA EL CLICK
 		{
 			this.stateMachine.setState('jump')
 		}
@@ -141,9 +143,7 @@ export default class yaguareteController
 	}
 
   private jumpOnUpdate()
-	{
-
-	}
+	{}
 
 	private jumpOnExit()
 	{

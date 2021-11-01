@@ -67,6 +67,8 @@ export default class popUpMapa extends Phaser.Scene
     this.add.image(680, 350, 'popUpMapaNiveles').setScale(0.7).setDepth(-1);
     const buttonAtras = this.add.image(900, 250, 'botonatras')
     .setInteractive()
+    .on('pointerover', () => buttonAtras.setScale(1.1))
+    .on('pointerout', () => buttonAtras.setScale(1))
     .on('pointerdown', () => this.scene.stop() && this.scene.resume('menuMapa'));    
   }  
 
@@ -83,12 +85,15 @@ export default class popUpMapa extends Phaser.Scene
       this.add.sprite(1137, 195, 'estrellas', this.estrellaMasAltaYagua).setDepth(7).setScale(0.8);      
 
       const nivelPpalYagua = this.add.text(680, 400, '   NIVEL \nPRINCIPAL', this.fuenteTextoMapaDesbloqueado)
-      .setInteractive() 
+      .setInteractive()
       nivelPpalYagua.on('pointerover', () => nivelPpalYagua.setScale(1.1))
       .on('pointerout', () => nivelPpalYagua.setScale(1))
       .on('pointerdown', () => this.scene.sleep('menuMapa') && 
+
       this.scene.start('nivelYaguarete'))  &&
-      this.add.sprite(670, 280, 'estrellas', this.estrellaMasAltaYagua).setScale(1.8) && 
+
+      this.add.sprite(650, 280, 'estrellas', this.estrellaMasAltaYagua).setScale(1.8) && 
+
       this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapa))  
       
       if (this.contadorEntrarNivel1>0)

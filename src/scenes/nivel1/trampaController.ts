@@ -25,9 +25,6 @@ export default class trampaController
   this.stateMachine.addState('move',{
     onEnter: this.moveOnEnter,
   })
-  .addState('hunterHit',{
-    onEnter: this.hunterHit
-  })
   .setState('move')
 }
 
@@ -40,11 +37,6 @@ export default class trampaController
 	{
 		this.sprite.play('trampMove')		
 	}
-
-  private hunterHit(){
-    console.log('TRAMPA DESAPARECE')
-    this.sprite.destroy()
-  }
 
   private createAnimationTramp(){
     this.sprite.anims.create({

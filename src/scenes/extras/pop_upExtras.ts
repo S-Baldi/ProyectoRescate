@@ -6,7 +6,8 @@ export default class pop_upExt extends Phaser.Scene
   {fontFamily: 'Viga',
   fontSize: '20pt',
   color: '#000000',
-  align: 'justify'
+  align: 'justify',
+  lineSpacing: -5
   };
 
   private fuenteNombres = 
@@ -20,20 +21,22 @@ export default class pop_upExt extends Phaser.Scene
   
   constructor()
   {
-    super('this.scene.get("menuMapa").ganarYaguarete()');
+    super('pop_up_E');
   }
 
   preload()
   {
-    this.load.image('popUpExtras', 'assets/MenuPrincipal/popUp.png')
+    this.load.image('popUpExtras', 'assets/MenuPrincipal/popUp2.png')
 
   }
   
   create()
   {
-    const fondoPopUpExtras = this.add.image(680, 390, 'popUpExtras').setScale(1.1 , 1.2);
+    const fondoPopUpExtras = this.add.image(680, 390, 'popUpExtras').setScale(0.85)
     const buttonAtras = this.add.image(1080, 150, 'botonatras')
     .setInteractive()
+    .on('pointerover', () => buttonAtras.setScale(1.1))
+    .on('pointerout', () => buttonAtras.setScale(1))
     .on('pointerdown', () => this.scene.stop() && this.scene.resume('extras'));    
   }  
 
@@ -41,14 +44,24 @@ export default class pop_upExt extends Phaser.Scene
   {
     if (info=='yaguareteInformation') 
     {
-      const tituloPopUpY= this.add.text(500, 130, 'YAGUARETÉ', this.fuenteNombres).setDepth(3);
+      const tituloPopUpY= this.add.text(500, 80, 'YAGUARETÉ', this.fuenteNombres).setDepth(3);
 
-      const fotoY = this.add.image(350, 435, 'fotoYaguarete').setScale(0.8).setDepth(3);
-//DIFERENCIA DE 24 ENTRE TEXTO Y TEXTO
-      this.add.text(500, 250, 'Nombre científico: Panthera onca', this.fuenteTexto).setDepth(3)
-      this.add.text(500, 274, 'Longitud: 1,1 a 2,50m', this.fuenteTexto ).setDepth(3)
-      this.add.text(500, 298, 'Altura: 63 a 76 cm', this.fuenteTexto).setDepth(3)
-      
+      const fotoY = this.add.image(350, 400, 'fotoYaguarete').setScale(0.85).setDepth(3);
+
+      //DIFERENCIA DE 24 o 34 ENTRE TEXTO Y TEXTO, el doble para dos renglones
+      //Espaciado de -5 (lineSpacing: -5)
+      this.add.text(540, 170, 'Nombre científico: Panthera onca', this.fuenteTexto).setDepth(3)
+      this.add.text(540, 204, 'Longitud: 1,1 a 2,50m', this.fuenteTexto ).setDepth(3)
+      this.add.text(540, 238, 'Altura: 63 a 76 cm', this.fuenteTexto).setDepth(3)
+      this.add.text(540, 262, 'Peso: 56 a 96 kg', this.fuenteTexto).setDepth(3)
+      this.add.text(540, 296, 'Distribución: Noreste de Argentina', this.fuenteTexto).setDepth(3)
+      this.add.text(540, 330, 'Estado de Conservación: Casi Amenazado', this.fuenteTexto).setDepth(3)
+      this.add.text(540, 364, 'Dieta:  pecaríes, carpinchos, yacarés, venados, tapires', this.fuenteTexto).setDepth(3)
+      this.add.text(540, 398, 'Según la Red Yaguareté quedan menos de 250 \nYaguaretés adultos en todo el país', this.fuenteTexto).setDepth(3)
+      this.add.text(540, 456, 'El yaguareté es el felino más grande del continente \namericano', this.fuenteTexto).setDepth(3)
+      this.add.text(540, 514, 'Su territorio abarca 40.000 hectáreas en la región \nchaqueña', this.fuenteTexto).setDepth(3)
+      this.add.text(540, 572, 'Es una de las especies que se encuentran más \namenazadas por la caza furtiva.', this.fuenteTexto).setDepth(3)
+      this.add.text(540, 630, 'Es una especie de la fauna argentina declarada como \nMonumento Natural Nacional', this.fuenteTexto).setDepth(3)
     }     
     
     if (info=='monoInformation')

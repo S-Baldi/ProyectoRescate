@@ -1,6 +1,8 @@
 import Phaser from "phaser"
 import {sharedInstance as events} from '../eventCenter'
 
+
+
 export default class UI extends Phaser.Scene
 {	
   //Texto para corroborar
@@ -42,7 +44,6 @@ export default class UI extends Phaser.Scene
 
 	create()
 	{
-		
 		const botonPausa = this.add.image(100, 100, 'botonPausa');
 		botonPausa.setInteractive()
 		.on('pointerover', () => botonPausa.setScale(1.1))

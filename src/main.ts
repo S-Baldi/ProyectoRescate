@@ -24,9 +24,9 @@ import gameWinPinguino from './scenes/nivel5/gameWin'
 import gameOverPinguino from './scenes/nivel5/gameOver'
 import UI_Pinguino from './scenes/nivel5/UI_Pinguino'
 import pausePinguino from './scenes/nivel5/pause'
-import bonusPingui from './scenes/nivel5/BonusPingui/nivelBonusPingui'
-import pop_up_Pingui from './scenes/nivel5/BonusPingui/pop_up_BonusPin'
-import preguntasPingui from './scenes/nivel5/BonusPingui/preguntasPingui'
+import bonusPingui from './scenes/nivel5/nivelBonus/nivelBonusPingui'
+import pop_up_Pingui from './scenes/nivel5/nivelBonus/pop_up_BonusPin'
+import preguntasPingui from './scenes/nivel5/nivelBonus/preguntasPingui'
 
 const config : Phaser.Types.Core.GameConfig =
 {
@@ -46,11 +46,9 @@ const config : Phaser.Types.Core.GameConfig =
       debug: false
     }
   },
-  scene: [mp1, info, mapa, ayuda, creditos, 
-    extras, nivel_1, UI, gameOver, gameWin, 
-    pause, bonus, pop_up, preguntas, pop_upExt, 
-    popUpMapa, nivel_5, UI_Pinguino, gameWinPinguino, gameOverPinguino, 
-    pausePinguino, bonusPingui, pop_up_Pingui, preguntasPingui]
+  scene: [mp1, info, mapa, ayuda, creditos, extras, 
+    nivel_1, UI, gameOver, gameWin, pause, bonus, pop_up, preguntas, pop_upExt, popUpMapa, 
+    nivel_5, UI_Pinguino, gameWinPinguino, gameOverPinguino, pausePinguino, bonusPingui, pop_up_Pingui, preguntasPingui]
 };
 
 export default new Phaser.Game(config)

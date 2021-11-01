@@ -1,6 +1,13 @@
 import Phaser from 'phaser'
 export default class pop_up_Pingui extends Phaser.Scene{
   
+  private fuenteTexto =     
+  {fontFamily: 'Viga',
+  fontSize: '35pt',
+  color: '#000000',
+  align: 'justify'
+  };
+
   constructor()
   {
     super('pop_up_B_Pin');
@@ -27,11 +34,11 @@ export default class pop_up_Pingui extends Phaser.Scene{
     console.log(this)
     if (rta=='green')
     {
-      this.add.text(520, 180, 'Respuesta Correcta', {fontSize: '45px bold', color: 'green'}).setDepth(3)
+      this.add.text(480, 90, 'Respuesta Correcta', this.fuenteTexto).setDepth(3)
     }
     else
     {
-      this.add.text(520, 180, 'Respuesta Incorrecta', {fontSize: '45px bold', color: 'red'}).setDepth(3) //esto trae hacia delante o atras las cosas
+      this.add.text(460, 90, 'Respuesta Incorrecta', this.fuenteTexto).setDepth(3) //esto trae hacia delante o atras las cosas
     }
     return rta
   }
