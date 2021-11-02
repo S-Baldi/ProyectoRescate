@@ -13,7 +13,8 @@ export default class popUpMapa extends Phaser.Scene
   private cantidadEstrellasPingui:any
   private estrellaMasAltaPingui : number =0  
   private textoPinguino   
-  private contadorEntrarNivel2:number=0  
+  private contadorEntrarNivel5:number=0
+  private cerrarBonusPinguino:number=0   
   
   private fuenteTextoMapaDesbloqueado =     
   {fontFamily: 'Viga',
@@ -135,12 +136,16 @@ export default class popUpMapa extends Phaser.Scene
         this.scene.start('nivelPinguino')).setDepth(7).setVisible(true)) 
       }
 
-      if (this.contadorEntrarNivel2>0)
+      if (this.contadorEntrarNivel5==0 && this.cerrarBonusPinguino>0)
+      {
+        this.pinguinoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapa)
+        .removeInteractive())
+      }
+      else if (this.contadorEntrarNivel5>0 && this.cerrarBonusPinguino<1)
       {
         this.pinguinoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapaDesbloqueado)
         .setInteractive().on('pointerdown', () => this.scene.start('nivelBonusPin')).setDepth(7).setVisible(true))
       }
-
     }
   }
   /////////////////////// NIVEL 1 + Bonus //////////////////
@@ -151,15 +156,18 @@ export default class popUpMapa extends Phaser.Scene
   } 
   public yaEntroBonusYaguarete()
   {
-    this.cerrarBonusYaguarete++
-    console.log(this.cerrarBonusYaguarete)  
+    this.cerrarBonusYaguarete++     
   }
-  /////////////////////// NIVEL 5 ///////////////////////
+  /////////////////////// NIVEL 5 + Bonus //////////////////
   
-  public aumentaContador2()
+  public aumentaContador5()
   {
-    this.contadorEntrarNivel2++
+    this.contadorEntrarNivel5++
   }  
+  public yaEntroBonusPinguino()
+  {
+    this.cerrarBonusPinguino++
+  }
  
 
   update()
