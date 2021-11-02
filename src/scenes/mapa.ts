@@ -58,9 +58,13 @@ export default class mapa extends Phaser.Scene
     {
       this.estrellaMasAltaYagua = this.cantidadEstrellasYagua
     }
+<<<<<<< HEAD
+    this.add.sprite(1125, 195, 'estrellas', this.estrellaMasAltaYagua).setDepth(7).setScale(0.8);
+=======
     this.add.sprite(1137, 195, 'estrellas', this.estrellaMasAltaYagua).setDepth(7).setScale(0.8);
 
     this.cantidadEstrellasYaguaBonus= localStorage.getItem('estrellasYaguareteBonus') || '1'; 
+>>>>>>> 83ca57137a2d1c672e1199472f95300b620ffae9
     
     const buttonNivel1 = this.add.image(1130, 170, 'botonNivel').setScale(0.25)
     .setInteractive()
@@ -81,7 +85,9 @@ export default class mapa extends Phaser.Scene
     //////////////////////////////////////////////NIVEL MONO//////////////////////////////////////////////
     const buttonNivel2 = this.add.image(420,80, 'botonNivel').setScale(0.25)
     .setInteractive()
-    .on('pointerdown', () => this.scene.start('nivelPinguino'))
+    .on('pointerover', () => buttonNivel2.setScale(0.28))
+    .on('pointerout', () => buttonNivel2.setScale(0.25))
+    .on('pointerdown', () => this.scene.start('nivelMono'))
 
     this.add.text(320, 25, 'MONO CAÍ', {
       fontFamily: 'Titan One',
@@ -124,7 +130,7 @@ export default class mapa extends Phaser.Scene
     {
       this.estrellaMasAltaPingui = this.cantidadEstrellasPingui
     }
-    this.add.sprite(387, 675, 'estrellas', this.estrellaMasAltaPingui).setDepth(7).setScale(0.8);
+    this.add.sprite(375, 675, 'estrellas', this.estrellaMasAltaPingui).setDepth(7).setScale(0.8);
 
     this.cantidadEstrellasPinguiBonus = localStorage.getItem('estrellasPinguinoBonus') || '1';
 

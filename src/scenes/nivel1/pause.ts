@@ -1,6 +1,5 @@
 
 import Phaser from 'phaser'
-import WebFontFile from '../webFontLoader';
 
 export default class pause extends Phaser.Scene{
   constructor()
@@ -10,8 +9,6 @@ export default class pause extends Phaser.Scene{
 
   preload(){
     this.load.image('pause', 'assets/Nivel1/popUpPause.png');
-
-    this.load.addFile(new WebFontFile(this.load, 'Titan One'))
   }
   
   create(){

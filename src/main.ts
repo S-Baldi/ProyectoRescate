@@ -28,6 +28,11 @@ import bonusPingui from './scenes/nivel5/nivelBonus/nivelBonusPingui'
 import pop_up_Pingui from './scenes/nivel5/nivelBonus/pop_up_BonusPin'
 import preguntasPingui from './scenes/nivel5/nivelBonus/preguntasPingui'
 
+//NIVEL MONO
+import nivel_2 from './scenes/nivel2/nivel2'
+import pauseMono from './scenes/nivel2/pause'
+import UI_Mono from './scenes/nivel2/UI_Mono'
+
 const config : Phaser.Types.Core.GameConfig =
 {
   type: Phaser.WEBGL,
@@ -48,7 +53,8 @@ const config : Phaser.Types.Core.GameConfig =
   },
   scene: [mp1, info, mapa, ayuda, creditos, extras, 
     nivel_1, UI, gameOver, gameWin, pause, bonus, pop_up, preguntas, pop_upExt, popUpMapa, 
-    nivel_5, UI_Pinguino, gameWinPinguino, gameOverPinguino, pausePinguino, bonusPingui, pop_up_Pingui, preguntasPingui]
+    nivel_5, UI_Pinguino, gameWinPinguino, gameOverPinguino, pausePinguino, bonusPingui, pop_up_Pingui, preguntasPingui,
+    nivel_2, UI_Mono, pauseMono]
 };
 
 export default new Phaser.Game(config)
