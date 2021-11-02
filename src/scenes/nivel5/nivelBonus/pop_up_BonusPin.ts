@@ -35,10 +35,13 @@ export default class pop_up_Pingui extends Phaser.Scene{
     if (rta=='green')
     {
       this.add.text(480, 90, 'Respuesta Correcta', this.fuenteTexto).setDepth(3)
+      this.add.sprite(680, 205, 'estrellaBonus', 1).setDepth(3).setScale(0.6)
+      localStorage.setItem('estrellasPinguinoBonus', '1')
     }
     else
     {
       this.add.text(460, 90, 'Respuesta Incorrecta', this.fuenteTexto).setDepth(3) //esto trae hacia delante o atras las cosas
+      this.add.sprite(680, 205, 'estrellaBonus', 0).setDepth(3).setScale(0.6)
     }
     return rta
   }

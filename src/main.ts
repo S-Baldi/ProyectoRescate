@@ -60,3 +60,6 @@ const config : Phaser.Types.Core.GameConfig =
 export default new Phaser.Game(config)
 localStorage.setItem('estrellasYaguarete', '0');
 localStorage.setItem('estrellasPingui', '0');
+localStorage.setItem('estrellasYaguareteBonus', '0');
+localStorage.setItem('estrellasPinguinoBonus', '0');
+
