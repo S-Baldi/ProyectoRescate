@@ -7,7 +7,7 @@ export default class gameOverMono extends Phaser.Scene{
   }
 
   preload(){
-    this.load.image('loseMono', 'assets/GameWinLose/losePinguino.png');
+    this.load.image('loseMono', 'assets/GameWinLose/loseMono.png');
   }
   
   create(){
