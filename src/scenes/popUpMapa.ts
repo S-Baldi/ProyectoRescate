@@ -7,6 +7,8 @@ export default class popUpMapa extends Phaser.Scene
   private estrellaMasAltaYagua : number =0
   private textoYaguarete
   private contadorEntrarNivel1:number=0 
+  private cerrarBonusYaguarete:number=0 
+  private btn:any
   //pinguino
   private cantidadEstrellasPingui:any
   private estrellaMasAltaPingui : number =0  
@@ -92,15 +94,19 @@ export default class popUpMapa extends Phaser.Scene
 
       this.scene.start('nivelYaguarete'))  &&
 
-      this.add.sprite(650, 280, 'estrellas', this.estrellaMasAltaYagua).setScale(1.8) && 
+      this.add.sprite(650, 280, 'estrellas', this.estrellaMasAltaYagua).setScale(1.8) //&& 
 
       this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapa))  
       
-      if (this.contadorEntrarNivel1>0)
+      if (this.contadorEntrarNivel1==0 && this.cerrarBonusYaguarete>0)
+      {       
+        this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapa)
+        .removeInteractive())  
+      }  
+      else if(this.contadorEntrarNivel1>0 && this.cerrarBonusYaguarete<1)
       {
         this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapaDesbloqueado)
-        .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus'))) 
-              
+        .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus')))          
       }     
     } 
 
@@ -112,6 +118,7 @@ export default class popUpMapa extends Phaser.Scene
       {
         this.estrellaMasAltaPingui = this.cantidadEstrellasPingui
       }
+
       this.add.sprite(387, 675, 'estrellas', this.estrellaMasAltaPingui).setDepth(7).setScale(0.8);      
 
       this.pinguinoNivel(this.add.text(680, 400, '   NIVEL \nPRINCIPAL', this.fuenteTextoMapa) &&
@@ -136,12 +143,17 @@ export default class popUpMapa extends Phaser.Scene
 
     }
   }
-  /////////////////////// NIVEL 1 //////////////////
+  /////////////////////// NIVEL 1 + Bonus //////////////////
  
   public aumentaContador1()
   {
     this.contadorEntrarNivel1++    
   } 
+  public yaEntroBonusYaguarete()
+  {
+    this.cerrarBonusYaguarete++
+    console.log(this.cerrarBonusYaguarete)  
+  }
   /////////////////////// NIVEL 5 ///////////////////////
   
   public aumentaContador2()
