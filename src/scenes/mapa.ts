@@ -156,13 +156,15 @@ export default class mapa extends Phaser.Scene
   {
     const estrellasTotales = +this.cantidadEstrellasPingui + +this.cantidadEstrellasYagua + 
     +this.cantidadEstrellasYaguaBonus + +this.cantidadEstrellasPinguiBonus
-    
+
     this.add.text(1140, 625,`= ` + estrellasTotales,  
     {fontFamily: 'Titan One',
       fontSize: '40pt',
       color: '#FFBD0D',
       stroke: '#00572f',
       strokeThickness: 6,    	
-    })    
+    })
+    
+    
   }  
 }

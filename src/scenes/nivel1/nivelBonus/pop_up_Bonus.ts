@@ -44,6 +44,7 @@ export default class pop_up extends Phaser.Scene{
       this.add.text(460, 90, 'Respuesta Incorrecta', this.fuenteTexto).setDepth(3) //esto trae hacia delante o atras las cosas
       this.add.sprite(680, 205, 'estrellaBonus', 0).setDepth(3).setScale(0.6)
     }
+    this.scene.get('popUpMapa').yaEntroBonusYaguarete()
     return rta
 
   }
