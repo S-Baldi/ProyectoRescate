@@ -198,7 +198,7 @@ export default class pipnguinoController
 		console.log('GANASTEEE')
 
 		this.cantEstrellas = this.cantEstrellas+1
-		this.scene.scene.get('popUpMapa').aumentaContador2()
+		this.scene.scene.get('popUpMapa').aumentaContador5()
 				
 		this.scene.scene.pause()
 		this.scene.scene.stop('uiPinguino')
