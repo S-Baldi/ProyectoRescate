@@ -5,6 +5,7 @@ import {sharedInstance as events} from '../eventCenter'
 export default class gameWinPinguino extends Phaser.Scene{
   private cantidadEstrellasPingui: any
   private cantidadCiertaEstrellasPinguino: any
+  private contadorEntrarNivel5:number=0
   constructor()
   {
     super('gameWinPinguino');
@@ -40,6 +41,12 @@ export default class gameWinPinguino extends Phaser.Scene{
       this.scene.get("popUpMapa").ganar()
       this.scene.stop('nivelPinguino')
       this.scene.start('menuMapa')
+      
+      if (this.contadorEntrarNivel5>0 && this.contadorEntrarNivel5<2) 
+      {
+        this.scene.launch('popUpInformativo') 
+        this.scene.get('popUpInformativo').mostrarInfoNiveles('bonusPinguinoDesbloqueado')
+      } 
     });
 
     this.cantidadEstrellasPingui = localStorage.getItem('estrellasPingui') || '1';
@@ -66,6 +73,11 @@ export default class gameWinPinguino extends Phaser.Scene{
     this.cantidadCiertaEstrellasPinguino = this.cantidadEstrellasPingui
     console.log('this.cantidadCiertaEstrellasPinguino')
   };
+  
+  public aumentaContador5()
+  {
+    this.contadorEntrarNivel5++
+  }
   
 
 }

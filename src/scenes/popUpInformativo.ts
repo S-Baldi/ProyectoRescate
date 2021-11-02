@@ -38,6 +38,22 @@ export default class popUpInformativo extends Phaser.Scene
     .on('pointerover', () => buttonAtras.setScale(1.1))
     .on('pointerout', () => buttonAtras.setScale(1))
     .on('pointerdown', () => this.scene.stop() && this.scene.resume('menuMapa'));
-    const txtInformativo2= this.add.text(450, 400, '-Nivel Bonus del Yaguareté desbloqueado', this.Texto)
+    
+  }
+
+  public mostrarInfoNiveles(info:string)
+  {
+    if (info=='bonusYaguareteDesbloqueado') 
+    {
+      let txtInformativoBonusYagua= this.add.text(450, 400, '-Nivel Bonus del Yaguareté desbloqueado', this.Texto).setDepth(3);
+    }
+    if (info=='nivelPinguiDesbloqueado') 
+    {
+      let txtInformativoPingui= this.add.text(450, 400, '-Nivel Principal del Pingüino desbloqueado', this.Texto).setDepth(3);
+    }
+    if (info=='bonusPinguinoDesbloqueado') 
+    {
+      let txtInformativoBonusYagua= this.add.text(450, 400, '-Nivel Bonus del Pinguino desbloqueado', this.Texto).setDepth(3);
+    }   
   }
 }

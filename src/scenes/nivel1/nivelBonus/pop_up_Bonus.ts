@@ -7,6 +7,7 @@ export default class pop_up extends Phaser.Scene{
   color: '#000000',
   align: 'justify'
   };
+  private contadorEntrarNivel1:number=0
 
   constructor()
   {
@@ -27,7 +28,17 @@ export default class pop_up extends Phaser.Scene{
     .setInteractive()  
     .on('pointerover', () => volverMapa.setScale(1.1))
     .on('pointerout', () => volverMapa.setScale(1))
-    .on('pointerdown', () => this.scene.start('menuMapa') && this.scene.stop('nivelBonus'));    
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>     
+    {
+      this.scene.start('menuMapa')
+      this.scene.stop('nivelBonus')
+      if (this.contadorEntrarNivel1>0 && this.contadorEntrarNivel1<2) 
+      {
+        this.scene.launch('popUpInformativo')
+        this.scene.get('popUpInformativo').mostrarInfoNiveles('nivelPinguiDesbloqueado')
+      }
+    
+    })     
   }
   
   public mostrar_Texto(rta:string)
@@ -45,8 +56,14 @@ export default class pop_up extends Phaser.Scene{
       this.add.sprite(680, 205, 'estrellaBonus', 0).setDepth(3).setScale(0.6)
     }
     this.scene.get('popUpMapa').yaEntroBonusYaguarete()
+    
     return rta
 
+  }
+  public aumentaContador1()
+  {
+    this.contadorEntrarNivel1++
+    console.log('this.contadorEntrarNivel1')    
   }
 
 }

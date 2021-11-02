@@ -107,7 +107,7 @@ export default class popUpMapa extends Phaser.Scene
       else if(this.contadorEntrarNivel1>0 && this.cerrarBonusYaguarete<1)
       {
         this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapaDesbloqueado)
-        .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus')))          
+        .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus')))            
       }     
     } 
 

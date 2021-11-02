@@ -61,7 +61,7 @@ export default class extras extends Phaser.Scene
       stroke: '#00572f',
       strokeThickness: 6,})
       .setInteractive() 
-      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.manager.scenes[14].mostrarInfo('yaguareteInformation'));
+      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.get('pop_up_E').mostrarInfo('yaguareteInformation'));
       
     }
 
@@ -80,7 +80,7 @@ export default class extras extends Phaser.Scene
       stroke: '#00572f',
       strokeThickness: 6,})
       .setInteractive() 
-      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.manager.scenes[14].mostrarInfo('monoInformation') );  
+      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.get('pop_up_E').mostrarInfo('monoInformation') );  
     }
 
     //Condor
@@ -97,7 +97,7 @@ export default class extras extends Phaser.Scene
       stroke: '#00572f',
       strokeThickness: 6,})
       .setInteractive() 
-      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.manager.scenes[14].mostrarInfo('condorInformation') ) ;   
+      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.get('pop_up_E').mostrarInfo('condorInformation') ) ;   
     }
 
     //Ballena
@@ -115,7 +115,7 @@ export default class extras extends Phaser.Scene
       stroke: '#00572f',
       strokeThickness: 6,})
       .setInteractive() 
-      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.manager.scenes[14].mostrarInfo('ballenaInformation')) ;  
+      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.get('pop_up_E').mostrarInfo('ballenaInformation')) ;  
     }
 
     //Pingüino
@@ -133,7 +133,7 @@ export default class extras extends Phaser.Scene
       stroke: '#00572f',
       strokeThickness: 6,})
       .setInteractive() 
-      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.manager.scenes[14].mostrarInfo('pinguinoInformation')) ;  
+      .on('pointerdown', () => this.scene.launch('pop_up_E') && this.scene.pause() && this.scene.get('pop_up_E').mostrarInfo('pinguinoInformation')) ;  
     }      
   }  
 }

@@ -5,6 +5,7 @@ import {sharedInstance as events } from '../eventCenter'
 export default class gameWin extends Phaser.Scene{
   private cantidadEstrellasYagua: any
   private cantidadCiertaEstrellasYaguarete: any
+  private contadorEntrarNivel1:number=0
  
   constructor()
   {
@@ -40,7 +41,11 @@ export default class gameWin extends Phaser.Scene{
       this.scene.get("popUpMapa").ganar()
       this.scene.stop('nivelYaguarete')      
       this.scene.start('menuMapa')             
-      this.scene.launch('popUpInformativo') 
+      if (this.contadorEntrarNivel1>0 && this.contadorEntrarNivel1<2) 
+      {
+        this.scene.launch('popUpInformativo') 
+        this.scene.get('popUpInformativo').mostrarInfoNiveles('bonusYaguareteDesbloqueado')
+      } 
       //this.scene.moveUp('menuMapa') //trae adelante a la escena      
     });
 
@@ -67,6 +72,11 @@ export default class gameWin extends Phaser.Scene{
   {
     this.cantidadCiertaEstrellasYaguarete = this.cantidadEstrellasYagua
     console.log('this.cantidadCiertaEstrellasYagua')
+  }
+  public aumentaContador1()
+  {
+    this.contadorEntrarNivel1++
+    console.log('this.contadorEntrarNivel1')    
   }
 
 }
