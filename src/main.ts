@@ -7,6 +7,7 @@ import mp1 from './scenes/mp'
 import extras from './scenes/extras/extras'
 import pop_upExt from './scenes/extras/pop_upExtras'
 import popUpMapa from './scenes/popUpMapa'
+import popUpInformativo from './scenes/popUpInformativo'
 
 //NIVEL YAGUARETE
 import nivel_1 from './scenes/nivel1/nivel1'
@@ -51,10 +52,12 @@ const config : Phaser.Types.Core.GameConfig =
       debug: false
     }
   },
-  scene: [mp1, info, mapa, ayuda, creditos, extras, 
-    nivel_1, UI, gameOver, gameWin, pause, bonus, pop_up, preguntas, pop_upExt, popUpMapa, 
-    nivel_5, UI_Pinguino, gameWinPinguino, gameOverPinguino, pausePinguino, bonusPingui, pop_up_Pingui, preguntasPingui,
-    nivel_2, UI_Mono, pauseMono]
+  scene: [mp1, info, mapa, ayuda, creditos, 
+    extras, nivel_1, UI, gameOver, gameWin, 
+    pause, bonus, pop_up, preguntas, pop_upExt, 
+    popUpMapa, nivel_5, UI_Pinguino, gameWinPinguino, gameOverPinguino, 
+    pausePinguino, bonusPingui, pop_up_Pingui, preguntasPingui, nivel_2, 
+    UI_Mono, pauseMono, popUpInformativo]
 };
 
 export default new Phaser.Game(config)

@@ -39,7 +39,8 @@ export default class gameWin extends Phaser.Scene{
     {   
       this.scene.get("popUpMapa").ganar()
       this.scene.stop('nivelYaguarete')      
-      this.scene.start('menuMapa')   
+      this.scene.start('menuMapa')             
+      this.scene.launch('popUpInformativo') 
       //this.scene.moveUp('menuMapa') //trae adelante a la escena      
     });
 

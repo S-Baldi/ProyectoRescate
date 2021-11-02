@@ -58,13 +58,7 @@ export default class mapa extends Phaser.Scene
     {
       this.estrellaMasAltaYagua = this.cantidadEstrellasYagua
     }
-<<<<<<< HEAD
     this.add.sprite(1125, 195, 'estrellas', this.estrellaMasAltaYagua).setDepth(7).setScale(0.8);
-=======
-    this.add.sprite(1137, 195, 'estrellas', this.estrellaMasAltaYagua).setDepth(7).setScale(0.8);
-
-    this.cantidadEstrellasYaguaBonus= localStorage.getItem('estrellasYaguareteBonus') || '1'; 
->>>>>>> 83ca57137a2d1c672e1199472f95300b620ffae9
     
     const buttonNivel1 = this.add.image(1130, 170, 'botonNivel').setScale(0.25)
     .setInteractive()
