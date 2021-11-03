@@ -179,11 +179,7 @@ export default class popUpMapa extends Phaser.Scene
       }
       
 
-      this.monoNivel(this.add.text(680, 400, '   NIVEL \nPRINCIPAL', this.fuenteTextoMapa) 
-      .setInteractive()
-      .on('pointerdown', () => this.scene.sleep('menuMapa') /* duermo el mapa para guardar datos */ && 
-      this.scene.start('nivelMono') && this.sound.play('sonidoBoton', {volume:0.5})).setDepth(7).setVisible(true)
-       &&
+      this.monoNivel(this.add.text(680, 400, '   NIVEL \nPRINCIPAL', this.fuenteTextoMapa) &&
 
       this.add.sprite(650, 280, 'estrellas', this.estrellaMasAltaPingui).setScale(1.8) && 
       
