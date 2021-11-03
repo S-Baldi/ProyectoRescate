@@ -60,8 +60,7 @@ export default class cazadorController
 
   update(dt: number)
 	{
-		this.stateMachine.update(dt)	
-    console.log(this.sprite.body.velocity.x)
+		this.stateMachine.update(dt)    
 	}
 
   private runOnEnter()

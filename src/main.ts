@@ -35,7 +35,9 @@ import pauseMono from './scenes/nivel2/pause'
 import UI_Mono from './scenes/nivel2/UI_Mono'
 import gameOverMono from './scenes/nivel2/gameOver'
 import gameWinMono from './scenes/nivel2/gameWin'
-
+import bonusMono from './scenes/nivel2/nivelBonus/nivelBonusMono'
+import pop_up_BonusMono from './scenes/nivel2/nivelBonus/pop_up_BonusMono'
+import preguntasMono from './scenes/nivel2/nivelBonus/preguntasMono'
 const config : Phaser.Types.Core.GameConfig =
 {
   type: Phaser.WEBGL,
@@ -57,12 +59,17 @@ const config : Phaser.Types.Core.GameConfig =
   scene: [mp1, info, mapa, ayuda, creditos, extras, 
     nivel_1, UI, gameOver, gameWin, pause, bonus, pop_up, preguntas, pop_upExt, popUpMapa, 
     nivel_5, UI_Pinguino, gameWinPinguino, gameOverPinguino, pausePinguino, bonusPingui, pop_up_Pingui, preguntasPingui, 
-    nivel_2, UI_Mono, gameWinMono, gameOverMono, pauseMono, popUpInformativo]
+    nivel_2, UI_Mono, gameWinMono, gameOverMono, pauseMono, popUpInformativo, bonusMono, pop_up_BonusMono, preguntasMono]
 };
 
 export default new Phaser.Game(config)
+//Yaguarete
 localStorage.setItem('estrellasYaguarete', '0');
-localStorage.setItem('estrellasPingui', '0');
 localStorage.setItem('estrellasYaguareteBonus', '0');
+//Pinguino
+localStorage.setItem('estrellasPingui', '0');
 localStorage.setItem('estrellasPinguinoBonus', '0');
+//Mono
+localStorage.setItem('estrellasMono', '0');
+localStorage.setItem('estrellasMonoBonus', '0');
 

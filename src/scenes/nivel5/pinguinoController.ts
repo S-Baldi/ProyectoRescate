@@ -79,8 +79,8 @@ export default class pipnguinoController
         return
       }
 
-      if (this.obstacles.is('hitBoxCielo', body)){
-				console.log('Choca cielo')
+      if (this.obstacles.is('hitBoxCielo', body))
+			{				
         this.stateMachine.setState('barcoHit')
         return
       }
@@ -200,7 +200,7 @@ export default class pipnguinoController
 		this.cantEstrellas = this.cantEstrellas+1
 		this.scene.scene.get('popUpMapa').aumentaContador5()
 		this.scene.scene.get('gameWinPinguino').aumentaContador5()
-		//this.scene.scene.get('pop_up_B_Pin').aumentaContador5()
+		this.scene.scene.get('pop_up_B_Pin').aumentaContador5()
 				
 		this.scene.scene.pause()
 		this.scene.scene.stop('uiPinguino')

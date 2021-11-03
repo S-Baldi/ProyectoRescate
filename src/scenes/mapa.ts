@@ -16,6 +16,10 @@ export default class mapa extends Phaser.Scene
   private cantidadEstrellasPinguiBonus
   private estrellaMasAltaPingui : number = 0;
     
+  //Mono 
+  private cantidadEstrellasMono : any
+  private estrellaMasAltaMono : number =0  
+  private cantidadEstrellasMonoBonus
 
   constructor(){
     super ('menuMapa');
@@ -31,7 +35,9 @@ export default class mapa extends Phaser.Scene
     {frameWidth:202, frameHeight:190});
   }
 
-  create(){
+  create()
+  {
+    const sonidoButton = this.sound.add('sonidoBoton');
     const fondo_Mapa = this.add.image(600, 350, 'fondoMapa');
 
     const mapaArg = this.add.image(750, 384, 'mapaArgentina');
@@ -40,15 +46,11 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on('pointerover', () => buttonMenu.setScale(0.8))
     .on('pointerout', () => buttonMenu.setScale(0.7))
-    .on('pointerdown', () => this.scene.start('menuPpal'));
+    .on('pointerdown', () => this.scene.start('menuPpal') && sonidoButton.play({volume:0.5}));
 
     const buttonMusica = this.add.image(180, 80, 'botonMusica').setScale(0.7)
 
     //////////////////////////////////////////////ESTRELLAS GANADAS //////////////////////////////////////////////
-    
-    
-    //const textoEstrellasTotal = this.add.text(1050, 625, '=', {fontSize: '65px bold', color: 'black'})
-
     const estrellasTotales = this.add.sprite(1000, 650, 'estrellas', 3).setDepth(7).setScale(1.2)
     //////////////////////////////////////////////NIVEL YAGUARETE////////////////////////////////////////////// 
     
@@ -66,7 +68,7 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on('pointerover', () => buttonNivel1.setScale(0.28))
     .on('pointerout', () => buttonNivel1.setScale(0.25))
-    .on('pointerdown', () => this.scene.launch('popUpMapa')
+    .on('pointerdown', () => this.scene.launch('popUpMapa') && sonidoButton.play({volume:0.5})
     && this.scene.pause() 
     && this.scene.get("popUpMapa").mostrarNiveles('yaguareteNiveles'))
     
@@ -79,11 +81,23 @@ export default class mapa extends Phaser.Scene
     })  
     
     //////////////////////////////////////////////NIVEL MONO//////////////////////////////////////////////
+    this.cantidadEstrellasMono = localStorage.getItem('estrellasMono') || '1';  
+    
+    if (this.cantidadEstrellasMono>this.estrellaMasAltaMono) 
+    {
+      this.estrellaMasAltaMono = this.cantidadEstrellasMono
+    }
+    this.add.sprite(420, 105, 'estrellas', this.estrellaMasAltaMono).setDepth(7).setScale(0.8);
+
+    this.cantidadEstrellasMonoBonus= localStorage.getItem('estrellasMonoBonus') || '1';
+    
     const buttonNivel2 = this.add.image(420,80, 'botonNivel').setScale(0.25)
     .setInteractive()
     .on('pointerover', () => buttonNivel2.setScale(0.28))
     .on('pointerout', () => buttonNivel2.setScale(0.25))
-    .on('pointerdown', () => this.scene.start('nivelMono'))
+    .on('pointerdown', () => this.scene.launch('popUpMapa') && sonidoButton.play({volume:0.5})
+    && this.scene.pause() 
+    && this.scene.get("popUpMapa").mostrarNiveles('monoNiveles'))
 
     this.add.text(320, 25, 'MONO CAÍ', {
       fontFamily: 'Titan One',
@@ -134,7 +148,7 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on('pointerover', () => buttonNivel5.setScale(0.28))
     .on('pointerout', () => buttonNivel5.setScale(0.25))
-    .on('pointerdown', () => this.scene.launch('popUpMapa')
+    .on('pointerdown', () => this.scene.launch('popUpMapa') && sonidoButton.play({volume:0.5})
     && this.scene.pause() 
     && this.scene.get("popUpMapa").mostrarNiveles('pinguinoNiveles'))    
     
@@ -150,8 +164,8 @@ export default class mapa extends Phaser.Scene
     
   update()
   {
-    const estrellasTotales = +this.cantidadEstrellasPingui + +this.cantidadEstrellasYagua + 
-    +this.cantidadEstrellasYaguaBonus + +this.cantidadEstrellasPinguiBonus
+    const estrellasTotales = +this.estrellaMasAltaPingui + +this.estrellaMasAltaYagua + 
+    +this.cantidadEstrellasYaguaBonus + +this.cantidadEstrellasPinguiBonus + +this.estrellaMasAltaMono + +this.cantidadEstrellasMonoBonus
 
     this.add.text(1140, 625,`= ` + estrellasTotales,  
     {fontFamily: 'Titan One',

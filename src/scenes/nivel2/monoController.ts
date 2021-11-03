@@ -117,9 +117,10 @@ export default class monoController
 			}
 		})
 		
-		/* events.removeAllListeners();
-		events.on('sumaEstrella', this.sumadorEstrellas, this)
-		this.cantEstrellas = 0 */
+		events.removeAllListeners();
+		events.on('sumaEstrellaMono', this.sumadorEstrellas, this)
+		this.cantEstrellas = 0
+
   }
   update(dt: number)
 	{
@@ -130,13 +131,13 @@ export default class monoController
 		if (this.sprite.body.velocity.x == 0)
 		{
 			this.sprite.setVelocity(0)
-		}
+		}		
 	}
 
-/* 	sumadorEstrellas()
+  sumadorEstrellas()
 	{	
     this.cantEstrellas = this.cantEstrellas+1			
-	} */
+	}
 
 	//	WALK  
   private walkOnEnter()
@@ -183,28 +184,28 @@ export default class monoController
 		this.scene.scene.stop('uiMono')
 		this.scene.scene.launch('gameWinMono')	
 
-		/* this.cantEstrellas = this.cantEstrellas+1
-		this.scene.scene.get('popUpMapa').aumentaContador1()
-		this.scene.scene.get('gameWin').aumentaContador1()
-		this.scene.scene.get('pop_up_B').aumentaContador1() */
+		this.cantEstrellas = this.cantEstrellas+1
+		this.scene.scene.get('popUpMapa').aumentaContador2()
+		this.scene.scene.get('gameWinMono').aumentaContador2()
+		this.scene.scene.get('pop_up_BMono').aumentaContador2() 
 		
 		/* let cat2 = localStorage.getItem('nivelPasado');
 		if (cat2 < 1){
 			localStorage.setItem('nivelPasado', '1');
 		} */
 
-	/* 	if (this.cantEstrellas == 2) 
+	  if (this.cantEstrellas == 2) 
 		{			
-			localStorage.setItem('estrellasYaguarete', '2');
+			localStorage.setItem('estrellasMono', '2');
 		}
 		else if (this.cantEstrellas == 3) 
 		{			
-			localStorage.setItem('estrellasYaguarete', '3');	
+			localStorage.setItem('estrellasMono', '3');	
 		} 
 		else
 		{
-			localStorage.setItem('estrellasYaguarete', '1');
-		} */
+			localStorage.setItem('estrellasMono', '1');
+		} 
 	}
   
 	//  									ANIMACIONES 	

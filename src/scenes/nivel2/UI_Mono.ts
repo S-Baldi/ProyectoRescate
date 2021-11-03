@@ -84,7 +84,7 @@ export default class UI_Mono extends Phaser.Scene
 		
 		if (this.criasCollected > 0) 
 		{
-			events.emit('sumaEstrella')
+			events.emit('sumaEstrellaMono')
 		}
 	}
 
@@ -95,7 +95,7 @@ export default class UI_Mono extends Phaser.Scene
 		
 		if (this.comidaCollected > 0) 
 		{			
-			events.emit('sumaEstrella')
+			events.emit('sumaEstrellaMono')
 		}
 	}
 }

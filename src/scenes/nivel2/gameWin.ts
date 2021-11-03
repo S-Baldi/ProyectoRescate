@@ -5,7 +5,7 @@ import {sharedInstance as events} from '../eventCenter'
 export default class gameWinMono extends Phaser.Scene{
   private cantidadEstrellasMono: any
   private cantidadCiertaEstrellasMono: any
-  private contadorEntrarNivel5:number=0
+  private contadorEntrarNivel2:number=0
   constructor()
   {
     super('gameWinMono');
@@ -40,7 +40,7 @@ export default class gameWinMono extends Phaser.Scene{
       this.scene.stop('nivelMono')
       this.scene.start('menuMapa')
       
-      if (this.contadorEntrarNivel5>0 && this.contadorEntrarNivel5<2) 
+      if (this.contadorEntrarNivel2>0 && this.contadorEntrarNivel2<2) 
       {
         this.scene.launch('popUpInformativo') 
         this.scene.get('popUpInformativo').mostrarInfoNiveles('bonusMonoDesbloqueado')
@@ -64,18 +64,11 @@ export default class gameWinMono extends Phaser.Scene{
       this.add.sprite(675, 450, 'estrellas', 1).setDepth(7)
       this.cantidadCiertaEstrellasMono=1
     }
-  }
-
-  /* public cantidadCiertaEstrellasMono()
-  {
-    this.cantidadCiertaEstrellasMono = this.cantidadEstrellasMono
-    console.log('this.cantidadCiertaEstrellasMono')
-  }; */
+  } 
   
-  public aumentaContador5()
+  public aumentaContador2()
   {
-    this.contadorEntrarNivel5++
-  }
-  
+    this.contadorEntrarNivel2++
+  }  
 
 }

@@ -90,7 +90,7 @@ export default class mp1 extends Phaser.Scene
     .on('pointerout', () => buttonInfo.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
     { 
-      this.scene.start('informacion')
+      this.scene.start('informacion') && sonidoButton.play({volume:0.5})
     });
 
     

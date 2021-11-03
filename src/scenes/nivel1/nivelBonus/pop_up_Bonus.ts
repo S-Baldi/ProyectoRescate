@@ -22,6 +22,8 @@ export default class pop_up extends Phaser.Scene{
   
   create()
   {
+    const sonidoButton = this.sound.add('sonidoBoton');
+    
     const fondoPopUpBonus = this.add.image(680, 250, 'botonNivel').setScale(0.7);
 
     const volverMapa = this.add.image(680, 350, 'botonMapa')
@@ -32,6 +34,7 @@ export default class pop_up extends Phaser.Scene{
     {
       this.scene.start('menuMapa')
       this.scene.stop('nivelBonus')
+      sonidoButton.play({volume:0.5})
       if (this.contadorEntrarNivel1>0 && this.contadorEntrarNivel1<2) 
       {
         this.scene.launch('popUpInformativo')
