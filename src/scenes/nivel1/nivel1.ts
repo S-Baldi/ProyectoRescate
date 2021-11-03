@@ -44,7 +44,7 @@ export default class nivel_1 extends Phaser.Scene
     /* Tiled Nivel 1 */
 /*     addTilesetImage(tilesetName [, key] 
   [, tileWidth] [, tileHeight] [, tileMargin] [, tileSpacing] [, gid])*/ 
-    const mapa_nivel1 = this.make.tilemap({key: 'yaguareteTest'});
+    const mapa_nivel1 = this.make.tilemap({key: 'mapa_nivel1'});
     const fondo_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_fondo', 'nivel1Fondoo');
     const suelo_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_suelo', 'nivel1Sueloo');
 
