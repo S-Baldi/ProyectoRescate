@@ -51,7 +51,7 @@ const config : Phaser.Types.Core.GameConfig =
     matter:
     {
       gravity: { y: 10 },
-      debug: true
+      debug: false
     }
   },
   scene: [mp1, info, mapa, ayuda, creditos, extras, 
