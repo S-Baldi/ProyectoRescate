@@ -118,7 +118,7 @@ export default class extras extends Phaser.Scene
     //Condor
     if(estrellasTotales<15)
     {
-      const txtYagua = this.add.text(40, 613, '15', this.texto1)
+      const txtYagua = this.add.text(1, 610, '15', this.texto1)
       const buttonDesbloqueableYaguarete = this.add.sprite(140, 613+45, 'estrellaBonus', 1).setDepth(3).setScale(0.40)
       const txtDesbloqueable= this.add.text(180, 613+13, 'DESBLOQUEABLE', this.texto2)
       const candado= this.add.image(780, 613+43, 'candado').setScale(0.8)
@@ -138,7 +138,7 @@ export default class extras extends Phaser.Scene
     //Ballena
     if(estrellasTotales<13)
     {
-      const txtYagua = this.add.text(550, 293.5, '13', this.texto1)
+      const txtYagua = this.add.text(506, 292, '13', this.texto1)
       const buttonDesbloqueableYaguarete = this.add.sprite(550+100, 293.5+45, 'estrellaBonus', 1).setDepth(3).setScale(0.40)
       const txtDesbloqueable= this.add.text(550+140, 293.5+13, 'DESBLOQUEABLE', this.texto2)
       const candado= this.add.image(550+740, 293.5+43, 'candado').setScale(0.8)
@@ -159,7 +159,7 @@ export default class extras extends Phaser.Scene
     //Pingüino
     if(estrellasTotales<9)
     {
-      const txtYagua = this.add.text(550, 506.5, '9', this.texto1)
+      const txtYagua = this.add.text(545, 504, '9', this.texto1)
       const buttonDesbloqueableYaguarete = this.add.sprite(550+100, 506.5+45, 'estrellaBonus', 1).setDepth(3).setScale(0.40)
       const txtDesbloqueable= this.add.text(550+140, 506.5+13, 'DESBLOQUEABLE', this.texto2)
       const candado= this.add.image(550+740, 506.5+43, 'candado').setScale(0.8)
