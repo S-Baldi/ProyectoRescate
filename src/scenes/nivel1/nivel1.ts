@@ -3,7 +3,6 @@ import obstaclesController from '../obstaclesController'
 import yaguareteController from './yaguareteController'
 import cazadorController from './cazadorController'
 import trampaController from './trampaController'
-import { sharedInstance as events } from '../eventCenter'
 export default class nivel_1 extends Phaser.Scene
 {
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys	

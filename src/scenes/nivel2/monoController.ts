@@ -89,6 +89,18 @@ export default class monoController
       
       switch (type)
 			{
+				case 'bandera':
+				{
+					this.stateMachine.setState('banderaCollected')
+					break
+				}
+				case 'cazador':
+				{
+					this.stateMachine.setState('sueloHit')
+					console.log('CHOCASTE CON CAZADOR')
+					break
+				}
+
 				case 'cria':
 				{
 					sprite.destroy()
@@ -119,7 +131,6 @@ export default class monoController
 		{
 			this.sprite.setVelocity(0)
 		}
-		console.log("Velocidad mono" + this.velocidadMono)
 	}
 
 /* 	sumadorEstrellas()

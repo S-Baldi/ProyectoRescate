@@ -10,6 +10,7 @@ export default class nivel_2 extends Phaser.Scene
   private cazador?: Phaser.Physics.Matter.Sprite
   private cazadorController?: cazadorController
   private obstacles!: obstaclesController  
+  private banderasMono?: Phaser.Physics.Matter.Sprite
 
   constructor(){
     super('nivelMono')
@@ -77,7 +78,7 @@ export default class nivel_2 extends Phaser.Scene
 						this.obstacles
           );
 
-					this.cameras.main.startFollow(this.mono, true);
+					this.cameras.main.startFollow(this.mono, true, 1, 1, -400)
 					break
 				}
         
@@ -86,6 +87,8 @@ export default class nivel_2 extends Phaser.Scene
           this.cazador = this.matter.add.sprite(x + (width * 0.5), y, 'cazador');
           this.cazador.setScale(0.7)
           this.cazador.setFixedRotation()
+          
+          this.cazador.setData('type', 'cazador')
 
           this.cazadorController = new cazadorController(
             this.cazador
@@ -103,16 +106,13 @@ export default class nivel_2 extends Phaser.Scene
         }
         case 'bandera':
         {
-          const banderaMono = this.matter.add.rectangle(x + (width * 0.5), y + (height * 0.5), width, 1200, {
-						isStatic: true
-					})
-          this.obstacles.add('bandera', banderaMono)
 
-          const banderasMono = this.matter.add.sprite(x + (width*0.5), y + (height*0.5), 'nivel2Bandera',
+          this.banderasMono = this.matter.add.sprite(x + (width*0.5), y + (height*0.5), 'nivel2Bandera',
           undefined, {
             isStatic: true,
             isSensor: true
           }).setScale(0.4)
+          this.banderasMono.setData('type', 'bandera')
           break
         }
         
@@ -136,7 +136,8 @@ export default class nivel_2 extends Phaser.Scene
           break
         }
       }
-		})    
+      
+		})
     this.matter.world.convertTilemapLayer(suelo_nivel2)
 		this.matter.world.convertTilemapLayer(ramas_nivel2)
 }
