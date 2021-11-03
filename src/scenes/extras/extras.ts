@@ -2,10 +2,30 @@ import Phaser from 'phaser'
 import {sharedInstance as events} from '../eventCenter'
 export default class extras extends Phaser.Scene
 {
-  private cantidadEstrellasYagua
+  private estrellaMasAltaPingui
+  private estrellaMasAltaYagua
   private cantidadEstrellasYaguaBonus
-  private cantidadEstrellasPingui
   private cantidadEstrellasPinguiBonus
+  private estrellaMasAltaMono
+  private cantidadEstrellasMonoBonus
+
+  private texto1 =
+  {  
+    fontFamily: 'Titan One',
+    fontSize: '70pt',
+    color: '#FFBD0D',
+    stroke: '#00572f',
+    strokeThickness: 6,
+  }
+
+  private texto2 =     
+  {fontFamily: 'Viga',
+  fontSize: '50pt',
+  color: '#9b9b9b',
+  stroke: '#000000',
+  strokeThickness: 4,
+  align: 'justify',
+  };
 
   constructor()
   {
@@ -19,6 +39,9 @@ export default class extras extends Phaser.Scene
     this.load.image('fotoBallena', 'assets/MenuPrincipal/Extras/BallenaExtras.png');
     this.load.image('fotoPinguino', 'assets/MenuPrincipal/Extras/PinguinoExtras.png');
     this.load.image('fotoCondor', 'assets/MenuPrincipal/Extras/CondorExtras.png');
+    this.load.image('candado', 'assets/MenuPrincipal/Botones/Extras/candado.png')
+    this.load.spritesheet('estrellaBonus', 'assets/Mapa/estrellasBonus.png',
+    {frameWidth:205, frameHeight:190});
   }
 
   create()
@@ -39,18 +62,23 @@ export default class extras extends Phaser.Scene
     .on('pointerout', () => buttonAtras.setScale(1))
     .on('pointerdown', () => this.scene.start('menuPpal') && sonidoButton.play({volume:0.5}));
 
-    this.cantidadEstrellasYagua = localStorage.getItem('estrellasYaguarete') || '1';
+    this.estrellaMasAltaYagua = localStorage.getItem('estrellasYaguarete') || '1';
     this.cantidadEstrellasYaguaBonus= localStorage.getItem('estrellasYaguareteBonus') || '1';
-    this.cantidadEstrellasPingui = localStorage.getItem('estrellasPingui') || '1';
+    this.estrellaMasAltaPingui = localStorage.getItem('estrellasPingui') || '1';
     this.cantidadEstrellasPinguiBonus = localStorage.getItem('estrellasPinguinoBonus') || '1';
+    this.estrellaMasAltaMono = localStorage.getItem('estrellasMono') || '1';
+    this.cantidadEstrellasMonoBonus = localStorage.getItem('estrellasMonoBonus') || '1';
 
-    const estrellasTotales = +this.cantidadEstrellasYagua + +this.cantidadEstrellasYaguaBonus + 
-    +this.cantidadEstrellasPingui + +this.cantidadEstrellasPinguiBonus
+    const estrellasTotales = +this.estrellaMasAltaPingui + +this.estrellaMasAltaYagua + 
+    +this.cantidadEstrellasYaguaBonus + +this.cantidadEstrellasPinguiBonus + +this.estrellaMasAltaMono + +this.cantidadEstrellasMonoBonus
     
     //Yaguarete
     if(estrellasTotales<3)
     {
-      const buttonDesbloqueableYaguarete = this.add.image(300, 250, 'botonYaguarete').setScale(0.75);
+      const txtYagua = this.add.text(40, 187, '3', this.texto1)
+      const buttonDesbloqueableYaguarete = this.add.sprite(140, 232, 'estrellaBonus', 1).setDepth(3).setScale(0.40)
+      const txtDesbloqueable= this.add.text(180, 200, 'DESBLOQUEABLE', this.texto2)
+      const candado= this.add.image(780, 230, 'candado').setScale(0.8)
     }
     else
     {
@@ -69,7 +97,10 @@ export default class extras extends Phaser.Scene
     //Mono
     if(estrellasTotales<6)
     {
-      const buttonDesbloqueableMono = this.add.image(300, 450, 'botonMono').setScale(0.75);
+      const txtYagua = this.add.text(40, 400, '3', this.texto1)
+      const buttonDesbloqueableYaguarete = this.add.sprite(140, 400+45, 'estrellaBonus', 1).setDepth(3).setScale(0.40)
+      const txtDesbloqueable= this.add.text(180, 400+13, 'DESBLOQUEABLE', this.texto2)
+      const candado= this.add.image(780, 400+43, 'candado').setScale(0.8)
     }
     else
     {
@@ -85,12 +116,15 @@ export default class extras extends Phaser.Scene
     }
 
     //Condor
-    if(estrellasTotales<9)
+    if(estrellasTotales<15)
     {
-      const buttonDesbloqueableCondor = this.add.image(300, 650, 'botonCondor').setScale(0.75);
+      const txtYagua = this.add.text(40, 613, '3', this.texto1)
+      const buttonDesbloqueableYaguarete = this.add.sprite(140, 613+45, 'estrellaBonus', 1).setDepth(3).setScale(0.40)
+      const txtDesbloqueable= this.add.text(180, 613+13, 'DESBLOQUEABLE', this.texto2)
+      const candado= this.add.image(780, 613+43, 'candado').setScale(0.8)
     }
     else{
-      let buttonInfoCondor = this.add.image(950, 550, 'infoCondor').setScale(0.8) &&
+      let buttonInfoCondor = this.add.image(300, 550, 'infoCondor').setScale(0.8) &&
       this.add.text(1050, 520, 'CONDOR', 
       {fontFamily: 'Titan One',
       fontSize: '40pt',
@@ -102,13 +136,16 @@ export default class extras extends Phaser.Scene
     }
 
     //Ballena
-    if(estrellasTotales<12)
+    if(estrellasTotales<13)
     {
-      const buttonDesbloqueableBallena= this.add.image(1000, 350, 'botonBallena').setScale(0.75);
+      const txtYagua = this.add.text(550, 293.5, '3', this.texto1)
+      const buttonDesbloqueableYaguarete = this.add.sprite(550+100, 293.5+45, 'estrellaBonus', 1).setDepth(3).setScale(0.40)
+      const txtDesbloqueable= this.add.text(550+140, 293.5+13, 'DESBLOQUEABLE', this.texto2)
+      const candado= this.add.image(550+740, 293.5+43, 'candado').setScale(0.8)
     }
     else
     {
-      let buttonInfoBallena = this.add.image(950, 350, 'infoBallena').setScale(1) &&
+      let buttonInfoBallena = this.add.image(1000, 350, 'infoBallena').setScale(1) &&
       this.add.text(1050, 320, 'BALLENA', 
       {fontFamily: 'Titan One',
       fontSize: '40pt',
@@ -120,13 +157,16 @@ export default class extras extends Phaser.Scene
     }
 
     //Pingüino
-    if(estrellasTotales<15)
+    if(estrellasTotales<9)
     {
-      const buttonDesbloqueablePinguino = this.add.image(1000, 550, 'botonPinguino').setScale(0.75);
+      const txtYagua = this.add.text(550, 506.5, '3', this.texto1)
+      const buttonDesbloqueableYaguarete = this.add.sprite(550+100, 506.5+45, 'estrellaBonus', 1).setDepth(3).setScale(0.40)
+      const txtDesbloqueable= this.add.text(550+140, 506.5+13, 'DESBLOQUEABLE', this.texto2)
+      const candado= this.add.image(550+740, 506.5+43, 'candado').setScale(0.8)
     }
     else
     {
-      let buttonInfoPinguino = this.add.image(200, 650, 'infoPinguino').setScale(0.9) &&
+      let buttonInfoPinguino = this.add.image(1000, 550, 'infoPinguino').setScale(0.9) &&
       this.add.text(300, 620, 'PINGÜINO', 
       {fontFamily: 'Titan One',
       fontSize: '40pt',

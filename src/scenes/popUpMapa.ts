@@ -149,7 +149,7 @@ export default class popUpMapa extends Phaser.Scene
       
       this.pinguinoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapa)))
 
-      if (this.estrellaMasAltaYagua>0) 
+      if (this.estrellaMasAltaMono>0) 
       {
         this.pinguinoNivel(this.add.text(680, 400, '   NIVEL \nPRINCIPAL', this.fuenteTextoMapaDesbloqueado)
         .setInteractive()
@@ -185,7 +185,7 @@ export default class popUpMapa extends Phaser.Scene
       
       this.monoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapa)))
 
-      if (this.estrellaMasAltaPingui>0) 
+      if (this.estrellaMasAltaYagua>0) 
       {
         this.monoNivel(this.add.text(680, 400, '   NIVEL \nPRINCIPAL', this.fuenteTextoMapaDesbloqueado)
         .setInteractive()
