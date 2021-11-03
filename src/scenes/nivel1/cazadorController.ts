@@ -10,6 +10,8 @@ export default class cazadorController
   private stateMachine: StateMachine
   private obstacles: ObstaclesController
 
+  private velocidadCazador = 15
+
   constructor(scene: Phaser.Scene, 
 		sprite: Phaser.Physics.Matter.Sprite, 
     obstacles: ObstaclesController) 
@@ -59,6 +61,7 @@ export default class cazadorController
   update(dt: number)
 	{
 		this.stateMachine.update(dt)	
+    console.log(this.sprite.body.velocity.x)
 	}
 
   private runOnEnter()
@@ -67,7 +70,7 @@ export default class cazadorController
 	}
 
   private runOnUpdate(){
-    this.sprite.setVelocityX(15)
+    this.sprite.setVelocityX(this.velocidadCazador)
   }
 
   private trampaHunterOnEnter(){

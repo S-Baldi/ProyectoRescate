@@ -19,6 +19,8 @@ export default class yaguareteController
 
 	public cantEstrellas = 0
 	private controlEstrellas?:UI
+
+	private velocidad = 15
 	
 
   constructor(scene: Phaser.Scene, 
@@ -111,6 +113,10 @@ export default class yaguareteController
   update(dt: number)
 	{
 		this.stateMachine.update(dt)
+		if (this.sprite.body.velocity.x<=this.velocidad){
+			this.sprite.setVelocityX(this.velocidad)
+		}
+		console.log(this.sprite.body.velocity.x)
 	}
 
 	sumadorEstrellas()
@@ -126,7 +132,7 @@ export default class yaguareteController
 
   private walkOnUpdate()
 	{	
-		this.sprite.setVelocityX(15)
+		this.sprite.setVelocityX(this.velocidad)
 		if (this.cursors.up.isDown|| this.pointer.isDown) //POINTER IS DOWN INDICA SI SE REALIZA EL CLICK
 		{
 			this.stateMachine.setState('jump')
@@ -135,11 +141,11 @@ export default class yaguareteController
 
 		//SALTO
   private jumpOnEnter()
-	{		
+	{
 		this.sprite.stop()
 		this.sprite.play('yaguarete-jump')
 		this.sprite.setVelocityY(-40)
-		//this.sprite.setVelocityX(18)
+		//this.sprite.setVelocityX(15)
 	}
 
   private jumpOnUpdate()
@@ -151,7 +157,7 @@ export default class yaguareteController
 	}
 
 	private trampaHitOnEnter(){
-		this.sprite.play('yaguarete-death')		
+		this.sprite.play('yaguarete-death')	
 		
 		this.scene.time.delayedCall(1500, () => {
 			this.scene.scene.launch('gameOver')
