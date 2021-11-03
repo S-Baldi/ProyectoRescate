@@ -10,7 +10,10 @@ export default class gameOverPinguino extends Phaser.Scene{
     this.load.image('losePinguino', 'assets/GameWinLose/losePinguino.png');
   }
   
-  create(){
+  create()
+  {
+    const sonidoButton = this.sound.add('sonidoBoton');
+    
     const gameLose = this.add.image(683, 384, 'losePinguino')
 
     const buttonRestart = this.add.image(800, 520,  'botonReset')
@@ -21,6 +24,7 @@ export default class gameOverPinguino extends Phaser.Scene{
     { 
       this.scene.stop('nivelPinguino')
       this.scene.start('nivelPinguino')
+      sonidoButton.play({volume:0.5})
     });
 
     const buttonMapa = this.add.image(600, 520, 'botonMapa')
@@ -31,6 +35,7 @@ export default class gameOverPinguino extends Phaser.Scene{
     { 
       this.scene.stop('nivelPinguino')
       this.scene.start('menuMapa')
+      sonidoButton.play({volume:0.5})
     });
   }
   

@@ -7,11 +7,15 @@ export default class pause extends Phaser.Scene{
     super('pause');
   }
 
-  preload(){
+  preload()
+  {
     this.load.image('pause', 'assets/Nivel1/popUpPause.png');
   }
   
-  create(){
+  create()
+  {
+    const sonidoButton = this.sound.add('sonidoBoton');
+
     const gamePause = this.add.image(683, 384, 'pause')
     this.add.text(580, 250, 'Pausa', {
       fontFamily: 'Titan One',
@@ -30,6 +34,7 @@ export default class pause extends Phaser.Scene{
       this.scene.stop('nivelYaguarete')
       this.scene.stop('ui')
       this.scene.start('menuMapa')
+      sonidoButton.play({volume:0.5})
     });
 
     const buttonRestart = this.add.image(690, 440,  'botonReset')
@@ -41,6 +46,7 @@ export default class pause extends Phaser.Scene{
       this.scene.stop()
       this.scene.stop('nivelYaguarete')
       this.scene.start('nivelYaguarete')
+      sonidoButton.play({volume:0.5})
     });  
 
     const buttonVolverJugar = this.add.image(890, 440, 'botonPlay')
@@ -51,6 +57,7 @@ export default class pause extends Phaser.Scene{
       this.scene.stop()
       this.scene.resume('nivelYaguarete')
       this.scene.resume('ui')
+      sonidoButton.play({volume:0.5})
     })
     
   }

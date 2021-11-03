@@ -21,11 +21,14 @@ export default class pop_up_Pingui extends Phaser.Scene{
   
   create()
   {
+    const sonidoButton = this.sound.add('sonidoBoton');
+
     const fondoPopUpBonus = this.add.image(680, 250, 'botonNivel').setScale(0.7);
 
     const volverMapa = this.add.image(680, 350, 'botonMapa')
     .setInteractive()  
-    .on('pointerdown', () => this.scene.start('menuMapa') && this.scene.stop('nivelBonusPin'));
+    .on('pointerdown', () => this.scene.start('menuMapa') && sonidoButton.play({volume:0.5}) 
+    && this.scene.stop('nivelBonusPin'));
     //console.log(this.scene.start('menuMapa'))    
   }
   

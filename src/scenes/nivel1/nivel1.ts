@@ -38,7 +38,8 @@ export default class nivel_1 extends Phaser.Scene
     this.load.tilemapTiledJSON('yaguareteTest' , 'assets/Nivel1/nivel_YaguareteTest.json');
   }
 
-  create(){
+  create()
+  {
     this.scene.launch('ui')
 
     /* Tiled Nivel 1 */

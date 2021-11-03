@@ -31,7 +31,9 @@ export default class mapa extends Phaser.Scene
     {frameWidth:202, frameHeight:190});
   }
 
-  create(){
+  create()
+  {
+    const sonidoButton = this.sound.add('sonidoBoton');
     const fondo_Mapa = this.add.image(600, 350, 'fondoMapa');
 
     const mapaArg = this.add.image(750, 384, 'mapaArgentina');
@@ -40,7 +42,7 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on('pointerover', () => buttonMenu.setScale(0.8))
     .on('pointerout', () => buttonMenu.setScale(0.7))
-    .on('pointerdown', () => this.scene.start('menuPpal'));
+    .on('pointerdown', () => this.scene.start('menuPpal') && sonidoButton.play({volume:0.5}));
 
     const buttonMusica = this.add.image(180, 80, 'botonMusica').setScale(0.7)
 
@@ -66,7 +68,7 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on('pointerover', () => buttonNivel1.setScale(0.28))
     .on('pointerout', () => buttonNivel1.setScale(0.25))
-    .on('pointerdown', () => this.scene.launch('popUpMapa')
+    .on('pointerdown', () => this.scene.launch('popUpMapa') && sonidoButton.play({volume:0.5})
     && this.scene.pause() 
     && this.scene.get("popUpMapa").mostrarNiveles('yaguareteNiveles'))
     
@@ -83,7 +85,7 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on('pointerover', () => buttonNivel2.setScale(0.28))
     .on('pointerout', () => buttonNivel2.setScale(0.25))
-    .on('pointerdown', () => this.scene.start('nivelMono'))
+    .on('pointerdown', () => this.scene.start('nivelMono') && sonidoButton.play({volume:0.5}))
 
     this.add.text(320, 25, 'MONO CAÍ', {
       fontFamily: 'Titan One',
@@ -134,7 +136,7 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on('pointerover', () => buttonNivel5.setScale(0.28))
     .on('pointerout', () => buttonNivel5.setScale(0.25))
-    .on('pointerdown', () => this.scene.launch('popUpMapa')
+    .on('pointerdown', () => this.scene.launch('popUpMapa') && sonidoButton.play({volume:0.5})
     && this.scene.pause() 
     && this.scene.get("popUpMapa").mostrarNiveles('pinguinoNiveles'))    
     

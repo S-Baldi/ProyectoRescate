@@ -67,12 +67,13 @@ export default class popUpMapa extends Phaser.Scene
   
   create()
   {
+    const sonidoButton = this.sound.add('sonidoBoton');
     this.add.image(680, 350, 'popUpMapaNiveles').setScale(0.7).setDepth(-1);
     const buttonAtras = this.add.image(900, 250, 'botonatras')
     .setInteractive()
     .on('pointerover', () => buttonAtras.setScale(1.1))
     .on('pointerout', () => buttonAtras.setScale(1))
-    .on('pointerdown', () => this.scene.stop() && this.scene.resume('menuMapa'));    
+    .on('pointerdown', () => this.scene.stop() && this.scene.resume('menuMapa') && sonidoButton.play({volume:0.5}));    
   }  
 
   public mostrarNiveles(info:string)
@@ -93,9 +94,9 @@ export default class popUpMapa extends Phaser.Scene
       .on('pointerout', () => nivelPpalYagua.setScale(1))
       .on('pointerdown', () => this.scene.sleep('menuMapa') && 
 
-      this.scene.start('nivelYaguarete'))  &&
+      this.scene.start('nivelYaguarete') && this.sound.play('sonidoBoton', {volume:0.5}))  &&
 
-      this.add.sprite(650, 280, 'estrellas', this.estrellaMasAltaYagua).setScale(1.8) //&& 
+      this.add.sprite(650, 280, 'estrellas', this.estrellaMasAltaYagua).setScale(1.8) 
 
       this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapa))  
       
@@ -107,7 +108,7 @@ export default class popUpMapa extends Phaser.Scene
       else if(this.contadorEntrarNivel1>0 && this.cerrarBonusYaguarete<1)
       {
         this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapaDesbloqueado)
-        .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus')))            
+        .setInteractive().on('pointerdown', () => this.scene.start('nivelBonus') && this.sound.play('sonidoBoton', {volume:0.5})))            
       }     
     } 
 
@@ -133,7 +134,7 @@ export default class popUpMapa extends Phaser.Scene
         this.pinguinoNivel(this.add.text(680, 400, '   NIVEL \nPRINCIPAL', this.fuenteTextoMapaDesbloqueado)
         .setInteractive()
         .on('pointerdown', () => this.scene.sleep('menuMapa') /* duermo el mapa para guardar datos */ && 
-        this.scene.start('nivelPinguino')).setDepth(7).setVisible(true)) 
+        this.scene.start('nivelPinguino') && this.sound.play('sonidoBoton', {volume:0.5})).setDepth(7).setVisible(true)) 
       }
 
       if (this.contadorEntrarNivel5==0 && this.cerrarBonusPinguino>0)
@@ -144,7 +145,7 @@ export default class popUpMapa extends Phaser.Scene
       else if (this.contadorEntrarNivel5>0 && this.cerrarBonusPinguino<1)
       {
         this.pinguinoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapaDesbloqueado)
-        .setInteractive().on('pointerdown', () => this.scene.start('nivelBonusPin')).setDepth(7).setVisible(true))
+        .setInteractive().on('pointerdown', () => this.scene.start('nivelBonusPin') && this.sound.play('sonidoBoton', {volume:0.5})).setDepth(7).setVisible(true))
       }
     }
   }

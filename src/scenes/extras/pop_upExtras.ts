@@ -32,12 +32,13 @@ export default class pop_upExt extends Phaser.Scene
   
   create()
   {
+    const sonidoButton = this.sound.add('sonidoBoton');
     const fondoPopUpExtras = this.add.image(680, 390, 'popUpExtras').setScale(0.85)
     const buttonAtras = this.add.image(1080, 150, 'botonatras')
     .setInteractive()
     .on('pointerover', () => buttonAtras.setScale(1.1))
     .on('pointerout', () => buttonAtras.setScale(1))
-    .on('pointerdown', () => this.scene.stop() && this.scene.resume('extras'));    
+    .on('pointerdown', () => this.scene.stop() && this.scene.resume('extras') && sonidoButton.play({volume:0.5}));    
   }  
 
   public mostrarInfo(info:string)
