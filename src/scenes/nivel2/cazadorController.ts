@@ -23,9 +23,7 @@ export default class cazadorController
     if (this.sprite.body.velocity.x < this.velocidadCazador)
     {
       this.sprite.setVelocityX(this.velocidadCazador)
-    }
-    
-		console.log("Velocidad cazador" + this.velocidadCazador)
+    }		
 	}
   private runOnEnter()
 	{

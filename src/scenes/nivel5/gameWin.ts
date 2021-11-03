@@ -70,13 +70,7 @@ export default class gameWinPinguino extends Phaser.Scene{
       this.cantidadCiertaEstrellasPinguino=1
     }
   }
-
-  public cantidadCiertaEstrellasPingui()
-  {
-    this.cantidadCiertaEstrellasPinguino = this.cantidadEstrellasPingui
-    console.log('this.cantidadCiertaEstrellasPinguino')
-  };
-  
+    
   public aumentaContador5()
   {
     this.contadorEntrarNivel5++

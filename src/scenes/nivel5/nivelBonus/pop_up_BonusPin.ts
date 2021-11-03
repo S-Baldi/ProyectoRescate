@@ -8,6 +8,8 @@ export default class pop_up_Pingui extends Phaser.Scene{
   align: 'justify'
   };
 
+  private contadorEntrarNivel5:number=0
+
   constructor()
   {
     super('pop_up_B_Pin');
@@ -48,6 +50,12 @@ export default class pop_up_Pingui extends Phaser.Scene{
     }
     this.scene.get('popUpMapa').yaEntroBonusPinguino()
     return rta
+  }
+  
+  public aumentaContador5()
+  {
+    this.contadorEntrarNivel5++
+    console.log('this.contadorEntrarNivel1')    
   }
 
   update()

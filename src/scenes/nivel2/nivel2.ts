@@ -32,11 +32,13 @@ export default class nivel_2 extends Phaser.Scene
     this.load.atlas('nivel2Cria', 'assets/Nivel2/criaMono.png', 'assets/Nivel2/criaMono.json');
     this.load.atlas('cazador', 'assets/Nivel2/cazador.png', 'assets/Nivel2/cazador.json');
     this.load.atlas('mono', 'assets/Nivel2/mono.png', 'assets/Nivel2/mono.json');
+
+    this.load.tilemapTiledJSON('NivelMonoTest', 'assets/Nivel2/nivel_MonoTest.json');
   }
 
   create(){
     this.scene.launch('uiMono')
-    const mapa_nivel2 = this.make.tilemap({key: 'mapa_nivel2'});
+    const mapa_nivel2 = this.make.tilemap({key: 'NivelMonoTest'});
     const fondo_nivel2_tiled = mapa_nivel2.addTilesetImage('nivel2_fondo', 'nivel2Fondo');
     const suelo_nivel2_tiled = mapa_nivel2.addTilesetImage('nivel2_suelo', 'nivel2Suelo');
     const ramas_nivel2_tiled = mapa_nivel2.addTilesetImage('nivel2_rama', 'nivel2Rama')
