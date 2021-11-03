@@ -116,7 +116,6 @@ export default class yaguareteController
 		if (this.sprite.body.velocity.x<=this.velocidad){
 			this.sprite.setVelocityX(this.velocidad)
 		}
-		console.log(this.sprite.body.velocity.x)
 	}
 
 	sumadorEstrellas()

@@ -19,6 +19,8 @@ export default class monoController
 
 	public cantEstrellas = 0
 	private controlEstrellas?:UI_Mono
+
+	private velocidadMono = 15
 	
 
   constructor(scene: Phaser.Scene, 
@@ -42,7 +44,6 @@ export default class monoController
 		})
 		.addState('jump', {
 			onEnter: this.jumpOnEnter,
-			onUpdate: this.jumpOnUpdate,
 			onExit: this.jumpOnExit
 		})
 		.addState('sueloHit',{
@@ -56,7 +57,7 @@ export default class monoController
     this.sprite.setOnCollide((data: MatterJS.ICollisionPair) => {
       const body = data.bodyB as MatterJS.BodyType
 			
-			if (this.obstacles.is('suelo', body))
+			if (this.obstacles.is('hitBoxSuelo', body))
 			{
 				this.stateMachine.setState('sueloHit')
 				return
@@ -111,6 +112,14 @@ export default class monoController
   update(dt: number)
 	{
 		this.stateMachine.update(dt)
+		if (this.sprite.body.velocity.x <= this.velocidadMono && this.sprite.body.velocity.x > 1 ){
+			this.sprite.setVelocityX(this.velocidadMono)
+		}
+		if (this.sprite.body.velocity.x == 0)
+		{
+			this.sprite.setVelocity(0)
+		}
+		console.log("Velocidad mono" + this.velocidadMono)
 	}
 
 /* 	sumadorEstrellas()
@@ -126,7 +135,7 @@ export default class monoController
 
   private walkOnUpdate()
 	{	
-		this.sprite.setVelocityX(15)
+		this.sprite.setVelocityX(this.velocidadMono)
 		if (this.cursors.up.isDown|| this.pointer.isDown) //POINTER IS DOWN INDICA SI SE REALIZA EL CLICK
 		{
 			this.stateMachine.setState('jump')
@@ -142,20 +151,16 @@ export default class monoController
 		//this.sprite.setVelocityX(18)
 	}
 
-  private jumpOnUpdate()
-	{
-
-  }
-
 	private jumpOnExit()
 	{
 		this.sprite.stop()
 	}
 
 	private sueloHitOnEnter(){
-		this.sprite.play('mono-death')		
+		this.sprite.play('mono-death')
+		this.sprite.setVelocityX(0)		
 		
-		this.scene.time.delayedCall(1500, () => {
+		this.scene.time.delayedCall(1000, () => {
 			this.scene.scene.launch('gameOverMono')
 			this.scene.scene.pause()
 			this.scene.scene.stop('uiMono')	
