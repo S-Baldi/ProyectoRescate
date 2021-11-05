@@ -636,6 +636,28 @@
                  "width":31029.3333333333,
                  "x":0,
                  "y":700
+                }, 
+                {
+                 "height":57.5758,
+                 "id":71,
+                 "name":"banana",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":54.5455,
+                 "x":24524.72725,
+                 "y":119.2121
+                }, 
+                {
+                 "height":57.5758,
+                 "id":72,
+                 "name":"banana",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":54.5455,
+                 "x":23564.72725,
+                 "y":131.2121
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -644,7 +666,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":70,
+ "nextobjectid":73,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",

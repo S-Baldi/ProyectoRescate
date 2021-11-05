@@ -1,23 +1,22 @@
 import Phaser from "phaser"
 import {sharedInstance as events} from '../eventCenter'
+import cazadorController from "./cazadorController"
 export default class UI_Mono extends Phaser.Scene
 {	
   //Texto para corroborar
   private criasLabel!: Phaser.GameObjects.Text
-  private comidaLabel!: Phaser.GameObjects.Text
-  
+  private comidaLabel!: Phaser.GameObjects.Text  
 	private criasCollected = 0
   private comidaCollected = 0
-	
-
 	//Totales del nivel
 	private criasTotales = 3
-	private comidaTotales = 0
+	private comidaTotales = 50
 	
 	//Estrellas totales [0 a 3]
 	private estrellasNivel1 = 0
 
-	private pause = false
+	private cazador?: Phaser.Physics.Matter.Sprite
+	private cazadorController?: cazadorController
 
 	private fuenteTexto = {
     fontFamily: 'Titan One',
@@ -38,8 +37,6 @@ export default class UI_Mono extends Phaser.Scene
 
 	init()
 	{
-		this.pause = false
-
 		this.criasCollected = 0
     this.comidaCollected = 0
 
@@ -51,10 +48,19 @@ export default class UI_Mono extends Phaser.Scene
 	preload(){
 		this.load.image('criaMono', 'assets/Nivel2/criaMono2.png');
 		this.load.image('comidaMono', 'assets/Nivel2/nivel2_comida.png');
+		this.load.atlas('cazador', 'assets/Nivel1/cazador.png', 'assets/Nivel1/cazador.json');
 	}
 
 	create()
 	{
+		this.cazador = this.matter.add.sprite(50, 630, 'cazador', undefined, {
+			isStatic:true
+		})
+		.setScale(0.7)
+		this.cazadorController = new cazadorController(
+			this.cazador
+		)
+
 		const botonPausa = this.add.image(100, 100, 'botonPausa');
 		botonPausa.setInteractive()
 		.on('pointerover', () => botonPausa.setScale(1.1))
@@ -81,15 +87,19 @@ export default class UI_Mono extends Phaser.Scene
 		this.add.image(1140 ,90, 'criaMono');
     this.criasLabel = this.add.text(1200, 50, '0/3', this.fuenteTexto)
     this.add.image(1140 ,190, 'comidaMono');
-    this.comidaLabel = this.add.text(1200, 150, '0/48', this.fuenteTexto)		
+    this.comidaLabel = this.add.text(1200, 150, '0/50', this.fuenteTexto)		
 	}
-	
+
+	update(t: number, dt: number){
+		this.cazadorController?.update(dt)
+	}
+
 	private handleCriasCollected()
 	{
 		++this.criasCollected
     this.criasLabel.text = this.criasCollected + '/3'
 		
-		if (this.criasCollected > 0) 
+		if (this.criasCollected == this.criasTotales) 
 		{
 			events.emit('sumaEstrellaMono')
 		}
@@ -98,9 +108,9 @@ export default class UI_Mono extends Phaser.Scene
   private handleComidaCollected()
 	{
 		++this.comidaCollected
-    this.comidaLabel.text = `${this.comidaCollected}`+ '/48'
+    this.comidaLabel.text = `${this.comidaCollected}`+ '/50'
 		
-		if (this.comidaCollected > 0) 
+		if (this.comidaCollected == this.comidaTotales) 
 		{			
 			events.emit('sumaEstrellaMono')
 		}

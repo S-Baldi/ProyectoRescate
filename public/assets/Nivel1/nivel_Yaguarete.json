@@ -523,8 +523,8 @@
                  "type":"",
                  "visible":true,
                  "width":69,
-                 "x":19049.2575757576,
-                 "y":209
+                 "x":18877.2575757576,
+                 "y":213
                 }, 
                 {
                  "height":56,
@@ -534,8 +534,8 @@
                  "type":"",
                  "visible":true,
                  "width":69,
-                 "x":19540.8333333333,
-                 "y":209
+                 "x":19368.8333333333,
+                 "y":213
                 }, 
                 {
                  "height":56,
@@ -545,8 +545,8 @@
                  "type":"",
                  "visible":true,
                  "width":69,
-                 "x":19973.8333333333,
-                 "y":209
+                 "x":19801.8333333333,
+                 "y":213
                 }, 
                 {
                  "height":56,
@@ -556,7 +556,7 @@
                  "type":"",
                  "visible":true,
                  "width":69,
-                 "x":20427.1666666667,
+                 "x":20287.1666666667,
                  "y":209
                 }, 
                 {
@@ -567,7 +567,7 @@
                  "type":"",
                  "visible":true,
                  "width":69,
-                 "x":20740.1666666667,
+                 "x":20688.1666666667,
                  "y":209
                 }, 
                 {
@@ -666,8 +666,8 @@
                  "type":"",
                  "visible":true,
                  "width":69,
-                 "x":21111.5,
-                 "y":209
+                 "x":21099.5,
+                 "y":201
                 }, 
                 {
                  "height":63,
@@ -1053,6 +1053,28 @@
                  "width":58,
                  "x":26622.5151515152,
                  "y":521.954545454545
+                }, 
+                {
+                 "height":47,
+                 "id":163,
+                 "name":"carne",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":58,
+                 "x":21895,
+                 "y":524.5
+                }, 
+                {
+                 "height":47,
+                 "id":164,
+                 "name":"carne",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":58,
+                 "x":12447,
+                 "y":520.5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1061,7 +1083,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":163,
+ "nextobjectid":165,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",

@@ -13,7 +13,7 @@ export default class UI_Pinguino extends Phaser.Scene
 
 	//Totales del nivel
 	private criasTotales = 3
-	private comidaTotales = 0
+	private comidaTotales = 50
 	
 	//Estrellas totales [0 a 3]
 	private estrellasNivel1 = 0
@@ -75,7 +75,7 @@ export default class UI_Pinguino extends Phaser.Scene
 		this.add.image(1140 ,90, 'criaPinguino');
     this.criasLabel = this.add.text(1200, 50, '0/3', this.fuenteTexto)
     this.add.image(1140 ,190, 'comidaPinguino');
-    this.comidaLabel = this.add.text(1200, 150, '0/48', this.fuenteTexto)
+    this.comidaLabel = this.add.text(1200, 150, '0/50', this.fuenteTexto)
 		
 	}
 	
@@ -84,7 +84,7 @@ export default class UI_Pinguino extends Phaser.Scene
 		++this.criasCollected
     this.criasLabel.text = this.criasCollected + '/3'
 		
-		if (this.criasCollected > 0) 
+		if (this.criasCollected == this.criasTotales) 
 		{			
 			events.emit('sumaEstrellaPingui')
 		}
@@ -93,9 +93,9 @@ export default class UI_Pinguino extends Phaser.Scene
   private handleComidaCollected()
 	{
 		++this.comidaCollected
-    this.comidaLabel.text = `${this.comidaCollected}`+ '/48'
+    this.comidaLabel.text = `${this.comidaCollected}`+ '/50'
 		
-		if (this.comidaCollected > 0) 
+		if (this.comidaCollected == this.comidaTotales) 
 		{			
 			events.emit('sumaEstrellaPingui')
 		}

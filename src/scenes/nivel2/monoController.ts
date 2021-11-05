@@ -172,7 +172,7 @@ export default class monoController
 		this.sprite.play('mono-death')
 		this.sprite.setVelocityX(0)		
 		
-		this.scene.time.delayedCall(1000, () => {
+		this.scene.time.delayedCall(500, () => {
 			this.scene.scene.launch('gameOverMono')
 			this.scene.scene.pause()
 			this.scene.scene.stop('uiMono')	
@@ -244,7 +244,7 @@ export default class monoController
 				prefix: 'monoMuerte0',
 				suffix: '.png'
 			}),
-			frameRate: 3
+			frameRate: 5
 		})
 	}
 }
