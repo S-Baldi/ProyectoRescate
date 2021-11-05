@@ -53,10 +53,10 @@ export default class UI_Mono extends Phaser.Scene
 
 	create()
 	{
-		this.cazador = this.matter.add.sprite(50, 650, 'cazador', undefined, {
+		this.cazador = this.matter.add.sprite(50, 630, 'cazador', undefined, {
 			isStatic:true
 		})
-		.setScale(0.5)
+		.setScale(0.7)
 		this.cazadorController = new cazadorController(
 			this.cazador
 		)
