@@ -1,6 +1,13 @@
 import Phaser from 'phaser'
 
 export default class gameOver extends Phaser.Scene{
+  private fuenteTexto =  {
+    fontFamily: 'Titan One',
+    fontSize: '50pt',
+    color: '#FFBD0D',
+    stroke: '#00572f',
+    strokeThickness: 6,
+  }
   constructor()
   {
     super('gameOver');
@@ -12,9 +19,11 @@ export default class gameOver extends Phaser.Scene{
   
   create()
   {
+    
     const sonidoButton = this.sound.add('sonidoBoton');
 
     const gameLose = this.add.image(683, 384, 'lose')
+    this.add.text(550, 150, 'Derrota', this.fuenteTexto)
 
     const buttonRestart = this.add.image(800, 520,  'botonReset')
     .setInteractive()

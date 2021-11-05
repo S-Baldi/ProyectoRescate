@@ -16,8 +16,14 @@ export default class UI extends Phaser.Scene
 	
 	//Estrellas totales [0 a 3]
 	private estrellasNivel1 = 0
-
-	private pause = false
+	
+	private fuenteTexto = {
+    fontFamily: 'Titan One',
+    fontSize: '40pt',
+    color: '#FFBD0D',
+    stroke: '#00572f',
+    strokeThickness: 6,
+  }
 
 	constructor()
 	{
@@ -37,6 +43,10 @@ export default class UI extends Phaser.Scene
 		this.criasTotales = 3
 		this.comidaTotales = 0
 
+	}
+	preload(){
+		this.load.image('criaYaguarete', 'assets/Nivel1/criaYaguarete.png');
+		this.load.image('comidaYaguarete', 'assets/Nivel1/nivel1_carne.png');
 	}
 
 	create()
@@ -64,23 +74,16 @@ export default class UI extends Phaser.Scene
 		})
 
     //TEXTO PARA CORROBORAR
-    this.criasLabel = this.add.text(950, 30, 'Crias: 0/3', {
-			fontSize: '32px',
-			color: 'black',			
-      font: '40pt Helvetica neue black', 
-		})
-    
-    this.comidaLabel = this.add.text(950, 80, 'Comida: 0/48', {
-			fontSize: '32px',
-			color: 'black',
-      font: '40pt Helvetica neue black',
-		})		
+		this.add.image(1140 ,90, 'criaYaguarete').setScale(0.2);
+    this.criasLabel = this.add.text(1200, 50, '0/3', this.fuenteTexto)
+    this.add.image(1140 ,190, 'comidaYaguarete');
+    this.comidaLabel = this.add.text(1200, 150, '0/48', this.fuenteTexto)		
 	}
 	
 	private handleCriasCollected()
 	{
 		++this.criasCollected
-    this.criasLabel.text = `Crias: ` + this.criasCollected + '/3'
+    this.criasLabel.text = this.criasCollected + '/3'
 		
 		if (this.criasCollected > 0) 
 		{
@@ -91,7 +94,7 @@ export default class UI extends Phaser.Scene
   private handleComidaCollected()
 	{
 		++this.comidaCollected
-    this.comidaLabel.text = `Comida: ${this.comidaCollected}`+ '/48'
+    this.comidaLabel.text = `${this.comidaCollected}`+ '/48'
 		
 		if (this.comidaCollected > 0) 
 		{			

@@ -6,7 +6,14 @@ export default class gameWin extends Phaser.Scene{
   private cantidadEstrellasYagua: any
   private cantidadCiertaEstrellasYaguarete: any
   private contadorEntrarNivel1:number=0
- 
+  private fuenteTexto =  {
+    fontFamily: 'Titan One',
+    fontSize: '50pt',
+    color: '#FFBD0D',
+    stroke: '#00572f',
+    strokeThickness: 6,
+  }
+
   constructor()
   {
     super('gameWin');
@@ -14,6 +21,7 @@ export default class gameWin extends Phaser.Scene{
 
   preload(){
     this.load.image('win', 'assets/GameWinLose/win.png');
+    this.add.text(550, 150, 'Victoria', this.fuenteTexto);
     this.load.spritesheet('estrellas','assets/Mapa/estrellasMapa.png',
     {frameWidth:269 , frameHeight:114 });
   }
