@@ -99,16 +99,16 @@ export default class pop_upExt extends Phaser.Scene
     {
       const tituloPopUpM= this.add.text(510, 80, 'PINGÜINO', this.fuenteNombres).setDepth(3);
       const fotoM = this.add.image(350, 400, 'fotoPinguino').setScale(0.88).setDepth(3);
-      this.add.text(540, 170, 'Nombre científico: Spheniscus magellanicus.', this.fuenteTexto).setDepth(3)
-      this.add.text(540, 204, 'Altura: 60 a 75 cm.', this.fuenteTexto ).setDepth(3)
-      this.add.text(540, 238, 'Peso: 2.5 a 6.5kg.', this.fuenteTexto).setDepth(3)
-      this.add.text(540, 262, 'Distribución: Sureste Argentina.', this.fuenteTexto).setDepth(3)
-      this.add.text(540, 296, 'Estado de Conservación: Casi Amenazado.', this.fuenteTexto).setDepth(3)
-      this.add.text(540, 330, 'Dieta: sepia, calamar, krill, otros crustáceos.', this.fuenteTexto).setDepth(3)
-      this.add.text(540, 364, 'Pingüino de Magallanes se distingue por su cuerpo \nnegro y abdomen blanco.', this.fuenteTexto).setDepth(3)
-      this.add.text(540, 428, 'Es típico del sur argentino. A lo largo de la costa \nde la Patagonia Argentina.', this.fuenteTexto).setDepth(3)
-      this.add.text(540, 490, 'Los derrames de petróleo a lo largo de la costa \nArgentina son su mayor amenaza.', this.fuenteTexto).setDepth(3)
-      this.add.text(540, 550, 'La redes son una gran amenaza para ellos. quedan \natrapados y se ahogan en estas.', this.fuenteTexto).setDepth(3)      
+      this.add.text(540, 170, 'Nombre científico: Spheniscus \nmagellanicus.', this.fuenteTexto).setDepth(3)
+      this.add.text(540, 228, 'Altura: 60 a 75 cm.', this.fuenteTexto ).setDepth(3)
+      this.add.text(540, 238+24, 'Peso: 2.5 a 6.5kg.', this.fuenteTexto).setDepth(3)
+      this.add.text(540, 262+24, 'Distribución: Sureste Argentina.', this.fuenteTexto).setDepth(3)
+      this.add.text(540, 296+24, 'Estado de Conservación: Casi Amenazado.', this.fuenteTexto).setDepth(3)
+      this.add.text(540, 330+24, 'Dieta: sepia, calamar, krill, otros crustáceos.', this.fuenteTexto).setDepth(3)
+      this.add.text(540, 364+24, 'Pingüino de Magallanes se distingue por su cuerpo \nnegro y abdomen blanco.', this.fuenteTexto).setDepth(3)
+      this.add.text(540, 428+24, 'Es típico del sur argentino. A lo largo de la costa \nde la Patagonia Argentina.', this.fuenteTexto).setDepth(3)
+      this.add.text(540, 490+24, 'Los derrames de petróleo a lo largo de la costa \nArgentina son su mayor amenaza.', this.fuenteTexto).setDepth(3)
+      this.add.text(540, 550+24, 'La redes son una gran amenaza para ellos. quedan \natrapados y se ahogan en estas.', this.fuenteTexto).setDepth(3)      
     }    
   }
 

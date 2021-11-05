@@ -21,6 +21,14 @@ export default class mapa extends Phaser.Scene
   private estrellaMasAltaMono : number =0  
   private cantidadEstrellasMonoBonus
 
+  public musicaMapa:any
+  
+  public detenerMusica()
+  {  
+    this.musicaMapa.stop() 
+  }
+
+
   //FUENTE
   private fuenteTexto = {
     fontFamily: 'Titan One',
@@ -42,11 +50,21 @@ export default class mapa extends Phaser.Scene
     this.load.image('nivelBonus', 'assets/Mapa/NivelBonus.png');
     this.load.spritesheet('estrellaBonus', 'assets/Mapa/estrellasBonus.png',
     {frameWidth:202, frameHeight:190});
+    //////////Musica Mapa
+    this.load.audio('musicaMapa1', 'audio/menuMapa/Op1Mapa.mp3')
+    this.load.audio('musicaMapa2', 'audio/menuMapa/Op2Mapa.mp3')
+    this.load.audio('musicaMapa3', 'audio/menuMapa/Op3Mapa.mp3')
+    this.load.audio('musicaMapa4', 'audio/menuMapa/Op4Mapa.mp3')
+    
   }
 
   create()
   {
     const sonidoButton = this.sound.add('sonidoBoton');
+    this.musicaMapa= this.sound.add('musicaMP3')
+    
+    this.musicaMapa.play({volume:0.05, loop: true}) 
+
     const fondo_Mapa = this.add.image(600, 350, 'fondoMapa');
 
     const mapaArg = this.add.image(750, 384, 'mapaArgentina');
@@ -55,7 +73,7 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on('pointerover', () => buttonMenu.setScale(0.8))
     .on('pointerout', () => buttonMenu.setScale(0.7))
-    .on('pointerdown', () => this.scene.start('menuPpal') && sonidoButton.play({volume:0.5}));
+    .on('pointerdown', () => this.scene.start('menuPpal') && this.scene.get('menuMapa').detenerMusica() && sonidoButton.play({volume:0.5}));
 
     const buttonMusica = this.add.image(180, 80, 'botonMusica').setScale(0.7)
 

@@ -52,7 +52,8 @@ export default class gameWin extends Phaser.Scene{
       this.scene.get("popUpMapa").ganar()
       this.scene.stop('nivelYaguarete')      
       this.scene.start('menuMapa')
-      sonidoButton.play({volume:0.5})             
+      sonidoButton.play({volume:0.5})
+      this.scene.get('popUpMapa').detenerMusica()             
       if (this.contadorEntrarNivel1>0 && this.contadorEntrarNivel1<2) 
       {
         this.scene.launch('popUpInformativo') 

@@ -27,6 +27,8 @@ export default class extras extends Phaser.Scene
   align: 'justify',
   };
 
+  
+
   constructor()
   {
     super('extras');
@@ -47,6 +49,7 @@ export default class extras extends Phaser.Scene
   create()
   {
     const sonidoButton = this.sound.add('sonidoBoton');
+
     const fondoMenu = this.add.image(683, 384, 'fondoLimpio').setScale(0.72);
     this.add.text(550, 50, 'EXTRAS', {  
       fontFamily: 'Titan One',
@@ -60,7 +63,8 @@ export default class extras extends Phaser.Scene
     .setInteractive()
     .on('pointerover', () => buttonAtras.setScale(1.1))
     .on('pointerout', () => buttonAtras.setScale(1))
-    .on('pointerdown', () => this.scene.start('menuPpal') && sonidoButton.play({volume:0.5}));
+    .on('pointerdown', () => this.scene.start('menuPpal') && sonidoButton.play({volume:0.5}) 
+    && this.scene.get('menuPpal').detenerMusica());
 
     this.estrellaMasAltaYagua = localStorage.getItem('estrellasYaguarete') || '1';
     this.cantidadEstrellasYaguaBonus= localStorage.getItem('estrellasYaguareteBonus') || '1';
@@ -69,9 +73,9 @@ export default class extras extends Phaser.Scene
     this.estrellaMasAltaMono = localStorage.getItem('estrellasMono') || '1';
     this.cantidadEstrellasMonoBonus = localStorage.getItem('estrellasMonoBonus') || '1';
 
-    const estrellasTotales = +this.estrellaMasAltaPingui + +this.estrellaMasAltaYagua + 
+    const estrellasTotales = 9/* +this.estrellaMasAltaPingui + +this.estrellaMasAltaYagua + 
     +this.cantidadEstrellasYaguaBonus + +this.cantidadEstrellasPinguiBonus + +this.estrellaMasAltaMono + 
-    +this.cantidadEstrellasMonoBonus
+    +this.cantidadEstrellasMonoBonus */
     
     //Yaguarete
     if(estrellasTotales<3)
@@ -105,8 +109,8 @@ export default class extras extends Phaser.Scene
     }
     else
     {
-      let buttonInfoMono = this.add.image(850, 350, 'infoMono').setScale(1.1) &&
-      this.add.text(950, 320, 'MONO', 
+      let buttonInfoMono = this.add.image(900, 350, 'infoMono').setScale(1.1) &&
+      this.add.text(1000, 320, 'MONO', 
       {fontFamily: 'Titan One',
       fontSize: '40pt',
       color: '#FFBD0D',
@@ -146,8 +150,8 @@ export default class extras extends Phaser.Scene
     }
     else
     {
-      let buttonInfoBallena = this.add.image(850, 550, 'infoBallena').setScale(1) &&
-      this.add.text(950, 520, 'BALLENA', 
+      let buttonInfoBallena = this.add.image(900, 550, 'infoBallena').setScale(1) &&
+      this.add.text(1000, 520, 'BALLENA', 
       {fontFamily: 'Titan One',
       fontSize: '40pt',
       color: '#FFBD0D',
