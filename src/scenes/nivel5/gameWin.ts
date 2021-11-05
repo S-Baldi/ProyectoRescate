@@ -6,6 +6,13 @@ export default class gameWinPinguino extends Phaser.Scene{
   private cantidadEstrellasPingui: any
   private cantidadCiertaEstrellasPinguino: any
   private contadorEntrarNivel5:number=0
+  private fuenteTexto =  {
+    fontFamily: 'Titan One',
+    fontSize: '50pt',
+    color: '#FFBD0D',
+    stroke: '#00572f',
+    strokeThickness: 6,
+  }
   constructor()
   {
     super('gameWinPinguino');
@@ -22,6 +29,7 @@ export default class gameWinPinguino extends Phaser.Scene{
     const sonidoButton = this.sound.add('sonidoBoton');
 
     this.add.image(683, 384, 'win')
+    his.add.text(550, 150, 'Victoria', this.fuenteTexto);
 
     const buttonRestart = this.add.image(800, 590,  'botonReset')
     .setInteractive()

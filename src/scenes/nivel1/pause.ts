@@ -2,6 +2,13 @@
 import Phaser from 'phaser'
 
 export default class pause extends Phaser.Scene{
+  private fuenteTexto =  {
+    fontFamily: 'Titan One',
+    fontSize: '50pt',
+    color: '#FFBD0D',
+    stroke: '#00572f',
+    strokeThickness: 6,
+  }
   constructor()
   {
     super('pause');
@@ -17,13 +24,7 @@ export default class pause extends Phaser.Scene{
     const sonidoButton = this.sound.add('sonidoBoton');
 
     const gamePause = this.add.image(683, 384, 'pause')
-    this.add.text(580, 250, 'Pausa', {
-      fontFamily: 'Titan One',
-      fontSize: '50pt',
-      color: '#FFBD0D',
-      stroke: '#00572f',
-      strokeThickness: 6,
-    })
+    this.add.text(580, 250, 'Pausa', this.fuenteTexto)
 
     const buttonMapa = this.add.image(490, 440, 'botonMapa')
     .setInteractive()

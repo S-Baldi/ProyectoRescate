@@ -1093,6 +1093,17 @@
                  "width":60,
                  "x":26664,
                  "y":323
+                }, 
+                {
+                 "height":42,
+                 "id":442,
+                 "name":"pez",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":60,
+                 "x":5138,
+                 "y":559
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1101,7 +1112,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":442,
+ "nextobjectid":443,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",

@@ -18,6 +18,14 @@ export default class UI_Pinguino extends Phaser.Scene
 	//Estrellas totales [0 a 3]
 	private estrellasNivel1 = 0
 
+	private fuenteTexto = {
+    fontFamily: 'Titan One',
+    fontSize: '40pt',
+    color: '#FFBD0D',
+    stroke: '#00572f',
+    strokeThickness: 6,
+  }
+
 	constructor()
 	{
 		super({
@@ -33,6 +41,10 @@ export default class UI_Pinguino extends Phaser.Scene
     this.comidaCollected = 0
 
 		this.estrellasNivel1 = 0
+	}
+	preload(){
+		this.load.image('criaPinguino', 'assets/Nivel5/criaPinguino.png');
+		this.load.image('comidaPinguino', 'assets/Nivel5/nivel5_comida.png');
 	}
 
 	create()
@@ -60,24 +72,17 @@ export default class UI_Pinguino extends Phaser.Scene
 		})
 
     //TEXTO PARA CORROBORAR
-    this.criasLabel = this.add.text(950, 30, 'Crias: 0/3', {
-			fontSize: '32px',
-			color: 'black',			
-      font: '40pt Helvetica neue black', 
-		})
-    
-    this.comidaLabel = this.add.text(950, 80, 'Comida: 0/47', {
-			fontSize: '32px',
-			color: 'black',
-      font: '40pt Helvetica neue black',
-		})
+		this.add.image(1140 ,90, 'criaPinguino');
+    this.criasLabel = this.add.text(1200, 50, '0/3', this.fuenteTexto)
+    this.add.image(1140 ,190, 'comidaPinguino');
+    this.comidaLabel = this.add.text(1200, 150, '0/48', this.fuenteTexto)
 		
 	}
 	
 	private handleCriasCollected()
 	{
 		++this.criasCollected
-    this.criasLabel.text = `Crias: ` + this.criasCollected + '/3'
+    this.criasLabel.text = this.criasCollected + '/3'
 		
 		if (this.criasCollected > 0) 
 		{			
@@ -88,7 +93,7 @@ export default class UI_Pinguino extends Phaser.Scene
   private handleComidaCollected()
 	{
 		++this.comidaCollected
-    this.comidaLabel.text = `Comida: ${this.comidaCollected}`+ '/47'
+    this.comidaLabel.text = `${this.comidaCollected}`+ '/48'
 		
 		if (this.comidaCollected > 0) 
 		{			

@@ -21,6 +21,15 @@ export default class mapa extends Phaser.Scene
   private estrellaMasAltaMono : number =0  
   private cantidadEstrellasMonoBonus
 
+  //FUENTE
+  private fuenteTexto = {
+    fontFamily: 'Titan One',
+    fontSize: '25pt',
+    color: '#FFBD0D',
+    stroke: '#00572f',
+    strokeThickness: 6,
+  }
+
   constructor(){
     super ('menuMapa');
   }
@@ -72,13 +81,7 @@ export default class mapa extends Phaser.Scene
     && this.scene.pause() 
     && this.scene.get("popUpMapa").mostrarNiveles('yaguareteNiveles'))
     
-    this.add.text(1030,115, 'YAGUARETÉ', {
-      fontFamily: 'Titan One', //COLOCAMOS LA FAMILIA DE LA FUENTE QUE QUEREMOS
-      fontSize: '25pt',
-      color: '#FFBD0D',
-      stroke: '#00572f',
-      strokeThickness: 6,
-    })  
+    this.add.text(1030,115, 'YAGUARETÉ', this.fuenteTexto)  
     
     //////////////////////////////////////////////NIVEL MONO//////////////////////////////////////////////
     this.cantidadEstrellasMono = localStorage.getItem('estrellasMono') || '1';  
@@ -99,14 +102,7 @@ export default class mapa extends Phaser.Scene
     && this.scene.pause() 
     && this.scene.get("popUpMapa").mostrarNiveles('monoNiveles'))
 
-    this.add.text(320, 25, 'MONO CAÍ', {
-      fontFamily: 'Titan One',
-      fontSize: '25pt',
-      color: '#FFBD0D',
-      stroke: '#00572f',
-      strokeThickness: 6,
-      align: 'center'
-    })
+    this.add.text(320, 25, 'MONO CAÍ', this.fuenteTexto)
     
 
     //////////////////////////////////////////////NIVEL CONDOR//////////////////////////////////////////////
@@ -125,6 +121,8 @@ export default class mapa extends Phaser.Scene
 
     //////////////////////////////////////////////NIVEL BALLENA//////////////////////////////////////////////
     const buttonNivel4 = this.add.image(980,470, 'botonNivel').setScale(0.25)
+    .setInteractive()
+    .on('pointerdown', () => this.scene.start('nivelPinguino'))
 
     this.add.text(871,500, 'PRÓXIMAMENTE', {
       fontSize: '25px',
@@ -155,13 +153,7 @@ export default class mapa extends Phaser.Scene
     && this.scene.get("popUpMapa").mostrarNiveles('pinguinoNiveles'))    
     
 
-    this.add.text(295,595, 'PINGÜINO', {
-      fontFamily: 'Titan One',
-      fontSize: '25pt',
-      color: '#FFBD0D',
-      stroke: '#00572f',
-      strokeThickness: 6,
-    })    
+    this.add.text(295,595, 'PINGÜINO', this.fuenteTexto)    
   } 
     
   update()

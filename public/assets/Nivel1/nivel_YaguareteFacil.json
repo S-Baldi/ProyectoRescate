@@ -921,6 +921,28 @@
                  "width":58,
                  "x":26622.5151515152,
                  "y":521.954545454545
+                }, 
+                {
+                 "height":47,
+                 "id":163,
+                 "name":"carne",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":58,
+                 "x":26751,
+                 "y":512.5
+                }, 
+                {
+                 "height":47,
+                 "id":164,
+                 "name":"carne",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":58,
+                 "x":2279,
+                 "y":524.5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -929,7 +951,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":163,
+ "nextobjectid":165,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",

@@ -6,13 +6,21 @@ export default class gameWinMono extends Phaser.Scene{
   private cantidadEstrellasMono: any
   private cantidadCiertaEstrellasMono: any
   private contadorEntrarNivel2:number=0
+  private fuenteTexto =  {
+    fontFamily: 'Titan One',
+    fontSize: '50pt',
+    color: '#FFBD0D',
+    stroke: '#00572f',
+    strokeThickness: 6,
+  }
   constructor()
   {
     super('gameWinMono');
   }
 
   preload(){
-    this.load.image('win', 'assets/GameWinLose/win.png');
+    this.load.image('win', 'assets/GameWinLose/win.png');    
+    this.add.text(550, 150, 'Victoria', this.fuenteTexto);
     this.load.spritesheet('estrellas','assets/Mapa/estrellasMapa.png',
     {frameWidth:269 , frameHeight:114 });
   }
