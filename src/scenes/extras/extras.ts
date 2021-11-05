@@ -70,7 +70,8 @@ export default class extras extends Phaser.Scene
     this.cantidadEstrellasMonoBonus = localStorage.getItem('estrellasMonoBonus') || '1';
 
     const estrellasTotales = +this.estrellaMasAltaPingui + +this.estrellaMasAltaYagua + 
-    +this.cantidadEstrellasYaguaBonus + +this.cantidadEstrellasPinguiBonus + +this.estrellaMasAltaMono + +this.cantidadEstrellasMonoBonus
+    +this.cantidadEstrellasYaguaBonus + +this.cantidadEstrellasPinguiBonus + +this.estrellaMasAltaMono + 
+    +this.cantidadEstrellasMonoBonus
     
     //Yaguarete
     if(estrellasTotales<3)
@@ -97,15 +98,15 @@ export default class extras extends Phaser.Scene
     //Mono
     if(estrellasTotales<6)
     {
-      const txtYagua = this.add.text(40, 400, '6', this.texto1)
-      const buttonDesbloqueableYaguarete = this.add.sprite(140, 400+45, 'estrellaBonus', 1).setDepth(3).setScale(0.40)
-      const txtDesbloqueable= this.add.text(180, 400+13, 'DESBLOQUEABLE', this.texto2)
-      const candado= this.add.image(780, 400+43, 'candado').setScale(0.8)
+      const txtYagua = this.add.text(545, 292, '6', this.texto1)
+      const buttonDesbloqueableYaguarete = this.add.sprite(550+100, 293.5+45, 'estrellaBonus', 1).setDepth(3).setScale(0.40)
+      const txtDesbloqueable= this.add.text(550+140, 293.5+13, 'DESBLOQUEABLE', this.texto2)
+      const candado= this.add.image(550+740, 293.5+43, 'candado').setScale(0.8)
     }
     else
     {
-      let buttonInfoMono = this.add.image(200, 450, 'infoMono').setScale(1.1) &&
-      this.add.text(300, 420, 'MONO', 
+      let buttonInfoMono = this.add.image(850, 350, 'infoMono').setScale(1.1) &&
+      this.add.text(950, 320, 'MONO', 
       {fontFamily: 'Titan One',
       fontSize: '40pt',
       color: '#FFBD0D',
@@ -124,8 +125,8 @@ export default class extras extends Phaser.Scene
       const candado= this.add.image(780, 613+43, 'candado').setScale(0.8)
     }
     else{
-      let buttonInfoCondor = this.add.image(300, 550, 'infoCondor').setScale(0.8) &&
-      this.add.text(1050, 520, 'CONDOR', 
+      let buttonInfoCondor = this.add.image(200, 620, 'infoCondor').setScale(0.8) &&
+      this.add.text(300, 620, 'CONDOR', 
       {fontFamily: 'Titan One',
       fontSize: '40pt',
       color: '#FFBD0D',
@@ -138,15 +139,15 @@ export default class extras extends Phaser.Scene
     //Ballena
     if(estrellasTotales<13)
     {
-      const txtYagua = this.add.text(506, 292, '13', this.texto1)
-      const buttonDesbloqueableYaguarete = this.add.sprite(550+100, 293.5+45, 'estrellaBonus', 1).setDepth(3).setScale(0.40)
-      const txtDesbloqueable= this.add.text(550+140, 293.5+13, 'DESBLOQUEABLE', this.texto2)
-      const candado= this.add.image(550+740, 293.5+43, 'candado').setScale(0.8)
+      const txtYagua = this.add.text(510, 504, '13', this.texto1)
+      const buttonDesbloqueableYaguarete = this.add.sprite(550+100, 506.5+45, 'estrellaBonus', 1).setDepth(3).setScale(0.40)
+      const txtDesbloqueable= this.add.text(550+140, 506.5+13, 'DESBLOQUEABLE', this.texto2)
+      const candado= this.add.image(550+740, 506.5+43, 'candado').setScale(0.8)
     }
     else
     {
-      let buttonInfoBallena = this.add.image(1000, 350, 'infoBallena').setScale(1) &&
-      this.add.text(1050, 320, 'BALLENA', 
+      let buttonInfoBallena = this.add.image(850, 550, 'infoBallena').setScale(1) &&
+      this.add.text(950, 520, 'BALLENA', 
       {fontFamily: 'Titan One',
       fontSize: '40pt',
       color: '#FFBD0D',
@@ -159,15 +160,16 @@ export default class extras extends Phaser.Scene
     //Pingüino
     if(estrellasTotales<9)
     {
-      const txtYagua = this.add.text(545, 504, '9', this.texto1)
-      const buttonDesbloqueableYaguarete = this.add.sprite(550+100, 506.5+45, 'estrellaBonus', 1).setDepth(3).setScale(0.40)
-      const txtDesbloqueable= this.add.text(550+140, 506.5+13, 'DESBLOQUEABLE', this.texto2)
-      const candado= this.add.image(550+740, 506.5+43, 'candado').setScale(0.8)
+      const txtYagua = this.add.text(36, 400, '9', this.texto1)
+      const buttonDesbloqueableYaguarete = this.add.sprite(140, 400+45, 'estrellaBonus', 1).setDepth(3).setScale(0.40)
+      const txtDesbloqueable= this.add.text(180, 400+13, 'DESBLOQUEABLE', this.texto2)
+      const candado= this.add.image(780, 400+43, 'candado').setScale(0.8)
     }
+    
     else
     {
-      let buttonInfoPinguino = this.add.image(1000, 550, 'infoPinguino').setScale(0.9) &&
-      this.add.text(300, 620, 'PINGÜINO', 
+      let buttonInfoPinguino = this.add.image(200, 450, 'infoPinguino').setScale(0.9) &&
+      this.add.text(300, 420, 'PINGÜINO', 
       {fontFamily: 'Titan One',
       fontSize: '40pt',
       color: '#FFBD0D',
@@ -175,6 +177,6 @@ export default class extras extends Phaser.Scene
       strokeThickness: 6,})
       .setInteractive() 
       .on('pointerdown', () => this.scene.launch('pop_up_E') && sonidoButton.play({volume:0.5}) && this.scene.pause() && this.scene.get('pop_up_E').mostrarInfo('pinguinoInformation')) ;  
-    }      
+    } 
   }  
 }
