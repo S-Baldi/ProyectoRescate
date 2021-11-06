@@ -55,6 +55,8 @@ export default class precarga extends Phaser.Scene{
       this.load.image('infoCondor', 'assets/MenuPrincipal/Botones/Extras/infoCondor1.png');
       this.load.image('infoBallena', 'assets/MenuPrincipal/Botones/Extras/infoBallena1.png');
       this.load.image('infoPinguino', 'assets/MenuPrincipal/Botones/Extras/infoPinguino1.png');
+      //EXTRAS
+      this.load.image('popUpExtras', 'assets/MenuPrincipal/popUp2.png')
       //PRECARGA
       this.load.image('banderaArg', 'assets/Precarga/Bandera_Arg.png')
       this.load.image('banderaBr', 'assets/Precarga/Bandera_Bra.png')
