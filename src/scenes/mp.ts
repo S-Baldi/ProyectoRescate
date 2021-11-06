@@ -29,7 +29,6 @@ export default class mp1 extends Phaser.Scene
     this.load.image('botonMapa', 'assets/MenuPrincipal/Botones/botonMapa.png');    
     this.load.image('botonatras', 'assets/MenuPrincipal/Botones/botonAtras.png');
     this.load.image('botonPausa', 'assets/MenuPrincipal/Botones/botonPausa.png');
-    this.load.image('botonIdiomaEspañol', 'assets/MenuPrincipal/bandera.png');
 
     this.load.image('mapaArgentina', 'assets/Mapa/mapa.png');
     this.load.image('botonMenuPpal', 'assets/MenuPrincipal/Botones/botonMenu.png');
@@ -53,14 +52,8 @@ export default class mp1 extends Phaser.Scene
     this.load.image('infoBallena', 'assets/MenuPrincipal/Botones/Extras/infoBallena1.png');
     this.load.image('infoPinguino', 'assets/MenuPrincipal/Botones/Extras/infoPinguino1.png');
 
-    ////////////SONIDOS
     this.load.audio('sonidoBoton', 'audio/boton.mp3')
-    ///////////Menu Principal
-    this.load.audio('musicaMP1', 'audio/menuPrincipal/Op1MP.mp3')
-    this.load.audio('musicaMP2', 'audio/menuPrincipal/Op2MP.mp3')
-    this.load.audio('musicaMP3', 'audio/menuPrincipal/Op3MP.mp3')
-    this.load.audio('musicaMP4', 'audio/menuPrincipal/Op4MP.mp3')
-    
+  
     //CARGAMOS EN UN ARRAY TODAS LAS FUENTES QUE SE QUIEREN PARA EL JUEGO
     this.load.addFile(new WebFontFile(this.load, [
       'Titan One',
@@ -72,11 +65,7 @@ export default class mp1 extends Phaser.Scene
   create()
   {
     const sonidoButton = this.sound.add('sonidoBoton');
-    this.musicaMP= this.sound.add('musicaMP4')
     
-    this.musicaMP.play({volume:0.05, loop: true})      
-    
-
     //Fondo del Mp
     const fondoMenu = this.add.image(683, 384, 'menu').setScale(0.75);
 
@@ -87,7 +76,7 @@ export default class mp1 extends Phaser.Scene
     .on('pointerout', () => buttonPlay.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
-      this.scene.start('menuMapa') && sonidoButton.play({volume:0.5}) && this.musicaMP.stop()
+      this.scene.start('menuMapa') && sonidoButton.play({volume:0.5})
     });
 
     //Boton Premio
@@ -112,7 +101,6 @@ export default class mp1 extends Phaser.Scene
 
     
     const buttonMusica = this.add.image(90, 90, 'botonMusica').setScale(0.7);
-    const banderaArg = this.add.image(90, 200, 'botonIdiomaEspañol').setScale(0.2);
 
   }
 

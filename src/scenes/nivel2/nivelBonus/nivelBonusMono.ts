@@ -1,10 +1,18 @@
 import Phaser from 'phaser'
+import { getPhrase } from '~/services/translation';
 import preguntasMono from './preguntasMono';
 export default class bonusMono extends Phaser.Scene{
   
   private fuenteTexto =     
   {fontFamily: 'Viga',
   fontSize: '30pt',
+  color: '#000000',
+  align: 'center'
+  };
+
+  private fuenteTextoPreg =     
+  {fontFamily: 'Viga',
+  fontSize: '25pt',
   color: '#000000',
   align: 'center'
   };
@@ -37,9 +45,14 @@ export default class bonusMono extends Phaser.Scene{
     const portada2 = this.add.image(496, 235, 'yaguaBonus').setScale(1.35);
     
     let preguntasBonus= new Array<preguntasMono>()
-    preguntasBonus.push(new preguntasMono('¿Cuál es la causa por la cual el \n yaguareté se encuentra en vía de extición?', 'Todas son correctas', 'Caza furtiva', 'Deforestación del hábitat', 'Reducción de sus presas'))
+    preguntasBonus.push(new preguntasMono
+    (getPhrase('¿Cuál es la causa por la cual el \n yaguareté se encuentra en vía de extición?'), 
+    getPhrase('Todas son correctas'),
+    getPhrase('Caza furtiva'),
+    getPhrase('Deforestación del hábitat'),
+    getPhrase('Reducción de sus presas')))
     
-    const text_pregunta = this.add.text(275, 362, preguntasBonus[0].pregunta, this.fuenteTexto);
+    const text_pregunta = this.add.text(130, 390, preguntasBonus[0].pregunta, this.fuenteTextoPreg);
 
     preguntasBonus[0].respuestasRandom()
 

@@ -1,5 +1,5 @@
-import Phaser from 'phaser'
-import {sharedInstance as events} from './eventCenter'
+import Phaser from 'phaser';
+import { getPhrase } from '~/services/translation';
 export default class mapa extends Phaser.Scene
 {
   //Estrellas totales ganadas
@@ -50,20 +50,11 @@ export default class mapa extends Phaser.Scene
     this.load.image('nivelBonus', 'assets/Mapa/NivelBonus.png');
     this.load.spritesheet('estrellaBonus', 'assets/Mapa/estrellasBonus.png',
     {frameWidth:202, frameHeight:190});
-    //////////Musica Mapa
-    this.load.audio('musicaMapa1', 'audio/menuMapa/Op1Mapa.mp3')
-    this.load.audio('musicaMapa2', 'audio/menuMapa/Op2Mapa.mp3')
-    this.load.audio('musicaMapa3', 'audio/menuMapa/Op3Mapa.mp3')
-    this.load.audio('musicaMapa4', 'audio/menuMapa/Op4Mapa.mp3')
-    
   }
 
   create()
   {
     const sonidoButton = this.sound.add('sonidoBoton');
-    this.musicaMapa= this.sound.add('musicaMP3')
-    
-    this.musicaMapa.play({volume:0.05, loop: true}) 
 
     const fondo_Mapa = this.add.image(600, 350, 'fondoMapa');
 
@@ -73,7 +64,7 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on('pointerover', () => buttonMenu.setScale(0.8))
     .on('pointerout', () => buttonMenu.setScale(0.7))
-    .on('pointerdown', () => this.scene.start('menuPpal') && this.scene.get('menuMapa').detenerMusica() && sonidoButton.play({volume:0.5}));
+    .on('pointerdown', () => this.scene.start('menuPpal') && this.scene.get('menuMapa')&& sonidoButton.play({volume:0.5}));
 
     const buttonMusica = this.add.image(180, 80, 'botonMusica').setScale(0.7)
 
@@ -99,7 +90,7 @@ export default class mapa extends Phaser.Scene
     && this.scene.pause() 
     && this.scene.get("popUpMapa").mostrarNiveles('yaguareteNiveles'))
     
-    this.add.text(1030,115, 'YAGUARETÉ', this.fuenteTexto)  
+    this.add.text(1030,115, getPhrase('YAGUARETÉ'), this.fuenteTexto)
     
     //////////////////////////////////////////////NIVEL MONO//////////////////////////////////////////////
     this.cantidadEstrellasMono = localStorage.getItem('estrellasMono') || '1';  
@@ -120,15 +111,15 @@ export default class mapa extends Phaser.Scene
     && this.scene.pause() 
     && this.scene.get("popUpMapa").mostrarNiveles('monoNiveles'))
 
-    this.add.text(320, 25, 'MONO CAÍ', this.fuenteTexto)
+    this.add.text(320, 25, getPhrase('MONO CAÍ'), this.fuenteTexto)
     
 
     //////////////////////////////////////////////NIVEL CONDOR//////////////////////////////////////////////
     const buttonNivel3 = this.add.image(360,300, 'botonNivel').setScale(0.25)
     .setInteractive()
-    .on('pointerdown', () => this.scene.start('nivelMono'))
+    .on('pointerdown', () => this.scene.start('nivelBonusMono'))
 
-    this.add.text(251,330, 'PRÓXIMAMENTE', {
+    this.add.text(251,330, getPhrase('PRÓXIMAMENTE'), {
       fontSize: '700px',
       color: 'grey',
       stroke: 'black',
@@ -142,7 +133,7 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on('pointerdown', () => this.scene.start('nivelPinguino'))
 
-    this.add.text(871,500, 'PRÓXIMAMENTE', {
+    this.add.text(871,500, getPhrase('PRÓXIMAMENTE'), {
       fontSize: '25px',
       color: 'grey',
       stroke: 'black',
@@ -171,7 +162,7 @@ export default class mapa extends Phaser.Scene
     && this.scene.get("popUpMapa").mostrarNiveles('pinguinoNiveles'))    
     
 
-    this.add.text(295,595, 'PINGÜINO', this.fuenteTexto)    
+    this.add.text(295,595, getPhrase('PINGÜINO'), this.fuenteTexto)    
   } 
     
   update()
