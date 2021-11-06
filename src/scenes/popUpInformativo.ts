@@ -1,10 +1,11 @@
 import Phaser from 'phaser'
+import { getPhrase } from '~/services/translation';
 
 export default class popUpInformativo extends Phaser.Scene
 {
   private txtInformativo= 
-  {fontFamily: 'Viga',
-  fontSize: '40pt',
+  {fontFamily: 'Titan One',
+  fontSize: '35pt',
   color: '#FFBD0D',
   stroke: '#00572f',
   strokeThickness: 6,
@@ -25,15 +26,14 @@ export default class popUpInformativo extends Phaser.Scene
 
   preload()
   {
-    this.load.image('popUpMapaNiveles', 'assets/MenuPrincipal/popUp.png');  
-     
+    this.load.image('popUpMapaNiveles', 'assets/MenuPrincipal/popUp.png'); 
   }
 
   create()
   {  
     const sonidoButton = this.sound.add('sonidoBoton');
     const popUpInformativo = this.add.image(680, 350, 'popUpMapaNiveles').setScale(0.7);
-    const txtPopUpInformativo = this.add.text(450, 215, 'INFORMACIÓN', this.txtInformativo)
+    const txtPopUpInformativo = this.add.text(450, 215, getPhrase('INFORMACIÓN'), this.txtInformativo)
     const buttonAtras = this.add.image(900, 250, 'botonatras')
     .setInteractive()
     .on('pointerover', () => buttonAtras.setScale(1.1))
@@ -46,15 +46,15 @@ export default class popUpInformativo extends Phaser.Scene
   {
     if (info=='bonusYaguareteDesbloqueado') 
     {
-      let txtInformativoBonusYagua= this.add.text(450, 400, '-Nivel Bonus del Yaguareté desbloqueado', this.Texto).setDepth(3);
+      let txtInformativoBonusYagua= this.add.text(450, 400, getPhrase('-Nivel Bonus del Yaguareté desbloqueado'), this.Texto).setDepth(3);
     }
     if (info=='nivelPinguiDesbloqueado') 
     {
-      let txtInformativoPingui= this.add.text(450, 400, '-Nivel Principal del Pingüino desbloqueado', this.Texto).setDepth(3);
+      let txtInformativoPingui= this.add.text(450, 400, getPhrase('-Nivel Principal del Pingüino desbloqueado'), this.Texto).setDepth(3);
     }
     if (info=='bonusPinguinoDesbloqueado') 
     {
-      let txtInformativoBonusYagua= this.add.text(450, 400, '-Nivel Bonus del Pinguino desbloqueado', this.Texto).setDepth(3);
+      let txtInformativoBonusYagua= this.add.text(450, 400, getPhrase('-Nivel Bonus del Pinguino desbloqueado'), this.Texto).setDepth(3);
     }   
   }
 }

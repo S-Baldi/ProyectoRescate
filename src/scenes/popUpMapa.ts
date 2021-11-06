@@ -190,7 +190,7 @@ export default class popUpMapa extends Phaser.Scene
         .setInteractive()
         .on('pointerdown', () => this.scene.sleep('menuMapa')) && 
         this.scene.start('nivelMono') && this.sound.play('sonidoBoton', {volume:0.5}) 
-        && this.scene.get('menuMapa')).setDepth(7).setVisible(true)) 
+        && this.scene.get('menuMapa')).setDepth(7).setVisible(true)
       }
 
       if (this.contadorEntrarNivel2==0 && this.cerrarBonusMono>0)

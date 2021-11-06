@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import { getPhrase } from '~/services/translation';
 
 export default class gameOverPinguino extends Phaser.Scene{
   private fuenteTexto =  {
@@ -23,7 +24,7 @@ export default class gameOverPinguino extends Phaser.Scene{
     
     const gameLose = this.add.image(683, 384, 'losePinguino')
     
-    this.add.text(550, 150, 'Derrota', this.fuenteTexto)
+    this.add.text(550, 150, getPhrase('Derrota'), this.fuenteTexto)
 
     const buttonRestart = this.add.image(800, 520,  'botonReset')
     .setInteractive()

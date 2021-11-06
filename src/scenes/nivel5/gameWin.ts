@@ -1,6 +1,5 @@
 import Phaser from 'phaser'
-import UI from '../nivel1/UI'; 
-import {sharedInstance as events} from '../eventCenter'
+import { getPhrase } from '~/services/translation';
 
 export default class gameWinPinguino extends Phaser.Scene{
   private cantidadEstrellasPingui: any
@@ -29,7 +28,7 @@ export default class gameWinPinguino extends Phaser.Scene{
     const sonidoButton = this.sound.add('sonidoBoton');
 
     this.add.image(683, 384, 'win')
-    this.add.text(550, 150, 'Victoria', this.fuenteTexto);
+    this.add.text(550, 150, getPhrase('Victoria'), this.fuenteTexto);
 
     const buttonRestart = this.add.image(800, 590,  'botonReset')
     .setInteractive()

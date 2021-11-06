@@ -1,5 +1,6 @@
 
 import Phaser from 'phaser'
+import { getPhrase } from '~/services/translation';
 
 export default class pausePinguino extends Phaser.Scene{
   constructor()
@@ -16,7 +17,7 @@ export default class pausePinguino extends Phaser.Scene{
     const sonidoButton = this.sound.add('sonidoBoton');
 
     const gamePause = this.add.image(683, 384, 'pause')
-    this.add.text(600, 250, 'Pausa', {
+    this.add.text(600, 250, getPhrase('Pausa'), {
       fontSize: '250px',
       color: 'yellow',
       stroke: 'black',

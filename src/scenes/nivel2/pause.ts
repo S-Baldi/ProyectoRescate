@@ -1,5 +1,6 @@
 
 import Phaser from 'phaser'
+import { getPhrase } from '~/services/translation';
 
 export default class pauseMono extends Phaser.Scene{
   constructor()
@@ -13,7 +14,7 @@ export default class pauseMono extends Phaser.Scene{
   
   create(){
     const gamePause = this.add.image(683, 384, 'pause')
-    this.add.text(580, 250, 'Pausa', {
+    this.add.text(580, 250, getPhrase('Pausa'), {
       fontFamily: 'Titan One',
       fontSize: '50pt',
       color: '#FFBD0D',

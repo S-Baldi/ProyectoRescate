@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import { getPhrase } from '~/services/translation';
 
 export default class gameOver extends Phaser.Scene{
   private fuenteTexto =  {
@@ -23,7 +24,7 @@ export default class gameOver extends Phaser.Scene{
     const sonidoButton = this.sound.add('sonidoBoton');
 
     const gameLose = this.add.image(683, 384, 'lose')
-    this.add.text(550, 150, 'Derrota', this.fuenteTexto)
+    this.add.text(550, 150, getPhrase('Derrota'), this.fuenteTexto)
 
     const buttonRestart = this.add.image(800, 520,  'botonReset')
     .setInteractive()

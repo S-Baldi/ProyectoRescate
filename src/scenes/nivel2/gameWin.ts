@@ -1,6 +1,5 @@
 import Phaser from 'phaser'
-import UI from '../nivel1/UI'; 
-import {sharedInstance as events} from '../eventCenter'
+import { getPhrase } from '~/services/translation'
 
 export default class gameWinMono extends Phaser.Scene{
   private cantidadEstrellasMono: any
@@ -20,14 +19,14 @@ export default class gameWinMono extends Phaser.Scene{
 
   preload(){
     this.load.image('win', 'assets/GameWinLose/win.png');    
-    this.add.text(550, 150, 'Victoria', this.fuenteTexto);
     this.load.spritesheet('estrellas','assets/Mapa/estrellasMapa.png',
     {frameWidth:269 , frameHeight:114 });
   }
   
   create(){  
     this.add.image(683, 384, 'win')
-
+    
+    this.add.text(550, 150, getPhrase('Victoria'), this.fuenteTexto);
     const buttonRestart = this.add.image(800, 590,  'botonReset')
     .setInteractive()
     .on('pointerover', () => buttonRestart.setScale(1.1))

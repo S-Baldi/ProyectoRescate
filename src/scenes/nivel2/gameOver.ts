@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-
+import { getPhrase } from '~/services/translation';
 export default class gameOverMono extends Phaser.Scene{
   private fuenteTexto =  {
     fontFamily: 'Titan One',
@@ -21,7 +21,7 @@ export default class gameOverMono extends Phaser.Scene{
   create(){
     const gameLose = this.add.image(683, 384, 'loseMono')
     
-    this.add.text(550, 150, 'Derrota', this.fuenteTexto)
+    this.add.text(550, 150, getPhrase('Derrota'), this.fuenteTexto)
 
     const buttonRestart = this.add.image(800, 520,  'botonReset')
     .setInteractive()
