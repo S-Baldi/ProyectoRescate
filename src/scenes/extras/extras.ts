@@ -8,6 +8,7 @@ export default class extras extends Phaser.Scene
   private cantidadEstrellasPinguiBonus
   private estrellaMasAltaMono
   private cantidadEstrellasMonoBonus
+  
 
   private texto1 =
   {  
@@ -26,8 +27,8 @@ export default class extras extends Phaser.Scene
   strokeThickness: 4,
   align: 'justify',
   };
-
-  
+  private estadoMusica:any;
+  private musicaMP:any 
 
   constructor()
   {
@@ -73,9 +74,9 @@ export default class extras extends Phaser.Scene
     this.estrellaMasAltaMono = localStorage.getItem('estrellasMono') || '1';
     this.cantidadEstrellasMonoBonus = localStorage.getItem('estrellasMonoBonus') || '1';
 
-    const estrellasTotales = 9/* +this.estrellaMasAltaPingui + +this.estrellaMasAltaYagua + 
+    const estrellasTotales = +this.estrellaMasAltaPingui + +this.estrellaMasAltaYagua + 
     +this.cantidadEstrellasYaguaBonus + +this.cantidadEstrellasPinguiBonus + +this.estrellaMasAltaMono + 
-    +this.cantidadEstrellasMonoBonus */
+    +this.cantidadEstrellasMonoBonus
     
     //Yaguarete
     if(estrellasTotales<3)

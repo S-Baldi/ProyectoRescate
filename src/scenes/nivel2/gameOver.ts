@@ -31,6 +31,7 @@ export default class gameOverMono extends Phaser.Scene{
     { 
       this.scene.stop('nivelMono')
       this.scene.start('nivelMono')
+      this.scene.get('nivelMono').detenerMusica()
     });
 
     const buttonMapa = this.add.image(600, 520, 'botonMapa')
@@ -41,6 +42,7 @@ export default class gameOverMono extends Phaser.Scene{
     { 
       this.scene.stop('nivelMono')
       this.scene.start('menuMapa')
+      this.scene.get('nivelMono').detenerMusica()
     });
   }
 }

@@ -12,10 +12,22 @@ export default class nivel_1 extends Phaser.Scene
   private cazadorController?: cazadorController
   private trampas?: Phaser.Physics.Matter.Sprite
   private trampaController?: trampaController
-  private obstacles!: obstaclesController  
+  private obstacles!: obstaclesController 
+  private estadoMusica:any;   
 
   constructor(){
     super('nivelYaguarete')
+  }
+  public musicaYaguarete:any
+
+  public musicaPlay()
+  {
+    this.musicaYaguarete.play({volume:0.5, loop: true})
+  } 
+  
+  public detenerMusica()
+  {  
+    this.musicaYaguarete.stop()            
   }
 
   init()
@@ -39,6 +51,14 @@ export default class nivel_1 extends Phaser.Scene
 
   create()
   {
+    this.musicaYaguarete= this.sound.add('musicaYaguarete1')  
+    
+    this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
+    if (this.estadoMusica=='1') 
+    {
+      this.musicaPlay()   
+    }
+    
     this.scene.launch('ui')
 
     /* Tiled Nivel 1 */
