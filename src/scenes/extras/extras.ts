@@ -8,7 +8,7 @@ export default class extras extends Phaser.Scene
   private cantidadEstrellasPinguiBonus
   private estrellaMasAltaMono
   private cantidadEstrellasMonoBonus
-  private musicaApagada:any;
+  
 
   private texto1 =
   {  
@@ -27,8 +27,8 @@ export default class extras extends Phaser.Scene
   strokeThickness: 4,
   align: 'justify',
   };
-
-  
+  private estadoMusica:any;
+  private musicaMP:any 
 
   constructor()
   {
@@ -50,13 +50,6 @@ export default class extras extends Phaser.Scene
   create()
   {
     const sonidoButton = this.sound.add('sonidoBoton');
-    
-    this.musicaApagada=localStorage.getItem('detuvoMusica')|| '0';
-    console.log(localStorage.getItem('detuvoMusica'))
-    if (this.musicaApagada==2) 
-    {
-      this.scene.get('menuPpal').detenerMusica()
-    }
 
     const fondoMenu = this.add.image(683, 384, 'fondoLimpio').setScale(0.72);
     this.add.text(550, 50, 'EXTRAS', {  
@@ -72,7 +65,7 @@ export default class extras extends Phaser.Scene
     .on('pointerover', () => buttonAtras.setScale(1.1))
     .on('pointerout', () => buttonAtras.setScale(1))
     .on('pointerdown', () => this.scene.start('menuPpal') && sonidoButton.play({volume:0.5}) 
-    && this.scene.get('menuPpal').detenerMusica());
+    && this.scene.get('menuPpal'));
 
     this.estrellaMasAltaYagua = localStorage.getItem('estrellasYaguarete') || '1';
     this.cantidadEstrellasYaguaBonus= localStorage.getItem('estrellasYaguareteBonus') || '1';

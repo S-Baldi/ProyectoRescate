@@ -27,6 +27,8 @@ export default class mp1 extends Phaser.Scene
   {    
     //////////Musica Mapa  
     this.load.audio('musicaMapa3', 'audio/menuMapa/Op3Mapa.mp3')
+
+    
        
     //CARGAMOS EN UN ARRAY TODAS LAS FUENTES QUE SE QUIEREN PARA EL JUEGO
     this.load.addFile(new WebFontFile(this.load, [
@@ -57,7 +59,7 @@ export default class mp1 extends Phaser.Scene
     .on('pointerout', () => buttonPlay.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
-      this.scene.start('menuMapa') && sonidoButton.play({volume:0.5}) && this.musicaMP.stop()
+      this.scene.start('menuMapa') && sonidoButton.play({volume:0.5})
     });
 
     //Boton Premio

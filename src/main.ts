@@ -1,4 +1,6 @@
+import 'regenerator-runtime/runtime'
 import Phaser from 'phaser'
+import precarga from './scenes/precarga'
 import ayuda from './scenes/ayuda'
 import creditos from './scenes/creditos'
 import info from './scenes/informacion'
@@ -39,6 +41,9 @@ import gameWinMono from './scenes/nivel2/gameWin'
 import bonusMono from './scenes/nivel2/nivelBonus/nivelBonusMono'
 import pop_up_BonusMono from './scenes/nivel2/nivelBonus/pop_up_BonusMono'
 import preguntasMono from './scenes/nivel2/nivelBonus/preguntasMono'
+
+localStorage.clear();
+
 const config : Phaser.Types.Core.GameConfig =
 {
   type: Phaser.WEBGL,
@@ -57,7 +62,7 @@ const config : Phaser.Types.Core.GameConfig =
       debug: false
     }
   },
-  scene: [preload, mp1, info, mapa, ayuda, creditos, extras, 
+  scene: [precarga, mp1, info, mapa, ayuda, creditos, extras, 
     nivel_1, UI, gameOver, gameWin, pause, bonus, pop_up, preguntas, pop_upExt, popUpMapa, 
     nivel_5, UI_Pinguino, gameWinPinguino, gameOverPinguino, pausePinguino, bonusPingui, pop_up_Pingui, preguntasPingui, 
     nivel_2, UI_Mono, gameWinMono, gameOverMono, pauseMono, popUpInformativo, bonusMono, pop_up_BonusMono, preguntasMono]

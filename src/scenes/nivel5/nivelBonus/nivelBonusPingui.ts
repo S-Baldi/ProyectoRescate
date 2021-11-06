@@ -1,11 +1,19 @@
 import Phaser from 'phaser'
 import preguntas from './preguntasPingui';
+import { getPhrase } from '~/services/translation';
 export default class bonusPingui extends Phaser.Scene
 
 { 
   private fuenteTexto =     
   {fontFamily: 'Viga',
   fontSize: '30pt',
+  color: '#000000',
+  align: 'center'
+  };
+
+  private fuenteTextoPreg =     
+  {fontFamily: 'Viga',
+  fontSize: '25pt',
   color: '#000000',
   align: 'center'
   };
@@ -36,9 +44,14 @@ export default class bonusPingui extends Phaser.Scene
     const portada2 = this.add.image(496, 235, 'pinguiBonus').setScale(1.25);
     
     let preguntasBonus= new Array<preguntas>()
-    preguntasBonus.push(new preguntas('¿Cuál es la causa por la cual el \n yaguareté se encuentra en vía de extición?', 'Todas son correctas', 'Caza furtiva', 'Deforestación del hábitat', 'Reducción de sus presas'))
+    preguntasBonus.push(new preguntas
+    (getPhrase('¿Cuál es la causa por la cual el \n yaguareté se encuentra en vía de extición?'), 
+    getPhrase('Todas son correctas'),
+    getPhrase('Caza furtiva'),
+    getPhrase('Deforestación del hábitat'),
+    getPhrase('Reducción de sus presas')))
     
-    const text_pregunta = this.add.text(275, 360, preguntasBonus[0].pregunta, this.fuenteTexto);
+    const text_pregunta = this.add.text(275, 360, preguntasBonus[0].pregunta, this.fuenteTextoPreg);
 
     preguntasBonus[0].respuestasRandom()
 

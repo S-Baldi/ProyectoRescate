@@ -1,5 +1,5 @@
-import Phaser from 'phaser'
-import {sharedInstance as events} from './eventCenter'
+import Phaser from 'phaser';
+import { getPhrase } from '~/services/translation';
 export default class mapa extends Phaser.Scene
 {
   //Yaguarete
@@ -122,7 +122,7 @@ export default class mapa extends Phaser.Scene
     && this.scene.pause() 
     && this.scene.get("popUpMapa").mostrarNiveles('yaguareteNiveles'))
     
-    this.add.text(1030,115, 'YAGUARETÉ', this.fuenteTexto)  
+    this.add.text(1030,115, getPhrase('YAGUARETÉ'), this.fuenteTexto)
     
     //////////////////////////////////////////////NIVEL MONO//////////////////////////////////////////////
     this.cantidadEstrellasMono = localStorage.getItem('estrellasMono') || '1';  
@@ -143,15 +143,15 @@ export default class mapa extends Phaser.Scene
     && this.scene.pause() 
     && this.scene.get("popUpMapa").mostrarNiveles('monoNiveles'))
 
-    this.add.text(320, 25, 'MONO CAÍ', this.fuenteTexto)
+    this.add.text(320, 25, getPhrase('MONO CAÍ'), this.fuenteTexto)
     
 
     //////////////////////////////////////////////NIVEL CONDOR//////////////////////////////////////////////
     const buttonNivel3 = this.add.image(360,300, 'botonNivel').setScale(0.25)
     .setInteractive()
-    .on('pointerdown', () => this.scene.start('nivelMono'))
+    .on('pointerdown', () => this.scene.start('nivelBonusMono'))
 
-    this.add.text(251,330, 'PRÓXIMAMENTE', {
+    this.add.text(251,330, getPhrase('PRÓXIMAMENTE'), {
       fontSize: '700px',
       color: 'grey',
       stroke: 'black',
@@ -165,7 +165,7 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on('pointerdown', () => this.scene.start('nivelPinguino'))
 
-    this.add.text(871,500, 'PRÓXIMAMENTE', {
+    this.add.text(871,500, getPhrase('PRÓXIMAMENTE'), {
       fontSize: '25px',
       color: 'grey',
       stroke: 'black',
@@ -194,7 +194,7 @@ export default class mapa extends Phaser.Scene
     && this.scene.get("popUpMapa").mostrarNiveles('pinguinoNiveles'))    
     
 
-    this.add.text(295,595, 'PINGÜINO', this.fuenteTexto)    
+    this.add.text(295,595, getPhrase('PINGÜINO'), this.fuenteTexto)    
   } 
     
   update()

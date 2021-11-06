@@ -262,11 +262,5 @@ export default class popUpMapa extends Phaser.Scene
   {
     this.cerrarBonusPinguino++
   }
- 
-
-  update()
-  {
-
-  }
 }
 
