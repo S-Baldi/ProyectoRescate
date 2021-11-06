@@ -149,7 +149,7 @@ export default class mapa extends Phaser.Scene
     //////////////////////////////////////////////NIVEL CONDOR//////////////////////////////////////////////
     const buttonNivel3 = this.add.image(360,300, 'botonNivel').setScale(0.25)
     .setInteractive()
-    .on('pointerdown', () => this.scene.start('nivelBonusMono'))
+    .on('pointerdown', () => this.scene.start('nivelBonusPin'))
 
     this.add.text(251,330, getPhrase('PRÓXIMAMENTE'), {
       fontSize: '700px',
