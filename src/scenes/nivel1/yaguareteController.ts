@@ -113,8 +113,11 @@ export default class yaguareteController
   update(dt: number)
 	{
 		this.stateMachine.update(dt)
-		if (this.sprite.body.velocity.x<=this.velocidad){
+		if (this.sprite.body.velocity.x<=this.velocidad && this.sprite.body.velocity.x > 0){
 			this.sprite.setVelocityX(this.velocidad)
+		}
+		if (this.sprite.body.velocity.x == 0){
+			this.sprite.setVelocityX(0)
 		}
 	}
 
@@ -156,7 +159,8 @@ export default class yaguareteController
 	}
 
 	private trampaHitOnEnter(){
-		this.sprite.play('yaguarete-death')	
+		this.sprite.play('yaguarete-death')
+		this.sprite.setVelocityX(0)
 		
 		this.scene.time.delayedCall(1500, () => {
 			this.scene.scene.launch('gameOver')

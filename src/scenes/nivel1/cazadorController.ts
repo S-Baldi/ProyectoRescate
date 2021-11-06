@@ -1,7 +1,6 @@
 import Phaser, { GameObjects } from 'phaser' 
 import StateMachine from '../../statemachine/StateMachine'
 import ObstaclesController from '../obstaclesController'
-import { sharedInstance as events } from '../eventCenter'
 
 export default class cazadorController
 {

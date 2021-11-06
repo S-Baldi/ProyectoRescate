@@ -2,6 +2,8 @@ import Phaser from 'phaser'
 import obstaclesController from '../obstaclesController'
 import pinguinoController from './pinguinoController'
 import petroleoController from './petroleoController'
+import criaPinguiController from './criaPinguiController'
+import pezController from './pezController'
 export default class nivel_5 extends Phaser.Scene
 {
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys	
@@ -9,6 +11,10 @@ export default class nivel_5 extends Phaser.Scene
   private pinguinoController?: pinguinoController
   private petroleos?: Phaser.Physics.Matter.Sprite
   private petroleoController?: petroleoController
+  private cria?: Phaser.Physics.Matter.Sprite
+  private criaPinguiController?: criaPinguiController
+  private pez?: Phaser.Physics.Matter.Sprite
+  private pezController?: pezController
   private obstacles!: obstaclesController  
 
   constructor(){
@@ -22,20 +28,19 @@ export default class nivel_5 extends Phaser.Scene
   }
 
   preload(){
-    this.load.tilemapTiledJSON('mapa_nivel5', 'assets/Nivel5/nivel_Pinguino.json');
+    this.load.tilemapTiledJSON('mapa_nivel5', 'assets/Nivel5/nivel_Pinguino.json');    
+    this.load.tilemapTiledJSON('pinguinoTest', 'assets/Nivel5/nivel_PinguinoTest.json');
     this.load.image('nivel5Fondo','assets/Nivel5/nivel5_fondo.png');
-    this.load.image('nivel5Suelo','assets/Nivel5/nivel5_suelo.png');
-    this.load.image('nivel5Pez','assets/Nivel5/nivel5_comida.png');
-    this.load.image('nivel5Cria', 'assets/Nivel5/criaPinguino.png');
+    this.load.image('nivel5Suelo','assets/Nivel5/nivel5_suelo.png');  
     this.load.image('barco','assets/Nivel5/barco.png'); 
     this.load.image('barco2','assets/Nivel5/barco2.png');
-    this.load.image('red', 'assets/Nivel5/red.png');
-    this.load.atlas('petroleo', 'assets/Nivel5/petroleo.png', 'assets/Nivel5/petroleo.json');
+    this.load.image('red', 'assets/Nivel5/red.png');    
     this.load.image('nivel5Bandera', 'assets/Nivel5/banderaPinguino.png');
-
+    this.load.atlas('petroleo', 'assets/Nivel5/petroleo.png', 'assets/Nivel5/petroleo.json');
+    this.load.atlas('nivel5Cria', 'assets/Nivel5/criaPinguino.png', 'assets/Nivel5/criaPinguino.json');
+    this.load.atlas('nivel5Pez','assets/Nivel5/nivel5_comida.png', 'assets/Nivel5/nivel5_comida.json');
     this.load.atlas('pinguino', 'assets/Nivel5/pinguino.png', 'assets/Nivel5/pinguino.json');
 
-    this.load.tilemapTiledJSON('pinguinoTest', 'assets/Nivel5/nivel_PinguinoTest.json');
 
   }
 
@@ -193,21 +198,27 @@ export default class nivel_5 extends Phaser.Scene
         
         case 'pez':
         {
-          const pez = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel5Pez', undefined, {
+          this.pez = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel5Pez', undefined, {
 						isStatic: true,
             isSensor: true
           }).setScale(1.5)
-          pez.setData('type', 'pez')
+          this.pez.setData('type', 'pez')
+          this.pezController = new pezController(
+            this.pez
+          )
           break
         }
 
         case 'cria':
         {
-          const pinguinoCria = this.matter.add.sprite(x+ (width*0.5), y+(height*0.5), 'nivel5Cria', undefined,{
+          this.cria = this.matter.add.sprite(x+ (width*0.5), y+(height*0.5), 'nivel5Cria', undefined,{
             isStatic : true,
             isSensor: true
           })
-          pinguinoCria.setData('type', 'cria')
+          this.cria.setData('type', 'cria')
+          this.criaPinguiController = new criaPinguiController(
+            this.cria
+          )
           break
         }
 
@@ -227,6 +238,8 @@ export default class nivel_5 extends Phaser.Scene
   update(t: number, dt: number){
     this.pinguinoController?.update(dt)
     this.petroleoController?.update(dt)
+    this.criaPinguiController?.update(dt)
+    this.pezController?.update(dt)
   }  
 }
 

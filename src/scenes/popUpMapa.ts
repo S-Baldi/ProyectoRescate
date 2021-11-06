@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import { getPhrase } from '~/services/translation'
 
 export default class popUpMapa extends Phaser.Scene
 {  
@@ -111,7 +112,7 @@ export default class popUpMapa extends Phaser.Scene
         this.estrellaMasAltaYagua = this.cantidadEstrellasYagua
       }      
 
-      const nivelPpalYagua = this.add.text(670, 400, 'PRINCIPAL', this.fuenteTextoMapaDesbloqueado)
+      const nivelPpalYagua = this.add.text(670, 400, getPhrase('PRINCIPAL'), this.fuenteTextoMapaDesbloqueado)
       .setInteractive()
       nivelPpalYagua.on('pointerover', () => nivelPpalYagua.setScale(1.1))
       .on('pointerout', () => nivelPpalYagua.setScale(1))
@@ -135,7 +136,9 @@ export default class popUpMapa extends Phaser.Scene
       else if(this.contadorEntrarNivel1>0 && this.cerrarBonusYaguarete<1)
       {
         this.yaguareteBonus(this.add.text(420, 400, 'BONUS', this.fuenteTextoMapaDesbloqueado)
-        .setInteractive().on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
+        
+        .setInteractive()
+        .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
         {  
           this.scene.start('nivelBonus') 
           this.sound.play('sonidoBoton', {volume:0.5})
@@ -152,7 +155,7 @@ export default class popUpMapa extends Phaser.Scene
         this.estrellaMasAltaPingui = this.cantidadEstrellasPingui
       }            
 
-      this.pinguinoNivel(this.add.text(670, 400, 'PRINCIPAL', this.fuenteTextoMapa) &&
+      this.pinguinoNivel(this.add.text(670, 400, getPhrase('PRINCIPAL'), this.fuenteTextoMapa) &&
 
       this.add.sprite(650, 280, 'estrellas', this.estrellaMasAltaPingui).setScale(1.8) && 
       
@@ -160,7 +163,7 @@ export default class popUpMapa extends Phaser.Scene
 
       if (this.estrellaMasAltaMono>0) 
       {
-        this.pinguinoNivel(this.add.text(670, 400, 'PRINCIPAL', this.fuenteTextoMapaDesbloqueado)
+        this.pinguinoNivel(this.add.text(670, 400, getPhrase('PRINCIPAL'), this.fuenteTextoMapaDesbloqueado)
         .setInteractive()
         .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
         {
@@ -197,7 +200,7 @@ export default class popUpMapa extends Phaser.Scene
       }
       
 
-      this.monoNivel(this.add.text(670, 400, 'PRINCIPAL', this.fuenteTextoMapa) &&
+      this.monoNivel(this.add.text(670, 400, getPhrase('PRINCIPAL'), this.fuenteTextoMapa) &&
 
       this.add.sprite(650, 280, 'estrellas', this.estrellaMasAltaPingui).setScale(1.8) && 
       
@@ -205,7 +208,7 @@ export default class popUpMapa extends Phaser.Scene
 
       if (this.estrellaMasAltaYagua>0) 
       {
-        this.monoNivel(this.add.text(670, 400, 'PRINCIPAL', this.fuenteTextoMapaDesbloqueado)
+        this.monoNivel(this.add.text(670, 400, getPhrase('PRINCIPAL'), this.fuenteTextoMapaDesbloqueado)
         .setInteractive()
         .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
         {

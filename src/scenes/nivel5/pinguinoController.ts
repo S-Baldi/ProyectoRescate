@@ -78,12 +78,6 @@ export default class pipnguinoController
         this.stateMachine.setState('barcoHit')
         return
       }
-
-      if (this.obstacles.is('hitBoxCielo', body))
-			{				
-        this.stateMachine.setState('barcoHit')
-        return
-      }
 			
 			if (this.obstacles.is('banderaPinguino', body))
 			{

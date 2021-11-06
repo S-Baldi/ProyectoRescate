@@ -30,14 +30,14 @@ export default class precarga extends Phaser.Scene{
       this.load.image('botonInfo', 'assets/MenuPrincipal/Botones/botonInfo.png');
       this.load.image('botonMusica', 'assets/MenuPrincipal/Botones/botonSonido.png');
       this.load.image('botonReset', 'assets/MenuPrincipal/Botones/botonReset.png');
-      this.load.image('botonMapa', 'assets/MenuPrincipal/Botones/botonMapa.png');    
+      this.load.image('botonMapa', 'assets/MenuPrincipal/Botones/botonMapa.png');
       this.load.image('botonatras', 'assets/MenuPrincipal/Botones/botonAtras.png');
       this.load.image('botonPausa', 'assets/MenuPrincipal/Botones/botonPausa.png');
       this.load.image('botonIdiomaEspañol', 'assets/MenuPrincipal/bandera.png');
       this.load.image('mapaArgentina', 'assets/Mapa/mapa.png');
       this.load.image('botonMenuPpal', 'assets/MenuPrincipal/Botones/botonMenu.png');
       //Menu Limpio
-      this.load.image('fondoLimpio', 'assets/MenuPrincipal/fondoLimpio.png')
+      this.load.image('fondoLimpio', 'assets/MenuPrincipal/fondoLimpio.png');
               //Menu Informacion
       this.load.image('menuInfo', 'assets/MenuPrincipal/MenuInformacion.png');
              //Menu ayuda
@@ -56,25 +56,24 @@ export default class precarga extends Phaser.Scene{
       this.load.image('infoBallena', 'assets/MenuPrincipal/Botones/Extras/infoBallena1.png');
       this.load.image('infoPinguino', 'assets/MenuPrincipal/Botones/Extras/infoPinguino1.png');
       //EXTRAS
-      this.load.image('popUpExtras', 'assets/MenuPrincipal/popUp2.png')
+      this.load.image('popUpExtras', 'assets/MenuPrincipal/popUp2.png');
       //PRECARGA
-      this.load.image('banderaArg', 'assets/Precarga/Bandera_Arg.png')
-      this.load.image('banderaBr', 'assets/Precarga/Bandera_Bra.png')
-      this.load.image('banderaEu', 'assets/Precarga/Bandera_EU.png')
+      this.load.image('banderaArg', 'assets/Precarga/Bandera_Arg.png');
+      this.load.image('banderaBr', 'assets/Precarga/Bandera_Bra.png');
+      this.load.image('banderaEu', 'assets/Precarga/Bandera_EU.png');
       ///////////////////////////////////////////////////MUSICA DE NIVELES
       ///////////Musica Yaguarete
-      this.load.audio('musicaYaguarete1', 'audio/boton.mp3')
+      this.load.audio('musicaYaguarete1', 'audio/boton.mp3');
       ///////////Musica Mono
-      this.load.audio('musicaMono1', 'audio/boton.mp3')
+      this.load.audio('musicaMono1', 'audio/boton.mp3');
       ///////////Menu Principal    
       this.load.audio('musicaMP4', 'audio/boton.mp3');
       //////////// Botones sonido
-      this.load.audio('sonidoBoton', 'audio/boton.mp3') 
+      this.load.audio('sonidoBoton', 'audio/boton.mp3');
 
       this.load.addFile(new WebFontFile(this.load, [
         'Titan One',
-        'Viga',
-        'Ubuntu'
+        'Viga'
       ])) 
     }
     create() 
