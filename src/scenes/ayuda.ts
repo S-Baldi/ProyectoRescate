@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import { getPhrase } from '~/services/translation';
 export default class ayuda extends Phaser.Scene
 {
   constructor()
@@ -20,7 +21,7 @@ export default class ayuda extends Phaser.Scene
     .on('pointerout', () => buttonAtras.setScale(1))
     .on('pointerdown', () => this.scene.start('informacion') && sonidoButton.play({volume:0.5}))    
 
-    this.add.text(550, 40, 'AYUDA', {
+    this.add.text(550, 40, getPhrase('AYUDA'), {
       fontFamily: 'Titan One',
       fontSize: '60pt',
       color: '#FFBD0D',

@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import { getPhrase } from '~/services/translation'
 export default class creditos extends Phaser.Scene
 {
   private fuenteTexto = {
@@ -26,7 +27,7 @@ export default class creditos extends Phaser.Scene
     .on('pointerout', () => buttonAtras.setScale(1))
     .on('pointerdown', () => this.scene.start('informacion') && sonidoButton.play({volume:0.5}))    
 
-    this.add.text(500, 50, 'CRÉDITOS', {
+    this.add.text(500, 50, getPhrase('CRÉDITOS'), {
       fontFamily: 'Titan One',
       fontSize: '60pt',
       color: '#FFBD0D',

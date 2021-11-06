@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import { getPhrase } from '~/services/translation';
 
 export default class info extends Phaser.Scene
 {
@@ -25,7 +26,7 @@ export default class info extends Phaser.Scene
     const sonidoButton = this.sound.add('sonidoBoton');
     
     const fondoMenu = this.add.image(683, 384, 'menuInfo').setScale(0.72);
-    this.add.text(380, 100, 'INFORMACIÓN', {
+    this.add.text(380, 100, getPhrase('INFORMACIÓN'), {
       fontFamily: 'Titan One',
       fontSize: '60pt',
       color: '#FFBD0D',
@@ -33,13 +34,13 @@ export default class info extends Phaser.Scene
       strokeThickness: 6,
     })
 
-    const teclaAyuda = this.add.text(250, 350, 'AYUDA', this.fuenteTexto)
+    const teclaAyuda = this.add.text(250, 350, getPhrase('AYUDA'), this.fuenteTexto)
     .setInteractive()
     .on('pointerover', () => teclaAyuda.setScale(1.1))    
     .on('pointerout', () => teclaAyuda.setScale(1))
     .on('pointerdown', () => this.scene.start('ayuda') && sonidoButton.play({volume:0.5}));
 
-    const teclaCreditos = this.add.text(800, 350, 'CRÉDITOS', this.fuenteTexto )
+    const teclaCreditos = this.add.text(800, 350, getPhrase('CRÉDITOS'), this.fuenteTexto )
     .setInteractive()
     .on('pointerover', () => teclaCreditos.setScale(1.1))
     .on('pointerout', () => teclaCreditos.setScale(1))

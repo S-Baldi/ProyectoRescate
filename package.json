@@ -30,6 +30,7 @@
 	"dependencies": {
 		"array-shuffle": "^3.0.0",
 		"phaser": "^3.50.1",
+		"regenerator-runtime": "^0.13.9",
 		"webfontloader": "^1.6.28"
 	},
 	"parcelCleanPaths": [
