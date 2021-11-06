@@ -36,7 +36,13 @@ export default class mapa extends Phaser.Scene
     stroke: '#00572f',
     strokeThickness: 6,
   }
-
+  private fuenteTextoYagua = {
+    fontFamily: 'Titan One',
+    fontSize: '22pt',
+    color: '#FFBD0D',
+    stroke: '#00572f',
+    strokeThickness: 6,
+  }
   constructor(){
     super ('menuMapa');
   }
@@ -122,7 +128,7 @@ export default class mapa extends Phaser.Scene
     && this.scene.pause() 
     && this.scene.get("popUpMapa").mostrarNiveles('yaguareteNiveles'))
     
-    this.add.text(1030,115, getPhrase('YAGUARETÉ'), this.fuenteTexto)
+    this.add.text(1025,115, getPhrase('YAGUARETÉ'), this.fuenteTextoYagua)
     
     //////////////////////////////////////////////NIVEL MONO//////////////////////////////////////////////
     this.cantidadEstrellasMono = localStorage.getItem('estrellasMono') || '1';  

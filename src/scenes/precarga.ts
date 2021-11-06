@@ -2,15 +2,20 @@ import Phaser from 'phaser'
 import { EN_US, ES_AR, PT_BR } from '~/enums/languages'
 import { FETCHED, FETCHING, READY, TODO } from '~/enums/status'
 import { getTranslations, getPhrase } from '~/services/translation'
+import WebFontFile from './webFontLoader'
 
 export default class precarga extends Phaser.Scene{
-    private textSpanish
-    private textEnglish
-    private textPortuguese
-
-    private updatedTextInScene
+    private updatedText
     private updatedString = 'JUGAR'
     private wasChangedLanguage = TODO
+    private fuenteTexto = 
+    {
+        fontFamily: 'Titan One',
+        fontSize: '60pt',
+        color: '#FFBD0D',
+        stroke: '#00572f',
+        strokeThickness: 6,  
+    }
 
     constructor () {
       super('precarga');
@@ -50,6 +55,10 @@ export default class precarga extends Phaser.Scene{
       this.load.image('infoCondor', 'assets/MenuPrincipal/Botones/Extras/infoCondor1.png');
       this.load.image('infoBallena', 'assets/MenuPrincipal/Botones/Extras/infoBallena1.png');
       this.load.image('infoPinguino', 'assets/MenuPrincipal/Botones/Extras/infoPinguino1.png');
+      //PRECARGA
+      this.load.image('banderaArg', 'assets/Precarga/Bandera_Arg.png')
+      this.load.image('banderaBr', 'assets/Precarga/Bandera_Bra.png')
+      this.load.image('banderaEu', 'assets/Precarga/Bandera_EU.png')
       ///////////////////////////////////////////////////MUSICA DE NIVELES
       ///////////Musica Yaguarete
       this.load.audio('musicaYaguarete1', 'audio/boton.mp3')
@@ -59,67 +68,60 @@ export default class precarga extends Phaser.Scene{
       this.load.audio('musicaMP4', 'audio/boton.mp3');
       //////////// Botones sonido
       this.load.audio('sonidoBoton', 'audio/boton.mp3') 
+
+      this.load.addFile(new WebFontFile(this.load, [
+        'Titan One',
+        'Viga',
+        'Ubuntu'
+      ])) 
     }
     create() 
     {
-      const { width, height } = this.scale
+      this.add.image(683, 384, 'fondoLimpio').setScale(0.72);
 
-		  const buttonSpanish = this.add.rectangle(width * 0.1, height * 0.15, 150, 75, 0xffffff)
-			  .setInteractive()
-			  .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => 
-        {
-				  this.getTranslations(ES_AR)
-			  })
-
-		  this.textSpanish = this.add.text(buttonSpanish.x, buttonSpanish.y, 'Español', 
+      const banderaArg = this.add.image(300, 300, 'banderaArg')
+      .setInteractive()
+      .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => 
       {
-			  color: '#000000'
-		  }).setOrigin(0.5)
+        this.getTranslations(ES_AR)
+      })
+      .on('pointerover', () => banderaArg.setScale(1.1))
+      .on('pointerout', () => banderaArg.setScale(1))
+      .on('pointerdown', () => banderaArg.setScale(0.9))
 
-      const buttonEnglish = this.add.rectangle(width * 0.5, height * 0.15, 150, 75, 0xffffff)
+      const banderaEu = this.add.image(700, 300, 'banderaEu')
 			.setInteractive()
 			.on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => 
       {
 				this.getTranslations(EN_US)
 			})
+      .on('pointerover', () => banderaEu.setScale(1.1))
+      .on('pointerout', () => banderaEu.setScale(1))
+      .on('pointerdown', () => banderaEu.setScale(0.9))
 
-		  this.textEnglish = this.add.text(buttonEnglish.x, buttonEnglish.y, 'Inglés', 
-      {
-			  color: '#000000'
-		  }).setOrigin(0.5)
-
-      const buttonPortuguese = this.add.rectangle(width * 0.7, height * 0.15, 150, 75, 0xffffff)
+      const banderaBr = this.add.image(1100, 300, 'banderaBr')
 			.setInteractive()
 			.on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () =>
       {
 				this.getTranslations(PT_BR)
 			})
+      .on('pointerover', () => banderaBr.setScale(1.1))
+      .on('pointerout', () => banderaBr.setScale(1))
+      .on('pointerdown', () => banderaBr.setScale(0.9))
 
-		  this.textPortuguese = this.add.text(buttonPortuguese.x, buttonPortuguese.y, 'Portugués', 
-      {
-			  color: '#000000'
-		  }).setOrigin(0.5)
-
-    const buttonUpdate = this.add.rectangle(width * 0.5, height * 0.75, 150, 75, 0x44d27e)
-			.setInteractive()
-			.on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => 
-      {
-				this.scene.start('menuPpal')
-			})
-
-      this.updatedTextInScene = this.add.text(buttonUpdate.x,buttonUpdate.y, getPhrase(this.updatedString), 
-      {
-			  color: '#000000'
-		  }).setOrigin(0.5)
+      this.updatedText = this.add.text(560, 500, getPhrase('JUGAR'), this.fuenteTexto,)
+      .setInteractive()
+      this.updatedText.on('pointerdown', () => this.scene.start('menuPpal'))
+      this.updatedText.on('pointerover', () => this.updatedText.setScale(1.1))
+      this.updatedText.on('pointerout', () => this.updatedText.setScale(1))
     }
 
     update()
     {
-      // console.log(this.updatedTextInScene)
       if(this.wasChangedLanguage === FETCHED)
       {
         this.wasChangedLanguage = READY;
-        this.updatedTextInScene.setText(getPhrase(this.updatedString));
+        this.updatedText.setText(getPhrase(this.updatedString));
       }      
     }
 
@@ -127,8 +129,6 @@ export default class precarga extends Phaser.Scene{
         this.wasChangedLanguage = FETCHING
         await getTranslations(language)
         this.wasChangedLanguage = FETCHED
-        // si solo se tiene un menu para elegir las opciones de idiomas conviene cargar aca la misma
-        // this.scene.start('play')
     }
 
 }  
