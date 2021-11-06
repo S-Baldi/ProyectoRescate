@@ -46,11 +46,11 @@ export default class bonusMono extends Phaser.Scene{
     
     let preguntasBonus= new Array<preguntasMono>()
     preguntasBonus.push(new preguntasMono
-    (getPhrase('¿Cuál es la causa por la cual el \n yaguareté se encuentra en vía de extición?'), 
-    getPhrase('Todas son correctas'),
-    getPhrase('Caza furtiva'),
-    getPhrase('Deforestación del hábitat'),
-    getPhrase('Reducción de sus presas')))
+    (getPhrase('En América del Sur el mono capuchino es considerado el animal más...'), 
+    getPhrase('Inteligente'),
+    getPhrase('Tonto'),
+    getPhrase('Agresivo'),
+    getPhrase('Loco')))
     
     const text_pregunta = this.add.text(130, 390, preguntasBonus[0].pregunta, this.fuenteTextoPreg);
 

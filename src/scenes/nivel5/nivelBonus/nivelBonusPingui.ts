@@ -45,13 +45,13 @@ export default class bonusPingui extends Phaser.Scene
     
     let preguntasBonus= new Array<preguntas>()
     preguntasBonus.push(new preguntas
-    (getPhrase('¿Cuál es la causa por la cual el \n yaguareté se encuentra en vía de extición?'), 
-    getPhrase('Todas son correctas'),
-    getPhrase('Caza furtiva'),
-    getPhrase('Deforestación del hábitat'),
-    getPhrase('Reducción de sus presas')))
+    (getPhrase('¿En dónde habita el pingüino de Magallanes en Argentina?'), 
+    getPhrase('Sur Argentino'),
+    getPhrase('Noroeste Argentino'),
+    getPhrase('Oeste Argentino'),
+    getPhrase('Noreste Argentino')))
     
-    const text_pregunta = this.add.text(275, 360, preguntasBonus[0].pregunta, this.fuenteTextoPreg);
+    const text_pregunta = this.add.text(130, 390, preguntasBonus[0].pregunta, this.fuenteTextoPreg);
 
     preguntasBonus[0].respuestasRandom()
 
@@ -60,7 +60,7 @@ export default class bonusPingui extends Phaser.Scene
     let boton1= this.add.text(150, 513, preguntasBonus[0].devolverPregunta()+"", this.fuenteTexto)
     .setInteractive()
     .on('pointerdown', () => boton1.setColor(this.scene.launch('pop_up_B_Pin') && sonidoButton.play({volume:0.5})
-     && this.scene.get("pop_up_B_Pin").mostrar_Texto(preguntasBonus[0].revisarResp(boton1.text))) &&
+    && this.scene.get("pop_up_B_Pin").mostrar_Texto(preguntasBonus[0].revisarResp(boton1.text))) &&
     
     this.scene.pause())
 
