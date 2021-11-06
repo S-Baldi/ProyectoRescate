@@ -8,6 +8,7 @@ export default class extras extends Phaser.Scene
   private cantidadEstrellasPinguiBonus
   private estrellaMasAltaMono
   private cantidadEstrellasMonoBonus
+  private musicaApagada:any;
 
   private texto1 =
   {  
@@ -49,6 +50,13 @@ export default class extras extends Phaser.Scene
   create()
   {
     const sonidoButton = this.sound.add('sonidoBoton');
+    
+    this.musicaApagada=localStorage.getItem('detuvoMusica')|| '0';
+    console.log(localStorage.getItem('detuvoMusica'))
+    if (this.musicaApagada==2) 
+    {
+      this.scene.get('menuPpal').detenerMusica()
+    }
 
     const fondoMenu = this.add.image(683, 384, 'fondoLimpio').setScale(0.72);
     this.add.text(550, 50, 'EXTRAS', {  
@@ -73,9 +81,9 @@ export default class extras extends Phaser.Scene
     this.estrellaMasAltaMono = localStorage.getItem('estrellasMono') || '1';
     this.cantidadEstrellasMonoBonus = localStorage.getItem('estrellasMonoBonus') || '1';
 
-    const estrellasTotales = 9/* +this.estrellaMasAltaPingui + +this.estrellaMasAltaYagua + 
+    const estrellasTotales = +this.estrellaMasAltaPingui + +this.estrellaMasAltaYagua + 
     +this.cantidadEstrellasYaguaBonus + +this.cantidadEstrellasPinguiBonus + +this.estrellaMasAltaMono + 
-    +this.cantidadEstrellasMonoBonus */
+    +this.cantidadEstrellasMonoBonus
     
     //Yaguarete
     if(estrellasTotales<3)

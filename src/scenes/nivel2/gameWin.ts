@@ -36,6 +36,7 @@ export default class gameWinMono extends Phaser.Scene{
     { 
       this.scene.stop('nivelMono')
       this.scene.start('nivelMono')
+      this.scene.get('nivelMono').detenerMusica()
     });
 
     const buttonMapa = this.add.image(600, 590, 'botonMapa')
@@ -47,7 +48,7 @@ export default class gameWinMono extends Phaser.Scene{
       this.scene.get("popUpMapa").ganar()
       this.scene.stop('nivelMono')
       this.scene.start('menuMapa')
-      this.scene.get('popUpMapa').detenerMusica()
+      this.scene.get('nivelMono').detenerMusica()
       
       if (this.contadorEntrarNivel2>0 && this.contadorEntrarNivel2<2) 
       {

@@ -10,6 +10,7 @@ export default class info extends Phaser.Scene
     stroke: '#00572f',
     strokeThickness: 6,
   }
+  private musicaApagada:any;
   
   constructor()
   {
@@ -50,5 +51,13 @@ export default class info extends Phaser.Scene
     .on('pointerover', () => buttonAtras.setScale(1.1))
     .on('pointerout', () => buttonAtras.setScale(1))
     .on('pointerdown', () => this.scene.start('menuPpal') && this.scene.get('menuPpal').detenerMusica() && sonidoButton.play({volume:0.5}))
+    
+    this.musicaApagada=localStorage.getItem('detuvoMusica')|| '0';
+    console.log(localStorage.getItem('detuvoMusica'))
+    if (this.musicaApagada==2) 
+    {
+      this.scene.get('menuPpal').detenerMusica()
+    }
+
   }
 }

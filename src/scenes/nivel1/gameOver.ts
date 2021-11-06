@@ -33,6 +33,7 @@ export default class gameOver extends Phaser.Scene{
     { 
       this.scene.stop('nivelYaguarete')
       this.scene.start('nivelYaguarete')
+      this.scene.get('nivelYaguarete').detenerMusica()
       sonidoButton.play({volume:0.5})
     });
 
@@ -44,6 +45,7 @@ export default class gameOver extends Phaser.Scene{
     { 
       this.scene.stop('nivelYaguarete')
       this.scene.start('menuMapa')
+      this.scene.get('nivelYaguarete').detenerMusica()
       sonidoButton.play({volume:0.5})
     });
   }

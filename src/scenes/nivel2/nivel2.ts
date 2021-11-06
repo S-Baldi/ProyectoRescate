@@ -11,9 +11,22 @@ export default class nivel_2 extends Phaser.Scene
   private cazadorController?: cazadorController
   private obstacles!: obstaclesController  
   private banderasMono?: Phaser.Physics.Matter.Sprite
+  private estadoMusica:any;
 
   constructor(){
     super('nivelMono')
+  }
+
+  public musicaMono:any
+
+  public musicaPlay()
+  {
+    this.musicaMono.play({volume:0.5, loop: true})
+  } 
+  
+  public detenerMusica()
+  {  
+    this.musicaMono.stop()            
   }
 
   init()
@@ -37,7 +50,16 @@ export default class nivel_2 extends Phaser.Scene
     this.load.tilemapTiledJSON('NivelMonoTest', 'assets/Nivel2/nivel_MonoTest.json');
   }
 
-  create(){
+  create()
+  {
+    this.musicaMono= this.sound.add('musicaMono1')
+    
+    this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
+    if (this.estadoMusica=='1') 
+    {
+      this.musicaPlay()   
+    }
+
     this.scene.launch('uiMono')
     const mapa_nivel2 = this.make.tilemap({key: 'mapa_nivel2'});
     const fondo_nivel2_tiled = mapa_nivel2.addTilesetImage('nivel2_fondo', 'nivel2Fondo');

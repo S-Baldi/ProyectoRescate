@@ -2,10 +2,6 @@ import Phaser from 'phaser'
 import {sharedInstance as events} from './eventCenter'
 export default class mapa extends Phaser.Scene
 {
-  //Estrellas totales ganadas
-  private cantidadEstrellasGanadas:any  
-  private estrellasLabel!: Phaser.GameObjects.Text
-
   //Yaguarete
   private cantidadEstrellasYagua
   private cantidadEstrellasYaguaBonus
@@ -20,15 +16,18 @@ export default class mapa extends Phaser.Scene
   private cantidadEstrellasMono : any
   private estrellaMasAltaMono : number =0  
   private cantidadEstrellasMonoBonus
-
-  public musicaMapa:any
   
+  public musicaMapa:any
+  private estadoMusica:any;
+  
+  public musicaPlay()
+  {    
+    this.musicaMapa.play({volume:0.05, loop: true})    
+  }
   public detenerMusica()
   {  
-    this.musicaMapa.stop() 
+    this.musicaMapa.stop(true)            
   }
-
-
   //FUENTE
   private fuenteTexto = {
     fontFamily: 'Titan One',
@@ -50,20 +49,19 @@ export default class mapa extends Phaser.Scene
     this.load.image('nivelBonus', 'assets/Mapa/NivelBonus.png');
     this.load.spritesheet('estrellaBonus', 'assets/Mapa/estrellasBonus.png',
     {frameWidth:202, frameHeight:190});
-    //////////Musica Mapa
-    this.load.audio('musicaMapa1', 'audio/menuMapa/Op1Mapa.mp3')
-    this.load.audio('musicaMapa2', 'audio/menuMapa/Op2Mapa.mp3')
-    this.load.audio('musicaMapa3', 'audio/menuMapa/Op3Mapa.mp3')
-    this.load.audio('musicaMapa4', 'audio/menuMapa/Op4Mapa.mp3')
-    
+    this.load.image('popUpMapaNiveles', 'assets/MenuPrincipal/popUp.png')  
   }
 
   create()
   {
-    const sonidoButton = this.sound.add('sonidoBoton');
-    this.musicaMapa= this.sound.add('musicaMP3')
+    const sonidoButton = this.sound.add('sonidoBoton'); 
+    this.musicaMapa= this.sound.add('musicaMapa3') 
     
-    this.musicaMapa.play({volume:0.05, loop: true}) 
+    this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
+    if (this.estadoMusica=='1') 
+    {
+      this.musicaPlay()   
+    }
 
     const fondo_Mapa = this.add.image(600, 350, 'fondoMapa');
 
@@ -73,9 +71,34 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on('pointerover', () => buttonMenu.setScale(0.8))
     .on('pointerout', () => buttonMenu.setScale(0.7))
-    .on('pointerdown', () => this.scene.start('menuPpal') && this.scene.get('menuMapa').detenerMusica() && sonidoButton.play({volume:0.5}));
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+    { 
+      this.scene.start('menuPpal')
+      this.detenerMusica()
+      sonidoButton.play({volume:0.5})
+    });
 
     const buttonMusica = this.add.image(180, 80, 'botonMusica').setScale(0.7)
+    .setInteractive()
+    .on('pointerover', () => buttonMusica.setScale(0.8))
+    .on('pointerout', () => buttonMusica.setScale(0.7))
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
+    {   
+      if(this.estadoMusica == '1')
+      {
+        this.estadoMusica = '0' 
+        localStorage.setItem('musicaPlay', '0')
+        this.detenerMusica() 
+      } 
+      else if (this.estadoMusica == '0') 
+      {
+        this.estadoMusica = '1'
+        localStorage.setItem('musicaPlay', '1')
+        this.musicaPlay()
+      }  
+      sonidoButton.play({volume:0.5})     
+    })
+      
 
     //////////////////////////////////////////////ESTRELLAS GANADAS //////////////////////////////////////////////
     const estrellasTotales = this.add.sprite(1000, 650, 'estrellas', 3).setDepth(7).setScale(1.2)

@@ -18,6 +18,7 @@ export default class gameWin extends Phaser.Scene{
   {
     super('gameWin');
   }
+  
 
   preload(){
     this.load.image('win', 'assets/GameWinLose/win.png');
@@ -53,7 +54,7 @@ export default class gameWin extends Phaser.Scene{
       this.scene.stop('nivelYaguarete')      
       this.scene.start('menuMapa')
       sonidoButton.play({volume:0.5})
-      this.scene.get('popUpMapa').detenerMusica()             
+      this.scene.get('nivelYaguarete').detenerMusica()             
       if (this.contadorEntrarNivel1>0 && this.contadorEntrarNivel1<2) 
       {
         this.scene.launch('popUpInformativo') 
