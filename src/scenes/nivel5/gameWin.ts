@@ -5,12 +5,23 @@ export default class gameWinPinguino extends Phaser.Scene{
   private cantidadEstrellasPingui: any
   private cantidadCiertaEstrellasPinguino: any
   private contadorEntrarNivel5:number=0
+  private estadoMusica:any
+  private musicaWin:any
   private fuenteTexto =  {
     fontFamily: 'Titan One',
     fontSize: '50pt',
     color: '#FFBD0D',
     stroke: '#00572f',
     strokeThickness: 6,
+  }
+  public musicaPlay()
+  {
+    this.musicaWin.play({volume:0.2})
+  } 
+  
+  public detenerMusica()
+  {  
+    this.musicaWin.stop()            
   }
   constructor()
   {
@@ -25,6 +36,12 @@ export default class gameWinPinguino extends Phaser.Scene{
   
   create()
   {
+    this.musicaWin= this.sound.add('win')
+    this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
+    if (this.estadoMusica=='1') 
+    {
+      this.musicaPlay()
+    }
     const sonidoButton = this.sound.add('sonidoBoton');
 
     this.add.image(683, 384, 'win')

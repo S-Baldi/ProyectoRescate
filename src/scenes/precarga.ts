@@ -63,13 +63,20 @@ export default class precarga extends Phaser.Scene{
       this.load.image('banderaEu', 'assets/Precarga/Bandera_EU.png');
       ///////////////////////////////////////////////////MUSICA DE NIVELES
       ///////////Musica Yaguarete
-      this.load.audio('musicaYaguarete1', 'audio/boton.mp3');
+      this.load.audio('musicaYaguarete', 'audio/Yaguarete/musicaYaguarete.mp3');
       ///////////Musica Mono
-      this.load.audio('musicaMono1', 'audio/boton.mp3');
+      this.load.audio('musicaMono', 'audio/Mono/musicaMono.mp3');
+      ///////////Musica Pinguino
+      this.load.audio('musicaPinguino', 'audio/Pinguino/musicaPinguino.mp3');
       ///////////Menu Principal    
-      this.load.audio('musicaMP4', 'audio/boton.mp3');
+      this.load.audio('musicaMP', 'audio/musicaMP.mp3');
+      //////////// Musica Bonus
+      this.load.audio('Bonus', 'audio/musicaBonus.mp3');
       //////////// Botones sonido
-      this.load.audio('sonidoBoton', 'audio/boton.mp3');
+      this.load.audio('sonidoBoton', 'audio/sfx/boton.mp3');
+      this.load.audio('win', 'audio/sfx/Musica_Victoria.ogg');
+      this.load.audio('lose', 'audio/sfx/Musica_Derrota.ogg');
+      
 
       this.load.addFile(new WebFontFile(this.load, [
         'Titan One',

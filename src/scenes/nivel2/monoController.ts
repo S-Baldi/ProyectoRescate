@@ -171,7 +171,7 @@ export default class monoController
 	private sueloHitOnEnter(){
 		this.sprite.play('mono-death')
 		this.sprite.setVelocityX(0)		
-		
+		this.scene.scene.get('nivelMono').detenerMusica()
 		this.scene.time.delayedCall(500, () => {
 			this.scene.scene.launch('gameOverMono')
 			this.scene.scene.pause()
@@ -188,6 +188,7 @@ export default class monoController
 		this.scene.scene.get('popUpMapa').aumentaContador2()
 		this.scene.scene.get('gameWinMono').aumentaContador2()
 		this.scene.scene.get('pop_up_BMono').aumentaContador2() 
+		this.scene.scene.get('nivelMono').detenerMusica()
 		
 		/* let cat2 = localStorage.getItem('nivelPasado');
 		if (cat2 < 1){

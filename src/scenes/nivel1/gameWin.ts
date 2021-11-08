@@ -5,12 +5,24 @@ export default class gameWin extends Phaser.Scene{
   private cantidadEstrellasYagua: any
   private cantidadCiertaEstrellasYaguarete: any
   private contadorEntrarNivel1:number=0
+  private estadoMusica:any
+  private musicaWin:any
   private fuenteTexto =  {
     fontFamily: 'Titan One',
     fontSize: '50pt',
     color: '#FFBD0D',
     stroke: '#00572f',
     strokeThickness: 6,
+  }
+
+  public musicaPlay()
+  {
+    this.musicaWin.play({volume:0.2})
+  } 
+  
+  public detenerMusica()
+  {  
+    this.musicaWin.stop()            
   }
 
   constructor()
@@ -28,6 +40,13 @@ export default class gameWin extends Phaser.Scene{
   
   create()
   {  
+    this.musicaWin= this.sound.add('win')
+    this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
+    if (this.estadoMusica=='1') 
+    {
+      this.musicaPlay()
+    }
+
     const sonidoButton = this.sound.add('sonidoBoton');
     const gameLose = this.add.image(683, 384, 'win')
     this.add.text(550, 150, getPhrase('Victoria'), this.fuenteTexto);
@@ -53,7 +72,7 @@ export default class gameWin extends Phaser.Scene{
       this.scene.stop('nivelYaguarete')      
       this.scene.start('menuMapa')
       sonidoButton.play({volume:0.5})
-      this.scene.get('nivelYaguarete').detenerMusica()             
+                  
       if (this.contadorEntrarNivel1>0 && this.contadorEntrarNivel1<2) 
       {
         this.scene.launch('popUpInformativo') 

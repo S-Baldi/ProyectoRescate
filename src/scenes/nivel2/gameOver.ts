@@ -8,6 +8,17 @@ export default class gameOverMono extends Phaser.Scene{
     stroke: '#00572f',
     strokeThickness: 6,
   }
+  private estadoMusica:any
+  private musicaLose:any
+  public musicaPlay()
+  {
+    this.musicaLose.play({volume:0.2})
+  } 
+  
+  public detenerMusica()
+  {  
+    this.musicaLose.stop()            
+  }
   constructor()
   {
     super('gameOverMono');
@@ -18,7 +29,14 @@ export default class gameOverMono extends Phaser.Scene{
     
   }
   
-  create(){
+  create()
+  {
+    this.musicaLose= this.sound.add('lose')
+    this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
+    if (this.estadoMusica=='1') 
+    {
+      this.musicaPlay()
+    }
     const gameLose = this.add.image(683, 384, 'loseMono')
     
     this.add.text(550, 150, getPhrase('Derrota'), this.fuenteTexto)

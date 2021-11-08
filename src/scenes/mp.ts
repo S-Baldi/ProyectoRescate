@@ -3,17 +3,28 @@ import Phaser from 'phaser'
 import WebFontFile from './webFontLoader';
 export default class mp1 extends Phaser.Scene
 {  
-  public musicaMP:any  
-  private estadoMusica:any; 
+  private musicaMP:any  
+  private sonidoButton:any;
+  private estadoMusica:any;
+  private estadoSFX:any; 
+
 
   public detenerMusica()
   {    
-    this.musicaMP.stop()          
+    this.musicaMP.stop()              
+  }
+  public sfxDetenido()
+  {
+    this.sonidoButton.stop()
   }
   
   public musicaPlay()
   {
-    this.musicaMP.play({volume:0.05, loop: true})    
+    this.musicaMP.play({volume:0.25, loop: true})       
+  }
+  public sfxPlay()
+  {
+    this.sonidoButton.play({volume:0.5})
   }
 
   constructor()
@@ -24,7 +35,8 @@ export default class mp1 extends Phaser.Scene
   preload()
   {    
     //////////Musica Mapa  
-    this.load.audio('musicaMapa3', 'audio/boton.mp3')
+    this.load.audio('musicaMapa', 'audio/musicaMapa.mp3')
+    
 
     //CARGAMOS EN UN ARRAY TODAS LAS FUENTES QUE SE QUIEREN PARA EL JUEGO
     this.load.addFile(new WebFontFile(this.load, [
@@ -35,14 +47,20 @@ export default class mp1 extends Phaser.Scene
   
   create()
   {
-    const sonidoButton = this.sound.add('sonidoBoton');
-    this.musicaMP= this.sound.add('musicaMP4')  
+    this.sonidoButton = this.sound.add('sonidoBoton');
+    this.musicaMP= this.sound.add('musicaMP')     
     this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
     
     if (this.estadoMusica=='1') 
     {
       this.musicaPlay()    
     }  
+    this.estadoSFX=localStorage.getItem('sfxPlay')|| '0';
+    
+    if (this.estadoSFX=='1') 
+    {
+      this.sfxPlay()
+    }
 
     //Fondo del Mp
     const fondoMenu = this.add.image(683, 384, 'menu').setScale(0.75);
@@ -54,7 +72,9 @@ export default class mp1 extends Phaser.Scene
     .on('pointerout', () => buttonPlay.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
-      this.scene.start('menuMapa') && sonidoButton.play({volume:0.5})
+      this.scene.start('menuMapa') 
+      this.sfxPlay()
+      this.detenerMusica()
     });
 
     //Boton Premio
@@ -64,7 +84,7 @@ export default class mp1 extends Phaser.Scene
     .on('pointerout', () => buttonPremio.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
-      this.scene.start('extras') && sonidoButton.play({volume:0.5})
+      this.scene.start('extras') && this.sfxPlay()
     });
 
     //Boton Info
@@ -74,7 +94,7 @@ export default class mp1 extends Phaser.Scene
     .on('pointerout', () => buttonInfo.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
     { 
-      this.scene.start('informacion') && sonidoButton.play({volume:0.5})
+      this.scene.start('informacion') && this.sfxPlay()
     });
 
     let n=0
@@ -85,20 +105,24 @@ export default class mp1 extends Phaser.Scene
     .on('pointerout', () => buttonMusica.setScale(0.7))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
     {   
-      if(this.estadoMusica == '1')
+      if(this.estadoMusica == '1' && this)
       {
         this.estadoMusica = '0' 
         localStorage.setItem('musicaPlay', '0')
-        this.detenerMusica() 
+        localStorage.setItem('sfxPlay', '0')
+        this.detenerMusica()
+        this.sfxDetenido() 
       } 
       else if (this.estadoMusica == '0') 
       {
         this.estadoMusica = '1'
         localStorage.setItem('musicaPlay', '1')
+        localStorage.setItem('sfxPlay', '1')
         this.musicaPlay()
+        this.sfxPlay()
       }
       
-      sonidoButton.play({volume:0.5})
+      this.sfxPlay()
     });  
     
     const banderaArg = this.add.image(90, 200, 'botonIdiomaEspañol').setScale(0.2);

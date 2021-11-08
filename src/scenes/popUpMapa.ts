@@ -142,6 +142,7 @@ export default class popUpMapa extends Phaser.Scene
         {  
           this.scene.start('nivelBonus') 
           this.sound.play('sonidoBoton', {volume:0.5})
+          this.scene.get('menuMapa').detenerMusica()
         }))            
       }     
     } 
@@ -186,6 +187,7 @@ export default class popUpMapa extends Phaser.Scene
         { 
           this.scene.start('nivelBonusPin') 
           this.sound.play('sonidoBoton', {volume:0.5})
+          this.scene.get('menuMapa').detenerMusica()
         }).setDepth(7).setVisible(true))
       }
     }
@@ -231,6 +233,7 @@ export default class popUpMapa extends Phaser.Scene
         { 
           this.scene.start('nivelBonusMono') 
           this.sound.play('sonidoBoton', {volume:0.5})
+          this.scene.get('menuMapa').detenerMusica()
         }).setDepth(7).setVisible(true))
       }
     }

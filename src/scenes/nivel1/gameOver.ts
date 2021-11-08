@@ -9,6 +9,17 @@ export default class gameOver extends Phaser.Scene{
     stroke: '#00572f',
     strokeThickness: 6,
   }
+  private estadoMusica:any
+  private musicaLose:any
+  public musicaPlay()
+  {
+    this.musicaLose.play({volume:0.2})
+  } 
+  
+  public detenerMusica()
+  {  
+    this.musicaLose.stop()            
+  }
   constructor()
   {
     super('gameOver');
@@ -20,7 +31,12 @@ export default class gameOver extends Phaser.Scene{
   
   create()
   {
-    
+    this.musicaLose= this.sound.add('lose')
+    this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
+    if (this.estadoMusica=='1') 
+    {
+      this.musicaPlay()
+    }
     const sonidoButton = this.sound.add('sonidoBoton');
 
     const gameLose = this.add.image(683, 384, 'lose')

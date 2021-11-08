@@ -8,6 +8,17 @@ export default class pop_up extends Phaser.Scene{
   align: 'justify'
   };
   private contadorEntrarNivel1:number=0
+  private estadoMusica:any
+  private musicaWin:any
+  private musicaLose:any
+  public musicaPlayWin()
+  {
+    this.musicaWin.play({volume:0.2})
+  } 
+  public musicaPlayLose()
+  {
+    this.musicaLose.play({volume:0.2})
+  } 
 
   constructor()
   {
@@ -22,6 +33,11 @@ export default class pop_up extends Phaser.Scene{
   
   create()
   {
+    this.scene.get('nivelBonus').detenerMusica()
+    this.musicaWin= this.sound.add('win');
+    this.musicaLose= this.sound.add('lose');
+    this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
+
     const sonidoButton = this.sound.add('sonidoBoton');
     
     const fondoPopUpBonus = this.add.image(680, 250, 'botonNivel').setScale(0.7);
@@ -38,7 +54,7 @@ export default class pop_up extends Phaser.Scene{
       if (this.contadorEntrarNivel1>0 && this.contadorEntrarNivel1<2) 
       {
         this.scene.launch('popUpInformativo')
-        this.scene.get('popUpInformativo').mostrarInfoNiveles('nivelPinguiDesbloqueado')
+        this.scene.get('popUpInformativo').mostrarInfoNiveles('nivelMonoDesbloqueado')
       }
     
     })     
@@ -49,14 +65,23 @@ export default class pop_up extends Phaser.Scene{
     console.log(this)
     if (rta=='green')
     {
+      this.musicaPlayWin()
       this.add.text(480, 90, 'Respuesta Correcta', this.fuenteTexto).setDepth(3)
       this.add.sprite(680, 205, 'estrellaBonus', 1).setDepth(3).setScale(0.6)
-      localStorage.setItem('estrellasYaguareteBonus', '1')
+      localStorage.setItem('estrellasYaguareteBonus', '1')       
+      /* if (this.estadoMusica=='1') 
+      {
+        this.musicaPlayWin()
+      } */
     }
     else
-    {
+    {  
       this.add.text(460, 90, 'Respuesta Incorrecta', this.fuenteTexto).setDepth(3) //esto trae hacia delante o atras las cosas
-      this.add.sprite(680, 205, 'estrellaBonus', 0).setDepth(3).setScale(0.6)
+      this.add.sprite(680, 205, 'estrellaBonus', 0).setDepth(3).setScale(0.6);
+      /* if (this.estadoMusica=='1') 
+      {
+        this.musicaPlayLose()
+      } */
     }
     this.scene.get('popUpMapa').yaEntroBonusYaguarete()
     

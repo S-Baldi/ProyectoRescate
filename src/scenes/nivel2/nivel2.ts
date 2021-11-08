@@ -23,7 +23,7 @@ export default class nivel_2 extends Phaser.Scene
     super('nivelMono')
   }
 
-  public musicaMono:any
+  private musicaMono:any
 
   public musicaPlay()
   {
@@ -57,7 +57,7 @@ export default class nivel_2 extends Phaser.Scene
 
   create()
   {
-    this.musicaMono= this.sound.add('musicaMono1')
+    this.musicaMono= this.sound.add('musicaMono')
     
     this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
     if (this.estadoMusica=='1') 
@@ -66,7 +66,7 @@ export default class nivel_2 extends Phaser.Scene
     }
 
     this.scene.launch('uiMono')
-    const mapa_nivel2 = this.make.tilemap({key: 'mapa_nivel2'});
+    const mapa_nivel2 = this.make.tilemap({key: 'NivelMonoTest'});
     const fondo_nivel2_tiled = mapa_nivel2.addTilesetImage('nivel2_fondo', 'nivel2Fondo');
     const suelo_nivel2_tiled = mapa_nivel2.addTilesetImage('nivel2_suelo', 'nivel2Suelo');
     const ramas_nivel2_tiled = mapa_nivel2.addTilesetImage('nivel2_rama', 'nivel2Rama')

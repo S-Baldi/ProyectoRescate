@@ -161,7 +161,7 @@ export default class yaguareteController
 	private trampaHitOnEnter(){
 		this.sprite.play('yaguarete-death')
 		this.sprite.setVelocityX(0)
-		
+		this.scene.scene.get('nivelYaguarete').detenerMusica()
 		this.scene.time.delayedCall(1500, () => {
 			this.scene.scene.launch('gameOver')
 			this.scene.scene.pause()
@@ -178,6 +178,7 @@ export default class yaguareteController
 		this.scene.scene.get('popUpMapa').aumentaContador1()
 		this.scene.scene.get('gameWin').aumentaContador1()
 		this.scene.scene.get('pop_up_B').aumentaContador1()
+		this.scene.scene.get('nivelYaguarete').detenerMusica() 
 		
 		/* let cat2 = localStorage.getItem('nivelPasado');
 		if (cat2 < 1){

@@ -16,6 +16,17 @@ export default class nivel_5 extends Phaser.Scene
   private pez?: Phaser.Physics.Matter.Sprite
   private pezController?: pezController
   private obstacles!: obstaclesController  
+  private musicaPinguino:any
+  private estadoMusica:any;
+
+  public musicaPlay()
+  {
+    this.musicaPinguino.play({volume:0.5, loop: true})
+  }
+  public detenerMusica()
+  {  
+    this.musicaPinguino.stop()            
+  }
 
   constructor(){
     super('nivelPinguino')
@@ -44,7 +55,15 @@ export default class nivel_5 extends Phaser.Scene
 
   }
 
-  create(){
+  create()
+  {
+    this.musicaPinguino= this.sound.add('musicaPinguino')
+    
+    this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
+    if (this.estadoMusica=='1') 
+    {
+      this.musicaPlay()   
+    }
     this.scene.launch('uiPinguino')
 
     /* Tiled Nivel 5 */

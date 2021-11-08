@@ -80,4 +80,5 @@ localStorage.setItem('estrellasMono', '0');
 localStorage.setItem('estrellasMonoBonus', '0');
 //Musica
 localStorage.setItem('musicaPlay', '1');
+localStorage.setItem('sfxPlay', '1');
 

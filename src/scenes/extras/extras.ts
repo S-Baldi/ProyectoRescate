@@ -64,7 +64,7 @@ export default class extras extends Phaser.Scene
     .setInteractive()
     .on('pointerover', () => buttonAtras.setScale(1.1))
     .on('pointerout', () => buttonAtras.setScale(1))
-    .on('pointerdown', () => this.scene.start('menuPpal') && sonidoButton.play({volume:0.5}) 
+    .on('pointerdown', () => this.scene.start('menuPpal') && this.scene.get('menuPpal').detenerMusica() && sonidoButton.play({volume:0.5}) 
     && this.scene.get('menuPpal'));
 
     this.estrellaMasAltaYagua = localStorage.getItem('estrellasYaguarete') || '1';

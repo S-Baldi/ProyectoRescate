@@ -26,7 +26,7 @@ export default class mapa extends Phaser.Scene
   }
   public detenerMusica()
   {  
-    this.musicaMapa.stop(true)            
+    this.musicaMapa.stop()            
   }
   //FUENTE
   private fuenteTexto = {
@@ -68,7 +68,7 @@ export default class mapa extends Phaser.Scene
   create()
   {
     const sonidoButton = this.sound.add('sonidoBoton'); 
-    this.musicaMapa= this.sound.add('musicaMapa3') 
+    this.musicaMapa= this.sound.add('musicaMapa') 
     
     this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
     if (this.estadoMusica=='1') 
@@ -201,7 +201,12 @@ export default class mapa extends Phaser.Scene
   {
     const estrellasTotales = +this.estrellaMasAltaPingui + +this.estrellaMasAltaYagua + 
     +this.cantidadEstrellasYaguaBonus + +this.cantidadEstrellasPinguiBonus + +this.estrellaMasAltaMono + +this.cantidadEstrellasMonoBonus
-    console.log(estrellasTotales)
+    /* console.log(this.estrellaMasAltaPingui, 'pinguino')
+    console.log(this.estrellaMasAltaYagua, 'yaguarete')
+    console.log(this.cantidadEstrellasYaguaBonus, 'yaguareteBonus')
+    console.log(this.cantidadEstrellasPinguiBonus, 'pinguinoBonus')
+    console.log(this.estrellaMasAltaMono, 'mono')
+    console.log(this.cantidadEstrellasMonoBonus, 'monoBonus') */
 
     this.add.text(1140, 625,`= ` + estrellasTotales,  
     {fontFamily: 'Titan One',
@@ -209,8 +214,6 @@ export default class mapa extends Phaser.Scene
       color: '#FFBD0D',
       stroke: '#00572f',
       strokeThickness: 6,    	
-    })
-    
-    
+    })  
   }  
 }

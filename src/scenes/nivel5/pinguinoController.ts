@@ -180,7 +180,7 @@ export default class pipnguinoController
 
 	private barcoHitOnEnter(){
 		this.sprite.play('pinguino-death')		
-		
+		this.scene.scene.get('nivelPinguino').detenerMusica()
 		this.scene.time.delayedCall(1000, () => {
 			this.scene.scene.launch('gameOverPinguino') 
 			this.scene.scene.pause()
@@ -197,6 +197,7 @@ export default class pipnguinoController
 		this.scene.scene.get('popUpMapa').aumentaContador5()
 		this.scene.scene.get('gameWinPinguino').aumentaContador5()
 		this.scene.scene.get('pop_up_B_Pin').aumentaContador5()
+		this.scene.scene.get('nivelPinguino').detenerMusica()
 				
 
 		if (this.cantEstrellas == 2) 

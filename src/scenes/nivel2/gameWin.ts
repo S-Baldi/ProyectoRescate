@@ -5,12 +5,23 @@ export default class gameWinMono extends Phaser.Scene{
   private cantidadEstrellasMono: any
   private cantidadCiertaEstrellasMono: any
   private contadorEntrarNivel2:number=0
+  private estadoMusica:any
+  private musicaWin:any
   private fuenteTexto =  {
     fontFamily: 'Titan One',
     fontSize: '50pt',
     color: '#FFBD0D',
     stroke: '#00572f',
     strokeThickness: 6,
+  }
+  public musicaPlay()
+  {
+    this.musicaWin.play({volume:0.2})
+  } 
+  
+  public detenerMusica()
+  {  
+    this.musicaWin.stop()            
   }
   constructor()
   {
@@ -23,7 +34,14 @@ export default class gameWinMono extends Phaser.Scene{
     {frameWidth:269 , frameHeight:114 });
   }
   
-  create(){  
+  create()
+  {  
+    this.musicaWin= this.sound.add('win')
+    this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
+    if (this.estadoMusica=='1') 
+    {
+      this.musicaPlay()
+    }
     this.add.image(683, 384, 'win')
     
     this.add.text(550, 150, getPhrase('Victoria'), this.fuenteTexto);
@@ -34,8 +52,7 @@ export default class gameWinMono extends Phaser.Scene{
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
       this.scene.stop('nivelMono')
-      this.scene.start('nivelMono')
-      this.scene.get('nivelMono').detenerMusica()
+      this.scene.start('nivelMono')  
     });
 
     const buttonMapa = this.add.image(600, 590, 'botonMapa')
@@ -46,8 +63,7 @@ export default class gameWinMono extends Phaser.Scene{
     { 
       this.scene.get("popUpMapa").ganar()
       this.scene.stop('nivelMono')
-      this.scene.start('menuMapa')
-      this.scene.get('nivelMono').detenerMusica()
+      this.scene.start('menuMapa')      
       
       if (this.contadorEntrarNivel2>0 && this.contadorEntrarNivel2<2) 
       {
