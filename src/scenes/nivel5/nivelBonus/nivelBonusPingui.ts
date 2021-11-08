@@ -45,7 +45,7 @@ export default class bonusPingui extends Phaser.Scene
     
     let preguntasBonus= new Array<preguntas>()
     preguntasBonus.push(new preguntas
-    (getPhrase('¿En dónde habita el pingüino de Magallanes en Argentina?'), 
+    (getPhrase('                 ¿En dónde habita el pingüino de Magallanes en Argentina?'), 
     getPhrase('Sur Argentino'),
     getPhrase('Noroeste Argentino'),
     getPhrase('Oeste Argentino'),

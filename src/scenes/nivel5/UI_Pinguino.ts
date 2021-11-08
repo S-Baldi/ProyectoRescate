@@ -43,8 +43,8 @@ export default class UI_Pinguino extends Phaser.Scene
 		this.estrellasNivel1 = 0
 	}
 	preload(){
-		this.load.image('criaPinguino', 'assets/Nivel5/criaPinguino.png');
-		this.load.image('comidaPinguino', 'assets/Nivel5/nivel5_comida.png');
+		this.load.image('criaPinguino', 'assets/Nivel5/criaPingui01.png');
+		this.load.image('comidaPinguino', 'assets/Nivel5/nivel5_comida2.png');
 	}
 
 	create()

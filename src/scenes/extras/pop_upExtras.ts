@@ -36,7 +36,7 @@ export default class pop_upExt extends Phaser.Scene
 
   preload()
   {
-    this.load.image('popUpExtras', 'assets/MenuPrincipal/popUp2.png')
+    
 
   }
   

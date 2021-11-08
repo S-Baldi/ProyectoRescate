@@ -2,8 +2,6 @@ import Phaser from 'phaser'
 //IMPORTAMOS WEB FONT FILE
 import WebFontFile from './webFontLoader';
 export default class mp1 extends Phaser.Scene
-
-
 {  
   public musicaMP:any  
   private estadoMusica:any; 
@@ -31,8 +29,7 @@ export default class mp1 extends Phaser.Scene
     //CARGAMOS EN UN ARRAY TODAS LAS FUENTES QUE SE QUIEREN PARA EL JUEGO
     this.load.addFile(new WebFontFile(this.load, [
       'Titan One',
-      'Viga',
-      'Ubuntu'
+      'Viga'
     ]))         
   }
   

@@ -3,6 +3,8 @@ import obstaclesController from '../obstaclesController'
 import yaguareteController from './yaguareteController'
 import cazadorController from './cazadorController'
 import trampaController from './trampaController'
+import criaController from './criaController'
+import carneController from './carneController'
 export default class nivel_1 extends Phaser.Scene
 {
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys	
@@ -12,6 +14,10 @@ export default class nivel_1 extends Phaser.Scene
   private cazadorController?: cazadorController
   private trampas?: Phaser.Physics.Matter.Sprite
   private trampaController?: trampaController
+  private yaguareteCria?: Phaser.Physics.Matter.Sprite
+  private criaController?: criaController
+  private carne?: Phaser.Physics.Matter.Sprite
+  private carneController?: carneController
   private obstacles!: obstaclesController 
   private estadoMusica:any;   
 
@@ -37,34 +43,30 @@ export default class nivel_1 extends Phaser.Scene
   }
 
   preload(){
-    this.load.tilemapTiledJSON('mapa_nivel1', 'assets/Nivel1/nivel_Yaguarete.json');
+    this.load.tilemapTiledJSON('mapa_nivel1', 'assets/Nivel1/nivel_Yaguarete.json');    
+    this.load.tilemapTiledJSON('yaguareteTest' , 'assets/Nivel1/nivel_YaguareteTest.json');
     this.load.image('nivel1Fondoo','assets/Nivel1/nivel1_fondo.png');
-    this.load.image('nivel1Sueloo','assets/Nivel1/nivel1_suelo.png');
-    this.load.image('nivel1Carnee','assets/Nivel1/nivel1_carne.png');
-    this.load.image('nivel1Cria', 'assets/Nivel1/criaYaguarete.png');
+    this.load.image('nivel1Sueloo','assets/Nivel1/nivel1_suelo.png');    
     this.load.image('nivel1Bandera', 'assets/Nivel1/bandera.png');
     this.load.atlas('yaguarete' , 'assets/Nivel1/yaguarete.png', 'assets/Nivel1/yaguarete.json');
     this.load.atlas('nivel1Trampaa','assets/Nivel1/trampa.png','assets/Nivel1/trampa.json'); 
     this.load.atlas('cazador', 'assets/Nivel1/cazador.png', 'assets/Nivel1/cazador.json');
-    this.load.tilemapTiledJSON('yaguareteTest' , 'assets/Nivel1/nivel_YaguareteTest.json');
+    this.load.atlas('nivel1Cria', 'assets/Nivel1/criaYaguarete.png', 'assets/Nivel1/criaYaguarete.json')
+    this.load.atlas('nivel1Carnee','assets/Nivel1/nivel1_carne.png', 'assets/Nivel1/nivel1_carne.json');
   }
 
   create()
   {
-    this.musicaYaguarete= this.sound.add('musicaYaguarete1')  
-    
+    this.musicaYaguarete= this.sound.add('musicaYaguarete1')    
     this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
     if (this.estadoMusica=='1') 
     {
-      this.musicaPlay()   
+      this.musicaPlay()
     }
     
     this.scene.launch('ui')
-
     /* Tiled Nivel 1 */
-/*     addTilesetImage(tilesetName [, key] 
-  [, tileWidth] [, tileHeight] [, tileMargin] [, tileSpacing] [, gid])*/ 
-    const mapa_nivel1 = this.make.tilemap({key: 'yaguareteTest'});
+    const mapa_nivel1 = this.make.tilemap({key: 'mapa_nivel1'});
     const fondo_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_fondo', 'nivel1Fondoo');
     const suelo_nivel1_tiled = mapa_nivel1.addTilesetImage('nivel1_suelo', 'nivel1Sueloo');
 
@@ -161,21 +163,27 @@ export default class nivel_1 extends Phaser.Scene
         
         case 'carne':
         {
-          const carne = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel1Carnee', undefined, {
+          this.carne = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel1Carnee', undefined, {
 						isStatic: true,
             isSensor: true
-          })
-          carne.setData('type', 'carne')
+          }).setScale(1.3)
+          this.carne.setData('type', 'carne')
+          this.carneController = new carneController(
+            this.carne
+          )
           break
         }
 
         case 'cria':
         {
-          const yaguareteCria = this.matter.add.sprite(x+ (width*0.5), y+(height*0.5), 'nivel1Cria', undefined,{
+          this.yaguareteCria = this.matter.add.sprite(x+ (width*0.5), y+(height*0.5), 'nivel1Cria', undefined,{
             isStatic : true,
             isSensor: true
-          }).setScale(0.2)  
-          yaguareteCria.setData('type', 'cria')
+          })  
+          this.yaguareteCria.setData('type', 'cria')
+          this.criaController = new criaController(
+            this.yaguareteCria,
+          )
           break
         }
       }    
@@ -188,6 +196,8 @@ export default class nivel_1 extends Phaser.Scene
     this.yaguareteController?.update(dt)
     this.cazadorController?.update(dt)
     this.trampaController?.update(dt)
+    this.criaController?.update(dt)
+    this.carneController?.update(dt)
   }  
   
 }

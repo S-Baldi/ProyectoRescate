@@ -43,8 +43,8 @@ export default class UI extends Phaser.Scene
 
 	}
 	preload(){
-		this.load.image('criaYaguarete', 'assets/Nivel1/criaYaguarete.png');
-		this.load.image('comidaYaguarete', 'assets/Nivel1/nivel1_carne.png');
+		this.load.image('criaYaguarete', 'assets/Nivel1/criaYagua.png');
+		this.load.image('comidaYaguarete', 'assets/Nivel1/carne.png');
 	}
 
 	create()
@@ -72,9 +72,9 @@ export default class UI extends Phaser.Scene
 		})
 
     //TEXTO PARA CORROBORAR
-		this.add.image(1140 ,90, 'criaYaguarete').setScale(0.2);
+		this.add.image(1140 ,80, 'criaYaguarete');
     this.criasLabel = this.add.text(1200, 50, '0/3', this.fuenteTexto)
-    this.add.image(1140 ,190, 'comidaYaguarete');
+    this.add.image(1140 ,180, 'comidaYaguarete').setScale(1.3);
     this.comidaLabel = this.add.text(1200, 150, '0/50', this.fuenteTexto)		
 	}
 	

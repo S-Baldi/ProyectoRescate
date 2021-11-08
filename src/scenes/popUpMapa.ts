@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import { getPhrase } from '~/services/translation'
 
 export default class popUpMapa extends Phaser.Scene
 {  
@@ -23,7 +24,7 @@ export default class popUpMapa extends Phaser.Scene
   private cerrarBonusMono:number=0
 
   private fuenteTextoMapaDesbloqueado =     
-  {fontFamily: 'Viga',
+  {fontFamily: 'Titan One',
   fontSize: '40pt',
   color: '#FFBD0D',
   stroke: '#00572f',
@@ -32,7 +33,7 @@ export default class popUpMapa extends Phaser.Scene
   };
 
   private fuenteTextoMapa =     
-  {fontFamily: 'Viga',
+  {fontFamily: 'Titan One',
   fontSize: '40pt',
   color: '#9b9b9b',
   stroke: '#000000',
@@ -111,7 +112,7 @@ export default class popUpMapa extends Phaser.Scene
         this.estrellaMasAltaYagua = this.cantidadEstrellasYagua
       }      
 
-      const nivelPpalYagua = this.add.text(680, 400, '   NIVEL \nPRINCIPAL', this.fuenteTextoMapaDesbloqueado)
+      const nivelPpalYagua = this.add.text(670, 400, getPhrase('PRINCIPAL'), this.fuenteTextoMapaDesbloqueado)
       .setInteractive()
       nivelPpalYagua.on('pointerover', () => nivelPpalYagua.setScale(1.1))
       .on('pointerout', () => nivelPpalYagua.setScale(1))
@@ -125,17 +126,19 @@ export default class popUpMapa extends Phaser.Scene
 
       this.add.sprite(650, 280, 'estrellas', this.estrellaMasAltaYagua).setScale(1.8) 
 
-      this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapa))  
+      this.yaguareteBonus(this.add.text(420, 400, 'BONUS', this.fuenteTextoMapa))  
       
       if (this.contadorEntrarNivel1==0 && this.cerrarBonusYaguarete>0)
       {       
-        this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapa)
+        this.yaguareteBonus(this.add.text(420, 400, 'BONUS', this.fuenteTextoMapa)
         .removeInteractive())  
       }  
       else if(this.contadorEntrarNivel1>0 && this.cerrarBonusYaguarete<1)
       {
-        this.yaguareteBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapaDesbloqueado)
-        .setInteractive().on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
+        this.yaguareteBonus(this.add.text(420, 400, 'BONUS', this.fuenteTextoMapaDesbloqueado)
+        
+        .setInteractive()
+        .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
         {  
           this.scene.start('nivelBonus') 
           this.sound.play('sonidoBoton', {volume:0.5})
@@ -152,15 +155,15 @@ export default class popUpMapa extends Phaser.Scene
         this.estrellaMasAltaPingui = this.cantidadEstrellasPingui
       }            
 
-      this.pinguinoNivel(this.add.text(680, 400, '   NIVEL \nPRINCIPAL', this.fuenteTextoMapa) &&
+      this.pinguinoNivel(this.add.text(670, 400, getPhrase('PRINCIPAL'), this.fuenteTextoMapa) &&
 
       this.add.sprite(650, 280, 'estrellas', this.estrellaMasAltaPingui).setScale(1.8) && 
       
-      this.pinguinoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapa)))
+      this.pinguinoBonus(this.add.text(420, 400, 'BONUS', this.fuenteTextoMapa)))
 
       if (this.estrellaMasAltaMono>0) 
       {
-        this.pinguinoNivel(this.add.text(680, 400, '   NIVEL \nPRINCIPAL', this.fuenteTextoMapaDesbloqueado)
+        this.pinguinoNivel(this.add.text(670, 400, getPhrase('PRINCIPAL'), this.fuenteTextoMapaDesbloqueado)
         .setInteractive()
         .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
         {
@@ -173,12 +176,12 @@ export default class popUpMapa extends Phaser.Scene
 
       if (this.contadorEntrarNivel5==0 && this.cerrarBonusPinguino>0)
       {
-        this.pinguinoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapa)
+        this.pinguinoBonus(this.add.text(420, 400, 'BONUS', this.fuenteTextoMapa)
         .removeInteractive())
       }
       else if (this.contadorEntrarNivel5>0 && this.cerrarBonusPinguino<1)
       {
-        this.pinguinoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapaDesbloqueado)
+        this.pinguinoBonus(this.add.text(420, 400, 'BONUS', this.fuenteTextoMapaDesbloqueado)
         .setInteractive().on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
         { 
           this.scene.start('nivelBonusPin') 
@@ -197,21 +200,16 @@ export default class popUpMapa extends Phaser.Scene
       }
       
 
-      this.monoNivel(this.add.text(680, 400, '   NIVEL \nPRINCIPAL', this.fuenteTextoMapa) &&
+      this.monoNivel(this.add.text(670, 400, getPhrase('PRINCIPAL'), this.fuenteTextoMapa) &&
 
       this.add.sprite(650, 280, 'estrellas', this.estrellaMasAltaPingui).setScale(1.8) && 
       
-      this.monoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapa)))
+      this.monoBonus(this.add.text(420, 400, 'BONUS', this.fuenteTextoMapa)))
 
       if (this.estrellaMasAltaYagua>0) 
       {
-        this.monoNivel(this.add.text(680, 400, '   NIVEL \nPRINCIPAL', this.fuenteTextoMapaDesbloqueado)
+        this.monoNivel(this.add.text(670, 400, getPhrase('PRINCIPAL'), this.fuenteTextoMapaDesbloqueado)
         .setInteractive()
-<<<<<<< HEAD
-        .on('pointerdown', () => this.scene.sleep('menuMapa')) && 
-        this.scene.start('nivelMono') && this.sound.play('sonidoBoton', {volume:0.5}) 
-        && this.scene.get('menuMapa')).setDepth(7).setVisible(true)
-=======
         .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
         {
           this.scene.sleep('menuMapa')          
@@ -219,17 +217,16 @@ export default class popUpMapa extends Phaser.Scene
           this.sound.play('sonidoBoton', {volume:0.5}) 
           this.scene.get('menuMapa').detenerMusica()
         }).setDepth(7).setVisible(true)) 
->>>>>>> e6b43d48744c94004a97ec4694ad86071fedb998
       }
 
       if (this.contadorEntrarNivel2==0 && this.cerrarBonusMono>0)
       {
-        this.monoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapa)
+        this.monoBonus(this.add.text(450, 400, 'BONUS', this.fuenteTextoMapa)
         .removeInteractive())
       }
       else if (this.contadorEntrarNivel2>0 && this.cerrarBonusMono<1)
       {
-        this.monoBonus(this.add.text(450, 400, ' NIVEL \nBONUS', this.fuenteTextoMapaDesbloqueado)
+        this.monoBonus(this.add.text(420, 400, 'BONUS', this.fuenteTextoMapaDesbloqueado)
         .setInteractive().on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
         { 
           this.scene.start('nivelBonusMono') 
@@ -239,7 +236,7 @@ export default class popUpMapa extends Phaser.Scene
     }
   }
   /////////////////////// NIVEL 1 + Bonus //////////////////
- 
+
   public aumentaContador1()
   {
     this.contadorEntrarNivel1++    

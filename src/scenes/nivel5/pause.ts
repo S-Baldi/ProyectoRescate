@@ -18,11 +18,11 @@ export default class pausePinguino extends Phaser.Scene{
 
     const gamePause = this.add.image(683, 384, 'pause')
     this.add.text(600, 250, getPhrase('Pausa'), {
-      fontSize: '250px',
-      color: 'yellow',
-      stroke: 'black',
-      strokeThickness: 3,
-      font: '50pt ARCO Regular',
+      fontFamily: 'Titan One',
+      fontSize: '50pt',
+      color: '#FFBD0D',
+      stroke: '#00572f',
+      strokeThickness: 6,
     })
 
     const buttonMapa = this.add.image(490, 440, 'botonMapa')

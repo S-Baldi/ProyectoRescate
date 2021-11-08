@@ -47,8 +47,7 @@ export default class UI_Mono extends Phaser.Scene
 
 	preload(){
 		this.load.image('criaMono', 'assets/Nivel2/criaMono2.png');
-		this.load.image('comidaMono', 'assets/Nivel2/nivel2_comida.png');
-		this.load.atlas('cazador', 'assets/Nivel1/cazador.png', 'assets/Nivel1/cazador.json');
+		this.load.image('comidaMono', 'assets/Nivel2/banana.png');
 	}
 
 	create()
@@ -86,7 +85,7 @@ export default class UI_Mono extends Phaser.Scene
     //TEXTO PARA CORROBORAR
 		this.add.image(1140 ,90, 'criaMono');
     this.criasLabel = this.add.text(1200, 50, '0/3', this.fuenteTexto)
-    this.add.image(1140 ,190, 'comidaMono');
+    this.add.image(1140 ,190, 'comidaMono').setScale(1.3);
     this.comidaLabel = this.add.text(1200, 150, '0/50', this.fuenteTexto)		
 	}
 

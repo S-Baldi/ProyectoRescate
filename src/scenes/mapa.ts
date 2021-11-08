@@ -36,7 +36,20 @@ export default class mapa extends Phaser.Scene
     stroke: '#00572f',
     strokeThickness: 6,
   }
-
+  private fuenteTextoProx = {
+    fontFamily: 'Titan One',
+    fontSize: '18pt',
+    color: 'grey',
+    stroke: 'black',
+    strokeThickness: 4,
+  }
+  private fuenteTextoYagua = {
+    fontFamily: 'Titan One',
+    fontSize: '22pt',
+    color: '#FFBD0D',
+    stroke: '#00572f',
+    strokeThickness: 6,
+  }
   constructor(){
     super ('menuMapa');
   }
@@ -122,7 +135,7 @@ export default class mapa extends Phaser.Scene
     && this.scene.pause() 
     && this.scene.get("popUpMapa").mostrarNiveles('yaguareteNiveles'))
     
-    this.add.text(1030,115, getPhrase('YAGUARETÉ'), this.fuenteTexto)
+    this.add.text(1025,115, getPhrase('YAGUARETÉ'), this.fuenteTextoYagua)
     
     //////////////////////////////////////////////NIVEL MONO//////////////////////////////////////////////
     this.cantidadEstrellasMono = localStorage.getItem('estrellasMono') || '1';  
@@ -149,29 +162,16 @@ export default class mapa extends Phaser.Scene
     //////////////////////////////////////////////NIVEL CONDOR//////////////////////////////////////////////
     const buttonNivel3 = this.add.image(360,300, 'botonNivel').setScale(0.25)
     .setInteractive()
-    .on('pointerdown', () => this.scene.start('nivelBonusPin'))
+    .on('pointerdown', () => this.scene.start('nivelPinguino'))
 
-    this.add.text(251,330, getPhrase('PRÓXIMAMENTE'), {
-      fontSize: '700px',
-      color: 'grey',
-      stroke: 'black',
-      strokeThickness: 4,
-      font: '19pt ARCO Regular',
-      
-    }).angle = -25;
+    this.add.text(251,330, getPhrase('PRÓXIMAMENTE'), this.fuenteTextoProx).angle = -25;
 
     //////////////////////////////////////////////NIVEL BALLENA//////////////////////////////////////////////
     const buttonNivel4 = this.add.image(980,470, 'botonNivel').setScale(0.25)
     .setInteractive()
     .on('pointerdown', () => this.scene.start('nivelPinguino'))
 
-    this.add.text(871,500, getPhrase('PRÓXIMAMENTE'), {
-      fontSize: '25px',
-      color: 'grey',
-      stroke: 'black',
-      strokeThickness: 4,
-      font: '19pt ARCO Regular',
-    }).angle = -25;
+    this.add.text(871,500, getPhrase('PRÓXIMAMENTE'), this.fuenteTextoProx).angle = -25;
 
 
     //////////////////////////////////////////////NIVEL PINGUINO//////////////////////////////////////////////

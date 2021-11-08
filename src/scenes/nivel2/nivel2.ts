@@ -2,6 +2,8 @@ import Phaser from 'phaser'
 import obstaclesController from '../obstaclesController'
 import monoController from './monoController'
 import cazadorController from './cazadorController'
+import bananaController from './bananaController'
+import criaMonoController from './criaMonoController'
 export default class nivel_2 extends Phaser.Scene
 {
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys	
@@ -9,6 +11,10 @@ export default class nivel_2 extends Phaser.Scene
   private monoController?: monoController
   private cazador?: Phaser.Physics.Matter.Sprite
   private cazadorController?: cazadorController
+  private banana?: Phaser.Physics.Matter.Sprite
+  private bananaController?: bananaController
+  private cria?: Phaser.Physics.Matter.Sprite
+  private criaController?: criaMonoController
   private obstacles!: obstaclesController  
   private banderasMono?: Phaser.Physics.Matter.Sprite
   private estadoMusica:any;
@@ -38,16 +44,15 @@ export default class nivel_2 extends Phaser.Scene
   preload()
   {
     this.load.tilemapTiledJSON('mapa_nivel2', 'assets/Nivel2/nivel_Mono.json');
+    this.load.tilemapTiledJSON('NivelMonoTest', 'assets/Nivel2/nivel_MonoTest.json');
     this.load.image('nivel2Fondo','assets/Nivel2/nivel2_fondo.png');
-    this.load.image('nivel2Suelo','assets/Nivel2/nivel2_suelo.png');
-    this.load.image('nivel2Banana','assets/Nivel2/nivel2_comida.png');
+    this.load.image('nivel2Suelo','assets/Nivel2/nivel2_suelo.png');    
     this.load.image('nivel2Rama', 'assets/Nivel2/nivel2_rama.png');
     this.load.image('nivel2Bandera', 'assets/Nivel2/bandera.png');    
     this.load.atlas('nivel2Cria', 'assets/Nivel2/criaMono.png', 'assets/Nivel2/criaMono.json');
     this.load.atlas('cazador', 'assets/Nivel2/cazador.png', 'assets/Nivel2/cazador.json');
     this.load.atlas('mono', 'assets/Nivel2/mono.png', 'assets/Nivel2/mono.json');
-
-    this.load.tilemapTiledJSON('NivelMonoTest', 'assets/Nivel2/nivel_MonoTest.json');
+    this.load.atlas('nivel2Banana','assets/Nivel2/nivel2_comida.png', 'assets/Nivel2/nivel2_comida.json');
   }
 
   create()
@@ -142,21 +147,27 @@ export default class nivel_2 extends Phaser.Scene
         
         case 'banana':
         {
-          const banana = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel2Banana', undefined, {
+          this.banana = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'nivel2Banana', undefined, {
 						isStatic: true,
             isSensor: true
-          }).setScale(1)
-          banana.setData('type', 'banana')
+          }).setScale(1.3)
+          this.banana.setData('type', 'banana')
+          this.bananaController = new bananaController(
+            this.banana
+          )
           break
         }
 
         case 'cria':
         {
-          const monoCria = this.matter.add.sprite(x+ (width*0.5), y+(height*0.5), 'nivel2Cria', undefined,{
+          this.cria = this.matter.add.sprite(x+ (width*0.5), y+(height*0.5), 'nivel2Cria', undefined,{
             isStatic : true,
             isSensor: true
           })
-          monoCria.setData('type', 'cria')
+          this.cria.setData('type', 'cria')
+          this.criaController = new criaMonoController(
+            this.cria
+          )
           break
         }
       }
@@ -169,6 +180,8 @@ export default class nivel_2 extends Phaser.Scene
   {
     this.monoController?.update(dt)
     this.cazadorController?.update(dt)
+    this.bananaController?.update(dt)
+    this.monoController?.update(dt)
   }  
 }
 
