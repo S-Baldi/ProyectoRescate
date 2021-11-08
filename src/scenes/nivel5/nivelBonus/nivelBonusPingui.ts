@@ -17,6 +17,17 @@ export default class bonusPingui extends Phaser.Scene
   color: '#000000',
   align: 'center'
   };
+  private estadoMusica:any
+  private musicaBonus:any
+  public musicaPlay()
+  {
+    this.musicaBonus.play({volume:0.2})
+  } 
+  
+  public detenerMusica()
+  {  
+    this.musicaBonus.stop()            
+  }
 
   constructor()
   {
@@ -32,13 +43,19 @@ export default class bonusPingui extends Phaser.Scene
 
   create()
   {  
+    this.musicaBonus= this.sound.add('Bonus')
+    this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
+    if (this.estadoMusica=='1') 
+    {
+      this.musicaPlay()
+    }
     const sonidoButton = this.sound.add('sonidoBoton');
 
     const fondoBonus = this.add.image(683, 384, 'Bonus');
 
     const buttonAtras = this.add.image(1260, 105, 'botonatras').setScale(0.8)
     .setInteractive()
-    .on('pointerdown', () => this.scene.start('menuMapa') && sonidoButton.play({volume:0.5}))
+    .on('pointerdown', () => this.scene.start('menuMapa') && sonidoButton.play({volume:0.5}) && this.detenerMusica())
 
     const portada = this.add.image(874, 235, 'pinguinoPic').setScale(0.45);
     const portada2 = this.add.image(496, 235, 'pinguiBonus').setScale(1.25);

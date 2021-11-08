@@ -55,7 +55,8 @@ export default class bonus extends Phaser.Scene{
     .setInteractive()
     .on('pointerover', () => buttonAtras.setScale(1.1))
     .on('pointerout', () => buttonAtras.setScale(1))
-    .on('pointerdown', () => this.scene.start('menuMapa') && sonidoButton.play({volume:0.5}))
+    .on('pointerdown', () => this.scene.start('menuMapa') && sonidoButton.play({volume:0.5}) &&
+    this.detenerMusica())
 
     const portada = this.add.image(874, 235, 'yaguaretePic').setScale(0.7);
     const portada2 = this.add.image(496, 235, 'yaguaBonus').setScale(1.35);
