@@ -201,6 +201,7 @@ export default class mapa extends Phaser.Scene
   {
     const estrellasTotales = +this.estrellaMasAltaPingui + +this.estrellaMasAltaYagua + 
     +this.cantidadEstrellasYaguaBonus + +this.cantidadEstrellasPinguiBonus + +this.estrellaMasAltaMono + +this.cantidadEstrellasMonoBonus
+    console.log(estrellasTotales)
 
     this.add.text(1140, 625,`= ` + estrellasTotales,  
     {fontFamily: 'Titan One',
