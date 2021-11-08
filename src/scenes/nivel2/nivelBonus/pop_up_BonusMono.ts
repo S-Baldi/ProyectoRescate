@@ -22,7 +22,7 @@ export default class pop_up_BonusMono extends Phaser.Scene{
   
   create()
   {
-    this.scene.get('nivelBonus').detenerMusica()
+    this.scene.get('nivelBonusMono').detenerMusica()
     const sonidoButton = this.sound.add('sonidoBoton');
     
     const fondoPopUpBonus = this.add.image(680, 250, 'botonNivel').setScale(0.7);
