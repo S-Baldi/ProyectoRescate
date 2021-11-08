@@ -64,8 +64,7 @@ export default class pop_up extends Phaser.Scene{
   {
     console.log(this)
     if (rta=='green')
-    {
-      this.musicaPlayWin()
+    {  
       this.add.text(480, 90, 'Respuesta Correcta', this.fuenteTexto).setDepth(3)
       this.add.sprite(680, 205, 'estrellaBonus', 1).setDepth(3).setScale(0.6)
       localStorage.setItem('estrellasYaguareteBonus', '1')       
