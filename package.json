@@ -4,7 +4,7 @@
 	"description": "A starting template for a sidescrolling platformer game using Matter Physics in Phaser 3.50",
 	"scripts": {
 		"start": "parcel src/index.html -p 8000",
-		"build": "parcel build src/index.html --out-dir docs",
+		"build": "parcel build src/index.html --out-dir docs --no-minify",
 		"build-gh": "parcel build src/index.html --out-dir dist --public-url /sidescrolling-platformer-template-phaser3/",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"lint": "eslint ./src --ext .js,.jsx,.ts,.tsx"
