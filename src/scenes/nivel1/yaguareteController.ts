@@ -21,6 +21,7 @@ export default class yaguareteController
 	private controlEstrellas?:UI
 
 	private velocidad = 15
+	private estadoMusica:any;
 	
 
   constructor(scene: Phaser.Scene, 
@@ -28,6 +29,7 @@ export default class yaguareteController
 		cursors: CursorKeys, 
 		obstacles: ObstaclesController) 
   {
+		this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
 		this.pointer = scene.input.activePointer; //LE COLOCAMOS AL POINTER UN ACTIVEPOINTER
     this.scene = scene
 		this.sprite = sprite
@@ -94,6 +96,10 @@ export default class yaguareteController
 				{
 					sprite.destroy()
 					events.emit('crias-collected')
+					if (this.estadoMusica=='1')
+					{
+						this.scene.scene.get('nivelYaguarete').sfxCriaPlay()
+					}
 					break
 				}	
 
@@ -101,6 +107,10 @@ export default class yaguareteController
 				{
 					events.emit('comida-collected')
 					sprite.destroy()
+					if (this.estadoMusica=='1') 
+					{
+						this.scene.scene.get('nivelYaguarete').sfxComidaPlay()
+					}
 					break
 				}
 			}

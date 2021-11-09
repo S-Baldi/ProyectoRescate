@@ -28,6 +28,15 @@ export default class mapa extends Phaser.Scene
   {  
     this.musicaMapa.stop()            
   }
+  private sonidoButton:any;
+  public sfxDetenido()
+  {
+    this.sonidoButton.stop()
+  }
+  public sfxPlay()
+  {
+    this.sonidoButton.play({volume:0.5})
+  }
   //FUENTE
   private fuenteTexto = {
     fontFamily: 'Titan One',
@@ -67,7 +76,9 @@ export default class mapa extends Phaser.Scene
 
   create()
   {
-    const sonidoButton = this.sound.add('sonidoBoton'); 
+    
+    this.sonidoButton = this.sound.add('sonidoBoton');
+    
     this.musicaMapa= this.sound.add('musicaMapa') 
     
     this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
@@ -88,7 +99,10 @@ export default class mapa extends Phaser.Scene
     { 
       this.scene.start('menuPpal')
       this.detenerMusica()
-      sonidoButton.play({volume:0.5})
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
     });
 
     const buttonMusica = this.add.image(180, 80, 'botonMusica').setScale(0.7)
@@ -109,7 +123,10 @@ export default class mapa extends Phaser.Scene
         localStorage.setItem('musicaPlay', '1')
         this.musicaPlay()
       }  
-      sonidoButton.play({volume:0.5})     
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }   
     })
       
 
@@ -131,9 +148,16 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on('pointerover', () => buttonNivel1.setScale(0.28))
     .on('pointerout', () => buttonNivel1.setScale(0.25))
-    .on('pointerdown', () => this.scene.launch('popUpMapa') && sonidoButton.play({volume:0.5})
-    && this.scene.pause() 
-    && this.scene.get("popUpMapa").mostrarNiveles('yaguareteNiveles'))
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+    { 
+      this.scene.launch('popUpMapa')
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
+      this.scene.pause() 
+      this.scene.get("popUpMapa").mostrarNiveles('yaguareteNiveles')
+    })
     
     this.add.text(1025,115, getPhrase('YAGUARETÉ'), this.fuenteTextoYagua)
     
@@ -152,9 +176,16 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on('pointerover', () => buttonNivel2.setScale(0.28))
     .on('pointerout', () => buttonNivel2.setScale(0.25))
-    .on('pointerdown', () => this.scene.launch('popUpMapa') && sonidoButton.play({volume:0.5})
-    && this.scene.pause() 
-    && this.scene.get("popUpMapa").mostrarNiveles('monoNiveles'))
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
+    { 
+      this.scene.launch('popUpMapa') 
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
+      this.scene.pause() 
+      this.scene.get("popUpMapa").mostrarNiveles('monoNiveles')
+    })
 
     this.add.text(320, 25, getPhrase('MONO CAÍ'), this.fuenteTexto)
     
@@ -162,14 +193,20 @@ export default class mapa extends Phaser.Scene
     //////////////////////////////////////////////NIVEL CONDOR//////////////////////////////////////////////
     const buttonNivel3 = this.add.image(360,300, 'botonNivel').setScale(0.25)
     .setInteractive()
-    .on('pointerdown', () => this.scene.start('nivelPinguino'))
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+    { 
+      this.scene.start('nivelPinguino')
+    })
 
     this.add.text(251,330, getPhrase('PRÓXIMAMENTE'), this.fuenteTextoProx).angle = -25;
 
     //////////////////////////////////////////////NIVEL BALLENA//////////////////////////////////////////////
     const buttonNivel4 = this.add.image(980,470, 'botonNivel').setScale(0.25)
     .setInteractive()
-    .on('pointerdown', () => this.scene.start('nivelPinguino'))
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+    { 
+      this.scene.start('nivelPinguino')
+    })
 
     this.add.text(871,500, getPhrase('PRÓXIMAMENTE'), this.fuenteTextoProx).angle = -25;
 
@@ -189,9 +226,16 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on('pointerover', () => buttonNivel5.setScale(0.28))
     .on('pointerout', () => buttonNivel5.setScale(0.25))
-    .on('pointerdown', () => this.scene.launch('popUpMapa') && sonidoButton.play({volume:0.5})
-    && this.scene.pause() 
-    && this.scene.get("popUpMapa").mostrarNiveles('pinguinoNiveles'))    
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+    { 
+      this.scene.launch('popUpMapa')
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
+      this.scene.pause() 
+      this.scene.get("popUpMapa").mostrarNiveles('pinguinoNiveles')
+    })    
     
 
     this.add.text(295,595, getPhrase('PINGÜINO'), this.fuenteTexto)    

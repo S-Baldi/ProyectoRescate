@@ -2,7 +2,18 @@
 import Phaser from 'phaser'
 import { getPhrase } from '~/services/translation';
 
-export default class pausePinguino extends Phaser.Scene{
+export default class pausePinguino extends Phaser.Scene
+{
+  private estadoMusica:any;
+  private sonidoButton:any;
+  public sfxDetenido()
+  {
+    this.sonidoButton.stop()
+  }
+  public sfxPlay()
+  {
+    this.sonidoButton.play({volume:0.5})
+  }
   constructor()
   {
     super('pausePinguino');
@@ -14,8 +25,10 @@ export default class pausePinguino extends Phaser.Scene{
   
   create()
   {
-    const sonidoButton = this.sound.add('sonidoBoton');
-
+    this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
+    this.sonidoButton = this.sound.add('sonidoBoton');
+    this.scene.get('nivelPinguino').musicaPause()
+    
     const gamePause = this.add.image(683, 384, 'pause')
     this.add.text(600, 250, getPhrase('Pausa'), {
       fontFamily: 'Titan One',
@@ -34,7 +47,10 @@ export default class pausePinguino extends Phaser.Scene{
       this.scene.stop('nivelPinguino')
       this.scene.stop('uiPinguino')
       this.scene.start('menuMapa')
-      sonidoButton.play({volume:0.5})
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
     });
 
     const buttonRestart = this.add.image(690, 440,  'botonReset')
@@ -46,18 +62,26 @@ export default class pausePinguino extends Phaser.Scene{
       this.scene.stop()
       this.scene.stop('nivelPinguino')
       this.scene.start('nivelPinguino')
-      sonidoButton.play({volume:0.5})
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
     });  
 
     const buttonVolverJugar = this.add.image(890, 440, 'botonPlay')
     .setInteractive()
     .on('pointerover', () => buttonVolverJugar.setScale(1.1))
     .on('pointerout', () => buttonVolverJugar.setScale(1))
-    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>{
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+    {
       this.scene.stop()
       this.scene.resume('nivelPinguino')
       this.scene.resume('uiPinguino')
-      sonidoButton.play({volume:0.5})
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
+      this.scene.get('nivelPinguino').musicaResume()
     })
     
   }

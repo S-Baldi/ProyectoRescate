@@ -9,6 +9,16 @@ export default class gameOver extends Phaser.Scene{
     stroke: '#00572f',
     strokeThickness: 6,
   }
+  private sonidoButton:any;
+  public sfxDetenido()
+  {
+    this.sonidoButton.stop()
+  }
+  public sfxPlay()
+  {
+    this.sonidoButton.play({volume:0.5})
+  }
+  
   private estadoMusica:any
   private musicaLose:any
   public musicaPlay()
@@ -37,7 +47,7 @@ export default class gameOver extends Phaser.Scene{
     {
       this.musicaPlay()
     }
-    const sonidoButton = this.sound.add('sonidoBoton');
+    this.sonidoButton = this.sound.add('sonidoBoton');
 
     const gameLose = this.add.image(683, 384, 'lose')
     this.add.text(550, 150, getPhrase('Derrota'), this.fuenteTexto)
@@ -51,7 +61,10 @@ export default class gameOver extends Phaser.Scene{
       this.scene.stop('nivelYaguarete')
       this.scene.start('nivelYaguarete')
       this.scene.get('nivelYaguarete').detenerMusica()
-      sonidoButton.play({volume:0.5})
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
     });
 
     const buttonMapa = this.add.image(600, 520, 'botonMapa')
@@ -63,7 +76,10 @@ export default class gameOver extends Phaser.Scene{
       this.scene.stop('nivelYaguarete')
       this.scene.start('menuMapa')
       this.scene.get('nivelYaguarete').detenerMusica()
-      sonidoButton.play({volume:0.5})
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
     });
   }
   

@@ -19,6 +19,15 @@ export default class pop_up extends Phaser.Scene{
   {
     this.musicaLose.play({volume:0.2})
   } 
+  private sonidoButton:any;
+  public sfxDetenido()
+  {
+    this.sonidoButton.stop()
+  }
+  public sfxPlay()
+  {
+    this.sonidoButton.play({volume:0.5})
+  }
 
   constructor()
   {
@@ -33,12 +42,14 @@ export default class pop_up extends Phaser.Scene{
   
   create()
   {
+    this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
+    this.sonidoButton = this.sound.add('sonidoBoton');
     this.scene.get('nivelBonus').detenerMusica()
     this.musicaWin= this.sound.add('win');
     this.musicaLose= this.sound.add('lose');
     this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
 
-    const sonidoButton = this.sound.add('sonidoBoton');
+    
     
     const fondoPopUpBonus = this.add.image(680, 250, 'botonNivel').setScale(0.7);
 
@@ -50,7 +61,10 @@ export default class pop_up extends Phaser.Scene{
     {
       this.scene.start('menuMapa')
       this.scene.stop('nivelBonus')
-      sonidoButton.play({volume:0.5})
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
       if (this.contadorEntrarNivel1>0 && this.contadorEntrarNivel1<2) 
       {
         this.scene.launch('popUpInformativo')

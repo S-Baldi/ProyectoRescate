@@ -18,15 +18,43 @@ export default class nivel_5 extends Phaser.Scene
   private obstacles!: obstaclesController  
   private musicaPinguino:any
   private estadoMusica:any;
+  private sfxCria:any;
+  private sfxComida:any;
 
   public musicaPlay()
   {
     this.musicaPinguino.play({volume:0.5, loop: true})
   }
+  public musicaPause()
+  {
+    this.musicaPinguino.pause()
+  } 
+  public musicaResume()
+  {
+    this.musicaPinguino.resume()
+  }
   public detenerMusica()
   {  
     this.musicaPinguino.stop()            
   }
+  ///////Cria
+  public sfxCriaPlay()
+  {
+    this.sfxCria.play({volume:0.1})
+  } 
+  public detenerSFXCria()
+  {  
+    this.sfxCria.stop()            
+  }
+  ///////Comida
+  public sfxComidaPlay()
+  {
+    this.sfxComida.play({volume:0.1})
+  }
+  public detenerSFXComida()
+  {  
+    this.sfxComida.stop()            
+  } 
 
   constructor(){
     super('nivelPinguino')
@@ -58,7 +86,8 @@ export default class nivel_5 extends Phaser.Scene
   create()
   {
     this.musicaPinguino= this.sound.add('musicaPinguino')
-    
+    this.sfxComida = this.sound.add('sfxComida')
+    this.sfxCria = this.sound.add('sfxCria')
     this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
     if (this.estadoMusica=='1') 
     {
