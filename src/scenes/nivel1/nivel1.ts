@@ -73,7 +73,7 @@ export default class nivel_1 extends Phaser.Scene
     this.load.tilemapTiledJSON('mapa_nivel1', 'assets/Nivel1/nivel_Yaguarete.json');    
     this.load.tilemapTiledJSON('yaguareteTest' , 'assets/Nivel1/nivel_YaguareteTest.json');
     this.load.image('nivel1Fondoo','assets/Nivel1/nivel1_fondo.png');
-    this.load.image('nivel1Sueloo','assets/Nivel1/nivel1_suelo.png');    
+    this.load.image('nivel1Sueloo','assets/Nivel1/nivel1_suelo.png');
     this.load.image('nivel1Bandera', 'assets/Nivel1/bandera.png');
     this.load.atlas('yaguarete' , 'assets/Nivel1/yaguarete.png', 'assets/Nivel1/yaguarete.json');
     this.load.atlas('nivel1Trampaa','assets/Nivel1/trampa.png','assets/Nivel1/trampa.json'); 
