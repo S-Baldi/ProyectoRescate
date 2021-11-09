@@ -58,11 +58,11 @@ export default class popUpInformativo extends Phaser.Scene
     }
     if (info=='nivelMonoDesbloqueado') 
     {
-      let txtInformativoBonusYagua= this.add.text(450, 400, getPhrase('-Nivel Mono Caí desbloqueado'), this.Texto).setDepth(3);
+      let txtInformativoBonusYagua= this.add.text(450, 400, getPhrase('-Nivel Principal del Mono Caí desbloqueado'), this.Texto).setDepth(3);
     }   
     if (info=='bonusMonoDesbloqueado') 
     {
-      let txtInformativoBonusYagua= this.add.text(450, 400, getPhrase('-Nivel Bonus Mono Caí desbloqueado'), this.Texto).setDepth(3);
+      let txtInformativoBonusYagua= this.add.text(450, 400, getPhrase('-Nivel Bonus del Mono Caí desbloqueado'), this.Texto).setDepth(3);
     }
   }
 }

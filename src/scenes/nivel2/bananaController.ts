@@ -22,7 +22,7 @@ export default class bananaController
 	}
   private moveOnEnter()
 	{
-		this.sprite.play('bananaMonoMove')		
+		this.sprite.play('bananaMonoMove')
 	}
   private createAnimationBananaMono(){
     this.sprite.anims.create({
