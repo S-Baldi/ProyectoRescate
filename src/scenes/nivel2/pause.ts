@@ -12,7 +12,9 @@ export default class pauseMono extends Phaser.Scene{
     this.load.image('pause', 'assets/Nivel1/popUpPause.png');
   }
   
-  create(){
+  create()
+  {
+    this.scene.get('nivelMono').musicaPause()
     const gamePause = this.add.image(683, 384, 'pause')
     this.add.text(580, 250, getPhrase('Pausa'), {
       fontFamily: 'Titan One',
@@ -48,10 +50,12 @@ export default class pauseMono extends Phaser.Scene{
     .setInteractive()
     .on('pointerover', () => buttonVolverJugar.setScale(1.1))
     .on('pointerout', () => buttonVolverJugar.setScale(1))
-    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>{
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+    {
       this.scene.stop()
       this.scene.resume('nivelMono')
       this.scene.resume('uiMono')
+      this.scene.get('nivelMono').musicaResume()
     })
     
   }

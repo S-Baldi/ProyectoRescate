@@ -30,7 +30,14 @@ export default class nivel_1 extends Phaser.Scene
   {
     this.musicaYaguarete.play({volume:0.5, loop: true})
   } 
-  
+  public musicaPause()
+  {
+    this.musicaYaguarete.pause()
+  } 
+  public musicaResume()
+  {
+    this.musicaYaguarete.resume()
+  }   
   public detenerMusica()
   {  
     this.musicaYaguarete.stop()            

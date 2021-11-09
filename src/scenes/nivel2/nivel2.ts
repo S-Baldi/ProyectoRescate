@@ -29,6 +29,14 @@ export default class nivel_2 extends Phaser.Scene
   {
     this.musicaMono.play({volume:0.5, loop: true})
   } 
+  public musicaPause()
+  {
+    this.musicaMono.pause()
+  } 
+  public musicaResume()
+  {
+    this.musicaMono.resume()
+  }
   
   public detenerMusica()
   {  

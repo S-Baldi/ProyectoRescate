@@ -14,6 +14,7 @@ export default class pausePinguino extends Phaser.Scene{
   
   create()
   {
+    this.scene.get('nivelPinguino').musicaPause()
     const sonidoButton = this.sound.add('sonidoBoton');
 
     const gamePause = this.add.image(683, 384, 'pause')
@@ -53,11 +54,13 @@ export default class pausePinguino extends Phaser.Scene{
     .setInteractive()
     .on('pointerover', () => buttonVolverJugar.setScale(1.1))
     .on('pointerout', () => buttonVolverJugar.setScale(1))
-    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>{
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+    {
       this.scene.stop()
       this.scene.resume('nivelPinguino')
       this.scene.resume('uiPinguino')
       sonidoButton.play({volume:0.5})
+      this.scene.get('nivelPinguino').musicaResume()
     })
     
   }

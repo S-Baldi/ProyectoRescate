@@ -23,6 +23,7 @@ export default class pause extends Phaser.Scene{
   create()
   {
     const sonidoButton = this.sound.add('sonidoBoton');
+    this.scene.get('nivelYaguarete').musicaPause()
 
     const gamePause = this.add.image(683, 384, 'pause')
     this.add.text(580, 250, getPhrase('Pausa'), this.fuenteTexto)
@@ -60,6 +61,7 @@ export default class pause extends Phaser.Scene{
       this.scene.resume('nivelYaguarete')
       this.scene.resume('ui')
       sonidoButton.play({volume:0.5})
+      this.scene.get('nivelYaguarete').musicaResume()
     })
     
   }
