@@ -134,7 +134,6 @@ export default class mp1 extends Phaser.Scene
       this.sfxPlay()
     });  
     
-    const banderaArg = this.add.image(90, 200, 'botonIdiomaEspañol').setScale(0.2);
 
   }
 
