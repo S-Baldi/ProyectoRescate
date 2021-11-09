@@ -6,13 +6,14 @@ export default class mp1 extends Phaser.Scene
   private musicaMP:any  
   private sonidoButton:any;
   private estadoMusica:any;
-  private estadoSFX:any; 
+   
 
 
   public detenerMusica()
   {    
     this.musicaMP.stop()              
   }
+  
   public sfxDetenido()
   {
     this.sonidoButton.stop()
@@ -22,6 +23,7 @@ export default class mp1 extends Phaser.Scene
   {
     this.musicaMP.play({volume:0.25, loop: true})       
   }
+  
   public sfxPlay()
   {
     this.sonidoButton.play({volume:0.5})
@@ -36,7 +38,9 @@ export default class mp1 extends Phaser.Scene
   {    
     //////////Musica Mapa  
     this.load.audio('musicaMapa', 'audio/musicaMapa.mp3')
-    
+    /////////efectos de sonido niveles
+    this.load.audio('sfxComida', 'audio/sfx/obtenerComida.ogg');
+    this.load.audio('sfxCria', 'audio/sfx/obtenerCria.ogg');
 
     //CARGAMOS EN UN ARRAY TODAS LAS FUENTES QUE SE QUIEREN PARA EL JUEGO
     this.load.addFile(new WebFontFile(this.load, [
@@ -54,13 +58,7 @@ export default class mp1 extends Phaser.Scene
     if (this.estadoMusica=='1') 
     {
       this.musicaPlay()    
-    }  
-    this.estadoSFX=localStorage.getItem('sfxPlay')|| '0';
-    
-    if (this.estadoSFX=='1') 
-    {
-      this.sfxPlay()
-    }
+    } 
 
     //Fondo del Mp
     const fondoMenu = this.add.image(683, 384, 'menu').setScale(0.75);
@@ -73,7 +71,10 @@ export default class mp1 extends Phaser.Scene
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
       this.scene.start('menuMapa') 
-      this.sfxPlay()
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
       this.detenerMusica()
     });
 
@@ -84,7 +85,11 @@ export default class mp1 extends Phaser.Scene
     .on('pointerout', () => buttonPremio.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
-      this.scene.start('extras') && this.sfxPlay()
+      this.scene.start('extras')
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
     });
 
     //Boton Info
@@ -94,7 +99,11 @@ export default class mp1 extends Phaser.Scene
     .on('pointerout', () => buttonInfo.setScale(1))
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
     { 
-      this.scene.start('informacion') && this.sfxPlay()
+      this.scene.start('informacion')
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
     });
 
     let n=0

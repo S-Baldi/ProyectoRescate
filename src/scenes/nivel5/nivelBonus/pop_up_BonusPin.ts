@@ -7,8 +7,18 @@ export default class pop_up_Pingui extends Phaser.Scene{
   color: '#000000',
   align: 'justify'
   };
+  private estadoMusica:any
 
   private contadorEntrarNivel5:number=0
+  private sonidoButton:any;
+  public sfxDetenido()
+  {
+    this.sonidoButton.stop()
+  }
+  public sfxPlay()
+  {
+    this.sonidoButton.play({volume:0.5})
+  }
 
   constructor()
   {
@@ -23,15 +33,23 @@ export default class pop_up_Pingui extends Phaser.Scene{
   
   create()
   {
+    this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
+    this.sonidoButton = this.sound.add('sonidoBoton');
     this.scene.get('nivelBonusPin').detenerMusica()
-    const sonidoButton = this.sound.add('sonidoBoton');
-
+    
     const fondoPopUpBonus = this.add.image(680, 250, 'botonNivel').setScale(0.7);
 
     const volverMapa = this.add.image(680, 350, 'botonMapa')
     .setInteractive()  
-    .on('pointerdown', () => this.scene.start('menuMapa') && sonidoButton.play({volume:0.5}) 
-    && this.scene.stop('nivelBonusPin'));
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
+    {
+      this.scene.start('menuMapa') 
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      } 
+      this.scene.stop('nivelBonusPin')
+    });
     //console.log(this.scene.start('menuMapa'))    
   }
   

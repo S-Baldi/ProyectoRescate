@@ -28,7 +28,15 @@ export default class extras extends Phaser.Scene
   align: 'justify',
   };
   private estadoMusica:any;
-  private musicaMP:any 
+  private sonidoButton:any;
+  public sfxDetenido()
+  {
+    this.sonidoButton.stop()
+  }
+  public sfxPlay()
+  {
+    this.sonidoButton.play({volume:0.5})
+  }
 
   constructor()
   {
@@ -49,7 +57,9 @@ export default class extras extends Phaser.Scene
 
   create()
   {
-    const sonidoButton = this.sound.add('sonidoBoton');
+    this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
+    this.sonidoButton = this.sound.add('sonidoBoton');
+    
 
     const fondoMenu = this.add.image(683, 384, 'fondoLimpio').setScale(0.72);
     this.add.text(550, 50, 'EXTRAS', {  
@@ -64,8 +74,16 @@ export default class extras extends Phaser.Scene
     .setInteractive()
     .on('pointerover', () => buttonAtras.setScale(1.1))
     .on('pointerout', () => buttonAtras.setScale(1))
-    .on('pointerdown', () => this.scene.start('menuPpal') && this.scene.get('menuPpal').detenerMusica() && sonidoButton.play({volume:0.5}) 
-    && this.scene.get('menuPpal'));
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+    { 
+      this.scene.start('menuPpal') 
+      this.scene.get('menuPpal').detenerMusica()
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      } 
+      this.scene.get('menuPpal')
+    });
 
     this.estrellaMasAltaYagua = localStorage.getItem('estrellasYaguarete') || '1';
     this.cantidadEstrellasYaguaBonus= localStorage.getItem('estrellasYaguareteBonus') || '1';
@@ -96,7 +114,16 @@ export default class extras extends Phaser.Scene
       stroke: '#00572f',
       strokeThickness: 6,})
       .setInteractive() 
-      .on('pointerdown', () => this.scene.launch('pop_up_E') && sonidoButton.play({volume:0.5}) && this.scene.pause() && this.scene.get('pop_up_E').mostrarInfo('yaguareteInformation'));
+      .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+      { 
+        this.scene.launch('pop_up_E')
+        if (this.estadoMusica=='1') 
+        {
+          this.sfxPlay()
+        }
+        this.scene.pause()
+        this.scene.get('pop_up_E').mostrarInfo('yaguareteInformation')
+      });
       
     }
 
@@ -118,7 +145,16 @@ export default class extras extends Phaser.Scene
       stroke: '#00572f',
       strokeThickness: 6,})
       .setInteractive() 
-      .on('pointerdown', () => this.scene.launch('pop_up_E') && sonidoButton.play({volume:0.5}) && this.scene.pause() && this.scene.get('pop_up_E').mostrarInfo('monoInformation'));  
+      .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+      { 
+        this.scene.launch('pop_up_E')
+        if (this.estadoMusica=='1') 
+        {
+          this.sfxPlay()
+        }
+        this.scene.pause()
+        this.scene.get('pop_up_E').mostrarInfo('monoInformation')
+      });  
     }
 
     //Condor
@@ -138,7 +174,16 @@ export default class extras extends Phaser.Scene
       stroke: '#00572f',
       strokeThickness: 6,})
       .setInteractive() 
-      .on('pointerdown', () => this.scene.launch('pop_up_E') && sonidoButton.play({volume:0.5}) && this.scene.pause() && this.scene.get('pop_up_E').mostrarInfo('condorInformation')) ;   
+      .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+      { 
+        this.scene.launch('pop_up_E')
+        if (this.estadoMusica=='1') 
+        {
+          this.sfxPlay()
+        }
+        this.scene.pause()
+        this.scene.get('pop_up_E').mostrarInfo('condorInformation')
+      }) ;   
     }
 
     //Ballena
@@ -159,7 +204,16 @@ export default class extras extends Phaser.Scene
       stroke: '#00572f',
       strokeThickness: 6,})
       .setInteractive() 
-      .on('pointerdown', () => this.scene.launch('pop_up_E') && sonidoButton.play({volume:0.5}) && this.scene.pause() && this.scene.get('pop_up_E').mostrarInfo('ballenaInformation')) ;  
+      .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+      { 
+        this.scene.launch('pop_up_E')
+        if (this.estadoMusica=='1') 
+        {
+          this.sfxPlay()
+        }
+        this.scene.pause()
+        this.scene.get('pop_up_E').mostrarInfo('ballenaInformation')
+      }) ;  
     }
 
     //Pingüino
@@ -181,7 +235,16 @@ export default class extras extends Phaser.Scene
       stroke: '#00572f',
       strokeThickness: 6,})
       .setInteractive() 
-      .on('pointerdown', () => this.scene.launch('pop_up_E') && sonidoButton.play({volume:0.5}) && this.scene.pause() && this.scene.get('pop_up_E').mostrarInfo('pinguinoInformation')) ;  
+      .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+      { 
+        this.scene.launch('pop_up_E')
+        if (this.estadoMusica=='1') 
+        {
+          this.sfxPlay()
+        }
+        this.scene.pause()
+        this.scene.get('pop_up_E').mostrarInfo('pinguinoInformation')
+      }) ;  
     } 
   }  
 }

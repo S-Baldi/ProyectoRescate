@@ -40,6 +40,16 @@ export default class popUpMapa extends Phaser.Scene
   strokeThickness: 4,
   align: 'justify',
   };
+  private estadoMusica:any;
+  private sonidoButton:any;
+  public sfxDetenido()
+  {
+    this.sonidoButton.stop()
+  }
+  public sfxPlay()
+  {
+    this.sonidoButton.play({volume:0.5})
+  }
   
   
   constructor()
@@ -86,8 +96,8 @@ export default class popUpMapa extends Phaser.Scene
   
   create()
   {
-    const sonidoButton = this.sound.add('sonidoBoton');
-    
+    this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
+    this.sonidoButton = this.sound.add('sonidoBoton');  
     this.add.image(680, 350, 'popUpMapaNiveles').setScale(0.7).setDepth(-1);
     const buttonAtras = this.add.image(900, 250, 'botonatras')
     .setInteractive()
@@ -97,7 +107,10 @@ export default class popUpMapa extends Phaser.Scene
     { 
       this.scene.stop() 
       this.scene.resume('menuMapa') 
-      sonidoButton.play({volume:0.5})
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
     });     
   }  
 
@@ -120,7 +133,10 @@ export default class popUpMapa extends Phaser.Scene
       {
         this.scene.sleep('menuMapa')  
         this.scene.start('nivelYaguarete')  
-        this.sound.play('sonidoBoton', {volume:0.5})
+        if (this.estadoMusica=='1') 
+        {
+          this.sfxPlay()
+        }
         this.scene.get('menuMapa').detenerMusica()
       })
 
@@ -141,7 +157,10 @@ export default class popUpMapa extends Phaser.Scene
         .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
         {  
           this.scene.start('nivelBonus') 
-          this.sound.play('sonidoBoton', {volume:0.5})
+          if (this.estadoMusica=='1') 
+          {
+            this.sfxPlay()
+          }
           this.scene.get('menuMapa').detenerMusica()
         }))            
       }     
@@ -170,7 +189,10 @@ export default class popUpMapa extends Phaser.Scene
         {
           this.scene.sleep('menuMapa') /* duermo el mapa para guardar datos */ 
           this.scene.start('nivelPinguino') 
-          this.sound.play('sonidoBoton', {volume:0.5})
+          if (this.estadoMusica=='1') 
+          {
+          this.sfxPlay()
+          }
           this.scene.get('menuMapa').detenerMusica()
         }).setDepth(7).setVisible(true)) 
       }
@@ -186,7 +208,10 @@ export default class popUpMapa extends Phaser.Scene
         .setInteractive().on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
         { 
           this.scene.start('nivelBonusPin') 
-          this.sound.play('sonidoBoton', {volume:0.5})
+          if (this.estadoMusica=='1') 
+          {
+            this.sfxPlay()
+          }
           this.scene.get('menuMapa').detenerMusica()
         }).setDepth(7).setVisible(true))
       }
@@ -216,7 +241,10 @@ export default class popUpMapa extends Phaser.Scene
         {
           this.scene.sleep('menuMapa')          
           this.scene.start('nivelMono') 
-          this.sound.play('sonidoBoton', {volume:0.5}) 
+          if (this.estadoMusica=='1') 
+          {
+            this.sfxPlay()
+          }
           this.scene.get('menuMapa').detenerMusica()
         }).setDepth(7).setVisible(true)) 
       }
@@ -232,7 +260,10 @@ export default class popUpMapa extends Phaser.Scene
         .setInteractive().on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
         { 
           this.scene.start('nivelBonusMono') 
-          this.sound.play('sonidoBoton', {volume:0.5})
+          if (this.estadoMusica=='1') 
+          {
+            this.sfxPlay()
+          }
           this.scene.get('menuMapa').detenerMusica()
         }).setDepth(7).setVisible(true))
       }

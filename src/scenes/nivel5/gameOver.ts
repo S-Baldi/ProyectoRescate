@@ -9,7 +9,17 @@ export default class gameOverPinguino extends Phaser.Scene{
     stroke: '#00572f',
     strokeThickness: 6,
   }
-  private estadoMusica:any
+  private estadoMusica:any;
+  private sonidoButton:any;
+  public sfxDetenido()
+  {
+    this.sonidoButton.stop()
+  }
+  public sfxPlay()
+  {
+    this.sonidoButton.play({volume:0.5})
+  }
+  
   private musicaLose:any
   public musicaPlay()
   {
@@ -31,14 +41,14 @@ export default class gameOverPinguino extends Phaser.Scene{
   
   create()
   {
+    this.sonidoButton = this.sound.add('sonidoBoton');
     this.musicaLose= this.sound.add('lose')
     this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
     if (this.estadoMusica=='1') 
     {
       this.musicaPlay()
     }
-    const sonidoButton = this.sound.add('sonidoBoton');
-    
+      
     const gameLose = this.add.image(683, 384, 'losePinguino')
     
     this.add.text(550, 150, getPhrase('Derrota'), this.fuenteTexto)
@@ -51,7 +61,10 @@ export default class gameOverPinguino extends Phaser.Scene{
     { 
       this.scene.stop('nivelPinguino')
       this.scene.start('nivelPinguino')
-      sonidoButton.play({volume:0.5})
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
     });
 
     const buttonMapa = this.add.image(600, 520, 'botonMapa')
@@ -62,7 +75,10 @@ export default class gameOverPinguino extends Phaser.Scene{
     { 
       this.scene.stop('nivelPinguino')
       this.scene.start('menuMapa')
-      sonidoButton.play({volume:0.5})
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
     });
   }
   

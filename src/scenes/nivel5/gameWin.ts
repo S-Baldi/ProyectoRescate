@@ -14,6 +14,16 @@ export default class gameWinPinguino extends Phaser.Scene{
     stroke: '#00572f',
     strokeThickness: 6,
   }
+  
+  private sonidoButton:any;
+  public sfxDetenido()
+  {
+    this.sonidoButton.stop()
+  }
+  public sfxPlay()
+  {
+    this.sonidoButton.play({volume:0.5})
+  }
   public musicaPlay()
   {
     this.musicaWin.play({volume:0.2})
@@ -36,14 +46,13 @@ export default class gameWinPinguino extends Phaser.Scene{
   
   create()
   {
+    this.sonidoButton = this.sound.add('sonidoBoton');
     this.musicaWin= this.sound.add('win')
     this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
     if (this.estadoMusica=='1') 
     {
       this.musicaPlay()
     }
-    const sonidoButton = this.sound.add('sonidoBoton');
-
     this.add.image(683, 384, 'win')
     this.add.text(550, 150, getPhrase('Victoria'), this.fuenteTexto);
 
@@ -55,7 +64,10 @@ export default class gameWinPinguino extends Phaser.Scene{
     { 
       this.scene.stop('nivelPinguino')
       this.scene.start('nivelPinguino')
-      sonidoButton.play({volume:0.5})
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
     });
 
     const buttonMapa = this.add.image(600, 590, 'botonMapa')
@@ -67,7 +79,10 @@ export default class gameWinPinguino extends Phaser.Scene{
       this.scene.get("popUpMapa").ganar()
       this.scene.stop('nivelPinguino')
       this.scene.start('menuMapa')
-      sonidoButton.play({volume:0.5})
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
       
       if (this.contadorEntrarNivel5>0 && this.contadorEntrarNivel5<2) 
       {

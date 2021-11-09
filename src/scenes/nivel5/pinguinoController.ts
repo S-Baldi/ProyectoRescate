@@ -15,7 +15,7 @@ export default class pipnguinoController
 
   private stateMachine: StateMachine
   private obstacles: ObstaclesController
-
+  private estadoMusica:any;
 	public cantEstrellas = 0
 
   constructor(scene: Phaser.Scene, 
@@ -23,6 +23,7 @@ export default class pipnguinoController
 		cursors: CursorKeys, 
 		obstacles: ObstaclesController) 
   {
+		this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
 		this.pointer = scene.input.activePointer;
     this.scene = scene
 		this.sprite = sprite
@@ -110,6 +111,10 @@ export default class pipnguinoController
 				{
 					sprite.destroy()
 					events.emit('crias-collected')
+					if (this.estadoMusica=='1') 
+					{
+						this.scene.scene.get('nivelPinguino').sfxCriaPlay()
+					}
 					break
 				}	
 
@@ -117,6 +122,10 @@ export default class pipnguinoController
 				{
 					events.emit('comida-collected')
 					sprite.destroy()
+					if (this.estadoMusica=='1') 
+					{
+						this.scene.scene.get('nivelPinguino').sfxComidaPlay()
+					}
 					break
 				}
 			}

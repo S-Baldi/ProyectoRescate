@@ -18,6 +18,8 @@ export default class nivel_2 extends Phaser.Scene
   private obstacles!: obstaclesController  
   private banderasMono?: Phaser.Physics.Matter.Sprite
   private estadoMusica:any;
+  private sfxCria:any;
+  private sfxComida:any;
 
   constructor(){
     super('nivelMono')
@@ -36,12 +38,29 @@ export default class nivel_2 extends Phaser.Scene
   public musicaResume()
   {
     this.musicaMono.resume()
-  }
-  
+  }  
   public detenerMusica()
   {  
     this.musicaMono.stop()            
   }
+  ///////Cria
+  public sfxCriaPlay()
+  {
+    this.sfxCria.play({volume:0.1})
+  } 
+  public detenerSFXCria()
+  {  
+    this.sfxCria.stop()            
+  }
+  ///////Comida
+  public sfxComidaPlay()
+  {
+    this.sfxComida.play({volume:0.1})
+  }
+  public detenerSFXComida()
+  {  
+    this.sfxComida.stop()            
+  } 
 
   init()
   {
@@ -66,7 +85,8 @@ export default class nivel_2 extends Phaser.Scene
   create()
   {
     this.musicaMono= this.sound.add('musicaMono')
-    
+    this.sfxComida = this.sound.add('sfxComida')
+    this.sfxCria = this.sound.add('sfxCria')
     this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
     if (this.estadoMusica=='1') 
     {

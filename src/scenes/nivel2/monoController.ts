@@ -21,13 +21,14 @@ export default class monoController
 	private controlEstrellas?:UI_Mono
 
 	private velocidadMono = 15
-	
+	private estadoMusica:any;
 
   constructor(scene: Phaser.Scene, 
 		sprite: Phaser.Physics.Matter.Sprite, 
 		cursors: CursorKeys, 
 		obstacles: ObstaclesController) 
   {
+		this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
 		this.pointer = scene.input.activePointer; //LE COLOCAMOS AL POINTER UN ACTIVEPOINTER
     this.scene = scene
 		this.sprite = sprite
@@ -105,6 +106,10 @@ export default class monoController
 				{
 					sprite.destroy()
 					events.emit('crias-collected')
+					if (this.estadoMusica=='1') 
+					{
+						this.scene.scene.get('nivelMono').sfxCriaPlay()
+					}
 					break
 				}	
 
@@ -112,6 +117,10 @@ export default class monoController
 				{
 					events.emit('comida-collected')
 					sprite.destroy()
+					if (this.estadoMusica=='1') 
+					{
+						this.scene.scene.get('nivelMono').sfxComidaPlay()
+					}
 					break
 				}
 			}

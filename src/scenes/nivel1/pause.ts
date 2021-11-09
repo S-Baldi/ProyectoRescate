@@ -10,6 +10,17 @@ export default class pause extends Phaser.Scene{
     stroke: '#00572f',
     strokeThickness: 6,
   }
+  private estadoMusica:any;
+  private sonidoButton:any;
+  public sfxDetenido()
+  {
+    this.sonidoButton.stop()
+  }
+  public sfxPlay()
+  {
+    this.sonidoButton.play({volume:0.5})
+  }
+  
   constructor()
   {
     super('pause');
@@ -22,7 +33,8 @@ export default class pause extends Phaser.Scene{
   
   create()
   {
-    const sonidoButton = this.sound.add('sonidoBoton');
+    this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
+    this.sonidoButton = this.sound.add('sonidoBoton');
     this.scene.get('nivelYaguarete').musicaPause()
 
     const gamePause = this.add.image(683, 384, 'pause')
@@ -37,7 +49,10 @@ export default class pause extends Phaser.Scene{
       this.scene.stop('nivelYaguarete')
       this.scene.stop('ui')
       this.scene.start('menuMapa')
-      sonidoButton.play({volume:0.5})
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
     });
 
     const buttonRestart = this.add.image(690, 440,  'botonReset')
@@ -49,7 +64,10 @@ export default class pause extends Phaser.Scene{
       this.scene.stop()
       this.scene.stop('nivelYaguarete')
       this.scene.start('nivelYaguarete')
-      sonidoButton.play({volume:0.5})
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
     });  
 
     const buttonVolverJugar = this.add.image(890, 440, 'botonPlay')
@@ -60,7 +78,10 @@ export default class pause extends Phaser.Scene{
       this.scene.stop()
       this.scene.resume('nivelYaguarete')
       this.scene.resume('ui')
-      sonidoButton.play({volume:0.5})
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
       this.scene.get('nivelYaguarete').musicaResume()
     })
     

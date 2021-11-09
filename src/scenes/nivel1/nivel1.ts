@@ -19,12 +19,14 @@ export default class nivel_1 extends Phaser.Scene
   private carne?: Phaser.Physics.Matter.Sprite
   private carneController?: carneController
   private obstacles!: obstaclesController 
-  private estadoMusica:any;   
+  private estadoMusica:any; 
+  private musicaYaguarete:any;
+  private sfxComida:any; 
+  private sfxCria 
 
   constructor(){
     super('nivelYaguarete')
-  }
-  public musicaYaguarete:any
+  } 
 
   public musicaPlay()
   {
@@ -42,6 +44,24 @@ export default class nivel_1 extends Phaser.Scene
   {  
     this.musicaYaguarete.stop()            
   }
+  ///////Cria
+  public sfxCriaPlay()
+  {
+    this.sfxCria.play({volume:0.10})
+  } 
+  public detenerSFXCria()
+  {  
+    this.sfxCria.stop()            
+  }
+  ///////Comida
+  public sfxComidaPlay()
+  {
+    this.sfxComida.play({volume:0.1})
+  }
+  public detenerSFXComida()
+  {  
+    this.sfxComida.stop()            
+  } 
 
   init()
   {
@@ -65,6 +85,8 @@ export default class nivel_1 extends Phaser.Scene
   create()
   {
     this.musicaYaguarete= this.sound.add('musicaYaguarete')    
+    this.sfxComida = this.sound.add('sfxComida')
+    this.sfxCria = this.sound.add('sfxCria')
     this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
     if (this.estadoMusica=='1') 
     {
