@@ -58,11 +58,11 @@ export default class monoController
     this.sprite.setOnCollide((data: MatterJS.ICollisionPair) => {
       const body = data.bodyB as MatterJS.BodyType
 			
-		/* 	if (this.obstacles.is('hitBoxSuelo', body))
+			if (this.obstacles.is('hitBoxSuelo', body))
 			{
 				this.stateMachine.setState('sueloHit')
 				return
-			} */
+			}
 			
 			if (this.obstacles.is('bandera', body))
 			{
@@ -172,8 +172,7 @@ export default class monoController
 		this.sprite.play('mono-jump')
 		this.sprite.setVelocityY(-40)		
 
-		setTimeout(() => {
-			
+		setTimeout(() => {			
 		this.stateMachine.setState('walk')
 		},500)
 		
