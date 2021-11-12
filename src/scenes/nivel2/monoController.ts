@@ -134,8 +134,9 @@ export default class monoController
   update(dt: number)
 	{
 		this.stateMachine.update(dt)
+		this.sprite.setVelocityX(this.velocidadMono)
 		if (this.sprite.body.velocity.x <= this.velocidadMono && this.sprite.body.velocity.x > 1 ){
-			this.sprite.setVelocityX(this.velocidadMono)
+			//this.sprite.setVelocityX(this.velocidadMono)
 		}
 		if (this.sprite.body.velocity.x == 0)
 		{
@@ -151,6 +152,7 @@ export default class monoController
 	//	WALK  
   private walkOnEnter()
 	{
+		this.sprite.stop()
 		this.sprite.play('mono-walk')	
 	}
 
@@ -168,13 +170,17 @@ export default class monoController
 	{		
 		this.sprite.stop()
 		this.sprite.play('mono-jump')
-		this.sprite.setVelocityY(-40)
-		//this.sprite.setVelocityX(18)
+		this.sprite.setVelocityY(-40)		
+
+		setTimeout(() => {			
+		this.stateMachine.setState('walk')
+		},500)
+		
 	}
 
 	private jumpOnExit()
 	{
-		this.sprite.stop()
+		//this.sprite.stop()
 	}
 
 	private sueloHitOnEnter(){
