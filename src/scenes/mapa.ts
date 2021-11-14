@@ -195,7 +195,6 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
-      this.scene.start('nivelPinguino')
     })
 
     this.add.text(251,330, getPhrase('PRÓXIMAMENTE'), this.fuenteTextoProx).angle = -25;
@@ -244,12 +243,7 @@ export default class mapa extends Phaser.Scene
   {
     const estrellasTotales = +this.estrellaMasAltaPingui + +this.estrellaMasAltaYagua + 
     +this.cantidadEstrellasYaguaBonus + +this.cantidadEstrellasPinguiBonus + +this.estrellaMasAltaMono + +this.cantidadEstrellasMonoBonus
-    /* console.log(this.estrellaMasAltaPingui, 'pinguino')
-    console.log(this.estrellaMasAltaYagua, 'yaguarete')
-    console.log(this.cantidadEstrellasYaguaBonus, 'yaguareteBonus')
-    console.log(this.cantidadEstrellasPinguiBonus, 'pinguinoBonus')
-    console.log(this.estrellaMasAltaMono, 'mono')
-    console.log(this.cantidadEstrellasMonoBonus, 'monoBonus') */
+    
 
     this.add.text(1140, 625,`= ` + estrellasTotales,  
     {fontFamily: 'Titan One',

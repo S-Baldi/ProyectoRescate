@@ -27,6 +27,16 @@ export default class pop_upExt extends Phaser.Scene
     stroke: '#00572f',
     strokeThickness: 6,
   };
+  private estadoMusica:any;
+  private sonidoButton:any;
+  public sfxDetenido()
+  {
+    this.sonidoButton.stop()
+  }
+  public sfxPlay()
+  {
+    this.sonidoButton.play({volume:0.5})
+  }
 
   
   constructor()
@@ -42,13 +52,22 @@ export default class pop_upExt extends Phaser.Scene
   
   create()
   {
-    const sonidoButton = this.sound.add('sonidoBoton');
+    this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
+    this.sonidoButton = this.sound.add('sonidoBoton');
     const fondoPopUpExtras = this.add.image(680, 390, 'popUpExtras').setScale(0.85)
     const buttonAtras = this.add.image(1120, 150, 'botonatras')
     .setInteractive()
     .on('pointerover', () => buttonAtras.setScale(1.1))
     .on('pointerout', () => buttonAtras.setScale(1))
-    .on('pointerdown', () => this.scene.stop() && this.scene.resume('extras') && sonidoButton.play({volume:0.5}));    
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+    { 
+      this.scene.stop() 
+      this.scene.resume('extras') 
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      } 
+    });    
   }  
 
   public mostrarInfo(info:string)

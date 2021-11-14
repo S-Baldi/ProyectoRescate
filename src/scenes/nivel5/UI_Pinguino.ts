@@ -12,8 +12,8 @@ export default class UI_Pinguino extends Phaser.Scene
 	
 
 	//Totales del nivel
-	private criasTotales = 3
-	private comidaTotales = 50
+	private criasTotales = 1
+	private comidaTotales = 1
 	
 	//Estrellas totales [0 a 3]
 	private estrellasNivel1 = 0

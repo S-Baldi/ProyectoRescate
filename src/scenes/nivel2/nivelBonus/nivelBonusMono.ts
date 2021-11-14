@@ -46,8 +46,8 @@ export default class bonusMono extends Phaser.Scene{
   preload()
   {
     this.load.image('Bonus', 'assets/Mapa/BonusYaguarete/NivelBonus.png');
-    this.load.image('yaguaBonus', 'assets/Mapa/BonusYaguarete/imagenYagua.png');
-    this.load.image('yaguaretePic', 'assets/Mapa/BonusYaguarete/yaguarete.png');
+    this.load.image('monoCai1', 'assets/Mapa/BonusMono/monoCai4.png');
+    this.load.image('monoCai2', 'assets/Mapa/BonusMono/monoCai3.png');
   }
 
   create()
@@ -76,8 +76,8 @@ export default class bonusMono extends Phaser.Scene{
       this.detenerMusica()
     })
 
-    const portada = this.add.image(874, 235, 'yaguaretePic').setScale(0.7);
-    const portada2 = this.add.image(496, 235, 'yaguaBonus').setScale(1.35);
+    const portada = this.add.image(860, 235, 'monoCai1').setScale(0.39);
+    const portada2 = this.add.image(515, 235, 'monoCai2').setScale(0.6);
     
     let preguntasBonus= new Array<preguntasMono>()
     preguntasBonus.push(new preguntasMono
