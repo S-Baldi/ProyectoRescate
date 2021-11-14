@@ -1,6 +1,5 @@
 import Phaser from 'phaser'
 import { getPhrase } from '~/services/translation'
-
 export default class popUpMapa extends Phaser.Scene
 {  
   //yaguarete
@@ -87,11 +86,6 @@ export default class popUpMapa extends Phaser.Scene
     this.textoYaguarete
     this.textoPinguino
     this.textoMono              
-  }
-
-  preload()
-  {     
-    
   }
   
   create()

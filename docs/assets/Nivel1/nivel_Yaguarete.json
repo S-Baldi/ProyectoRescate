@@ -98,17 +98,6 @@
                  "y":-550.575757575758
                 }, 
                 {
-                 "height":56,
-                 "id":43,
-                 "name":"trampa",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":69,
-                 "x":1814.59090909091,
-                 "y":595
-                }, 
-                {
                  "height":47,
                  "id":44,
                  "name":"carne",
@@ -116,19 +105,8 @@
                  "type":"",
                  "visible":true,
                  "width":58,
-                 "x":2026.15151515152,
-                 "y":532.712121212121
-                }, 
-                {
-                 "height":56,
-                 "id":45,
-                 "name":"trampa",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":69,
-                 "x":3041.86363636364,
-                 "y":595
+                 "x":2074.15151515152,
+                 "y":556.712121212121
                 }, 
                 {
                  "height":47,
@@ -138,8 +116,8 @@
                  "type":"",
                  "visible":true,
                  "width":58,
-                 "x":2529.18181818182,
-                 "y":520.590909090909
+                 "x":2230.18181818182,
+                 "y":432.590909090909
                 }, 
                 {
                  "height":45.4545454545454,
@@ -809,19 +787,8 @@
                  "type":"",
                  "visible":true,
                  "width":58,
-                 "x":2798.27272727273,
-                 "y":518.924242424242
-                }, 
-                {
-                 "height":47,
-                 "id":120,
-                 "name":"carne",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":58,
-                 "x":6283.12121212121,
-                 "y":518.924242424242
+                 "x":2378.27272727273,
+                 "y":558.924242424242
                 }, 
                 {
                  "height":47,
@@ -833,17 +800,6 @@
                  "width":58,
                  "x":7171,
                  "y":524.984848484848
-                }, 
-                {
-                 "height":47,
-                 "id":122,
-                 "name":"carne",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":58,
-                 "x":7489.18181818182,
-                 "y":528.015151515152
                 }, 
                 {
                  "height":47,
@@ -1075,6 +1031,28 @@
                  "width":58,
                  "x":12447,
                  "y":520.5
+                }, 
+                {
+                 "height":47,
+                 "id":165,
+                 "name":"carne",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":58,
+                 "x":2342,
+                 "y":484.5
+                }, 
+                {
+                 "height":47,
+                 "id":166,
+                 "name":"carne",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":58,
+                 "x":2136,
+                 "y":480.5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1083,7 +1061,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":165,
+ "nextobjectid":167,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",

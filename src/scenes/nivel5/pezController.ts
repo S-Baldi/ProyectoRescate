@@ -22,7 +22,7 @@ export default class pezController
 	}
   private moveOnEnter()
 	{
-		this.sprite.play('pezPinguiMove')		
+		this.sprite.play('pezPinguiMove')
 	}
   private createAnimationBananaMono(){
     this.sprite.anims.create({

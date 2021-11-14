@@ -3,7 +3,6 @@ import { getPhrase } from '~/services/translation';
 
 export default class gameWinPinguino extends Phaser.Scene{
   private cantidadEstrellasPingui: any
-  private cantidadCiertaEstrellasPinguino: any
   private contadorEntrarNivel5:number=0
   private estadoMusica:any
   private musicaWin:any
@@ -56,21 +55,7 @@ export default class gameWinPinguino extends Phaser.Scene{
     this.add.image(683, 384, 'win')
     this.add.text(550, 150, getPhrase('Victoria'), this.fuenteTexto);
 
-    const buttonRestart = this.add.image(800, 590,  'botonReset')
-    .setInteractive()
-    .on('pointerover', () => buttonRestart.setScale(1.1))
-    .on('pointerout', () => buttonRestart.setScale(1))
-    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
-    { 
-      this.scene.stop('nivelPinguino')
-      this.scene.start('nivelPinguino')
-      if (this.estadoMusica=='1') 
-      {
-        this.sfxPlay()
-      }
-    });
-
-    const buttonMapa = this.add.image(600, 590, 'botonMapa')
+    const buttonMapa = this.add.image(6700, 590, 'botonMapa')
     .setInteractive()
     .on('pointerover', () => buttonMapa.setScale(1.1))
     .on('pointerout', () => buttonMapa.setScale(1))

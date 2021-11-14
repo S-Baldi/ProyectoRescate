@@ -1,31 +1,22 @@
-import { Body } from 'matter'
-import Phaser, { LEFT } from 'phaser' 
+import Phaser from 'phaser' 
 import StateMachine from '../../statemachine/StateMachine'
 import { sharedInstance as events } from '../eventCenter'
 import ObstaclesController from '../obstaclesController'
-import UI_Mono from '../nivel2/UI_Mono'
-
-type CursorKeys = Phaser.Types.Input.Keyboard.CursorKeys
-
 export default class monoController
 {
 	private pointer: any //COLOCAMOS UN POINTER PARA EL MOUSE
   private scene: Phaser.Scene
 	private sprite: Phaser.Physics.Matter.Sprite
-	private cursors: CursorKeys
-
+	private cursors: Phaser.Types.Input.Keyboard.CursorKeys
   private stateMachine: StateMachine
   private obstacles: ObstaclesController
-
 	public cantEstrellas = 0
-	private controlEstrellas?:UI_Mono
-
 	private velocidadMono = 15
 	private estadoMusica:any;
 
   constructor(scene: Phaser.Scene, 
 		sprite: Phaser.Physics.Matter.Sprite, 
-		cursors: CursorKeys, 
+		cursors: Phaser.Types.Input.Keyboard.CursorKeys, 
 		obstacles: ObstaclesController) 
   {
 		this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
@@ -44,8 +35,7 @@ export default class monoController
 			onUpdate: this.walkOnUpdate
 		})
 		.addState('jump', {
-			onEnter: this.jumpOnEnter,
-			onExit: this.jumpOnExit
+			onEnter: this.jumpOnEnter
 		})
 		.addState('sueloHit',{
 			onEnter: this.sueloHitOnEnter
@@ -95,12 +85,6 @@ export default class monoController
 					this.stateMachine.setState('banderaCollected')
 					break
 				}
-				case 'cazador':
-				{
-					this.stateMachine.setState('sueloHit')
-					console.log('CHOCASTE CON CAZADOR')
-					break
-				}
 
 				case 'cria':
 				{
@@ -133,84 +117,68 @@ export default class monoController
   }
   update(dt: number)
 	{
-		this.stateMachine.update(dt)
-		this.sprite.setVelocityX(this.velocidadMono)
-		if (this.sprite.body.velocity.x <= this.velocidadMono && this.sprite.body.velocity.x > 1 ){
-			//this.sprite.setVelocityX(this.velocidadMono)
+		this.stateMachine.update(dt);		
+		if (this.sprite.body.velocity.x <= this.velocidadMono && this.sprite.body.velocity.x > 1 )
+		{
+			this.sprite.setVelocityX(this.velocidadMono);
 		}
 		if (this.sprite.body.velocity.x == 0)
 		{
-			this.sprite.setVelocity(0)
+			this.sprite.setVelocity(0);
 		}		
 	}
 
   sumadorEstrellas()
 	{	
-    this.cantEstrellas = this.cantEstrellas+1			
+    this.cantEstrellas = this.cantEstrellas+1;
 	}
 
 	//	WALK  
   private walkOnEnter()
-	{
-		this.sprite.stop()
-		this.sprite.play('mono-walk')	
+	{		
+		this.sprite.stop();
+		this.sprite.play('mono-walk');
 	}
 
   private walkOnUpdate()
 	{	
-		this.sprite.setVelocityX(this.velocidadMono)
-		if (this.cursors.up.isDown|| this.pointer.isDown) //POINTER IS DOWN INDICA SI SE REALIZA EL CLICK
+		this.sprite.setVelocityX(this.velocidadMono);
+		if (this.cursors.up.isDown|| this.pointer.isDown)
 		{
-			this.stateMachine.setState('jump')
+			this.stateMachine.setState('jump');
 		}
 	}
 
 		//SALTO
   private jumpOnEnter()
 	{		
-		this.sprite.stop()
-		this.sprite.play('mono-jump')
-		this.sprite.setVelocityY(-40)		
-
-		setTimeout(() => {			
-		this.stateMachine.setState('walk')
-		},500)
-		
-	}
-
-	private jumpOnExit()
-	{
-		//this.sprite.stop()
+		this.sprite.play('mono-jump');
+		this.sprite.setVelocityY(-40);
 	}
 
 	private sueloHitOnEnter(){
-		this.sprite.play('mono-death')
-		this.sprite.setVelocityX(0)		
-		this.scene.scene.get('nivelMono').detenerMusica()
+		this.sprite.play('mono-death');
+		this.sprite.setVelocityX(0);
+		this.scene.scene.get('nivelMono').detenerMusica();
 		this.scene.time.delayedCall(500, () => {
-			this.scene.scene.launch('gameOverMono')
-			this.scene.scene.pause()
-			this.scene.scene.stop('uiMono')	
-		})
-	}
+			this.scene.scene.launch('gameOverMono');
+			this.scene.scene.pause();
+			this.scene.scene.stop('uiMono');
+		});
+	};
 
 	private banderaCollected(){
-		this.scene.scene.pause()
-		this.scene.scene.stop('uiMono')
-		this.scene.scene.launch('gameWinMono')	
+		this.scene.scene.pause();
+		this.scene.scene.stop('uiMono');
+		this.scene.scene.launch('gameWinMono');
 
-		this.cantEstrellas = this.cantEstrellas+1
-		this.scene.scene.get('popUpMapa').aumentaContador2()
-		this.scene.scene.get('gameWinMono').aumentaContador2()
-		this.scene.scene.get('pop_up_BMono').aumentaContador2() 
-		this.scene.scene.get('nivelMono').detenerMusica()
+		this.cantEstrellas = this.cantEstrellas+1;
+		this.scene.scene.get('popUpMapa').aumentaContador2();
+		this.scene.scene.get('gameWinMono').aumentaContador2();
+		this.scene.scene.get('pop_up_BMono').aumentaContador2();
+		this.scene.scene.get('nivelMono').detenerMusica();
 		
-		/* let cat2 = localStorage.getItem('nivelPasado');
-		if (cat2 < 1){
-			localStorage.setItem('nivelPasado', '1');
-		} */
-
-	  if (this.cantEstrellas == 2) 
+		if (this.cantEstrellas == 2)
 		{			
 			localStorage.setItem('estrellasMono', '2');
 		}

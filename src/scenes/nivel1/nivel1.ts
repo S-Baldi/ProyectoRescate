@@ -22,7 +22,7 @@ export default class nivel_1 extends Phaser.Scene
   private estadoMusica:any; 
   private musicaYaguarete:any;
   private sfxComida:any; 
-  private sfxCria 
+  private sfxCria
 
   constructor(){
     super('nivelYaguarete')
@@ -145,13 +145,8 @@ export default class nivel_1 extends Phaser.Scene
         {
           this.cazador = this.matter.add.sprite(x+ (width*0.5), y+(height*0.5), 'cazador', undefined)
           this.cazador.setScale(0.7)
-          this.cazador.setFixedRotation()
-          
-          this.cazadorController = new cazadorController(
-            this,
-            this.cazador,
-            this.obstacles
-          )
+          this.cazador.setFixedRotation()          
+          this.cazadorController = new cazadorController(this.cazador)
 
           break
         }
@@ -169,9 +164,7 @@ export default class nivel_1 extends Phaser.Scene
           }).setScale(0.85).setData('type', 'trampa')	
           
           this.trampaController = new trampaController(
-            this,
-            this.trampas,
-            this.obstacles
+            this.trampas
           )
 					break
         }

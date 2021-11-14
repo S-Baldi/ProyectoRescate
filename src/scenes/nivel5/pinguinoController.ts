@@ -1,26 +1,22 @@
-import { Body } from 'matter'
 import Phaser from 'phaser' 
 import StateMachine from '../../statemachine/StateMachine'
 import { sharedInstance as events } from '../eventCenter'
 import ObstaclesController from '../obstaclesController'
-
-type CursorKeys = Phaser.Types.Input.Keyboard.CursorKeys
-
 export default class pipnguinoController
 {
 	private pointer: any
   private scene: Phaser.Scene
 	private sprite: Phaser.Physics.Matter.Sprite
-	private cursors: CursorKeys
-
+	private cursors: Phaser.Types.Input.Keyboard.CursorKeys
   private stateMachine: StateMachine
   private obstacles: ObstaclesController
   private estadoMusica:any;
+	private velocidadPinguino = 12.5
 	public cantEstrellas = 0
 
   constructor(scene: Phaser.Scene, 
 		sprite: Phaser.Physics.Matter.Sprite, 
-		cursors: CursorKeys, 
+		cursors: Phaser.Types.Input.Keyboard.CursorKeys, 
 		obstacles: ObstaclesController) 
   {
 		this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
@@ -34,14 +30,9 @@ export default class pipnguinoController
 
 		this.stateMachine = new StateMachine(this, 'pinguino')
 
-		this.stateMachine.addState('swim', {
-			onEnter: this.swimOnEnter,
-			onUpdate: this.swimOnUpdate
-		})
-		.addState('swimUp', {
+		this.stateMachine.addState('swimUp', {
 			onEnter: this.swimUpOnEnter,
-			onUpdate: this.swimUpOnUpdate,
-			onExit: this.swimUpOnExit
+			onUpdate: this.swimUpOnUpdate
 		})
 		.addState('barcoHit',{
 			onEnter: this.barcoHitOnEnter
@@ -49,7 +40,7 @@ export default class pipnguinoController
 		.addState('banderaCollected',{
 			onEnter: this.banderaCollected
 		})
-		.setState('swim')
+		.setState('swimUp')
 
     this.sprite.setOnCollide((data: MatterJS.ICollisionPair) => {
       const body = data.bodyB as MatterJS.BodyType
@@ -97,7 +88,7 @@ export default class pipnguinoController
 			{
 				if (this.stateMachine.isCurrentState('swimUp'))
 				{
-					this.stateMachine.setState('swim')
+					this.stateMachine.setState('swimUp')
 				}
 				return
 			}
@@ -144,48 +135,23 @@ export default class pipnguinoController
     this.cantEstrellas = this.cantEstrellas+1			
 	}
 
-	//	IDLE
-  private swimOnEnter()
-	{
-		this.sprite.play('pinguino-swim')		
-	}
-
-  private swimOnUpdate()
-	{	
-		this.sprite.setVelocityX(12.5)
-
-		if (this.cursors.up.isDown || this.pointer.isDown)
-		{
-			this.stateMachine.setState('swimUp')
-		}
-	}
-
-		//NADO HACIA ARRIBA
   private swimUpOnEnter()
 	{	
-    this.sprite.stop()
 		this.sprite.play('pinguino-swim')
-		this.sprite.setVelocityY(-40)
-		//this.sprite.setVelocityX(18)
+		this.sprite.setVelocityX(this.velocidadPinguino)
 	}
 
   private swimUpOnUpdate()
 	{
     if (this.cursors.up.isDown || this.pointer.isDown){
       this.sprite.setVelocityY(-12)      
-      this.sprite.setVelocityX(12.5)
+      this.sprite.setVelocityX(this.velocidadPinguino)
     }
     else if (this.cursors.up.isUp || this.pointer.isUp){
       this.sprite.setVelocityY(+5)
-      this.sprite.setVelocityX(12.5)
+      this.sprite.setVelocityX(this.velocidadPinguino)
     }		
 	}
-
-	private swimUpOnExit()
-	{
-		this.sprite.stop()
-	}	
-
 
 	private barcoHitOnEnter(){
 		this.sprite.play('pinguino-death')		

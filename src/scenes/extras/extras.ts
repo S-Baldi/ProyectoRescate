@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import { getPhrase } from '~/services/translation'
 import {sharedInstance as events} from '../eventCenter'
 export default class extras extends Phaser.Scene
 {
@@ -101,7 +102,7 @@ export default class extras extends Phaser.Scene
     {
       const txtYagua = this.add.text(40, 187, '3', this.texto1)
       const buttonDesbloqueableYaguarete = this.add.sprite(140, 232, 'estrellaBonus', 1).setDepth(3).setScale(0.40)
-      const txtDesbloqueable= this.add.text(180, 200, 'DESBLOQUEABLE', this.texto2)
+      const txtDesbloqueable= this.add.text(180, 200, getPhrase('DESBLOQUEABLE'), this.texto2)
       const candado= this.add.image(780, 230, 'candado').setScale(0.8)
     }
     else
@@ -132,7 +133,7 @@ export default class extras extends Phaser.Scene
     {
       const txtYagua = this.add.text(545, 292, '6', this.texto1)
       const buttonDesbloqueableYaguarete = this.add.sprite(550+100, 293.5+45, 'estrellaBonus', 1).setDepth(3).setScale(0.40)
-      const txtDesbloqueable= this.add.text(550+140, 293.5+13, 'DESBLOQUEABLE', this.texto2)
+      const txtDesbloqueable= this.add.text(550+140, 293.5+13, getPhrase('DESBLOQUEABLE'), this.texto2)
       const candado= this.add.image(550+740, 293.5+43, 'candado').setScale(0.8)
     }
     else
@@ -162,7 +163,7 @@ export default class extras extends Phaser.Scene
     {
       const txtYagua = this.add.text(1, 610, '15', this.texto1)
       const buttonDesbloqueableYaguarete = this.add.sprite(140, 613+45, 'estrellaBonus', 1).setDepth(3).setScale(0.40)
-      const txtDesbloqueable= this.add.text(180, 613+13, 'DESBLOQUEABLE', this.texto2)
+      const txtDesbloqueable= this.add.text(180, 613+13, getPhrase('DESBLOQUEABLE'), this.texto2)
       const candado= this.add.image(780, 613+43, 'candado').setScale(0.8)
     }
     else{
@@ -191,7 +192,7 @@ export default class extras extends Phaser.Scene
     {
       const txtYagua = this.add.text(510, 504, '13', this.texto1)
       const buttonDesbloqueableYaguarete = this.add.sprite(550+100, 506.5+45, 'estrellaBonus', 1).setDepth(3).setScale(0.40)
-      const txtDesbloqueable= this.add.text(550+140, 506.5+13, 'DESBLOQUEABLE', this.texto2)
+      const txtDesbloqueable= this.add.text(550+140, 506.5+13, getPhrase('DESBLOQUEABLE'), this.texto2)
       const candado= this.add.image(550+740, 506.5+43, 'candado').setScale(0.8)
     }
     else
@@ -221,7 +222,7 @@ export default class extras extends Phaser.Scene
     {
       const txtYagua = this.add.text(36, 400, '9', this.texto1)
       const buttonDesbloqueableYaguarete = this.add.sprite(140, 400+45, 'estrellaBonus', 1).setDepth(3).setScale(0.40)
-      const txtDesbloqueable= this.add.text(180, 400+13, 'DESBLOQUEABLE', this.texto2)
+      const txtDesbloqueable= this.add.text(180, 400+13, getPhrase('DESBLOQUEABLE'), this.texto2)
       const candado= this.add.image(780, 400+43, 'candado').setScale(0.8)
     }
     
