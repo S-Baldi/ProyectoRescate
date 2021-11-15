@@ -30,7 +30,7 @@ export default class nivel_1 extends Phaser.Scene
 
   public musicaPlay()
   {
-    this.musicaYaguarete.play({volume:0.5, loop: true})
+    this.musicaYaguarete.play({volume:0.3, loop: true})
   } 
   public musicaPause()
   {
@@ -47,7 +47,7 @@ export default class nivel_1 extends Phaser.Scene
   ///////Cria
   public sfxCriaPlay()
   {
-    this.sfxCria.play({volume:0.10})
+    this.sfxCria.play({volume:0.05})
   } 
   public detenerSFXCria()
   {  
@@ -56,7 +56,7 @@ export default class nivel_1 extends Phaser.Scene
   ///////Comida
   public sfxComidaPlay()
   {
-    this.sfxComida.play({volume:0.1})
+    this.sfxComida.play({volume:0.03})
   }
   public detenerSFXComida()
   {  
