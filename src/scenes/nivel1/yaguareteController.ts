@@ -1,10 +1,7 @@
-import { Body } from 'matter'
-import Phaser, { LEFT } from 'phaser' 
+import Phaser from 'phaser' 
 import StateMachine from '../../statemachine/StateMachine'
 import { sharedInstance as events } from '../eventCenter'
 import ObstaclesController from '../obstaclesController'
-import UI from './UI'
-
 type CursorKeys = Phaser.Types.Input.Keyboard.CursorKeys
 
 export default class yaguareteController
@@ -13,16 +10,11 @@ export default class yaguareteController
   private scene: Phaser.Scene
 	private sprite: Phaser.Physics.Matter.Sprite
 	private cursors: CursorKeys
-
   private stateMachine: StateMachine
   private obstacles: ObstaclesController
-
 	public cantEstrellas = 0
-	private controlEstrellas?:UI
-
 	private velocidad = 15
-	private estadoMusica:any;
-	
+	private estadoMusica:any;	
 
   constructor(scene: Phaser.Scene, 
 		sprite: Phaser.Physics.Matter.Sprite, 
@@ -45,9 +37,7 @@ export default class yaguareteController
 			onUpdate: this.walkOnUpdate
 		})
 		.addState('jump', {
-			onEnter: this.jumpOnEnter,
-			onUpdate: this.jumpOnUpdate,
-			onExit: this.jumpOnExit
+			onEnter: this.jumpOnEnter
 		})
 		.addState('trampaHit',{
 			onEnter: this.trampaHitOnEnter
@@ -120,6 +110,7 @@ export default class yaguareteController
 		events.on('sumaEstrella', this.sumadorEstrellas, this)
 		this.cantEstrellas = 0
   }
+
   update(dt: number)
 	{
 		this.stateMachine.update(dt)
@@ -138,7 +129,8 @@ export default class yaguareteController
 
 	//	WALK  
   private walkOnEnter()
-	{
+	{		
+		this.sprite.stop()
 		this.sprite.play('yaguarete-walk')		
 	}
 
@@ -157,16 +149,8 @@ export default class yaguareteController
 		this.sprite.stop()
 		this.sprite.play('yaguarete-jump')
 		this.sprite.setVelocityY(-40)
-		//this.sprite.setVelocityX(15)
 	}
 
-  private jumpOnUpdate()
-	{}
-
-	private jumpOnExit()
-	{
-		this.sprite.stop()
-	}
 
 	private trampaHitOnEnter(){
 		this.sprite.play('yaguarete-death')
@@ -189,11 +173,6 @@ export default class yaguareteController
 		this.scene.scene.get('gameWin').aumentaContador1()
 		this.scene.scene.get('pop_up_B').aumentaContador1()
 		this.scene.scene.get('nivelYaguarete').detenerMusica() 
-		
-		/* let cat2 = localStorage.getItem('nivelPasado');
-		if (cat2 < 1){
-			localStorage.setItem('nivelPasado', '1');
-		} */
 
 		if (this.cantEstrellas == 2) 
 		{			

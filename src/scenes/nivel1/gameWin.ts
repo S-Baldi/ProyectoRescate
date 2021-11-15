@@ -3,7 +3,6 @@ import { getPhrase } from '~/services/translation';
 
 export default class gameWin extends Phaser.Scene{
   private cantidadEstrellasYagua: any
-  private cantidadCiertaEstrellasYaguarete: any
   private contadorEntrarNivel1:number=0
   private estadoMusica:any
   private musicaWin:any
@@ -61,21 +60,7 @@ export default class gameWin extends Phaser.Scene{
     const gameLose = this.add.image(683, 384, 'win')
     this.add.text(550, 150, getPhrase('Victoria'), this.fuenteTexto);
 
-    const buttonRestart = this.add.image(800, 590,  'botonReset')
-    .setInteractive()
-    .on('pointerover', () => buttonRestart.setScale(1.1))
-    .on('pointerout', () => buttonRestart.setScale(1))
-    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
-    { 
-      this.scene.stop('nivelYaguarete')
-      this.scene.start('nivelYaguarete')
-      if (this.estadoMusica=='1') 
-      {
-        this.sfxPlay()
-      }
-    });
-
-    const buttonMapa = this.add.image(600, 590, 'botonMapa')
+    const buttonMapa = this.add.image(700, 590, 'botonMapa')
     .setInteractive()
     .on('pointerover', () => buttonMapa.setScale(1.1))
     .on('pointerout', () => buttonMapa.setScale(1))
@@ -93,8 +78,7 @@ export default class gameWin extends Phaser.Scene{
       {
         this.scene.launch('popUpInformativo') 
         this.scene.get('popUpInformativo').mostrarInfoNiveles('bonusYaguareteDesbloqueado')
-      } 
-      //this.scene.moveUp('menuMapa') //trae adelante a la escena      
+      }   
     });
 
     this.cantidadEstrellasYagua = localStorage.getItem('estrellasYaguarete') || '1';

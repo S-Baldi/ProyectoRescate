@@ -1,31 +1,21 @@
 import Phaser from 'phaser' 
 import StateMachine from '../../statemachine/StateMachine'
-import ObstaclesController from '../obstaclesController'
 
 export default class trampaController
 {
-  private scene: Phaser.Scene
   private sprite: Phaser.Physics.Matter.Sprite
   private stateMachine: StateMachine
-  private obstacles: ObstaclesController
 
-  constructor(scene: Phaser.Scene, 
-		sprite: Phaser.Physics.Matter.Sprite, 
-    obstacles: ObstaclesController) 
+  constructor(sprite: Phaser.Physics.Matter.Sprite) 
   {
-    this.scene = scene
     this.sprite = sprite
-    this.obstacles = obstacles
-
     this.createAnimationTramp()
-
     this.stateMachine = new StateMachine(this, 'trampa')
-
-  this.stateMachine.addState('move',{
-    onEnter: this.moveOnEnter,
-  })
-  .setState('move')
-}
+    this.stateMachine.addState('move',{
+      onEnter: this.moveOnEnter,
+    })
+    .setState('move')
+  }
 
   update(dt: number)
 	{

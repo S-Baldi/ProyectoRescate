@@ -1,6 +1,6 @@
 import Phaser from "phaser"
 import {sharedInstance as events} from '../eventCenter'
-import cazadorController from "./cazadorController"
+import cazadorController from "./cazadorMonoController"
 export default class UI_Mono extends Phaser.Scene
 {	
   //Texto para corroborar
@@ -12,9 +12,6 @@ export default class UI_Mono extends Phaser.Scene
 	private criasTotales = 1
 	private comidaTotales = 1
 	
-	//Estrellas totales [0 a 3]
-	private estrellasNivel1 = 0
-
 	private cazador?: Phaser.Physics.Matter.Sprite
 	private cazadorController?: cazadorController
 
@@ -31,7 +28,6 @@ export default class UI_Mono extends Phaser.Scene
 		super({
 			key: 'uiMono'
 		})
-
 	}
 
 
@@ -41,7 +37,7 @@ export default class UI_Mono extends Phaser.Scene
     this.comidaCollected = 0
 
 		this.criasTotales = 3
-		this.comidaTotales = 0
+		this.comidaTotales = 50
 
 	}
 
@@ -87,10 +83,6 @@ export default class UI_Mono extends Phaser.Scene
     this.criasLabel = this.add.text(1200, 50, '0/3', this.fuenteTexto)
     this.add.image(1140 ,190, 'comidaMono').setScale(1.3);
     this.comidaLabel = this.add.text(1200, 150, '0/50', this.fuenteTexto)		
-	}
-
-	update(t: number, dt: number){
-		this.cazadorController?.update(dt)
 	}
 
 	private handleCriasCollected()

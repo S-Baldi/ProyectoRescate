@@ -1,7 +1,6 @@
 import Phaser from 'phaser'
 import obstaclesController from '../obstaclesController'
 import monoController from './monoController'
-import cazadorController from './cazadorController'
 import bananaController from './bananaController'
 import criaMonoController from './criaMonoController'
 export default class nivel_2 extends Phaser.Scene
@@ -9,8 +8,6 @@ export default class nivel_2 extends Phaser.Scene
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys	
 	private mono?: Phaser.Physics.Matter.Sprite
   private monoController?: monoController
-  private cazador?: Phaser.Physics.Matter.Sprite
-  private cazadorController?: cazadorController
   private banana?: Phaser.Physics.Matter.Sprite
   private bananaController?: bananaController
   private cria?: Phaser.Physics.Matter.Sprite
@@ -139,20 +136,6 @@ export default class nivel_2 extends Phaser.Scene
 					break
 				}
         
-        case 'cazador':
-        {
-          this.cazador = this.matter.add.sprite(x + (width * 0.5), y, 'cazador');
-          this.cazador.setScale(0.7)
-          this.cazador.setFixedRotation()
-          
-          this.cazador.setData('type', 'cazador')
-
-          this.cazadorController = new cazadorController(
-            this.cazador
-          )
-          break
-        }
-        
         case 'hitBoxSuelo':
         {
           const hitBoxSuelo = this.matter.add.rectangle(x + (width * 0.5), y + (height * 0.5), width, height, {
@@ -207,9 +190,8 @@ export default class nivel_2 extends Phaser.Scene
   update(t: number, dt: number)
   {
     this.monoController?.update(dt)
-    this.cazadorController?.update(dt)
     this.bananaController?.update(dt)
-    this.monoController?.update(dt)
+    this.criaController?.update(dt)
   }  
 }
 

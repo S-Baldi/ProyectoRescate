@@ -1,61 +1,50 @@
 import Phaser, { GameObjects } from 'phaser' 
 import StateMachine from '../../statemachine/StateMachine'
-import ObstaclesController from '../obstaclesController'
 
 export default class cazadorController
 {
-  private scene: Phaser.Scene
   private sprite: Phaser.Physics.Matter.Sprite
   private stateMachine: StateMachine
-  private obstacles: ObstaclesController
-
   private velocidadCazador = 15
 
-  constructor(scene: Phaser.Scene, 
-		sprite: Phaser.Physics.Matter.Sprite, 
-    obstacles: ObstaclesController) 
+  constructor(sprite: Phaser.Physics.Matter.Sprite) 
   {
-    this.scene = scene
     this.sprite = sprite
-    this.obstacles = obstacles
 
     this.createAnimationHunter()
 
     this.stateMachine = new StateMachine(this, 'cazador')
 
-  this.stateMachine.addState('run',{
-    onEnter: this.runOnEnter,
-    onUpdate: this.runOnUpdate
-  })
-  .addState('trampaHunter',{
-    onEnter: this.trampaHunterOnEnter
-  })
-  .setState('run')
+    this.stateMachine.addState('run',{
+      onEnter: this.runOnEnter,
+      onUpdate: this.runOnUpdate
+    })
+    .setState('run')
 
-  this.sprite.setOnCollide((data: MatterJS.ICollisionPair) => {
-    const body = data.bodyA as MatterJS.BodyType
+    this.sprite.setOnCollide((data: MatterJS.ICollisionPair) => {
+      const body = data.bodyA as MatterJS.BodyType
 
-    const gameObject = body.gameObject
-    
-    if (!gameObject)
-    {
-      return
-    }
+      const gameObject = body.gameObject
 
-    const sprite = gameObject as Phaser.Physics.Matter.Sprite
-    const type = sprite.getData('type')
-    
-    switch (type)
-    {
-      case 'trampa':
+      if (!gameObject)
       {
-        sprite.destroy()
-        break
-      }	
-    }
-  
-  })
-}
+        return
+      }
+
+      const sprite = gameObject as Phaser.Physics.Matter.Sprite
+      const type = sprite.getData('type')
+      
+      switch (type)
+      {
+        case 'trampa':
+        {
+          sprite.destroy()
+          break
+        }	
+      }
+    
+    })
+  }
 
   update(dt: number)
 	{
@@ -64,14 +53,11 @@ export default class cazadorController
 
   private runOnEnter()
 	{
-		this.sprite.play('hunter-run')		
+		this.sprite.play('hunter-run')
 	}
 
   private runOnUpdate(){
     this.sprite.setVelocityX(this.velocidadCazador)
-  }
-
-  private trampaHunterOnEnter(){
   }
 
   private createAnimationHunter(){

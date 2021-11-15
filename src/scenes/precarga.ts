@@ -87,7 +87,7 @@ export default class precarga extends Phaser.Scene{
     {
       this.add.image(683, 384, 'fondoLimpio').setScale(0.72);
 
-      const banderaArg = this.add.image(300, 300, 'banderaArg')
+      const banderaArg = this.add.image(300, 400, 'banderaArg')
       .setInteractive()
       .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => 
       {
@@ -95,9 +95,11 @@ export default class precarga extends Phaser.Scene{
       })
       .on('pointerover', () => banderaArg.setScale(1.1))
       .on('pointerout', () => banderaArg.setScale(1))
-      .on('pointerdown', () => banderaArg.setScale(0.9))
+      .on('pointerdown', () => banderaArg.setScale(0.9) && setTimeout(() => {			
+        this.scene.start('menuPpal')
+        }, 1500))
 
-      const banderaEu = this.add.image(700, 300, 'banderaEu')
+      const banderaEu = this.add.image(700, 400, 'banderaEu')
 			.setInteractive()
 			.on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => 
       {
@@ -105,9 +107,11 @@ export default class precarga extends Phaser.Scene{
 			})
       .on('pointerover', () => banderaEu.setScale(1.1))
       .on('pointerout', () => banderaEu.setScale(1))
-      .on('pointerdown', () => banderaEu.setScale(0.9))
+      .on('pointerdown', () => banderaEu.setScale(0.9) && setTimeout(() => {			
+        this.scene.start('menuPpal')
+        }, 1500))
 
-      const banderaBr = this.add.image(1100, 300, 'banderaBr')
+      const banderaBr = this.add.image(1100, 400, 'banderaBr')
 			.setInteractive()
 			.on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () =>
       {
@@ -115,22 +119,9 @@ export default class precarga extends Phaser.Scene{
 			})
       .on('pointerover', () => banderaBr.setScale(1.1))
       .on('pointerout', () => banderaBr.setScale(1))
-      .on('pointerdown', () => banderaBr.setScale(0.9))
-
-      this.updatedText = this.add.text(560, 500, getPhrase('JUGAR'), this.fuenteTexto,)
-      .setInteractive()
-      this.updatedText.on('pointerdown', () => this.scene.start('menuPpal'))
-      this.updatedText.on('pointerover', () => this.updatedText.setScale(1.1))
-      this.updatedText.on('pointerout', () => this.updatedText.setScale(1))
-    }
-
-    update()
-    {
-      if(this.wasChangedLanguage === FETCHED)
-      {
-        this.wasChangedLanguage = READY;
-        this.updatedText.setText(getPhrase(this.updatedString));
-      }      
+      .on('pointerdown', () => banderaBr.setScale(0.9) && setTimeout(() => {			
+        this.scene.start('menuPpal')
+        }, 1500))
     }
 
     async getTranslations(language){

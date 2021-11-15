@@ -127,10 +127,6 @@ export default class nivel_5 extends Phaser.Scene
           this.pinguino.setRectangle(120,90)
           this.pinguino.setFixedRotation()
 
-          /* this.pinguino.setDisplaySize(200, 200) */
-          //Ocupar "setDisplaySize" en vez de "setScale"
-          //"setRectangle" para cambiar la caja de colision
-
 					this.pinguinoController = new pinguinoController(
 						this,
 						this.pinguino,
@@ -138,7 +134,7 @@ export default class nivel_5 extends Phaser.Scene
 						this.obstacles
 					)
 
-					this.cameras.main.startFollow(this.pinguino, true)
+					this.cameras.main.startFollow(this.pinguino, true, 1, 1, -500)
 					break
 				}
         

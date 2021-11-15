@@ -10,7 +10,6 @@ import extras from './scenes/extras/extras'
 import pop_upExt from './scenes/extras/pop_upExtras'
 import popUpMapa from './scenes/popUpMapa'
 import popUpInformativo from './scenes/popUpInformativo'
-import preload from './scenes/precarga'
 
 //NIVEL YAGUARETE
 import nivel_1 from './scenes/nivel1/nivel1'
