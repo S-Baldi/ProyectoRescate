@@ -11,8 +11,18 @@ export default class logoUnraf extends Phaser.Scene
     setTimeout(() => {
       this.logo = this.add.sprite(683, 383, "logoUnraf").setScale(6);
       this.logo.play("moveUnraf");
-    }, 50);
+    }, 50);  
+    this.animation()
+  }
 
+  update(time, delta){
+    this.tempo += delta
+    if (this.tempo >= 3000){
+      this.scene.start('precarga'); 
+    }
+  }
+  
+  private animation(){
     this.anims.create({
       key: 'moveUnraf',
       frames: this.anims.generateFrameNames('logoUnraf', {
@@ -23,11 +33,6 @@ export default class logoUnraf extends Phaser.Scene
       }),
       frameRate: 20
     })
-  }
-  update(time, delta){
-    this.tempo += delta
-    if (this.tempo >= 5000){
-      this.scene.start('precarga'); 
-    }
-  }
+}
+  
 }
