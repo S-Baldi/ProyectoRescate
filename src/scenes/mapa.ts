@@ -194,7 +194,7 @@ export default class mapa extends Phaser.Scene
     const buttonNivel3 = this.add.image(360,300, 'botonNivel').setScale(0.25)
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
-    { this.scene.start('nivelPinguino')
+    { 
     })
 
     this.add.text(251,330, getPhrase('PRÓXIMAMENTE'), this.fuenteTextoProx).angle = -25;
