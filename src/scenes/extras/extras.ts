@@ -108,7 +108,7 @@ export default class extras extends Phaser.Scene
     else
     {
       let buttonInfoYaguarete = this.add.image(200, 250, 'infoYaguarete').setScale(0.9) &&
-      this.add.text(300, 220, 'YAGUARETÉ', 
+      this.add.text(300, 220, getPhrase('YAGUARETÉ'), 
       { fontFamily: 'Titan One',
       fontSize: '40pt',
       color: '#FFBD0D',
@@ -139,7 +139,7 @@ export default class extras extends Phaser.Scene
     else
     {
       let buttonInfoMono = this.add.image(900, 350, 'infoMono').setScale(1.1) &&
-      this.add.text(1000, 320, 'MONO', 
+      this.add.text(1000, 320, getPhrase('MONO CAÍ'), 
       {fontFamily: 'Titan One',
       fontSize: '40pt',
       color: '#FFBD0D',
@@ -168,7 +168,7 @@ export default class extras extends Phaser.Scene
     }
     else{
       let buttonInfoCondor = this.add.image(200, 620, 'infoCondor').setScale(0.8) &&
-      this.add.text(300, 620, 'CONDOR', 
+      this.add.text(300, 620, getPhrase('CÓNDOR'), 
       {fontFamily: 'Titan One',
       fontSize: '40pt',
       color: '#FFBD0D',
@@ -198,7 +198,7 @@ export default class extras extends Phaser.Scene
     else
     {
       let buttonInfoBallena = this.add.image(900, 550, 'infoBallena').setScale(1) &&
-      this.add.text(1000, 520, 'BALLENA', 
+      this.add.text(1000, 520, getPhrase('BALLENA'), 
       {fontFamily: 'Titan One',
       fontSize: '40pt',
       color: '#FFBD0D',
@@ -229,7 +229,7 @@ export default class extras extends Phaser.Scene
     else
     {
       let buttonInfoPinguino = this.add.image(200, 450, 'infoPinguino').setScale(0.9) &&
-      this.add.text(300, 420, 'PINGÜINO', 
+      this.add.text(300, 420, getPhrase('PINGÜINO'), 
       {fontFamily: 'Titan One',
       fontSize: '40pt',
       color: '#FFBD0D',

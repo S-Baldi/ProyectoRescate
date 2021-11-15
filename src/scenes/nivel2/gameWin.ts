@@ -64,8 +64,8 @@ export default class gameWinMono extends Phaser.Scene{
     { 
       this.scene.get("popUpMapa").ganar()
       this.scene.stop('nivelMono')
-      this.scene.start('menuMapa')   
-      if (this.estadoMusica=='1') 
+      this.scene.start('menuMapa')
+      if (this.estadoMusica=='1')
       {
         this.sfxPlay()
       }         
