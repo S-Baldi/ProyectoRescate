@@ -1,6 +1,7 @@
 import 'regenerator-runtime/runtime'
 import Phaser from 'phaser'
 import precarga from './scenes/precarga'
+import logoUnraf from './scenes/logoUnraf'
 import ayuda from './scenes/ayuda'
 import creditos from './scenes/creditos'
 import info from './scenes/informacion'
@@ -61,7 +62,7 @@ const config : Phaser.Types.Core.GameConfig =
       debug: false
     }
   },
-  scene: [precarga, mp1, info, mapa, ayuda, creditos, extras, 
+  scene: [logoUnraf, precarga, mp1, info, mapa, ayuda, creditos, extras, 
     nivel_1, UI, gameOver, gameWin, pause, bonus, pop_up, preguntas, pop_upExt, popUpMapa, 
     nivel_5, UI_Pinguino, gameWinPinguino, gameOverPinguino, pausePinguino, bonusPingui, pop_up_Pingui, preguntasPingui, 
     nivel_2, UI_Mono, gameWinMono, gameOverMono, pauseMono, popUpInformativo, bonusMono, pop_up_BonusMono, preguntasMono]

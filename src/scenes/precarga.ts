@@ -8,15 +8,7 @@ export default class precarga extends Phaser.Scene{
     private updatedText
     private updatedString = 'JUGAR'
     private wasChangedLanguage = TODO
-    private fuenteTexto = 
-    {
-        fontFamily: 'Titan One',
-        fontSize: '60pt',
-        color: '#FFBD0D',
-        stroke: '#00572f',
-        strokeThickness: 6,  
-    }
-
+    
     constructor () {
       super('precarga');
     }
