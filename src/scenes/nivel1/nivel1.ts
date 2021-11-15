@@ -56,7 +56,7 @@ export default class nivel_1 extends Phaser.Scene
   ///////Comida
   public sfxComidaPlay()
   {
-    this.sfxComida.play({volume:0.05})
+    this.sfxComida.play({volume:0.03})
   }
   public detenerSFXComida()
   {  

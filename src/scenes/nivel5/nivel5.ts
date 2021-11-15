@@ -40,7 +40,7 @@ export default class nivel_5 extends Phaser.Scene
   ///////Cria
   public sfxCriaPlay()
   {
-    this.sfxCria.play({volume:0.1})
+    this.sfxCria.play({volume:0.03})
   } 
   public detenerSFXCria()
   {  
@@ -49,7 +49,7 @@ export default class nivel_5 extends Phaser.Scene
   ///////Comida
   public sfxComidaPlay()
   {
-    this.sfxComida.play({volume:0.1})
+    this.sfxComida.play({volume:0.05})
   }
   public detenerSFXComida()
   {  
