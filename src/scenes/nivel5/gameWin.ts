@@ -55,7 +55,7 @@ export default class gameWinPinguino extends Phaser.Scene{
     this.add.image(683, 384, 'win')
     this.add.text(550, 150, getPhrase('Victoria'), this.fuenteTexto);
 
-    const buttonMapa = this.add.image(6700, 590, 'botonMapa')
+    const buttonMapa = this.add.image(700, 590, 'botonMapa')
     .setInteractive()
     .on('pointerover', () => buttonMapa.setScale(1.1))
     .on('pointerout', () => buttonMapa.setScale(1))
