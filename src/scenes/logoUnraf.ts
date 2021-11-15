@@ -24,7 +24,7 @@ export default class logoUnraf extends Phaser.Scene
       frameRate: 20
     })
   }
-  update(delta){
+  update(time, delta){
     this.tempo += delta
     if (this.tempo >= 5000){
       this.scene.start('precarga'); 
