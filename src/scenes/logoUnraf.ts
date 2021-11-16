@@ -17,6 +17,7 @@ export default class logoUnraf extends Phaser.Scene
       this.load.image('botonIdiomaEspañol', 'assets/MenuPrincipal/bandera.png');
       this.load.image('mapaArgentina', 'assets/Mapa/mapa.png');
       this.load.image('botonMenuPpal', 'assets/MenuPrincipal/Botones/botonMenu.png');
+      this.load.image('creditosMusica', 'assets/MenuPrincipal/Botones/botonCreditosMusica.png');
       //Menu Limpio
       this.load.image('fondoLimpio', 'assets/MenuPrincipal/fondoLimpio.png');
               //Menu Informacion

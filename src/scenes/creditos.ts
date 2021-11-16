@@ -56,6 +56,19 @@ export default class creditos extends Phaser.Scene
     this.add.text(520, 610 , 'Gallo, Jonathan', this.fuenteTexto)
     this.add.text(95, 400, 'Castelnovo, Renzo', this.fuenteTexto)
     this.add.text(935, 400, 'Baldi, Santiago', this.fuenteTexto)
+
+    const musicaCreditos = this.add.image(1260, 650, 'creditosMusica').setScale(0.8)
+    .setInteractive()
+    .on('pointerover', () => musicaCreditos.setScale(0.85))
+    .on('pointerout', () => musicaCreditos.setScale(0.8))
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+    { 
+      this.scene.start('creditosMusica')
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
+    });
     
   }
 }
