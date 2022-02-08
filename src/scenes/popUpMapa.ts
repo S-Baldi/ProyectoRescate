@@ -126,7 +126,7 @@ export default class popUpMapa extends Phaser.Scene
       .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
       {
         this.scene.sleep('menuMapa')  
-        this.scene.start('nivelPinguino')  
+        this.scene.start('nivelYaguarete')  
         if (this.estadoMusica=='1') 
         {
           this.sfxPlay()
