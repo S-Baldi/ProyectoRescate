@@ -11,7 +11,7 @@ export default class monoController
   private stateMachine: StateMachine
   private obstacles: ObstaclesController
 	public cantEstrellas = 0
-	private velocidadMono = 15
+	private velocidadMono = 12
 	private estadoMusica:any;
 
   constructor(scene: Phaser.Scene, 
@@ -154,6 +154,7 @@ export default class monoController
 	{		
 		this.sprite.play('mono-jump');
 		this.sprite.setVelocityY(-40);
+		this.sprite.setVelocityX(15);
 	}
 
 	private sueloHitOnEnter(){

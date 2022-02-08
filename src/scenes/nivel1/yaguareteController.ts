@@ -13,7 +13,7 @@ export default class yaguareteController
   private stateMachine: StateMachine
   private obstacles: ObstaclesController
 	public cantEstrellas = 0
-	private velocidad = 15
+	private velocidad = 12
 	private estadoMusica:any;	
 
   constructor(scene: Phaser.Scene, 
@@ -149,6 +149,7 @@ export default class yaguareteController
 		this.sprite.stop()
 		this.sprite.play('yaguarete-jump')
 		this.sprite.setVelocityY(-40)
+		this.sprite.setVelocityX(15)
 	}
 
 

@@ -259,18 +259,7 @@
                  "type":"",
                  "visible":true,
                  "width":69,
-                 "x":8889.5,
-                 "y":595
-                }, 
-                {
-                 "height":56,
-                 "id":62,
-                 "name":"trampa",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":69,
-                 "x":9453,
+                 "x":8885.5,
                  "y":595
                 }, 
                 {
@@ -512,18 +501,7 @@
                  "type":"",
                  "visible":true,
                  "width":69,
-                 "x":19368.8333333333,
-                 "y":213
-                }, 
-                {
-                 "height":56,
-                 "id":93,
-                 "name":"trampa",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":69,
-                 "x":19801.8333333333,
+                 "x":19487.8333333333,
                  "y":213
                 }, 
                 {
@@ -535,17 +513,6 @@
                  "visible":true,
                  "width":69,
                  "x":20287.1666666667,
-                 "y":209
-                }, 
-                {
-                 "height":56,
-                 "id":95,
-                 "name":"trampa",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":69,
-                 "x":20688.1666666667,
                  "y":209
                 }, 
                 {
@@ -657,17 +624,6 @@
                  "width":78,
                  "x":21280,
                  "y":76.5
-                }, 
-                {
-                 "height":56,
-                 "id":106,
-                 "name":"trampa",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":69,
-                 "x":19043.5,
-                 "y":595
                 }, 
                 {
                  "height":56,
@@ -1053,7 +1009,7 @@
  "nextobjectid":167,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.7.2",
+ "tiledversion":"1.8.0",
  "tileheight":64,
  "tilesets":[
         {
@@ -1463,6 +1419,6 @@
         }],
  "tilewidth":64,
  "type":"map",
- "version":"1.6",
+ "version":"1.8",
  "width":485
 }
