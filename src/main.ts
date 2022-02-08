@@ -60,7 +60,7 @@ const config : Phaser.Types.Core.GameConfig =
     matter:
     {
       gravity: { y: 10 },
-      debug: false
+      debug: true
     }
   },
   scene: [logoUnraf, precarga, mp1, info, mapa, ayuda, creditos, creditosMusica,extras, 
