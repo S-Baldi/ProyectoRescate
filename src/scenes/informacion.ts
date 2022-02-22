@@ -70,6 +70,19 @@ export default class info extends Phaser.Scene
       }
     });
 
+    const teclaIdioma = this.add.text(500, 550, getPhrase('IDIOMAS'), this.fuenteTexto)
+    .setInteractive()
+    .on('pointerover', () => teclaIdioma.setScale(1.1))    
+    .on('pointerout', () => teclaIdioma.setScale(1))
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+    { 
+      this.scene.start('idioma')
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
+    });
+
     const buttonAtras = this.add.image(1260, 105, 'botonatras')
     .setInteractive()
     .on('pointerover', () => buttonAtras.setScale(1.1))

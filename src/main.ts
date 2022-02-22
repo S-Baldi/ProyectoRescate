@@ -11,6 +11,8 @@ import extras from './scenes/extras/extras'
 import pop_upExt from './scenes/extras/pop_upExtras'
 import popUpMapa from './scenes/popUpMapa'
 import popUpInformativo from './scenes/popUpInformativo'
+import creditosMusica from './scenes/creditosMusica'
+import idioma from './scenes/idioma'
 
 //NIVEL YAGUARETE
 import nivel_1 from './scenes/nivel1/nivel1'
@@ -42,6 +44,14 @@ import bonusMono from './scenes/nivel2/nivelBonus/nivelBonusMono'
 import pop_up_BonusMono from './scenes/nivel2/nivelBonus/pop_up_BonusMono'
 import preguntasMono from './scenes/nivel2/nivelBonus/preguntasMono'
 
+//NIVEL BALLENA
+import nivel_4 from './scenes/nivel4/nivel4'
+import UI_Ballena from './scenes/nivel4/UI_Ballena'
+import gameWinBallena from './scenes/nivel4/gameWin'
+import gameOverBallena from './scenes/nivel4/gameOver'
+import pauseBallena from './scenes/nivel4/pause'
+import nivel_4_2 from './scenes/nivel4/nivel4_2'
+
 localStorage.clear();
 
 const config : Phaser.Types.Core.GameConfig =
@@ -59,13 +69,15 @@ const config : Phaser.Types.Core.GameConfig =
     matter:
     {
       gravity: { y: 10 },
-      debug: false
+      debug: true
     }
   },
-  scene: [logoUnraf, precarga, mp1, info, mapa, ayuda, creditos, extras, 
+  scene: [logoUnraf, precarga, mp1, info, mapa, ayuda, creditos, creditosMusica,extras, 
     nivel_1, UI, gameOver, gameWin, pause, bonus, pop_up, preguntas, pop_upExt, popUpMapa, 
     nivel_5, UI_Pinguino, gameWinPinguino, gameOverPinguino, pausePinguino, bonusPingui, pop_up_Pingui, preguntasPingui, 
-    nivel_2, UI_Mono, gameWinMono, gameOverMono, pauseMono, popUpInformativo, bonusMono, pop_up_BonusMono, preguntasMono]
+    nivel_2, UI_Mono, gameWinMono, gameOverMono, pauseMono, popUpInformativo, bonusMono, pop_up_BonusMono, preguntasMono, idioma,
+    nivel_4, nivel_4_2, UI_Ballena, gameWinBallena, gameOverBallena, pauseBallena
+  ]
 };
 
 export default new Phaser.Game(config)

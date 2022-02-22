@@ -11,8 +11,8 @@ export default class UI extends Phaser.Scene
 	
 
 	//Totales del nivel
-	private criasTotales = 1
-	private comidaTotales = 1
+	private criasTotales = 3
+	private comidaTotales = 50
 	
 	//Estrellas totales [0 a 3]
 	private estrellasNivel1 = 0
@@ -52,14 +52,16 @@ export default class UI extends Phaser.Scene
 		const botonPausa = this.add.image(100, 100, 'botonPausa');
 		botonPausa.setInteractive()
 		.on('pointerover', () => botonPausa.setScale(1.1))
-    .on('pointerout', () => botonPausa.setScale(1))
+    	.on('pointerout', () => botonPausa.setScale(1))
     
 		botonPausa.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
 		{
 			this.scene.pause('nivelYaguarete');
 			this.scene.pause('ui');
 			this.scene.launch('pause');
-		});
+
+        });
+		
 
 		events.on('crias-collected', this.handleCriasCollected, this)
     events.on('comida-collected', this.handleComidaCollected, this)

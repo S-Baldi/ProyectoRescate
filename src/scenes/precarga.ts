@@ -14,28 +14,6 @@ export default class precarga extends Phaser.Scene{
     }
     preload()
     {  
-      
-      //////////// Todo del menu principal    
-      this.load.image('menu', 'assets/MenuPrincipal/menuPpal.png');
-      this.load.image('botonPlay', 'assets/MenuPrincipal/Botones/botonPlay.png');
-      this.load.image('botonDesbloqueable', 'assets/MenuPrincipal/Botones/botonDesbloqueable.png');
-      this.load.image('botonInfo', 'assets/MenuPrincipal/Botones/botonInfo.png');
-      this.load.image('botonMusica', 'assets/MenuPrincipal/Botones/botonSonido.png');
-      this.load.image('botonReset', 'assets/MenuPrincipal/Botones/botonReset.png');
-      this.load.image('botonMapa', 'assets/MenuPrincipal/Botones/botonMapa.png');
-      this.load.image('botonatras', 'assets/MenuPrincipal/Botones/botonAtras.png');
-      this.load.image('botonPausa', 'assets/MenuPrincipal/Botones/botonPausa.png');
-      this.load.image('botonIdiomaEspañol', 'assets/MenuPrincipal/bandera.png');
-      this.load.image('mapaArgentina', 'assets/Mapa/mapa.png');
-      this.load.image('botonMenuPpal', 'assets/MenuPrincipal/Botones/botonMenu.png');
-      //Menu Limpio
-      this.load.image('fondoLimpio', 'assets/MenuPrincipal/fondoLimpio.png');
-              //Menu Informacion
-      this.load.image('menuInfo', 'assets/MenuPrincipal/MenuInformacion.png');
-             //Menu ayuda
-      this.load.image('menuAyuda','assets/MenuPrincipal/MenuAyuda.png');
-              //Menu creditos
-      this.load.image('menuCreditos','assets/MenuPrincipal/MenuCreditos.png');
              //Botones de desbloqueables
       this.load.image('botonYaguarete', 'assets/MenuPrincipal/Botones/Extras/1erDesbloqueable.png');
       this.load.image('botonMono', 'assets/MenuPrincipal/Botones/Extras/2doDesbloqueable.png');
@@ -93,7 +71,7 @@ export default class precarga extends Phaser.Scene{
       .on('pointerout', () => banderaArg.setScale(1))
       .on('pointerdown', () => banderaArg.setScale(0.9) && setTimeout(() => {			
         this.scene.start('menuPpal')
-        }, 1000))
+        }, 2500))
 
       const banderaEu = this.add.image(700, 400, 'banderaEu')
 			.setInteractive()
@@ -105,7 +83,7 @@ export default class precarga extends Phaser.Scene{
       .on('pointerout', () => banderaEu.setScale(1))
       .on('pointerdown', () => banderaEu.setScale(0.9) && setTimeout(() => {			
         this.scene.start('menuPpal')
-        }, 1000))
+        }, 2500))
 
       const banderaBr = this.add.image(1100, 400, 'banderaBr')
 			.setInteractive()
@@ -117,7 +95,7 @@ export default class precarga extends Phaser.Scene{
       .on('pointerout', () => banderaBr.setScale(1))
       .on('pointerdown', () => banderaBr.setScale(0.9) && setTimeout(() => {			
         this.scene.start('menuPpal')
-        }, 1000))
+        }, 2500))
     }
 
     async getTranslations(language){

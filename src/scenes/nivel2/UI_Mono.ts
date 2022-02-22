@@ -9,8 +9,8 @@ export default class UI_Mono extends Phaser.Scene
 	private criasCollected = 0
   private comidaCollected = 0
 	//Totales del nivel
-	private criasTotales = 1
-	private comidaTotales = 1
+	private criasTotales = 3
+	private comidaTotales = 50
 	
 	private cazador?: Phaser.Physics.Matter.Sprite
 	private cazadorController?: cazadorController
@@ -59,7 +59,7 @@ export default class UI_Mono extends Phaser.Scene
 		const botonPausa = this.add.image(100, 100, 'botonPausa');
 		botonPausa.setInteractive()
 		.on('pointerover', () => botonPausa.setScale(1.1))
-    .on('pointerout', () => botonPausa.setScale(1))
+    	.on('pointerout', () => botonPausa.setScale(1))
     
 		botonPausa.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
 		{

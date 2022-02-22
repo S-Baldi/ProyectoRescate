@@ -23,7 +23,7 @@ export default class nivel_5 extends Phaser.Scene
 
   public musicaPlay()
   {
-    this.musicaPinguino.play({volume:0.5, loop: true})
+    this.musicaPinguino.play({volume:0.3, loop: true})
   }
   public musicaPause()
   {

@@ -1,6 +1,5 @@
 import Phaser, { GameObjects } from 'phaser' 
 import StateMachine from '../../statemachine/StateMachine'
-
 export default class pezController
 {
   private sprite: Phaser.Physics.Matter.Sprite

@@ -5,7 +5,7 @@ export default class cazadorController
 {
   private sprite: Phaser.Physics.Matter.Sprite
   private stateMachine: StateMachine
-  private velocidadCazador = 15
+  private velocidadCazador = 10
 
   constructor(sprite: Phaser.Physics.Matter.Sprite) 
   {

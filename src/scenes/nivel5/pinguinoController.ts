@@ -5,13 +5,13 @@ import ObstaclesController from '../obstaclesController'
 export default class pipnguinoController
 {
 	private pointer: any
-  private scene: Phaser.Scene
+	private scene: Phaser.Scene
 	private sprite: Phaser.Physics.Matter.Sprite
 	private cursors: Phaser.Types.Input.Keyboard.CursorKeys
-  private stateMachine: StateMachine
-  private obstacles: ObstaclesController
-  private estadoMusica:any;
-	private velocidadPinguino = 12.5
+	private stateMachine: StateMachine
+	private obstacles: ObstaclesController
+	private estadoMusica:any;
+	private velocidadPinguino = 10
 	public cantEstrellas = 0
 
   constructor(scene: Phaser.Scene, 
@@ -144,11 +144,11 @@ export default class pipnguinoController
   private swimUpOnUpdate()
 	{
     if (this.cursors.up.isDown || this.pointer.isDown){
-      this.sprite.setVelocityY(-12)      
+      this.sprite.setVelocityY(-10)      
       this.sprite.setVelocityX(this.velocidadPinguino)
     }
     else if (this.cursors.up.isUp || this.pointer.isUp){
-      this.sprite.setVelocityY(+5)
+      this.sprite.setVelocityY(+4)
       this.sprite.setVelocityX(this.velocidadPinguino)
     }		
 	}
