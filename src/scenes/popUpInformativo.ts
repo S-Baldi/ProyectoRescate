@@ -67,18 +67,20 @@ export default class popUpInformativo extends Phaser.Scene
     {
       let txtInformativoBonusYagua= this.add.text(450, 400, getPhrase('-Nivel Bonus del Yaguareté desbloqueado'), this.Texto).setDepth(3);
     }
-    if (info=='nivelPinguiDesbloqueado') 
+    //INFORMACION DE DESBLOQUEO DE NIVEL
+    /* if (info=='nivelPinguiDesbloqueado') 
     {
       let txtInformativoPingui= this.add.text(450, 400, getPhrase('-Nivel Principal del Pingüino desbloqueado'), this.Texto).setDepth(3);
-    }
+    } */
     if (info=='bonusPinguinoDesbloqueado') 
     {
       let txtInformativoBonusYagua= this.add.text(450, 400, getPhrase('-Nivel Bonus del Pingüino desbloqueado'), this.Texto).setDepth(3);
     }
-    if (info=='nivelMonoDesbloqueado') 
+    //INFORMACION DE DESBLOQUEO DE NIVEL
+    /* if (info=='nivelMonoDesbloqueado') 
     {
       let txtInformativoBonusYagua= this.add.text(450, 400, getPhrase('-Nivel Principal del Mono Caí desbloqueado'), this.Texto).setDepth(3);
-    }   
+    }   */ 
     if (info=='bonusMonoDesbloqueado') 
     {
       let txtInformativoBonusYagua= this.add.text(450, 400, getPhrase('-Nivel Bonus del Mono Caí desbloqueado'), this.Texto).setDepth(3);

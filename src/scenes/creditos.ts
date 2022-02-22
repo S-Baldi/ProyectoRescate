@@ -56,6 +56,8 @@ export default class creditos extends Phaser.Scene
     this.add.text(520, 610 , 'Gallo, Jonathan', this.fuenteTexto)
     this.add.text(95, 400, 'Castelnovo, Renzo', this.fuenteTexto)
     this.add.text(935, 400, 'Baldi, Santiago', this.fuenteTexto)
+<<<<<<< HEAD
+=======
 
     const musicaCreditos = this.add.image(1260, 650, 'creditosMusica').setScale(0.8)
     .setInteractive()
@@ -70,5 +72,6 @@ export default class creditos extends Phaser.Scene
       }
     });
     
+>>>>>>> a80eb96d226ab1fc487e6c472cfc4c933daa6155
   }
 }

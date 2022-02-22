@@ -91,7 +91,8 @@ export default class bonusPingui extends Phaser.Scene
 
     ////////////////////////////////////////////////////////BOTONES//////////////////////////////////////////////////////////////////////////////////
     
-    let boton1= this.add.text(150, 513, preguntasBonus[0].devolverPregunta()+"", this.fuenteTexto)
+    let boton1= this.add.text(150, 513, preguntasBonus[0].devolverPregunta()+"", this.fuenteTexto).setDepth(3) 
+    this.add.image(400, 535, 'botonGris').setScale(0.83)
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     { 
@@ -105,7 +106,8 @@ export default class bonusPingui extends Phaser.Scene
     })
 
     
-    let boton2 = this.add.text(150, 655, preguntasBonus[0].devolverPregunta()+"", this.fuenteTexto)
+    let boton2 = this.add.text(150, 655, preguntasBonus[0].devolverPregunta()+"", this.fuenteTexto).setDepth(3) 
+    this.add.image(1045, 535, 'botonGris').setScale(0.83)
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     {
@@ -118,7 +120,8 @@ export default class bonusPingui extends Phaser.Scene
       this.scene.pause()
     })
 
-    let boton3 = this.add.text(800, 513, preguntasBonus[0].devolverPregunta()+"", this.fuenteTexto)
+    let boton3 = this.add.text(800, 513, preguntasBonus[0].devolverPregunta()+"", this.fuenteTexto).setDepth(3) 
+    this.add.image(400, 680, 'botonGris').setScale(0.83)
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     {
@@ -131,7 +134,8 @@ export default class bonusPingui extends Phaser.Scene
       this.scene.pause()
     })
 
-    let boton4= this.add.text(800, 655, preguntasBonus[0].devolverPregunta()+"", this.fuenteTexto)
+    let boton4= this.add.text(800, 655, preguntasBonus[0].devolverPregunta()+"", this.fuenteTexto).setDepth(3) 
+    this.add.image(1045, 680, 'botonGris').setScale(0.83)
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     {

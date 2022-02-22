@@ -8,6 +8,12 @@ export default class pop_up_BonusMono extends Phaser.Scene{
   color: '#000000',
   align: 'justify'
   };
+  private fuenteTextoCorrecto =     
+  {fontFamily: 'Viga',
+  fontSize: '26pt',
+  color: 'Green',
+  align: 'justify'
+  };
   private contadorEntrarNivel2:number=0
   private estadoMusica:any;
   private sonidoButton:any;
@@ -38,9 +44,9 @@ export default class pop_up_BonusMono extends Phaser.Scene{
     this.scene.get('nivelBonusMono').detenerMusica()
     
     
-    const fondoPopUpBonus = this.add.image(680, 250, 'botonNivel').setScale(0.7);
+    const fondoPopUpBonus = this.add.image(680, 250, 'botonNivel').setScale(0.8);
 
-    const volverMapa = this.add.image(680, 350, 'botonMapa')
+    const volverMapa = this.add.image(680, 385, 'botonMapa')
     .setInteractive()  
     .on('pointerover', () => volverMapa.setScale(1.1))
     .on('pointerout', () => volverMapa.setScale(1))
@@ -52,11 +58,12 @@ export default class pop_up_BonusMono extends Phaser.Scene{
       {
         this.sfxPlay()
       }
-      if (this.contadorEntrarNivel2>0 && this.contadorEntrarNivel2<2) 
+      //INFORMACION DE DESBLOQUEO DE NIVEL
+      /* if (this.contadorEntrarNivel2>0 && this.contadorEntrarNivel2<2) 
       {
         this.scene.launch('popUpInformativo')
         this.scene.get('popUpInformativo').mostrarInfoNiveles('nivelPinguiDesbloqueado')
-      }
+      } */
     
     })     
   }
@@ -65,14 +72,17 @@ export default class pop_up_BonusMono extends Phaser.Scene{
   {    
     if (rta=='green')
     {
-      this.add.text(480, 90, getPhrase('Respuesta Correcta'), this.fuenteTexto).setDepth(3)
-      this.add.sprite(680, 205, 'estrellaBonus', 1).setDepth(3).setScale(0.6)
+      this.add.text(480, 50, getPhrase('Respuesta Correcta'), this.fuenteTexto).setDepth(3)
+      this.add.text(550, 240, getPhrase('¡¡¡Felicidades!!!'), this.fuenteTextoCorrecto).setDepth(3)
+      this.add.sprite(680, 165, 'estrellaBonus', 1).setDepth(3).setScale(0.6)
       localStorage.setItem('estrellasMonoBonus', '1')
     }
     else
     {
-      this.add.text(460, 90, getPhrase('Respuesta Incorrecta'), this.fuenteTexto).setDepth(3) //esto trae hacia delante o atras las cosas
-      this.add.sprite(680, 205, 'estrellaBonus', 0).setDepth(3).setScale(0.6)
+      this.add.text(460, 50, getPhrase('Respuesta Incorrecta'), this.fuenteTexto).setDepth(3) //esto trae hacia delante o atras las cosas
+      this.add.text(405, 240, getPhrase('Respuesta Correcta:'), this.fuenteTextoCorrecto).setDepth(3)
+      this.add.text(730, 240, getPhrase('"Inteligente"'), this.fuenteTextoCorrecto).setDepth(3)
+      this.add.sprite(680, 165, 'estrellaBonus', 0).setDepth(3).setScale(0.6)
     }
     this.scene.get('popUpMapa').yaEntroBonusMono()
     

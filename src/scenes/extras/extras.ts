@@ -54,6 +54,9 @@ export default class extras extends Phaser.Scene
     this.load.image('candado', 'assets/MenuPrincipal/Botones/Extras/candado.png')
     this.load.spritesheet('estrellaBonus', 'assets/Mapa/estrellasBonus.png',
     {frameWidth:205, frameHeight:190});
+    this.load.spritesheet('estrellas','assets/Mapa/estrellasMapa.png',
+    {frameWidth:196 , frameHeight:114 });
+    
   }
 
   create()
@@ -61,6 +64,7 @@ export default class extras extends Phaser.Scene
     this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
     this.sonidoButton = this.sound.add('sonidoBoton');
     
+    const estrellas = this.add.sprite(125, 105, 'estrellas', 3).setDepth(7).setScale(1.2)
 
     const fondoMenu = this.add.image(683, 384, 'fondoLimpio').setScale(0.72);
     this.add.text(550, 50, 'EXTRAS', {  
@@ -248,4 +252,18 @@ export default class extras extends Phaser.Scene
       }) ;  
     } 
   }  
+  update() 
+  {
+    const estrellasTotales = +this.estrellaMasAltaPingui + +this.estrellaMasAltaYagua + 
+    +this.cantidadEstrellasYaguaBonus + +this.cantidadEstrellasPinguiBonus + +this.estrellaMasAltaMono + 
+    +this.cantidadEstrellasMonoBonus
+
+    this.add.text(250, 85,`= ` + estrellasTotales,  
+    {fontFamily: 'Titan One',
+      fontSize: '50pt',
+      color: '#FFBD0D',
+      stroke: '#00572f',
+      strokeThickness: 6,    	
+    }) 
+  }
 }

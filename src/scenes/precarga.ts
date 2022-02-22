@@ -42,6 +42,10 @@ export default class precarga extends Phaser.Scene{
       this.load.audio('musicaMP', 'audio/musicaMP.mp3');
       //////////// Musica Bonus
       this.load.audio('Bonus', 'audio/musicaBonus.mp3');
+      this.load.image('botonNivel', 'assets/Mapa/botonMapa.png');
+      this.load.image('botonGris', 'assets/Mapa/respuestaBonus1.png');
+      this.load.image('botonCorrecto', 'assets/Mapa/respuestaBonus2.png');
+      this.load.image('botonIncorrecto', 'assets/Mapa/respuestaBonus3.png');
       //////////// Botones sonido
       this.load.audio('sonidoBoton', 'audio/sfx/boton.mp3');
       this.load.audio('win', 'audio/sfx/Musica_Victoria.ogg');

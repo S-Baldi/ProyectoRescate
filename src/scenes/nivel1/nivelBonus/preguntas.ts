@@ -34,7 +34,7 @@ export default class preguntas extends Phaser.Scene {
     if (respuestaJuego == this.respuestaCorrecta) 
     {    
       return 'green'           
-    }   
+    } 
     return 'red'    
   }
 
@@ -45,5 +45,6 @@ export default class preguntas extends Phaser.Scene {
   public get pregunta() : string {
     return this._pregunta
   }
-
+  
+  
 }

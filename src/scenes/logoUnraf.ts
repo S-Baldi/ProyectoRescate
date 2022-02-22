@@ -28,6 +28,7 @@ export default class logoUnraf extends Phaser.Scene
       this.load.image('menuCreditos','assets/MenuPrincipal/MenuCreditos.png');
       
     this.load.atlas('logoUnraf' , 'assets/Precarga/logoUnraf.png', 'assets/Precarga/logoUnraf.json');
+    
   }
 
   create(){
@@ -54,7 +55,7 @@ export default class logoUnraf extends Phaser.Scene
         prefix: 'logoNro0',
         suffix: '.png'
       }),
-      frameRate: 20
+      frameRate: 15
     })
 }
   
