@@ -1,14 +1,15 @@
 import Phaser, { GameObjects } from 'phaser' 
 import StateMachine from '../../statemachine/StateMachine'
-export default class pezController
+
+export default class criaPinguiController
 {
   private sprite: Phaser.Physics.Matter.Sprite
   private stateMachine: StateMachine
   constructor(sprite: Phaser.Physics.Matter.Sprite) 
   {
     this.sprite = sprite
-    this.createAnimationBananaMono()
-    this.stateMachine = new StateMachine(this, 'pez')
+    this.createAnimationCriaBallena()
+    this.stateMachine = new StateMachine(this, 'cria')
 
     this.stateMachine.addState('move',{
       onEnter: this.moveOnEnter,
@@ -21,16 +22,16 @@ export default class pezController
 	}
   private moveOnEnter()
 	{
-		this.sprite.play('pezPinguiMove')
+		this.sprite.play('criaBallenaMove')		
 	}
-  private createAnimationBananaMono(){
+  private createAnimationCriaBallena(){
     this.sprite.anims.create({
-			key: 'pezPinguiMove',
-			frameRate: 10,
-			frames: this.sprite.anims.generateFrameNames('nivel5Pez',{
+			key: 'criaBallenaMove',
+			frameRate: 7,
+			frames: this.sprite.anims.generateFrameNames('nivel4Cria',{
 				start: 1,
-				end: 16,
-				prefix: 'pez0',
+				end: 3,
+				prefix: 'criaballena_0',
 				suffix: '.png'
 			}),
 			repeat: -1

@@ -56,16 +56,11 @@ export default class UI extends Phaser.Scene
     
 		botonPausa.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
 		{
-			if (this.scale.isFullscreen)
-            {
-                this.scale.stopFullscreen();
-            }
-            else
-            {
-                this.scale.startFullscreen();
-            }
+			this.scene.pause('nivelYaguarete');
+			this.scene.pause('ui');
+			this.scene.launch('pause');
 
-        }, this);
+        });
 		
 
 		events.on('crias-collected', this.handleCriasCollected, this)

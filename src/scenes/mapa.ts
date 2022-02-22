@@ -204,6 +204,7 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     {
+      this.scene.start('nivelBallena_2');
     })
 
     this.add.text(871,500, getPhrase('PRÓXIMAMENTE'), this.fuenteTextoProx).angle = -25;
@@ -235,8 +236,28 @@ export default class mapa extends Phaser.Scene
       this.scene.get("popUpMapa").mostrarNiveles('pinguinoNiveles')
     })    
     
+    this.add.text(295,595, getPhrase('PINGÜINO'), this.fuenteTexto)
+    
+    const fullscreenButton = this.add.image(1350, 30, 'fullscreen', 0).setOrigin(1, 0).setScale(1.5)
+    .setInteractive()
+    .on('pointerover', () => fullscreenButton.setScale(1.7))
+    .on('pointerout', () => fullscreenButton.setScale(1.5))
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
+    {   
+      if (this.scale.isFullscreen)
+      {
+        fullscreenButton.setFrame(0);
 
-    this.add.text(295,595, getPhrase('PINGÜINO'), this.fuenteTexto)    
+          this.scale.stopFullscreen();
+      }
+      else
+      {
+        fullscreenButton.setFrame(1);
+
+          this.scale.startFullscreen();
+      }
+
+    }, this);
   } 
     
   update()

@@ -67,7 +67,7 @@ export default class precarga extends Phaser.Scene{
       .on('pointerout', () => banderaArg.setScale(1))
       .on('pointerdown', () => banderaArg.setScale(0.9) && setTimeout(() => {			
         this.scene.start('menuPpal')
-        }, 1000))
+        }, 2500))
 
       const banderaEu = this.add.image(700, 400, 'banderaEu')
 			.setInteractive()
@@ -79,7 +79,7 @@ export default class precarga extends Phaser.Scene{
       .on('pointerout', () => banderaEu.setScale(1))
       .on('pointerdown', () => banderaEu.setScale(0.9) && setTimeout(() => {			
         this.scene.start('menuPpal')
-        }, 1000))
+        }, 2500))
 
       const banderaBr = this.add.image(1100, 400, 'banderaBr')
 			.setInteractive()
@@ -91,7 +91,7 @@ export default class precarga extends Phaser.Scene{
       .on('pointerout', () => banderaBr.setScale(1))
       .on('pointerdown', () => banderaBr.setScale(0.9) && setTimeout(() => {			
         this.scene.start('menuPpal')
-        }, 1000))
+        }, 2500))
     }
 
     async getTranslations(language){

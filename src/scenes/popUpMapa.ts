@@ -119,7 +119,7 @@ export default class popUpMapa extends Phaser.Scene
         this.estrellaMasAltaYagua = this.cantidadEstrellasYagua
       }      
 
-      const nivelPpalYagua = this.add.text(670, 400, getPhrase('PRINCIPAL'), this.fuenteTextoMapaDesbloqueado)
+      const nivelPpalYagua = this.add.text(670, 400, getPhrase('JUGAR'), this.fuenteTextoMapaDesbloqueado)
       .setInteractive()
       nivelPpalYagua.on('pointerover', () => nivelPpalYagua.setScale(1.1))
       .on('pointerout', () => nivelPpalYagua.setScale(1))
@@ -169,7 +169,7 @@ export default class popUpMapa extends Phaser.Scene
         this.estrellaMasAltaPingui = this.cantidadEstrellasPingui
       }            
 
-      this.pinguinoNivel(this.add.text(670, 400, getPhrase('PRINCIPAL'), this.fuenteTextoMapa) &&
+      this.pinguinoNivel(this.add.text(670, 400, getPhrase('JUGAR'), this.fuenteTextoMapa) &&
 
       this.add.sprite(650, 280, 'estrellas', this.estrellaMasAltaPingui).setScale(1.8) && 
       
@@ -177,7 +177,7 @@ export default class popUpMapa extends Phaser.Scene
 
       if (this.estrellaMasAltaMono>0) 
       {
-        this.pinguinoNivel(this.add.text(670, 400, getPhrase('PRINCIPAL'), this.fuenteTextoMapaDesbloqueado)
+        this.pinguinoNivel(this.add.text(670, 400, getPhrase('JUGAR'), this.fuenteTextoMapaDesbloqueado)
         .setInteractive()
         .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
         {
@@ -221,7 +221,7 @@ export default class popUpMapa extends Phaser.Scene
       }
       
 
-      this.monoNivel(this.add.text(670, 400, getPhrase('PRINCIPAL'), this.fuenteTextoMapa) &&
+      this.monoNivel(this.add.text(670, 400, getPhrase('JUGAR'), this.fuenteTextoMapa) &&
 
       this.add.sprite(650, 280, 'estrellas', this.estrellaMasAltaPingui).setScale(1.8) && 
       
@@ -229,7 +229,7 @@ export default class popUpMapa extends Phaser.Scene
 
       if (this.estrellaMasAltaYagua>0) 
       {
-        this.monoNivel(this.add.text(670, 400, getPhrase('PRINCIPAL'), this.fuenteTextoMapaDesbloqueado)
+        this.monoNivel(this.add.text(670, 400, getPhrase('JUGAR'), this.fuenteTextoMapaDesbloqueado)
         .setInteractive()
         .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
         {

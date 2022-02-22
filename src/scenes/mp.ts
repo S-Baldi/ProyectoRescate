@@ -41,7 +41,7 @@ export default class mp1 extends Phaser.Scene
     /////////efectos de sonido niveles
     this.load.audio('sfxComida', 'audio/sfx/obtenerComida.ogg');
     this.load.audio('sfxCria', 'audio/sfx/obtenerCria.ogg');
-    this.load.spritesheet('fullscreen', 'assets/MenuPrincipal/Botones/fullscreen.png', { frameWidth: 64, frameHeight: 64 });
+    this.load.spritesheet('fullscreen', 'assets/MenuPrincipal/Botones/fullscreen2.png', { frameWidth: 64, frameHeight: 64 });
 
     //CARGAMOS EN UN ARRAY TODAS LAS FUENTES QUE SE QUIEREN PARA EL JUEGO
     this.load.addFile(new WebFontFile(this.load, [
@@ -135,6 +135,7 @@ export default class mp1 extends Phaser.Scene
       this.sfxPlay()
     });  
     
+    //          FULLSCREEN
     const fullscreenButton = this.add.image(1350, 30, 'fullscreen', 0).setOrigin(1, 0).setScale(1.5)
     .setInteractive()
     .on('pointerover', () => fullscreenButton.setScale(1.7))
