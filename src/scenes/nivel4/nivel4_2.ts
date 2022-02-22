@@ -31,6 +31,7 @@ export default class nivel_4_2 extends Phaser.Scene
 
   preload(){
     this.load.tilemapTiledJSON('mapa_nivel4', 'assets/Nivel4/nivel_Ballena.tmj');
+    this.load.tilemapTiledJSON('ballenaTest', 'assets/Nivel4/nivel_Ballena_Test.tmj');
     this.load.image('nivel4Fondo','assets/Nivel4/nivel4_fondo.png');    
     this.load.atlas('nivel4Krill', 'assets/Nivel4/krill.png', 'assets/Nivel4/krill.json');
     this.load.image('nivel4Bandera', 'assets/Nivel4/banderaBallena.png');  
