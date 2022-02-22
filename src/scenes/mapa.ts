@@ -207,7 +207,7 @@ export default class mapa extends Phaser.Scene
       this.scene.start('nivelBallena_2');
     })
 
-    this.add.text(871,500, getPhrase('PRÓXIMAMENTE'), this.fuenteTextoProx).angle = -25;
+    this.add.text(890,420, getPhrase('BALLENA'), this.fuenteTexto)
 
 
     //////////////////////////////////////////////NIVEL PINGUINO//////////////////////////////////////////////
