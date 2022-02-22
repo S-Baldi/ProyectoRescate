@@ -117,7 +117,7 @@ export default class nivel_4_2 extends Phaser.Scene
             this.cria = this.matter.add.sprite(x+(width*0.5), y+(height*0.5), 'nivel4Cria', undefined,{
               isStatic : true,
               isSensor: true
-            })
+            }).setScale(1.5)
             this.cria.setData('type', 'cria')
             this.criaBallenaController = new criaBallenaController(
               this.cria
