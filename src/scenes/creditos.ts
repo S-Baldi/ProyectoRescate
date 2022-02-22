@@ -56,6 +56,5 @@ export default class creditos extends Phaser.Scene
     this.add.text(520, 610 , 'Gallo, Jonathan', this.fuenteTexto)
     this.add.text(95, 400, 'Castelnovo, Renzo', this.fuenteTexto)
     this.add.text(935, 400, 'Baldi, Santiago', this.fuenteTexto)
-    
   }
 }

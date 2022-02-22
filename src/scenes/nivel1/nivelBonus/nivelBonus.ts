@@ -91,68 +91,72 @@ export default class bonus extends Phaser.Scene{
 
     preguntasBonus[0].respuestasRandom()
 
-    ////////////////////////////////////////////////////////BOTONES//////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////BOTONES///////////////////////////////////////////////////////
     
-    let boton1= this.add.text(150, 513, preguntasBonus[0].devolverPregunta()+"", this.fuenteTexto)
-    .setInteractive()
-    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
-    { 
-      boton1.setColor(this.scene.launch('pop_up_B') &&        
-      this.scene.get("pop_up_B").mostrar_Texto(preguntasBonus[0].revisarResp(boton1.text)))    
-      this.scene.pause()
-      if (this.estadoMusica=='1') 
-      {
-        this.sfxPlay()
-      }
-    });
-
-    
-    let boton2 = this.add.text(150, 655, preguntasBonus[0].devolverPregunta()+"", this.fuenteTexto)
+                              //setTintColor Probar pintar el boton
+    let botonA= this.add.text(150, 513, preguntasBonus[0].devolverPregunta()+"", this.fuenteTexto).setDepth(3) 
+    this.add.image(400, 535, 'botonGris').setScale(0.83)
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
-    { 
-      boton2.setColor(this.scene.launch('pop_up_B') &&        
-      this.scene.get("pop_up_B").mostrar_Texto(preguntasBonus[0].revisarResp(boton2.text)))    
-      this.scene.pause()
+    {
+      botonA.setColor(this.scene.launch('pop_up_B') &&        
+      this.scene.get("pop_up_B").mostrar_Texto(preguntasBonus[0].revisarResp(botonA.text)))
       if (this.estadoMusica=='1') 
       {
         this.sfxPlay()
       }
+      this.scene.pause()
     })
+    //pop_up_B
 
-    let boton3 = this.add.text(800, 513, preguntasBonus[0].devolverPregunta()+"", this.fuenteTexto)
+        
+    let botonB= 
+    this.add.text(800, 513, preguntasBonus[0].devolverPregunta()+"", this.fuenteTexto).setDepth(3) 
+    this.add.image(1045, 535, 'botonGris').setScale(0.83)
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
-    { 
-      boton3.setColor(this.scene.launch('pop_up_B') && 
-      this.scene.get("pop_up_B").mostrar_Texto(preguntasBonus[0].revisarResp(boton3.text)))
-      this.scene.pause()
+    {
+      botonB.setColor(this.scene.launch('pop_up_B') &&        
+      this.scene.get("pop_up_B").mostrar_Texto(preguntasBonus[0].revisarResp(botonB.text)))
       if (this.estadoMusica=='1') 
       {
         this.sfxPlay()
       }
+      this.scene.pause()
     })
 
-    let boton4= this.add.text(800, 655, preguntasBonus[0].devolverPregunta()+"", this.fuenteTexto)
+    let botonC= 
+    this.add.text(150, 655, preguntasBonus[0].devolverPregunta()+"", this.fuenteTexto).setDepth(3)
+    this.add.image(400, 680, 'botonGris').setScale(0.83)
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
-    { 
-      boton4.setColor(this.scene.launch('pop_up_B') && 
-      this.scene.get("pop_up_B").mostrar_Texto(preguntasBonus[0].revisarResp(boton4.text))) 
-      this.scene.pause()
+    {
+      botonC.setColor(this.scene.launch('pop_up_B') &&        
+      this.scene.get("pop_up_B").mostrar_Texto(preguntasBonus[0].revisarResp(botonC.text)))
       if (this.estadoMusica=='1') 
       {
         this.sfxPlay()
       }
+      this.scene.pause()
     })
 
 
-    /* let cat = localStorage.getItem('nivelPasado');
-    if (cat == 1){
-
-    } */
+    let botonD= 
+    this.add.text(800, 655, preguntasBonus[0].devolverPregunta()+"", this.fuenteTexto).setDepth(3) 
+   
+    this.add.image(1045, 680, 'botonGris').setScale(0.83)
+    .setInteractive()
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+    {
+      botonD.setColor(this.scene.launch('pop_up_B') &&        
+      this.scene.get("pop_up_B").mostrar_Texto(preguntasBonus[0].revisarResp(botonD.text)))
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
+      this.scene.pause()
+    })
   }
-  
 }
 
 

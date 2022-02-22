@@ -5,6 +5,7 @@ export default class logoUnraf extends Phaser.Scene
   private tempo = 0
   preload(){    
     this.load.atlas('logoUnraf' , 'assets/Precarga/logoUnraf.png', 'assets/Precarga/logoUnraf.json');
+    
   }
 
   create(){
@@ -31,7 +32,7 @@ export default class logoUnraf extends Phaser.Scene
         prefix: 'logoNro0',
         suffix: '.png'
       }),
-      frameRate: 20
+      frameRate: 15
     })
 }
   

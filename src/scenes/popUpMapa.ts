@@ -110,6 +110,7 @@ export default class popUpMapa extends Phaser.Scene
 
   public mostrarNiveles(info:string)
   {
+    /////////////////////////////////// YAGUARETÉ////////////////////////////////
     if (info=='yaguareteNiveles') 
     {
       this.cantidadEstrellasYagua = localStorage.getItem('estrellasYaguarete') || '1';  
@@ -138,7 +139,7 @@ export default class popUpMapa extends Phaser.Scene
 
       this.yaguareteBonus(this.add.text(420, 400, 'BONUS', this.fuenteTextoMapa))  
       
-      if (this.contadorEntrarNivel1==0 && this.cerrarBonusYaguarete>0)
+      if (this.contadorEntrarNivel1>0 && this.cerrarBonusYaguarete>0)
       {       
         this.yaguareteBonus(this.add.text(420, 400, 'BONUS', this.fuenteTextoMapa)
         .removeInteractive())  
@@ -160,6 +161,8 @@ export default class popUpMapa extends Phaser.Scene
       }     
     } 
 
+    ///////////////////////////////////PINGÜINO//////////////////
+ 
     if (info=='pinguinoNiveles')
     {
       this.cantidadEstrellasPingui = localStorage.getItem('estrellasPingui') || '1';  
@@ -175,7 +178,7 @@ export default class popUpMapa extends Phaser.Scene
       
       this.pinguinoBonus(this.add.text(420, 400, 'BONUS', this.fuenteTextoMapa)))
 
-      if (this.estrellaMasAltaMono>0) 
+      if (this.estrellaMasAltaMono>=0) 
       {
         this.pinguinoNivel(this.add.text(670, 400, getPhrase('PRINCIPAL'), this.fuenteTextoMapaDesbloqueado)
         .setInteractive()
@@ -211,6 +214,8 @@ export default class popUpMapa extends Phaser.Scene
       }
     }
 
+    ///////////////////////////////////MONO/////////////////////
+
     if (info=='monoNiveles') 
     {
       this.cantidadEstrellasMono = localStorage.getItem('estrellasMono') || '1';  
@@ -227,7 +232,7 @@ export default class popUpMapa extends Phaser.Scene
       
       this.monoBonus(this.add.text(420, 400, 'BONUS', this.fuenteTextoMapa)))
 
-      if (this.estrellaMasAltaYagua>0) 
+      if (this.estrellaMasAltaYagua>=0) 
       {
         this.monoNivel(this.add.text(670, 400, getPhrase('PRINCIPAL'), this.fuenteTextoMapaDesbloqueado)
         .setInteractive()
