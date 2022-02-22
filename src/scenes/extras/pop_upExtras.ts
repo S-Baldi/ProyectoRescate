@@ -120,7 +120,16 @@ export default class pop_upExt extends Phaser.Scene
     {
       const tituloPopUpB= this.add.text(525, 130, 'BALLENA FRANCA', {font: 'bold 40pt Arial', align:'center', color: 'black'}).setDepth(3);
       const fotoB = this.add.image(350, 435, 'fotoBallena').setScale(0.39).setDepth(3);
-      const txtYagua = this.add.text(500, 250, 'Hola Ballena', {font: 'bold 20pt Arial', color: 'black'}).setDepth(3);      
+      this.add.text(540, 170+this.espacioRenglones, getPhrase('Nombre científico: Cebus apella'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 210+this.espacioRenglones, getPhrase('Longitud: 35cm a 49cm'), this.fuenteTexto ).setDepth(3)
+      this.add.text(540, 250+this.espacioRenglones, getPhrase('Peso: 1,9kg a 3,9kg'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 290+this.espacioRenglones, getPhrase('Distribución: Norte de Argentina'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 330+this.espacioRenglones, getPhrase('Estado de Conservación: Preocupación menor'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 370+this.espacioRenglones, getPhrase('Dieta: frutos, semillas, néctar y invertebrados'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 410+this.espacioRenglones, getPhrase('Primate más inteligente de América Latina'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 450+this.espacioRenglones, getPhrase('Habitante de la selvas de Jujuy y Misiones'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 490+this.espacioRenglones, getPhrase('Amenazados por el tráfico y el comercio ilegal'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 530+this.espacioRenglones, getPhrase('Amenazas: pérdida y fragmentación de su hábitat'), this.fuenteTexto).setDepth(3)      
     }
     
     if (info=='pinguinoInformation')

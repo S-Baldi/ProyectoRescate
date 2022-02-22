@@ -68,8 +68,8 @@ export default class UI_Ballena extends Phaser.Scene
 		})
 
     //TEXTO PARA CORROBORAR
-	this.add.image(1140 ,90, 'criaBallena');
-    this.criasLabel = this.add.text(1200, 50, '0/3', this.fuenteTexto)
+	this.add.image(1140 ,70, 'criaBallena');
+    this.criasLabel = this.add.text(1200, 30, '0/3', this.fuenteTexto)
     this.add.image(1140 ,190, 'comidaBallena');
     this.comidaLabel = this.add.text(1200, 150, '0/50', this.fuenteTexto)	
 	}

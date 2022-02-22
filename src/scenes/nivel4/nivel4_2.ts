@@ -31,6 +31,7 @@ export default class nivel_4_2 extends Phaser.Scene
 
   preload(){
     this.load.tilemapTiledJSON('mapa_nivel4', 'assets/Nivel4/nivel_Ballena.tmj');
+    this.load.tilemapTiledJSON('ballenaTest', 'assets/Nivel4/nivel_Ballena_Test.tmj');
     this.load.image('nivel4Fondo','assets/Nivel4/nivel4_fondo.png');    
     this.load.atlas('nivel4Krill', 'assets/Nivel4/krill.png', 'assets/Nivel4/krill.json');
     this.load.image('nivel4Bandera', 'assets/Nivel4/banderaBallena.png');  
@@ -117,7 +118,7 @@ export default class nivel_4_2 extends Phaser.Scene
             this.cria = this.matter.add.sprite(x+(width*0.5), y+(height*0.5), 'nivel4Cria', undefined,{
               isStatic : true,
               isSensor: true
-            })
+            }).setScale(1.5)
             this.cria.setData('type', 'cria')
             this.criaBallenaController = new criaBallenaController(
               this.cria
