@@ -101,14 +101,15 @@ export default class bonus extends Phaser.Scene{
     {
       botonA.setColor(this.scene.launch('pop_up_B') &&        
       this.scene.get("pop_up_B").mostrar_Texto(preguntasBonus[0].revisarResp(botonA.text)))
-      if (this.estadoMusica=='1') 
+      botonB.setColor(preguntasBonus[0].revisarResp(botonB.text))
+      botonC.setColor(preguntasBonus[0].revisarResp(botonC.text))
+      botonD.setColor(preguntasBonus[0].revisarResp(botonD.text))
+      
       {
         this.sfxPlay()
       }
       this.scene.pause()
     })
-    //pop_up_B
-
         
     let botonB= 
     this.add.text(800, 513, preguntasBonus[0].devolverPregunta()+"", this.fuenteTexto).setDepth(3) 
@@ -118,6 +119,9 @@ export default class bonus extends Phaser.Scene{
     {
       botonB.setColor(this.scene.launch('pop_up_B') &&        
       this.scene.get("pop_up_B").mostrar_Texto(preguntasBonus[0].revisarResp(botonB.text)))
+      botonA.setColor(preguntasBonus[0].revisarResp(botonA.text))
+      botonC.setColor(preguntasBonus[0].revisarResp(botonC.text))
+      botonD.setColor(preguntasBonus[0].revisarResp(botonD.text))
       if (this.estadoMusica=='1') 
       {
         this.sfxPlay()
@@ -133,6 +137,9 @@ export default class bonus extends Phaser.Scene{
     {
       botonC.setColor(this.scene.launch('pop_up_B') &&        
       this.scene.get("pop_up_B").mostrar_Texto(preguntasBonus[0].revisarResp(botonC.text)))
+      botonB.setColor(preguntasBonus[0].revisarResp(botonB.text))
+      botonA.setColor(preguntasBonus[0].revisarResp(botonA.text))
+      botonD.setColor(preguntasBonus[0].revisarResp(botonD.text))
       if (this.estadoMusica=='1') 
       {
         this.sfxPlay()
@@ -150,6 +157,9 @@ export default class bonus extends Phaser.Scene{
     {
       botonD.setColor(this.scene.launch('pop_up_B') &&        
       this.scene.get("pop_up_B").mostrar_Texto(preguntasBonus[0].revisarResp(botonD.text)))
+      botonB.setColor(preguntasBonus[0].revisarResp(botonB.text))
+      botonC.setColor(preguntasBonus[0].revisarResp(botonC.text))
+      botonA.setColor(preguntasBonus[0].revisarResp(botonA.text))
       if (this.estadoMusica=='1') 
       {
         this.sfxPlay()

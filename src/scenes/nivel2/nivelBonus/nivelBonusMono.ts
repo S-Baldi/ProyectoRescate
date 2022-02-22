@@ -100,6 +100,9 @@ export default class bonusMono extends Phaser.Scene{
     {
       botonA.setColor(this.scene.launch('pop_up_BMono') &&        
       this.scene.get("pop_up_BMono").mostrar_Texto(preguntasBonus[0].revisarResp(botonA.text)))
+      botonB.setColor(preguntasBonus[0].revisarResp(botonB.text))
+      botonC.setColor(preguntasBonus[0].revisarResp(botonC.text))
+      botonD.setColor(preguntasBonus[0].revisarResp(botonD.text))
       if (this.estadoMusica=='1') 
       {
         this.sfxPlay()
@@ -115,6 +118,9 @@ export default class bonusMono extends Phaser.Scene{
     {
       botonB.setColor(this.scene.launch('pop_up_BMono') &&        
       this.scene.get("pop_up_BMono").mostrar_Texto(preguntasBonus[0].revisarResp(botonB.text)))
+      botonA.setColor(preguntasBonus[0].revisarResp(botonA.text))
+      botonC.setColor(preguntasBonus[0].revisarResp(botonC.text))
+      botonD.setColor(preguntasBonus[0].revisarResp(botonD.text))
       if (this.estadoMusica=='1') 
       {
         this.sfxPlay()
@@ -129,6 +135,9 @@ export default class bonusMono extends Phaser.Scene{
     {
       botonC.setColor(this.scene.launch('pop_up_BMono') &&       
       this.scene.get("pop_up_BMono").mostrar_Texto(preguntasBonus[0].revisarResp(botonC.text)))
+      botonB.setColor(preguntasBonus[0].revisarResp(botonB.text))
+      botonA.setColor(preguntasBonus[0].revisarResp(botonA.text))
+      botonD.setColor(preguntasBonus[0].revisarResp(botonD.text))
       if (this.estadoMusica=='1') 
       {
         this.sfxPlay()
@@ -143,20 +152,16 @@ export default class bonusMono extends Phaser.Scene{
     {
       botonD.setColor(this.scene.launch('pop_up_BMono') &&        
       this.scene.get("pop_up_BMono").mostrar_Texto(preguntasBonus[0].revisarResp(botonD.text))) 
+      botonB.setColor(preguntasBonus[0].revisarResp(botonB.text))
+      botonC.setColor(preguntasBonus[0].revisarResp(botonC.text))
+      botonA.setColor(preguntasBonus[0].revisarResp(botonA.text))
       if (this.estadoMusica=='1') 
       {
         this.sfxPlay()
       }
       this.scene.pause()
-    })
-
-
-    /* let cat = localStorage.getItem('nivelPasado');
-    if (cat == 1){
-
-    } */
-  }
-  
+    })   
+  } 
 }
 
 
