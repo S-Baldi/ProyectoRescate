@@ -1,7 +1,7 @@
 import Phaser, { GameObjects } from 'phaser' 
 import StateMachine from '../../statemachine/StateMachine'
 
-export default class criaPinguiController
+export default class criaBallenaController
 {
   private sprite: Phaser.Physics.Matter.Sprite
   private stateMachine: StateMachine

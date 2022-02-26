@@ -90,7 +90,7 @@ export default class nivel_4_2 extends Phaser.Scene
     }
     this.scene.launch('uiBallena')
     /* Tiled Nivel 5 */
-    const mapa_nivel4 = this.make.tilemap({key: 'ballenaTest'});
+    const mapa_nivel4 = this.make.tilemap({key: 'mapa_nivel4'});
     const fondo_nivel4_tiled = mapa_nivel4.addTilesetImage('nivel4_fondo', 'nivel4Fondo');
 
   /* Capas tiled */
