@@ -80,7 +80,7 @@ export default class nivel_3 extends Phaser.Scene
     this.load.atlas('veneno', 'assets/Nivel3/veneno.png', 'assets/Nivel3/veneno.json');
     this.load.atlas('carne', 'assets/Nivel1/nivel1_carne.png', 'assets/Nivel1/nivel1_carne.json');
     //this.load.atlas('nivel3Cria','assets/Nivel3/criaCondor.png', 'assets/Nivel3/criaCondor.json');
-    //this.load.atlas('condor', 'assets/Nivel3/condor.png', 'assets/Nivel3/condor.json');
+    this.load.atlas('condor', 'assets/Nivel3/condor.png', 'assets/Nivel3/condor.json');
   }
 
   create()
@@ -95,7 +95,9 @@ export default class nivel_3 extends Phaser.Scene
     } */
 
 
-    //this.scene.launch('uiCondor')
+    this.scene.launch('uiCondor')
+
+
     /* Tiled Nivel 3 */
     const mapa_nivel3 = this.make.tilemap({key: 'mapa_nivel3'});
     const fondo_nivel3_tiled = mapa_nivel3.addTilesetImage('nivel3_fondo', 'nivel3Fondo');
@@ -114,13 +116,13 @@ export default class nivel_3 extends Phaser.Scene
 
 			switch (name)
 			{
-				/* case 'condor':
+				 case 'condor':
 				{
           //X=156,97
-					this.condor = this.matter.add.sprite(x + (width * 0.5), y, 'condor')
-          this.condor.setScale(1)
+					this.condor = this.matter.add.sprite(x + (width * 0.5), (y * 0.5), 'condor')
+          this.condor.setScale(1.2)
           this.condor.setBounce(0)
-          this.condor.setRectangle(250,100)
+          this.condor.setRectangle(120,60)
           this.condor.setFixedRotation()
 
           this.condorController = new condorController(
@@ -132,7 +134,7 @@ export default class nivel_3 extends Phaser.Scene
 
 					this.cameras.main.startFollow(this.condor, true, 1, 1, -500)
 					break
-				} */
+				} 
 
         case 'avion': //altura 86,70
           {
@@ -231,7 +233,7 @@ export default class nivel_3 extends Phaser.Scene
 }
 
   update(t: number, dt: number){
-    //this.condorController?.update(dt)
+    this.condorController?.update(dt)
     this.avionController?.update(dt)
     this.venenoController?.update(dt)
     //this.criaCondorController?.update(dt)

@@ -41,7 +41,7 @@ export default class UI_Condor extends Phaser.Scene
 	}
 	preload(){
 		//this.load.image('criaCondor', 'assets/Nivel3/criaCondor1.png');
-		//this.load.image('comidaCondor', 'assets/Nivel3/comidaCondor.png');
+		this.load.image('comidaYaguarete', 'assets/Nivel1/carne.png');;
 	}
 
 	create()
@@ -70,7 +70,7 @@ export default class UI_Condor extends Phaser.Scene
     //TEXTO PARA CORROBORAR
 	this.add.image(1140 ,70, 'criaCondor');
     this.criasLabel = this.add.text(1200, 30, '0/3', this.fuenteTexto)
-    this.add.image(1140 ,190, 'comidaCondor');
+    this.add.image(1140 ,180, 'comidaYaguarete').setScale(1.3);
     this.comidaLabel = this.add.text(1200, 150, '0/50', this.fuenteTexto)	
 	}
 	

@@ -95,14 +95,14 @@ export default class condorController
 					break
 				}
 
-				case 'comida':
+				case 'carne':
 				{
 					events.emit('comida-collected')
 					sprite.destroy()
-					if (this.estadoMusica=='1') 
+					/* if (this.estadoMusica=='1') 
 					{
-						this.scene.scene.get('nivelCondor')//.sfxComidaPlay()
-					}
+						this.scene.scene.get('nivelCondor').sfxComidaPlay()
+					} */
 					break
 				}
 			}
@@ -130,11 +130,11 @@ export default class condorController
   private flyUpOnUpdate()
 	{
     if (this.cursors.up.isDown || this.pointer.isDown){
-      this.sprite.setVelocityY(-10)      
+      this.sprite.setVelocityY(-12)      
       this.sprite.setVelocityX(this.velocidadCondor)
     }
     else if (this.cursors.up.isUp || this.pointer.isUp){
-      this.sprite.setVelocityY(+4)
+      this.sprite.setVelocityY(+6)
       this.sprite.setVelocityX(this.velocidadCondor)
     }		
 	}
@@ -183,7 +183,7 @@ export default class condorController
 			frameRate: 5,
 			frames: this.sprite.anims.generateFrameNames('condor', {
 				start: 1,
-				end: 5,
+				end: 7,
 				prefix: 'condor0',
 				suffix: '.png'
 			}),
@@ -195,7 +195,7 @@ export default class condorController
 			frames: this.sprite.anims.generateFrameNames('condor', {
 				start: 1,
 				end: 2,
-				prefix: 'condormuer0',
+				prefix: 'condorMuerte0',
 				suffix: '.png'
 			}),
 			frameRate: 3
