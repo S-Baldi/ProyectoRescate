@@ -140,7 +140,7 @@ export default class mapa extends Phaser.Scene
     {
       this.estrellaMasAltaYagua = this.cantidadEstrellasYagua
     }
-    this.add.sprite(1137, 195, 'estrellas', this.estrellaMasAltaYagua).setDepth(7).setScale(0.8);
+    this.add.sprite(1127, 195, 'estrellas', this.estrellaMasAltaYagua).setDepth(7).setScale(0.8);
 
     this.cantidadEstrellasYaguaBonus= localStorage.getItem('estrellasYaguareteBonus') || '1'; 
     
@@ -159,7 +159,7 @@ export default class mapa extends Phaser.Scene
       this.scene.get("popUpMapa").mostrarNiveles('yaguareteNiveles')
     })
     
-    this.add.text(1025,115, getPhrase('YAGUARETÉ'), this.fuenteTextoYagua)
+    this.add.text(1030,115, getPhrase('YAGUARETÉ'), this.fuenteTextoYagua)
     
     //////////////////////////////////////////////NIVEL MONO//////////////////////////////////////////////
     this.cantidadEstrellasMono = localStorage.getItem('estrellasMono') || '1';  
@@ -197,7 +197,7 @@ export default class mapa extends Phaser.Scene
     {
     })
 
-    this.add.text(251,330, getPhrase('PRÓXIMAMENTE'), this.fuenteTextoProx).angle = -25;
+    this.add.text(280,250, getPhrase('CÓNDOR'), this.fuenteTexto);
 
     //////////////////////////////////////////////NIVEL BALLENA//////////////////////////////////////////////
     const buttonNivel4 = this.add.image(980,470, 'botonNivel').setScale(0.25)
@@ -207,7 +207,7 @@ export default class mapa extends Phaser.Scene
       this.scene.start('nivelBallena_2');
     })
 
-    this.add.text(890,420, getPhrase('BALLENA'), this.fuenteTexto)
+    this.add.text(890,420, getPhrase('BALLENA'), this.fuenteTexto);
 
 
     //////////////////////////////////////////////NIVEL PINGUINO//////////////////////////////////////////////
