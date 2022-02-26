@@ -27,7 +27,7 @@ export default class krillController
   private createAnimationKrill(){
     this.sprite.anims.create({
 			key: 'krillMove',
-			frameRate: 10,
+			frameRate: 5,
 			frames: this.sprite.anims.generateFrameNames('nivel4Krill',{
 				start: 1,
 				end: 5,

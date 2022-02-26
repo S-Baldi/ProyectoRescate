@@ -133,7 +133,7 @@ export default class nivel_4_2 extends Phaser.Scene
             'nivel4Krill', undefined, {
               isStatic: true,
               isSensor: true
-            }).setScale(1.5)
+            }).setScale(1.2)
             this.krill.setData('type', 'krill')
             this.krillController = new krillController(
               this.krill

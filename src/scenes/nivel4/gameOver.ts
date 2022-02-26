@@ -36,7 +36,7 @@ export default class gameOverBallena extends Phaser.Scene{
   }
 
   preload(){
-    this.load.image('loseBallena', 'assets/GameWinLose/losePinguino.png');
+    this.load.image('loseBallena', 'assets/GameWinLose/loseBallena.png');
   }
   
   create()

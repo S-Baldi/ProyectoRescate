@@ -111,25 +111,34 @@ export default class pop_upExt extends Phaser.Scene
     
     if (info=='condorInformation')
     {
-      const tituloPopUpC= this.add.text(525, 130, 'CONDOR ANDINO', {font: 'bold 40pt Arial', align:'center', color: 'black'}).setDepth(3);
-      const fotoC = this.add.image(350, 435, 'fotoCondor').setScale(0.24).setDepth(3);
-            
+      const tituloPopUpC= this.add.text(430, 110, getPhrase('CÓNDOR ANDINO'), this.fuenteNombres).setDepth(3);
+      const fotoC = this.add.image(350, 435, 'fotoCondor').setScale(0.88).setDepth(3);
+      this.add.text(540, 170+this.espacioRenglones, getPhrase('Nombre científico: Vultur gryphus'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 210+this.espacioRenglones, getPhrase('Longitud: 1,4m'), this.fuenteTexto ).setDepth(3)
+      this.add.text(540, 250+this.espacioRenglones, getPhrase('Peso: 10-15kg'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 290+this.espacioRenglones, getPhrase('Distribución: Cordillera de los Andes'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 330+this.espacioRenglones, getPhrase('Estado de Conservación: Casi Amenazado'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 370+this.espacioRenglones, getPhrase('Dieta: Animales muertos (carroña)'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 410+this.espacioRenglones, getPhrase('Volando puede alcanzar hasta 6500m'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 450+this.espacioRenglones, getPhrase('Se calcula que pone un huevo cada dos años'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 490+this.espacioRenglones, getPhrase('Puede ayunar hasta cinco semanas'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 530+this.espacioRenglones, getPhrase('Patrimonio cultural y natural de Sudamérica'), this.fuenteTexto).setDepth(3)
     }
     
     if (info=='ballenaInformation')
     {
-      const tituloPopUpB= this.add.text(525, 130, 'BALLENA FRANCA', {font: 'bold 40pt Arial', align:'center', color: 'black'}).setDepth(3);
-      const fotoB = this.add.image(350, 435, 'fotoBallena').setScale(0.39).setDepth(3);
-      this.add.text(540, 170+this.espacioRenglones, getPhrase('Nombre científico: Cebus apella'), this.fuenteTexto).setDepth(3)
-      this.add.text(540, 210+this.espacioRenglones, getPhrase('Longitud: 35cm a 49cm'), this.fuenteTexto ).setDepth(3)
-      this.add.text(540, 250+this.espacioRenglones, getPhrase('Peso: 1,9kg a 3,9kg'), this.fuenteTexto).setDepth(3)
-      this.add.text(540, 290+this.espacioRenglones, getPhrase('Distribución: Norte de Argentina'), this.fuenteTexto).setDepth(3)
+      const tituloPopUpB= this.add.text(430, 110, getPhrase('BALLENA FRANCA'), this.fuenteNombres).setDepth(3);
+      const fotoB = this.add.image(350, 435, 'fotoBallena').setScale(0.88).setDepth(3);
+      this.add.text(540, 170+this.espacioRenglones, getPhrase('Nombre científico: Eubalaena australis'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 210+this.espacioRenglones, getPhrase('Longitud: 14m'), this.fuenteTexto ).setDepth(3)
+      this.add.text(540, 250+this.espacioRenglones, getPhrase('Peso: 23 toneladas'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 290+this.espacioRenglones, getPhrase('Distribución: Hemisferio y polo sur'), this.fuenteTexto).setDepth(3)
       this.add.text(540, 330+this.espacioRenglones, getPhrase('Estado de Conservación: Preocupación menor'), this.fuenteTexto).setDepth(3)
-      this.add.text(540, 370+this.espacioRenglones, getPhrase('Dieta: frutos, semillas, néctar y invertebrados'), this.fuenteTexto).setDepth(3)
-      this.add.text(540, 410+this.espacioRenglones, getPhrase('Primate más inteligente de América Latina'), this.fuenteTexto).setDepth(3)
-      this.add.text(540, 450+this.espacioRenglones, getPhrase('Habitante de la selvas de Jujuy y Misiones'), this.fuenteTexto).setDepth(3)
-      this.add.text(540, 490+this.espacioRenglones, getPhrase('Amenazados por el tráfico y el comercio ilegal'), this.fuenteTexto).setDepth(3)
-      this.add.text(540, 530+this.espacioRenglones, getPhrase('Amenazas: pérdida y fragmentación de su hábitat'), this.fuenteTexto).setDepth(3)      
+      this.add.text(540, 370+this.espacioRenglones, getPhrase('Dieta: zooplancton y krill'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 410+this.espacioRenglones, getPhrase('Filtran gran cantidad de agua a través de sus barbas'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 450+this.espacioRenglones, getPhrase('Solo tienen cría cada tres años'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 490+this.espacioRenglones, getPhrase('En la actualidad solo hay 10 mil individuos'), this.fuenteTexto).setDepth(3)
+      this.add.text(540, 530+this.espacioRenglones, getPhrase('Declaradas Monumento Natural Nacional'), this.fuenteTexto).setDepth(3)      
     }
     
     if (info=='pinguinoInformation')

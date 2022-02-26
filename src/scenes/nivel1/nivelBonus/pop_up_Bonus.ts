@@ -14,6 +14,11 @@ export default class pop_up extends Phaser.Scene{
   color: 'Green',
   align: 'justify'
   };
+  private fuenteTextoCorrecto2 =     
+  {fontFamily: 'Viga',
+  fontSize: '26pt',
+  color: 'Green',
+  };
   private contadorEntrarNivel1:number=0
   private estadoMusica:any
   private musicaWin:any
@@ -82,13 +87,13 @@ export default class pop_up extends Phaser.Scene{
       this.add.text(480, 50, getPhrase('Respuesta Correcta'), this.fuenteTexto).setDepth(3)
       this.add.text(550, 240, getPhrase('¡¡¡Felicidades!!!'), this.fuenteTextoCorrecto).setDepth(3)
       this.add.sprite(680, 165, 'estrellaBonus', 1).setDepth(3).setScale(0.6)
-      localStorage.setItem('estrellasYaguareteBonus', '1')       
+      localStorage.setItem('estrellasYaguareteBonus', '1')
       
     }
     else
     {  
       this.add.text(460, 50, getPhrase('Respuesta Incorrecta'), this.fuenteTexto).setDepth(3) //esto trae hacia delante o atras las cosas
-      this.add.text(340, 240, getPhrase('Respuesta Correcta:'), this.fuenteTextoCorrecto).setDepth(3)
+      this.add.text(340, 240, getPhrase('Respuesta Correcta:'), this.fuenteTextoCorrecto2).setDepth(3)
       this.add.text(666, 240, getPhrase('"Todas son correctas"'), this.fuenteTextoCorrecto).setDepth(3)
       this.add.sprite(680, 165, 'estrellaBonus', 0).setDepth(3).setScale(0.6);
      
