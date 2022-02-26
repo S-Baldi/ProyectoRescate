@@ -17,6 +17,11 @@ export default class mapa extends Phaser.Scene
   private estrellaMasAltaMono : number =0  
   private cantidadEstrellasMonoBonus
   
+  //Ballena
+  private cantidadEstrellasBallena: any
+  private estrellaMasAltaBallena : number =0  
+  private estrellasBallenaBonus
+
   public musicaMapa:any
   private estadoMusica:any;
   
@@ -170,7 +175,7 @@ export default class mapa extends Phaser.Scene
     }
     this.add.sprite(420, 105, 'estrellas', this.estrellaMasAltaMono).setDepth(7).setScale(0.8);
 
-    this.cantidadEstrellasMonoBonus= localStorage.getItem('estrellasMonoBonus') || '1';
+    this.estrellasBallenaBonus= localStorage.getItem('estrellasMonoBonus') || '1';
     
     const buttonNivel2 = this.add.image(420,80, 'botonNivel').setScale(0.25)
     .setInteractive()
@@ -200,15 +205,32 @@ export default class mapa extends Phaser.Scene
     this.add.text(251,330, getPhrase('PRÓXIMAMENTE'), this.fuenteTextoProx).angle = -25;
 
     //////////////////////////////////////////////NIVEL BALLENA//////////////////////////////////////////////
+    this.cantidadEstrellasBallena = localStorage.getItem('estrellasBallena') || '1';  
+    
+    if (this.cantidadEstrellasBallena>this.estrellaMasAltaBallena) 
+    {
+      this.estrellaMasAltaBallena = this.cantidadEstrellasBallena
+    }
+    this.add.sprite(980, 490, 'estrellas', this.estrellaMasAltaBallena).setDepth(7).setScale(0.8);
+
+    this.cantidadEstrellasMonoBonus= localStorage.getItem('estrellasBallenaBonus') || '1';
     const buttonNivel4 = this.add.image(980,470, 'botonNivel').setScale(0.25)
     .setInteractive()
-    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
-    {
-      this.scene.start('nivelBallena_2');
+    .on('pointerover', () => buttonNivel4.setScale(0.28))
+    .on('pointerout', () => buttonNivel4.setScale(0.25))
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
+    { 
+      this.scene.launch('popUpMapa') 
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
+      this.scene.pause() 
+      this.scene.get("popUpMapa").mostrarNiveles('ballenaNiveles')
     })
 
-    this.add.text(871,500, getPhrase('PRÓXIMAMENTE'), this.fuenteTextoProx).angle = -25;
-
+    this.add.text(900, 400, getPhrase('BALLENA'), this.fuenteTexto)
+    
 
     //////////////////////////////////////////////NIVEL PINGUINO//////////////////////////////////////////////
     this.cantidadEstrellasPingui = localStorage.getItem('estrellasPingui') || '1';  
@@ -263,7 +285,7 @@ export default class mapa extends Phaser.Scene
   update()
   {
     const estrellasTotales = +this.estrellaMasAltaPingui + +this.estrellaMasAltaYagua + 
-    +this.cantidadEstrellasYaguaBonus + +this.cantidadEstrellasPinguiBonus + +this.estrellaMasAltaMono + +this.cantidadEstrellasMonoBonus
+    +this.cantidadEstrellasYaguaBonus + +this.cantidadEstrellasPinguiBonus + +this.estrellaMasAltaMono + +this.cantidadEstrellasMonoBonus + +this.cantidadEstrellasBallena + +this.estrellasBallenaBonus
     
 
     this.add.text(1140, 625,`= ` + estrellasTotales,  

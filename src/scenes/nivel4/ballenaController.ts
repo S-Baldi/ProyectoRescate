@@ -84,7 +84,7 @@ export default class ballenaController
 					events.emit('crias-collected')
 					if (this.estadoMusica=='1') 
 					{
-						this.scene.scene.get('nivelBallena')//.sfxCriaPlay()
+						this.scene.scene.get('nivelBallena_2').sfxCriaPlay()
 					}
 					break
 				}
@@ -95,7 +95,7 @@ export default class ballenaController
 					sprite.destroy()
 					if (this.estadoMusica=='1') 
 					{
-						this.scene.scene.get('nivelBallena')//.sfxComidaPlay()
+						this.scene.scene.get('nivelBallena_2').sfxComidaPlay()
 					}
 					break
 				}
@@ -135,7 +135,7 @@ export default class ballenaController
 
 	private basuraHitOnEnter(){
 		this.sprite.play('ballena-death')		
-		this.scene.scene.get('nivelBallena')//.detenerMusica()
+		this.scene.scene.get('nivelBallena_2').detenerMusica()
 		this.scene.time.delayedCall(1500, () => {
 			this.scene.scene.launch('gameOverBallena') 
 			this.scene.scene.pause()
@@ -152,7 +152,7 @@ export default class ballenaController
 		this.scene.scene.get('popUpMapa')//.aumentaContador4()
 		this.scene.scene.get('gameWinBallena')//.aumentaContador4()
 		this.scene.scene.get('pop_up_B_Ballena')//.aumentaContador4()
-		this.scene.scene.get('nivelBallena')//.detenerMusica()
+		this.scene.scene.get('nivelBallena_2').detenerMusica()
 				
 
 		if (this.cantEstrellas == 2) 

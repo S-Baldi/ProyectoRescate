@@ -17,6 +17,44 @@ export default class nivel_4_2 extends Phaser.Scene
   private basuraController?: basuraController;
   private cria?: Phaser.Physics.Matter.Sprite;
   private criaBallenaController?: criaBallenaController;
+  private musicaBallena:any
+  private estadoMusica:any;
+  private sfxCria:any;
+  private sfxComida:any;
+  public musicaPlay()
+  {
+    this.musicaBallena.play({volume:0.3, loop: true})
+  }
+  public musicaPause()
+  {
+    this.musicaBallena.pause()
+  } 
+  public musicaResume()
+  {
+    this.musicaBallena.resume()
+  }
+  public detenerMusica()
+  {  
+    this.musicaBallena.stop()            
+  }
+  ///////Cria
+  public sfxCriaPlay()
+  {
+    this.sfxCria.play({volume:0.03})
+  } 
+  public detenerSFXCria()
+  {  
+    this.sfxCria.stop()            
+  }
+  ///////Comida
+  public sfxComidaPlay()
+  {
+    this.sfxComida.play({volume:0.05})
+  }
+  public detenerSFXComida()
+  {  
+    this.sfxComida.stop()            
+  } 
 
   constructor(){
     super('nivelBallena_2')
@@ -42,9 +80,17 @@ export default class nivel_4_2 extends Phaser.Scene
 
   create()
   {
+    this.musicaBallena= this.sound.add('musicaBallena')
+    this.sfxComida = this.sound.add('sfxComida')
+    this.sfxCria = this.sound.add('sfxCria')
+    this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
+    if (this.estadoMusica=='1') 
+    {
+      this.musicaPlay()   
+    }
     this.scene.launch('uiBallena')
     /* Tiled Nivel 5 */
-    const mapa_nivel4 = this.make.tilemap({key: 'mapa_nivel4'});
+    const mapa_nivel4 = this.make.tilemap({key: 'ballenaTest'});
     const fondo_nivel4_tiled = mapa_nivel4.addTilesetImage('nivel4_fondo', 'nivel4Fondo');
 
   /* Capas tiled */

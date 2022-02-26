@@ -9,7 +9,8 @@ export default class extras extends Phaser.Scene
   private cantidadEstrellasPinguiBonus
   private estrellaMasAltaMono
   private cantidadEstrellasMonoBonus
-  
+  private cantidadEstrellasBallena
+  private estrellasBallenaBonus
 
   private texto1 =
   {  
@@ -96,10 +97,12 @@ export default class extras extends Phaser.Scene
     this.cantidadEstrellasPinguiBonus = localStorage.getItem('estrellasPinguinoBonus') || '1';
     this.estrellaMasAltaMono = localStorage.getItem('estrellasMono') || '1';
     this.cantidadEstrellasMonoBonus = localStorage.getItem('estrellasMonoBonus') || '1';
+    this.cantidadEstrellasBallena = localStorage.getItem('estrellasBallena') || '1';
+    this.estrellasBallenaBonus = localStorage.getItem('estrellasBallenaBonus') || '1';
 
     const estrellasTotales = +this.estrellaMasAltaPingui + +this.estrellaMasAltaYagua + 
     +this.cantidadEstrellasYaguaBonus + +this.cantidadEstrellasPinguiBonus + +this.estrellaMasAltaMono + 
-    +this.cantidadEstrellasMonoBonus
+    +this.cantidadEstrellasMonoBonus + +this.cantidadEstrellasBallena + +this.estrellasBallenaBonus
     
     //Yaguarete
     if(estrellasTotales<3)
@@ -256,7 +259,7 @@ export default class extras extends Phaser.Scene
   {
     const estrellasTotales = +this.estrellaMasAltaPingui + +this.estrellaMasAltaYagua + 
     +this.cantidadEstrellasYaguaBonus + +this.cantidadEstrellasPinguiBonus + +this.estrellaMasAltaMono + 
-    +this.cantidadEstrellasMonoBonus
+    +this.cantidadEstrellasMonoBonus + +this.cantidadEstrellasBallena + +this.estrellasBallenaBonus
 
     this.add.text(250, 85,`= ` + estrellasTotales,  
     {fontFamily: 'Titan One',

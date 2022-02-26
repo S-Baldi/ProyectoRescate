@@ -51,7 +51,9 @@ import gameWinBallena from './scenes/nivel4/gameWin'
 import gameOverBallena from './scenes/nivel4/gameOver'
 import pauseBallena from './scenes/nivel4/pause'
 import nivel_4_2 from './scenes/nivel4/nivel4_2'
-
+import nivelBonusBallena from './scenes/nivel4/nivelBonus/nivelBonusBallena'
+import pop_up_B_Ballena from './scenes/nivel4/nivelBonus/pop_up_BonusBallena'
+import preguntasBonusBallena from './scenes/nivel4/nivelBonus/preguntasBallena'
 localStorage.clear();
 
 const config : Phaser.Types.Core.GameConfig =
@@ -76,7 +78,7 @@ const config : Phaser.Types.Core.GameConfig =
     nivel_1, UI, gameOver, gameWin, pause, bonus, pop_up, preguntas, pop_upExt, popUpMapa, 
     nivel_5, UI_Pinguino, gameWinPinguino, gameOverPinguino, pausePinguino, bonusPingui, pop_up_Pingui, preguntasPingui, 
     nivel_2, UI_Mono, gameWinMono, gameOverMono, pauseMono, popUpInformativo, bonusMono, pop_up_BonusMono, preguntasMono, idioma,
-    nivel_4, nivel_4_2, UI_Ballena, gameWinBallena, gameOverBallena, pauseBallena
+    nivel_4, nivel_4_2, UI_Ballena, gameWinBallena, gameOverBallena, pauseBallena, nivelBonusBallena, pop_up_B_Ballena, preguntasBonusBallena, 
   ]
 };
 
@@ -90,6 +92,9 @@ localStorage.setItem('estrellasPinguinoBonus', '0');
 //Mono
 localStorage.setItem('estrellasMono', '0');
 localStorage.setItem('estrellasMonoBonus', '0');
+//Ballena
+localStorage.setItem('estrellasBallena', '0');
+localStorage.setItem('estrellasBallenaBonus', '0');
 //Musica
 localStorage.setItem('musicaPlay', '1');
 

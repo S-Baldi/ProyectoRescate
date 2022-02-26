@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 import { getPhrase } from '~/services/translation';
-export default class pop_up_BonusMono extends Phaser.Scene{
+export default class pop_up_BonusBallena extends Phaser.Scene{
   
   private fuenteTexto =     
   {fontFamily: 'Viga',
@@ -14,7 +14,7 @@ export default class pop_up_BonusMono extends Phaser.Scene{
   color: 'Green',
   align: 'justify'
   };
-  private contadorEntrarNivel2:number=0
+  private contadorEntrarNivel4:number=0
   private estadoMusica:any;
   private sonidoButton:any;
   public sfxDetenido()
@@ -28,7 +28,7 @@ export default class pop_up_BonusMono extends Phaser.Scene{
 
   constructor()
   {
-    super('pop_up_BMono');
+    super('pop_up_B_Ballena');
   }
 
   preload()
@@ -41,7 +41,7 @@ export default class pop_up_BonusMono extends Phaser.Scene{
   {
     this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
     this.sonidoButton = this.sound.add('sonidoBoton');
-    this.scene.get('nivelBonusMono').detenerMusica()
+    this.scene.get('nivelBonusBallena').detenerMusica()
     
     
     const fondoPopUpBonus = this.add.image(680, 250, 'botonNivel').setScale(0.8);
@@ -53,7 +53,7 @@ export default class pop_up_BonusMono extends Phaser.Scene{
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>     
     {
       this.scene.start('menuMapa')
-      this.scene.stop('nivelBonusMono')
+      this.scene.stop('nivelBonusBallena')
       if (this.estadoMusica=='1') 
       {
         this.sfxPlay()
@@ -69,25 +69,23 @@ export default class pop_up_BonusMono extends Phaser.Scene{
       this.add.text(480, 50, getPhrase('Respuesta Correcta'), this.fuenteTexto).setDepth(3)
       this.add.text(550, 240, getPhrase('¡¡¡Felicidades!!!'), this.fuenteTextoCorrecto).setDepth(3)
       this.add.sprite(680, 165, 'estrellaBonus', 1).setDepth(3).setScale(0.6)
-      localStorage.setItem('estrellasMonoBonus', '1')
+      localStorage.setItem('estrellasBallenaBonus', '1')
     }
     else
     {
       this.add.text(460, 50, getPhrase('Respuesta Incorrecta'), this.fuenteTexto).setDepth(3) //esto trae hacia delante o atras las cosas
       this.add.text(405, 240, getPhrase('Respuesta Correcta:'), this.fuenteTextoCorrecto).setDepth(3)
-      this.add.text(730, 240, getPhrase('"Inteligente"'), this.fuenteTextoCorrecto).setDepth(3)
+      this.add.text(730, 240, getPhrase('"Caceria comercial"'), this.fuenteTextoCorrecto).setDepth(3)
       this.add.sprite(680, 165, 'estrellaBonus', 0).setDepth(3).setScale(0.6)
     }
-    this.scene.get('popUpMapa').yaEntroBonusMono()
+    this.scene.get('popUpMapa').yaEntroBonusBallena()
     
     return rta
 
   }
-  public aumentaContador2()
+  public aumentaContador4()
   {
-    this.contadorEntrarNivel2++
-    console.log('this.contadorEntrarNivel1')    
+    this.contadorEntrarNivel4++      
   }
 
 }
-

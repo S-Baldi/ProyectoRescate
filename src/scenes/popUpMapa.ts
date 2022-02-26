@@ -9,18 +9,28 @@ export default class popUpMapa extends Phaser.Scene
   private contadorEntrarNivel1:number=0 
   private cerrarBonusYaguarete:number=0 
   private btn:any
-  //pinguino
-  private cantidadEstrellasPingui:any
-  private estrellaMasAltaPingui : number =0  
-  private textoPinguino   
-  private contadorEntrarNivel5:number=0
-  private cerrarBonusPinguino:number=0   
+  
   //mono
   private cantidadEstrellasMono : any
   private estrellaMasAltaMono : number =0  
   private textoMono   
   private contadorEntrarNivel2:number=0
   private cerrarBonusMono:number=0
+
+  //ballena
+  private cantidadEstrellasBallena : any
+  private estrellaMasAltaBallena: number =0  
+  private textoBallena  
+  private contadorEntrarNivel4:number=0
+  private cerrarBonusBallena:number=0
+
+  //pinguino
+  private cantidadEstrellasPingui:any
+  private estrellaMasAltaPingui : number =0  
+  private textoPinguino   
+  private contadorEntrarNivel5:number=0
+  private cerrarBonusPinguino:number=0   
+  
 
   private fuenteTextoMapaDesbloqueado =     
   {fontFamily: 'Titan One',
@@ -61,16 +71,17 @@ export default class popUpMapa extends Phaser.Scene
   {
     this.textoYaguarete = text
   }
+
+  //texto ballena
+  public ballenaNivel(text:any)
+  {
+    this.textoBallena = text
+  }
+  public ballenaBonus(text:any)
+  {
+    this.textoBallena = text
+  }
   
-  //texto pinguino
-  public pinguinoNivel(text:any)
-  {
-    this.textoPinguino = text
-  }
-  public pinguinoBonus(text:any)
-  {
-    this.textoPinguino = text
-  }
   
   //texto mono
   public monoNivel(text:any)
@@ -81,11 +92,24 @@ export default class popUpMapa extends Phaser.Scene
   {
     this.textoMono = text
   }
+
+  //texto pinguino
+  public pinguinoNivel(text:any)
+  {
+    this.textoPinguino = text
+  }
+  public pinguinoBonus(text:any)
+  {
+    this.textoPinguino = text
+  }
+
   public ganar()
   {      
     this.textoYaguarete
+    this.textoMono
+    this.textoBallena
     this.textoPinguino
-    this.textoMono              
+                  
   }
   
   create()
@@ -160,6 +184,58 @@ export default class popUpMapa extends Phaser.Scene
         }))            
       }     
     } 
+
+    ///////////////////////////////////BALLENA//////////////////
+    if (info=='ballenaNiveles')
+    {
+      this.cantidadEstrellasBallena = localStorage.getItem('estrellasBallena') || '1';  
+    
+      if (this.cantidadEstrellasBallena>this.estrellaMasAltaBallena) 
+      {
+        this.estrellaMasAltaBallena= this.cantidadEstrellasBallena
+      }            
+
+      this.ballenaNivel(this.add.text(670, 400, getPhrase('JUGAR'), this.fuenteTextoMapa) &&
+
+      this.add.sprite(650, 290, 'estrellas', this.estrellaMasAltaBallena).setScale(1.8) && 
+      
+      this.ballenaBonus(this.add.text(440, 400, 'BONUS', this.fuenteTextoMapa)))
+
+      if (this.estrellaMasAltaBallena>=0) 
+      {
+        this.ballenaNivel(this.add.text(670, 400, getPhrase('JUGAR'), this.fuenteTextoMapaDesbloqueado)
+        .setInteractive()
+        .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+        {
+          this.scene.sleep('menuMapa') /* duermo el mapa para guardar datos */ 
+          this.scene.start('nivelBallena_2') 
+          if (this.estadoMusica=='1') 
+          {
+          this.sfxPlay()
+          }
+          this.scene.get('menuMapa').detenerMusica()
+        }).setDepth(7).setVisible(true)) 
+      }
+
+      if (this.contadorEntrarNivel4==0 && this.cerrarBonusBallena>0)
+      {
+        this.ballenaBonus(this.add.text(440, 400, 'BONUS', this.fuenteTextoMapa)
+        .removeInteractive())
+      }
+      else if (this.contadorEntrarNivel4==0 && this.cerrarBonusBallena<1)
+      {
+        this.ballenaBonus(this.add.text(440, 400, 'BONUS', this.fuenteTextoMapaDesbloqueado)
+        .setInteractive().on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+        { 
+          this.scene.start('nivelBonusBallena') 
+          if (this.estadoMusica=='1') 
+          {
+            this.sfxPlay()
+          }
+          this.scene.get('menuMapa').detenerMusica()
+        }).setDepth(7).setVisible(true))
+      }
+    }
 
     ///////////////////////////////////PINGÜINO//////////////////
  
