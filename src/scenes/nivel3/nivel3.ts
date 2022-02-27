@@ -13,9 +13,11 @@ export default class nivel_3 extends Phaser.Scene
   private condorController?: condorController;
   private obstacles!: obstaclesController;
   private avion?: Phaser.Physics.Matter.Sprite;
+  private avion2?: Phaser.Physics.Matter.Sprite;
   private avionController?: avionController;
   private venenos?: Phaser.Physics.Matter.Sprite;
   private venenoController?: venenoController;
+  private venenos2?: Phaser.Physics.Matter.Sprite;
   private cria?: Phaser.Physics.Matter.Sprite;
   private criaCondorController?: criaCondorController;
   private carne?: Phaser.Physics.Matter.Sprite
@@ -73,7 +75,7 @@ export default class nivel_3 extends Phaser.Scene
 
   preload(){
     this.load.tilemapTiledJSON('mapa_nivel3', 'assets/Nivel3/nivel_Condor.tmj');
-    //this.load.tilemapTiledJSON('condorTest', 'assets/Nivel3/nivel_Condor_Test.tmj');
+    this.load.tilemapTiledJSON('condorTest', 'assets/Nivel3/nivel_Condor_test.tmj');
     this.load.image('nivel3Fondo','assets/Nivel3/nivel3_fondo.png');    
     this.load.atlas('avion', 'assets/Nivel3/avion.png', 'assets/Nivel3/avion.json');
     //this.load.image('nivel3Bandera', '');  
@@ -158,6 +160,29 @@ export default class nivel_3 extends Phaser.Scene
             )
             break
           }
+
+          case 'avion2': //altura 86,70
+          {
+            const venenoAvion2 = this.matter.add.rectangle(x + (width * 2.9), y + (height * 0.2), 90, 320, {
+              isStatic: true
+            })
+            this.obstacles.add('avion', venenoAvion2)
+
+            const aviones2 = this.matter.add.rectangle(x +(width * 0.3) , y + (height * 0)-80, 525, 100, {
+              isStatic: true
+            })
+            this.obstacles.add('avion', aviones2)
+
+            this.avion2 = this.matter.add.sprite(x + (width*0.5), y +(height*0.5), 'avion', undefined, {
+              isStatic: true,
+              isSensor:true
+            }).setScale(1.5)
+
+            this.avionController = new avionController(
+              this.avion2,
+            )
+            break
+          }
         
          case 'veneno': //ALTURA 590,30
           { 
@@ -173,6 +198,24 @@ export default class nivel_3 extends Phaser.Scene
   
             this.venenoController = new venenoController(
               this.venenos,
+            )
+            break
+          } 
+
+          case 'veneno2': //ALTURA 590,30
+          { 
+            const veneno2 = this.matter.add.rectangle(x + (width * 0.5), y + (height * 0.7), 70, 350, {
+            isStatic: true
+            })
+            this.obstacles.add('veneno', veneno2)
+            
+            this.venenos2 = this.matter.add.sprite(x + (width*0.5), y + (height*0.5), 'veneno', undefined, {
+              isStatic: true,
+              isSensor:true
+            }).setScale(1.4)
+  
+            this.venenoController = new venenoController(
+              this.venenos2,
             )
             break
           } 

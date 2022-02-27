@@ -51,11 +51,24 @@ export default class condorController
 		return
 	  }
 
+	  if (this.obstacles.is('veneno2', body))
+	  {
+		this.stateMachine.setState('venenoHit')
+		return
+	  }
+
 	  if (this.obstacles.is('avion', body))
 	  {
 		this.stateMachine.setState('venenoHit')
 		return
 	  }
+
+	  if (this.obstacles.is('avion2', body))
+	  {
+		this.stateMachine.setState('venenoHit')
+		return
+	  }
+	  
 	  
 	  if (this.obstacles.is('bandera', body))
 	  {
