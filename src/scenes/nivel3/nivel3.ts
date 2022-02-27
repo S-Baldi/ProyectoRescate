@@ -78,10 +78,10 @@ export default class nivel_3 extends Phaser.Scene
     this.load.tilemapTiledJSON('condorTest', 'assets/Nivel3/nivel_Condor_test.tmj');
     this.load.image('nivel3Fondo','assets/Nivel3/nivel3_fondo.png');    
     this.load.atlas('avion', 'assets/Nivel3/avion.png', 'assets/Nivel3/avion.json');
-    //this.load.image('nivel3Bandera', '');  
+    this.load.image('bandera', 'assets/Nivel3/bandera.png');  
     this.load.atlas('veneno', 'assets/Nivel3/veneno.png', 'assets/Nivel3/veneno.json');
     this.load.atlas('carne', 'assets/Nivel1/nivel1_carne.png', 'assets/Nivel1/nivel1_carne.json');
-    //this.load.atlas('nivel3Cria','assets/Nivel3/criaCondor.png', 'assets/Nivel3/criaCondor.json');
+    this.load.atlas('nivel3Cria','assets/Nivel3/criaCondor.png', 'assets/Nivel3/criaCondor.json');
     this.load.atlas('condor', 'assets/Nivel3/condor.png', 'assets/Nivel3/condor.json');
   }
 
@@ -233,33 +233,33 @@ export default class nivel_3 extends Phaser.Scene
             break
           } 
         
-        /* case 'cria':
+         case 'cria':
           {
             this.cria = this.matter.add.sprite(x+(width*0.5), y+(height*0.5), 'nivel3Cria', undefined,{
               isStatic : true,
               isSensor: true
-            }).setScale(1.5)
+            }).setScale(2)
             this.cria.setData('type', 'cria')
             this.criaCondorController = new criaCondorController(
               this.cria
             )
             break
-          } */
+          } 
 
-        /* case 'bandera':
+        case 'bandera':
           {
-            const bandera = this.matter.add.rectangle(x + (width * 0.5), y + (height * 0.5), width, 1200, {
+            const bandera = this.matter.add.rectangle(x + (width * 0.5), y + (height * 0.5), 500, 1200, {
               isStatic: true
             })
             this.obstacles.add('bandera', bandera)
   
-            const banderas = this.matter.add.sprite(x + (width*0.5), y + (height*0.5), 'nivel3Bandera',
+            const banderas = this.matter.add.sprite(x + (width*0.5), y + (height*0.5), 'bandera',
             undefined, {
               isStatic: true,
               isSensor: true
-            }).setScale(1)
+            }).setScale(2)
             break
-          } */
+          } 
         
          case 'hitBox':
         {
@@ -279,7 +279,7 @@ export default class nivel_3 extends Phaser.Scene
     this.condorController?.update(dt)
     this.avionController?.update(dt)
     this.venenoController?.update(dt)
-    //this.criaCondorController?.update(dt)
+    this.criaCondorController?.update(dt)
     this.carneController?.update(dt) 
   }  
 }

@@ -31,7 +31,7 @@ export default class criaCondorController
 			frames: this.sprite.anims.generateFrameNames('nivel3Cria',{
 				start: 1,
 				end: 3,
-				prefix: 'criaCondor0',
+				prefix: 'cria0',
 				suffix: '.png'
 			}),
 			repeat: -1
