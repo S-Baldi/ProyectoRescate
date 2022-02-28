@@ -200,6 +200,7 @@ export default class mapa extends Phaser.Scene
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
     {
+      this.scene.start('nivelCondor')
     })
 
     this.add.text(280,250, getPhrase('CÓNDOR'), this.fuenteTexto);
@@ -229,7 +230,7 @@ export default class mapa extends Phaser.Scene
       this.scene.get("popUpMapa").mostrarNiveles('ballenaNiveles')
     })
 
-    this.add.text(900, 405, getPhrase('BALLENA'), this.fuenteTexto);
+    this.add.text(893,408, getPhrase('BALLENA'), this.fuenteTexto);
 
 
     //////////////////////////////////////////////NIVEL PINGUINO//////////////////////////////////////////////

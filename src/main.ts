@@ -54,6 +54,15 @@ import nivel_4_2 from './scenes/nivel4/nivel4_2'
 import nivelBonusBallena from './scenes/nivel4/nivelBonus/nivelBonusBallena'
 import pop_up_B_Ballena from './scenes/nivel4/nivelBonus/pop_up_BonusBallena'
 import preguntasBonusBallena from './scenes/nivel4/nivelBonus/preguntasBallena'
+
+//NIVEL CONDOR
+import nivel_3 from './scenes/nivel3/nivel3'
+import UI_Condor from './scenes/nivel3/UI_Condor'
+import gameWinCondor from './scenes/nivel3/gameWin'
+import gameOverCondor from './scenes/nivel3/gameOver'
+import pauseCondor from './scenes/nivel3/pause'
+
+
 localStorage.clear();
 
 const config : Phaser.Types.Core.GameConfig =
@@ -78,7 +87,8 @@ const config : Phaser.Types.Core.GameConfig =
     nivel_1, UI, gameOver, gameWin, pause, bonus, pop_up, preguntas, pop_upExt, popUpMapa, 
     nivel_5, UI_Pinguino, gameWinPinguino, gameOverPinguino, pausePinguino, bonusPingui, pop_up_Pingui, preguntasPingui, 
     nivel_2, UI_Mono, gameWinMono, gameOverMono, pauseMono, popUpInformativo, bonusMono, pop_up_BonusMono, preguntasMono, idioma,
-    nivel_4, nivel_4_2, UI_Ballena, gameWinBallena, gameOverBallena, pauseBallena, nivelBonusBallena, pop_up_B_Ballena, preguntasBonusBallena, 
+    nivel_4, nivel_4_2, UI_Ballena, gameWinBallena, gameOverBallena, pauseBallena, nivelBonusBallena, pop_up_B_Ballena, preguntasBonusBallena,
+    nivel_3, UI_Condor, gameWinCondor, gameOverCondor, pauseCondor
   ]
 };
 

@@ -20,17 +20,6 @@
          "name":"nivel4Objetos",
          "objects":[
                 {
-                 "height":87.8787878787879,
-                 "id":1,
-                 "name":"basura",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":87.8787878787879,
-                 "x":4897.93939393939,
-                 "y":80.12121212121
-                }, 
-                {
                  "height":57.5757575757576,
                  "id":4,
                  "name":"ballena",
@@ -106,6 +95,17 @@
                  "width":120,
                  "x":6376,
                  "y":32
+                }, 
+                {
+                 "height":87.8788,
+                 "id":122,
+                 "name":"basura",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":87.8788,
+                 "x":4596.0606,
+                 "y":76.0606
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -114,7 +114,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":122,
+ "nextobjectid":123,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.0",
