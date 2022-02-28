@@ -119,17 +119,6 @@
                  "y":-584
                 }, 
                 {
-                 "height":96,
-                 "id":138,
-                 "name":"bandera",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":100,
-                 "x":1776,
-                 "y":-588
-                }, 
-                {
                  "height":80,
                  "id":139,
                  "name":"avion",

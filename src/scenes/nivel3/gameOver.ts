@@ -36,7 +36,7 @@ export default class gameOverCondor extends Phaser.Scene{
   }
 
   preload(){
-    this.load.image('loseCondor', 'assets/GameWinLose/loseBallena.png');
+    this.load.image('loseCondor', 'assets/GameWinLose/loseCondor.png');
   }
   
   create()

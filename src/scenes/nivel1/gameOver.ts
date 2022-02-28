@@ -36,7 +36,7 @@ export default class gameOver extends Phaser.Scene{
   }
 
   preload(){
-    this.load.image('lose', 'assets/GameWinLose/loseCondor.png');
+    this.load.image('lose', 'assets/GameWinLose/lose.png');
   }
   
   create()
