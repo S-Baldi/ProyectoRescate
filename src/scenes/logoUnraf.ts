@@ -41,7 +41,7 @@ export default class logoUnraf extends Phaser.Scene
 
   update(time, delta){
     this.tempo += delta
-    if (this.tempo >= 3000){
+    if (this.tempo >= 0){
       this.scene.start('precarga'); 
     }
   }

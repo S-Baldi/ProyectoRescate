@@ -149,9 +149,9 @@ export default class ballenaController
 		this.scene.scene.launch('gameWinBallena')
 
 		this.cantEstrellas = this.cantEstrellas+1
-		this.scene.scene.get('popUpMapa')//.aumentaContador4()
-		this.scene.scene.get('gameWinBallena')//.aumentaContador4()
-		this.scene.scene.get('pop_up_B_Ballena')//.aumentaContador4()
+		this.scene.scene.get('popUpMapa').aumentaContador4()
+		this.scene.scene.get('gameWinBallena').aumentaContador4()
+		this.scene.scene.get('pop_up_B_Ballena').aumentaContador4()
 		this.scene.scene.get('nivelBallena_2').detenerMusica()
 				
 

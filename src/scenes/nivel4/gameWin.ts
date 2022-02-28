@@ -98,5 +98,6 @@ export default class gameWinBallena extends Phaser.Scene{
   public aumentaContador4()
   {
     this.contadorEntrarNivel4++
+    console.log('this.contadorEntrarNivel4')
   }
 }

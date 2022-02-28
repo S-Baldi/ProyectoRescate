@@ -83,8 +83,7 @@ export default class pop_up_Pingui extends Phaser.Scene{
   
   public aumentaContador5()
   {
-    this.contadorEntrarNivel5++
-    console.log('this.contadorEntrarNivel1')    
+    this.contadorEntrarNivel5++     
   }
 
   update()

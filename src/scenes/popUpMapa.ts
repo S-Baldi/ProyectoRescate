@@ -108,8 +108,7 @@ export default class popUpMapa extends Phaser.Scene
     this.textoYaguarete
     this.textoMono
     this.textoBallena
-    this.textoPinguino
-                  
+    this.textoPinguino                  
   }
   
   create()
@@ -222,7 +221,7 @@ export default class popUpMapa extends Phaser.Scene
         this.ballenaBonus(this.add.text(440, 400, 'BONUS', this.fuenteTextoMapa)
         .removeInteractive())
       }
-      else if (this.contadorEntrarNivel4==0 && this.cerrarBonusBallena<1)
+      else if (this.contadorEntrarNivel4>0 && this.cerrarBonusBallena<1)
       {
         this.ballenaBonus(this.add.text(440, 400, 'BONUS', this.fuenteTextoMapaDesbloqueado)
         .setInteractive().on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
@@ -363,6 +362,15 @@ export default class popUpMapa extends Phaser.Scene
   public yaEntroBonusMono()
   {
     this.cerrarBonusMono++
+  }
+  /////////////////////// NIVEL 4 + Bonus //////////////////
+  public aumentaContador4()
+  {
+    this.contadorEntrarNivel4++
+  }  
+  public yaEntroBonusBallena()
+  {
+    this.cerrarBonusBallena++
   }
   /////////////////////// NIVEL 5 + Bonus //////////////////
   

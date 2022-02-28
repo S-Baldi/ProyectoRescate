@@ -229,7 +229,7 @@ export default class mapa extends Phaser.Scene
       this.scene.get("popUpMapa").mostrarNiveles('ballenaNiveles')
     })
 
-    this.add.text(890,420, getPhrase('BALLENA'), this.fuenteTexto);
+    this.add.text(900, 405, getPhrase('BALLENA'), this.fuenteTexto);
 
 
     //////////////////////////////////////////////NIVEL PINGUINO//////////////////////////////////////////////
