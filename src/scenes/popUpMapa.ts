@@ -289,7 +289,7 @@ export default class popUpMapa extends Phaser.Scene
         this.condorBonus(this.add.text(440, 400, 'BONUS', this.fuenteTextoMapa)
         .removeInteractive())
       }
-      else if (this.contadorEntrarNivel3==0 && this.cerrarBonusCondor<1)
+      else if (this.contadorEntrarNivel3>0 && this.cerrarBonusCondor<1)
       {
         this.condorBonus(this.add.text(440, 400, 'BONUS', this.fuenteTextoMapaDesbloqueado)
         .setInteractive().on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
@@ -336,7 +336,7 @@ export default class popUpMapa extends Phaser.Scene
         }).setDepth(7).setVisible(true)) 
       }
 
-      if (this.contadorEntrarNivel4==0 && this.cerrarBonusBallena>0)
+      if (this.contadorEntrarNivel4>0 && this.cerrarBonusBallena>0)
       {
         this.ballenaBonus(this.add.text(440, 400, 'BONUS', this.fuenteTextoMapa)
         .removeInteractive())
