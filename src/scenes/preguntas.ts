@@ -1,13 +1,14 @@
 import arrayShuffle from 'array-shuffle';
 import Phaser from 'phaser'
-export default class preguntasPingui extends Phaser.Scene {
+export default class preguntas extends Phaser.Scene {
   private _pregunta: string
   private respuestaCorrecta: string
   private respuestasIncorrectas: Array<string>
+  private estadoMusica:any
 
   constructor(pregunta: string, respuestaCorrecta: string, respuestaIncorrecta1: string, respuestaIncorrecta2: string, respuestaIncorrecta3: string)
   {
-    super('preguntasBonusPingui')
+    super('preguntasBonus')
     this._pregunta=pregunta
     this.respuestaCorrecta=respuestaCorrecta
     this.respuestasIncorrectas=new Array<string>()
@@ -31,9 +32,9 @@ export default class preguntasPingui extends Phaser.Scene {
   public revisarResp(respuestaJuego: string): string
   {
     if (respuestaJuego == this.respuestaCorrecta) 
-    {     
-      return 'green'      
-    }   
+    {    
+      return 'green'           
+    } 
     return 'red'    
   }
 
@@ -43,6 +44,5 @@ export default class preguntasPingui extends Phaser.Scene {
   
   public get pregunta() : string {
     return this._pregunta
-  }
-
+  }  
 }

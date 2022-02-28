@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 import { getPhrase } from '~/services/translation';
-import preguntas from './preguntas'
+import preguntas from '~/scenes/preguntas';
 export default class bonus extends Phaser.Scene{
   
   private fuenteTexto =     

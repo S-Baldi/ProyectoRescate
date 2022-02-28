@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 import { getPhrase } from '~/services/translation';
-import preguntasMono from './preguntasMono';
+import preguntas from '~/scenes/preguntas';
 export default class bonusMono extends Phaser.Scene{
   
   private fuenteTexto =     
@@ -79,8 +79,8 @@ export default class bonusMono extends Phaser.Scene{
     const portada = this.add.image(860, 235, 'monoCai1').setScale(0.39);
     const portada2 = this.add.image(515, 235, 'monoCai2').setScale(0.6);
     
-    let preguntasBonus= new Array<preguntasMono>()
-    preguntasBonus.push(new preguntasMono
+    let preguntasBonus= new Array<preguntas>()
+    preguntasBonus.push(new preguntas
     (getPhrase('En América del Sur el mono capuchino es considerado el animal más...'), 
     getPhrase('Inteligente'),
     getPhrase('Tonto'),

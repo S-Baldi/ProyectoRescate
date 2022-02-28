@@ -341,7 +341,7 @@ export default class popUpMapa extends Phaser.Scene
         this.ballenaBonus(this.add.text(440, 400, 'BONUS', this.fuenteTextoMapa)
         .removeInteractive())
       }
-      else if (this.contadorEntrarNivel4==0 && this.cerrarBonusBallena<1)
+      else if (this.contadorEntrarNivel4>0 && this.cerrarBonusBallena<1)
       {
         this.ballenaBonus(this.add.text(440, 400, 'BONUS', this.fuenteTextoMapaDesbloqueado)
         .setInteractive().on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>

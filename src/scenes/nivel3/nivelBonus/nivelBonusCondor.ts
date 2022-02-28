@@ -1,7 +1,6 @@
 import Phaser from 'phaser'
-import preguntas from '~/scenes/nivel3/nivelBonus/preguntasCondor'
 import { getPhrase } from '~/services/translation';
-import preguntasCondor from './preguntasCondor';
+import preguntas from '~/scenes/preguntas';
 export default class bonusCondor extends Phaser.Scene{
   
   private fuenteTexto =     
@@ -79,8 +78,8 @@ export default class bonusCondor extends Phaser.Scene{
     const portada = this.add.image(685, 235, 'Condor').setScale(1.01);
     
     
-    let preguntasBonus= new Array<preguntasCondor>()
-    preguntasBonus.push(new preguntasCondor
+    let preguntasBonus= new Array<preguntas>()
+    preguntasBonus.push(new preguntas
     (getPhrase('Cual fue la principal causa de la disminucion de la población de la Ballena Franca Austral?'), 
     getPhrase('Caceria comercial'),
     getPhrase('Contaminación'),

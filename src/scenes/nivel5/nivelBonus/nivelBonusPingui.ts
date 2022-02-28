@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import preguntas from './preguntasPingui';
+import preguntas from '~/scenes/preguntas';
 import { getPhrase } from '~/services/translation';
 export default class bonusPingui extends Phaser.Scene
 

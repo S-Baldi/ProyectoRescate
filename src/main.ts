@@ -13,6 +13,7 @@ import popUpMapa from './scenes/popUpMapa'
 import popUpInformativo from './scenes/popUpInformativo'
 import creditosMusica from './scenes/creditosMusica'
 import idioma from './scenes/idioma'
+import preguntas from '~/scenes/preguntas';
 
 //NIVEL YAGUARETE
 import nivel_1 from './scenes/nivel1/nivel1'
@@ -20,7 +21,6 @@ import bonus from './scenes/nivel1/nivelBonus/nivelBonus'
 import gameOver from './scenes/nivel1/gameOver'
 import gameWin from './scenes/nivel1/gameWin'
 import pop_up from './scenes/nivel1/nivelBonus/pop_up_Bonus'
-import preguntas from './scenes/nivel1/nivelBonus/preguntas'
 import pause from './scenes/nivel1/pause'
 import UI from './scenes/nivel1/UI'
 
@@ -32,7 +32,7 @@ import gameOverMono from './scenes/nivel2/gameOver'
 import gameWinMono from './scenes/nivel2/gameWin'
 import bonusMono from './scenes/nivel2/nivelBonus/nivelBonusMono'
 import pop_up_BonusMono from './scenes/nivel2/nivelBonus/pop_up_BonusMono'
-import preguntasMono from './scenes/nivel2/nivelBonus/preguntasMono'
+
 
 //NIVEL CONDOR
 import nivel_3 from './scenes/nivel3/nivel3'
@@ -42,7 +42,7 @@ import gameOverCondor from './scenes/nivel3/gameOver'
 import pauseCondor from './scenes/nivel3/pause'
 import nivelBonusCondor from './scenes/nivel3/nivelBonus/nivelBonusCondor'
 import pop_up_BonusCondor from './scenes/nivel3/nivelBonus/pop_up_BonusCondor'
-import preguntasCondor from './scenes/nivel3/nivelBonus/preguntasCondor'
+
 
 //NIVEL BALLENA
 import nivel_4 from './scenes/nivel4/nivel4'
@@ -53,7 +53,7 @@ import pauseBallena from './scenes/nivel4/pause'
 import nivel_4_2 from './scenes/nivel4/nivel4_2'
 import nivelBonusBallena from './scenes/nivel4/nivelBonus/nivelBonusBallena'
 import pop_up_B_Ballena from './scenes/nivel4/nivelBonus/pop_up_BonusBallena'
-import preguntasBonusBallena from './scenes/nivel4/nivelBonus/preguntasBallena'
+
 
 //NIVEL PINGUINO
 import nivel_5 from './scenes/nivel5/nivel5'
@@ -63,7 +63,7 @@ import UI_Pinguino from './scenes/nivel5/UI_Pinguino'
 import pausePinguino from './scenes/nivel5/pause'
 import bonusPingui from './scenes/nivel5/nivelBonus/nivelBonusPingui'
 import pop_up_Pingui from './scenes/nivel5/nivelBonus/pop_up_BonusPin'
-import preguntasPingui from './scenes/nivel5/nivelBonus/preguntasPingui'
+
 
 
 
@@ -88,11 +88,11 @@ const config : Phaser.Types.Core.GameConfig =
     }
   },
   scene: [logoUnraf, precarga, mp1, info, mapa, ayuda, creditos, creditosMusica,extras, 
-    nivel_1, UI, gameOver, gameWin, pause, bonus, pop_up, preguntas, pop_upExt, popUpMapa, 
-    nivel_5, UI_Pinguino, gameWinPinguino, gameOverPinguino, pausePinguino, bonusPingui, pop_up_Pingui, preguntasPingui, 
-    nivel_2, UI_Mono, gameWinMono, gameOverMono, pauseMono, popUpInformativo, bonusMono, pop_up_BonusMono, preguntasMono, idioma,
-    nivel_4, nivel_4_2, UI_Ballena, gameWinBallena, gameOverBallena, pauseBallena, nivelBonusBallena, pop_up_B_Ballena, preguntasBonusBallena,
-    nivel_3, UI_Condor, gameWinCondor, gameOverCondor, pauseCondor, nivelBonusCondor, pop_up_BonusCondor, preguntasCondor
+    nivel_1, UI, gameOver, gameWin, pause, bonus, pop_up, pop_upExt, popUpMapa, 
+    nivel_5, UI_Pinguino, gameWinPinguino, gameOverPinguino, pausePinguino, bonusPingui, pop_up_Pingui,  
+    nivel_2, UI_Mono, gameWinMono, gameOverMono, pauseMono, popUpInformativo, bonusMono, pop_up_BonusMono, idioma,
+    nivel_4, nivel_4_2, UI_Ballena, gameWinBallena, gameOverBallena, pauseBallena, nivelBonusBallena, pop_up_B_Ballena, 
+    nivel_3, UI_Condor, gameWinCondor, gameOverCondor, pauseCondor, nivelBonusCondor, pop_up_BonusCondor, preguntas
   ]
 };
 

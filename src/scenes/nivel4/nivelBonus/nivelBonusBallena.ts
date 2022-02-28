@@ -1,7 +1,6 @@
 import Phaser from 'phaser'
-import preguntas from '~/scenes/nivel1/nivelBonus/preguntas';
 import { getPhrase } from '~/services/translation';
-import preguntasBallena from './preguntasBallena';
+import preguntas from '~/scenes/preguntas';
 export default class bonusBallena extends Phaser.Scene{
   
   private fuenteTexto =     
@@ -80,8 +79,8 @@ export default class bonusBallena extends Phaser.Scene{
     const portada = this.add.image(685, 235, 'Ballena').setScale(1.01);
     
     
-    let preguntasBonus= new Array<preguntasBallena>()
-    preguntasBonus.push(new preguntasBallena
+    let preguntasBonus= new Array<preguntas>()
+    preguntasBonus.push(new preguntas
     (getPhrase('                                                    La Ballena Franca es...'), 
     getPhrase('Un mamífero'),
     getPhrase('Un anfibio'),
