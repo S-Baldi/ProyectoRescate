@@ -36,10 +36,12 @@ export default class precarga extends Phaser.Scene{
       this.load.audio('musicaYaguarete', 'audio/Yaguarete/musicaYaguarete.mp3');
       ///////////Musica Mono
       this.load.audio('musicaMono', 'audio/Mono/musicaMono.mp3');
-      ///////////Musica Pinguino
-      this.load.audio('musicaPinguino', 'audio/Pinguino/musicaPinguino.mp3');
+      ///////////Musica Condor
+      this.load.audio('musicaCondor', 'audio/Condor/musicaCondor.mp3')
       ///////////Musica Ballena
       this.load.audio('musicaBallena', 'audio/Ballena/musicaBallena.mp3')
+      ///////////Musica Pinguino
+      this.load.audio('musicaPinguino', 'audio/Pinguino/musicaPinguino.mp3');
       ///////////Menu Principal    
       this.load.audio('musicaMP', 'audio/musicaMP.mp3');
       //////////// Musica Bonus

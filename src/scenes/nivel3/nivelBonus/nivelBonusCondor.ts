@@ -1,8 +1,8 @@
 import Phaser from 'phaser'
-import preguntas from '~/scenes/nivel1/nivelBonus/preguntas';
+import preguntas from '~/scenes/nivel3/nivelBonus/preguntasCondor'
 import { getPhrase } from '~/services/translation';
-import preguntasBallena from './preguntasBallena';
-export default class bonusBallena extends Phaser.Scene{
+import preguntasCondor from './preguntasCondor';
+export default class bonusCondor extends Phaser.Scene{
   
   private fuenteTexto =     
   {fontFamily: 'Viga',
@@ -41,14 +41,13 @@ export default class bonusBallena extends Phaser.Scene{
 
   constructor()
   {
-    super('nivelBonusBallena');
+    super('nivelBonusCondor');
   }
 
   preload()
   {
     this.load.image('Bonus', 'assets/Mapa/BonusYaguarete/NivelBonus.png');
-    this.load.image('Ballena', 'assets/Mapa/BonusBallena/bonusBallena.png');
-    
+    this.load.image('Condor', 'assets/Mapa/BonusCondor/bonusCondor.png');
   }
 
   create()
@@ -77,16 +76,16 @@ export default class bonusBallena extends Phaser.Scene{
       this.detenerMusica()
     })
 
-    const portada = this.add.image(685, 235, 'Ballena').setScale(1.01);
+    const portada = this.add.image(685, 235, 'Condor').setScale(1.01);
     
     
-    let preguntasBonus= new Array<preguntasBallena>()
-    preguntasBonus.push(new preguntasBallena
-    (getPhrase('                                                    La Ballena Franca es...'), 
-    getPhrase('Un mamífero'),
-    getPhrase('Un anfibio'),
-    getPhrase('Un pez'),
-    getPhrase('Un ave')))
+    let preguntasBonus= new Array<preguntasCondor>()
+    preguntasBonus.push(new preguntasCondor
+    (getPhrase('Cual fue la principal causa de la disminucion de la población de la Ballena Franca Austral?'), 
+    getPhrase('Caceria comercial'),
+    getPhrase('Contaminación'),
+    getPhrase('Disminucion de sus presas'),
+    getPhrase('Reducción del hábitat')))
     
     const text_pregunta = this.add.text(130, 390, preguntasBonus[0].pregunta, this.fuenteTextoPreg);
 
@@ -99,8 +98,8 @@ export default class bonusBallena extends Phaser.Scene{
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
     {
-      botonA.setColor(this.scene.launch('pop_up_B_Ballena') &&        
-      this.scene.get("pop_up_B_Ballena").mostrar_Texto(preguntasBonus[0].revisarResp(botonA.text)))
+      botonA.setColor(this.scene.launch('pop_up_B_Condor') &&        
+      this.scene.get("pop_up_B_Condor").mostrar_Texto(preguntasBonus[0].revisarResp(botonA.text)))
       botonB.setColor(preguntasBonus[0].revisarResp(botonB.text))
       botonC.setColor(preguntasBonus[0].revisarResp(botonC.text))
       botonD.setColor(preguntasBonus[0].revisarResp(botonD.text))
@@ -117,8 +116,8 @@ export default class bonusBallena extends Phaser.Scene{
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
     {
-      botonB.setColor(this.scene.launch('pop_up_B_Ballena') &&        
-      this.scene.get("pop_up_B_Ballena").mostrar_Texto(preguntasBonus[0].revisarResp(botonB.text)))
+      botonB.setColor(this.scene.launch('pop_up_B_Condor') &&        
+      this.scene.get("pop_up_B_Condor").mostrar_Texto(preguntasBonus[0].revisarResp(botonB.text)))
       botonA.setColor(preguntasBonus[0].revisarResp(botonA.text))
       botonC.setColor(preguntasBonus[0].revisarResp(botonC.text))
       botonD.setColor(preguntasBonus[0].revisarResp(botonD.text))
@@ -134,8 +133,8 @@ export default class bonusBallena extends Phaser.Scene{
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
     {
-      botonC.setColor(this.scene.launch('pop_up_B_Ballena') &&       
-      this.scene.get("pop_up_B_Ballena").mostrar_Texto(preguntasBonus[0].revisarResp(botonC.text)))
+      botonC.setColor(this.scene.launch('pop_up_B_Condor') &&       
+      this.scene.get("pop_up_B_Condor").mostrar_Texto(preguntasBonus[0].revisarResp(botonC.text)))
       botonB.setColor(preguntasBonus[0].revisarResp(botonB.text))
       botonA.setColor(preguntasBonus[0].revisarResp(botonA.text))
       botonD.setColor(preguntasBonus[0].revisarResp(botonD.text))
@@ -151,8 +150,8 @@ export default class bonusBallena extends Phaser.Scene{
     .setInteractive()
     .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
     {
-      botonD.setColor(this.scene.launch('pop_up_B_Ballena') &&        
-      this.scene.get("pop_up_B_Ballena").mostrar_Texto(preguntasBonus[0].revisarResp(botonD.text))) 
+      botonD.setColor(this.scene.launch('pop_up_B_Condor') &&        
+      this.scene.get("pop_up_B_Condor").mostrar_Texto(preguntasBonus[0].revisarResp(botonD.text))) 
       botonB.setColor(preguntasBonus[0].revisarResp(botonB.text))
       botonC.setColor(preguntasBonus[0].revisarResp(botonC.text))
       botonA.setColor(preguntasBonus[0].revisarResp(botonA.text))

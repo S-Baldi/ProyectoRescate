@@ -17,6 +17,13 @@ export default class popUpMapa extends Phaser.Scene
   private contadorEntrarNivel2:number=0
   private cerrarBonusMono:number=0
 
+  //condor
+  private cantidadEstrellasCondor : any
+  private estrellaMasAltaCondor: number =0  
+  private textoCondor  
+  private contadorEntrarNivel3:number=0
+  private cerrarBonusCondor:number=0
+
   //ballena
   private cantidadEstrellasBallena : any
   private estrellaMasAltaBallena: number =0  
@@ -72,17 +79,6 @@ export default class popUpMapa extends Phaser.Scene
     this.textoYaguarete = text
   }
 
-  //texto ballena
-  public ballenaNivel(text:any)
-  {
-    this.textoBallena = text
-  }
-  public ballenaBonus(text:any)
-  {
-    this.textoBallena = text
-  }
-  
-  
   //texto mono
   public monoNivel(text:any)
   {
@@ -92,7 +88,24 @@ export default class popUpMapa extends Phaser.Scene
   {
     this.textoMono = text
   }
-
+  //texto condor
+  public condorNivel(text:any)
+  {
+    this.textoCondor = text
+  }
+  public condorBonus(text:any)
+  {
+    this.textoCondor= text
+  }  
+  //texto ballena
+  public ballenaNivel(text:any)
+  {
+    this.textoBallena = text
+  }
+  public ballenaBonus(text:any)
+  {
+    this.textoBallena = text
+  }
   //texto pinguino
   public pinguinoNivel(text:any)
   {
@@ -107,6 +120,7 @@ export default class popUpMapa extends Phaser.Scene
   {      
     this.textoYaguarete
     this.textoMono
+    this.textoCondor
     this.textoBallena
     this.textoPinguino                  
   }
@@ -184,6 +198,112 @@ export default class popUpMapa extends Phaser.Scene
       }     
     } 
 
+    ///////////////////////////////////MONO/////////////////////
+
+    if (info=='monoNiveles') 
+    {
+      this.cantidadEstrellasMono = localStorage.getItem('estrellasMono') || '1';  
+    
+      if (this.cantidadEstrellasMono>this.estrellaMasAltaMono) 
+      {
+        this.estrellaMasAltaMono = this.cantidadEstrellasMono
+      }
+      
+
+      this.monoNivel(this.add.text(670, 400, getPhrase('JUGAR'), this.fuenteTextoMapa) &&
+
+      this.add.sprite(650, 280, 'estrellas', this.estrellaMasAltaPingui).setScale(1.8) && 
+      
+      this.monoBonus(this.add.text(420, 400, 'BONUS', this.fuenteTextoMapa)))
+
+      if (this.estrellaMasAltaYagua>=0) 
+      {
+        this.monoNivel(this.add.text(670, 400, getPhrase('JUGAR'), this.fuenteTextoMapaDesbloqueado)
+        .setInteractive()
+        .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+        {
+          this.scene.sleep('menuMapa')          
+          this.scene.start('nivelMono') 
+          if (this.estadoMusica=='1') 
+          {
+            this.sfxPlay()
+          }
+          this.scene.get('menuMapa').detenerMusica()
+        }).setDepth(7).setVisible(true)) 
+      }
+
+      if (this.contadorEntrarNivel2==0 && this.cerrarBonusMono>0)
+      {
+        this.monoBonus(this.add.text(450, 400, 'BONUS', this.fuenteTextoMapa)
+        .removeInteractive())
+      }
+      else if (this.contadorEntrarNivel2>0 && this.cerrarBonusMono<1)
+      {
+        this.monoBonus(this.add.text(420, 400, 'BONUS', this.fuenteTextoMapaDesbloqueado)
+        .setInteractive().on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+        { 
+          this.scene.start('nivelBonusMono') 
+          if (this.estadoMusica=='1') 
+          {
+            this.sfxPlay()
+          }
+          this.scene.get('menuMapa').detenerMusica()
+        }).setDepth(7).setVisible(true))
+      }
+    }  
+
+    ///////////////////////////////////CONDOR//////////////////
+    if (info=='condorNiveles')
+    {
+      this.cantidadEstrellasCondor = localStorage.getItem('estrellasCondor') || '1';  
+    
+      if (this.cantidadEstrellasCondor>this.estrellaMasAltaCondor) 
+      {
+        this.estrellaMasAltaCondor= this.cantidadEstrellasCondor
+      }            
+
+      this.condorNivel(this.add.text(670, 400, getPhrase('JUGAR'), this.fuenteTextoMapa) &&
+
+      this.add.sprite(650, 290, 'estrellas', this.estrellaMasAltaCondor).setScale(1.8) && 
+      
+      this.condorBonus(this.add.text(440, 400, 'BONUS', this.fuenteTextoMapa)))
+
+      if (this.estrellaMasAltaCondor>=0) 
+      {
+        this.condorNivel(this.add.text(670, 400, getPhrase('JUGAR'), this.fuenteTextoMapaDesbloqueado)
+        .setInteractive()
+        .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+        {
+          this.scene.sleep('menuMapa') /* duermo el mapa para guardar datos */ 
+          this.scene.start('nivelCondor') 
+          if (this.estadoMusica=='1') 
+          {
+          this.sfxPlay()
+          }
+          this.scene.get('menuMapa').detenerMusica()
+        }).setDepth(7).setVisible(true)) 
+      } 
+
+      if (this.contadorEntrarNivel3==0 && this.cerrarBonusCondor>0)
+      {
+        this.condorBonus(this.add.text(440, 400, 'BONUS', this.fuenteTextoMapa)
+        .removeInteractive())
+      }
+      else if (this.contadorEntrarNivel3==0 && this.cerrarBonusCondor<1)
+      {
+        this.condorBonus(this.add.text(440, 400, 'BONUS', this.fuenteTextoMapaDesbloqueado)
+        .setInteractive().on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+        { 
+          this.scene.start('nivelBonusCondor') 
+          if (this.estadoMusica=='1') 
+          {
+            this.sfxPlay()
+          }
+          this.scene.get('menuMapa').detenerMusica()
+        }).setDepth(7).setVisible(true))
+      }
+    }
+
     ///////////////////////////////////BALLENA//////////////////
     if (info=='ballenaNiveles')
     {
@@ -221,7 +341,7 @@ export default class popUpMapa extends Phaser.Scene
         this.ballenaBonus(this.add.text(440, 400, 'BONUS', this.fuenteTextoMapa)
         .removeInteractive())
       }
-      else if (this.contadorEntrarNivel4>0 && this.cerrarBonusBallena<1)
+      else if (this.contadorEntrarNivel4==0 && this.cerrarBonusBallena<1)
       {
         this.ballenaBonus(this.add.text(440, 400, 'BONUS', this.fuenteTextoMapaDesbloqueado)
         .setInteractive().on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
@@ -289,59 +409,8 @@ export default class popUpMapa extends Phaser.Scene
       }
     }
 
-    ///////////////////////////////////MONO/////////////////////
-
-    if (info=='monoNiveles') 
-    {
-      this.cantidadEstrellasMono = localStorage.getItem('estrellasMono') || '1';  
     
-      if (this.cantidadEstrellasMono>this.estrellaMasAltaMono) 
-      {
-        this.estrellaMasAltaMono = this.cantidadEstrellasMono
-      }
-      
-
-      this.monoNivel(this.add.text(670, 400, getPhrase('JUGAR'), this.fuenteTextoMapa) &&
-
-      this.add.sprite(650, 280, 'estrellas', this.estrellaMasAltaPingui).setScale(1.8) && 
-      
-      this.monoBonus(this.add.text(420, 400, 'BONUS', this.fuenteTextoMapa)))
-
-      if (this.estrellaMasAltaYagua>=0) 
-      {
-        this.monoNivel(this.add.text(670, 400, getPhrase('JUGAR'), this.fuenteTextoMapaDesbloqueado)
-        .setInteractive()
-        .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
-        {
-          this.scene.sleep('menuMapa')          
-          this.scene.start('nivelMono') 
-          if (this.estadoMusica=='1') 
-          {
-            this.sfxPlay()
-          }
-          this.scene.get('menuMapa').detenerMusica()
-        }).setDepth(7).setVisible(true)) 
-      }
-
-      if (this.contadorEntrarNivel2==0 && this.cerrarBonusMono>0)
-      {
-        this.monoBonus(this.add.text(450, 400, 'BONUS', this.fuenteTextoMapa)
-        .removeInteractive())
-      }
-      else if (this.contadorEntrarNivel2>0 && this.cerrarBonusMono<1)
-      {
-        this.monoBonus(this.add.text(420, 400, 'BONUS', this.fuenteTextoMapaDesbloqueado)
-        .setInteractive().on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
-        { 
-          this.scene.start('nivelBonusMono') 
-          if (this.estadoMusica=='1') 
-          {
-            this.sfxPlay()
-          }
-          this.scene.get('menuMapa').detenerMusica()
-        }).setDepth(7).setVisible(true))
-      }
-    }
+    
   }
   /////////////////////// NIVEL 1 + Bonus //////////////////
 
@@ -353,7 +422,6 @@ export default class popUpMapa extends Phaser.Scene
   {
     this.cerrarBonusYaguarete++     
   }
-
   /////////////////////// NIVEL 2 + Bonus //////////////////
   public aumentaContador2()
   {
@@ -362,6 +430,15 @@ export default class popUpMapa extends Phaser.Scene
   public yaEntroBonusMono()
   {
     this.cerrarBonusMono++
+  }
+  /////////////////////// NIVEL 3 + Bonus //////////////////
+  public aumentaContador3()
+  {
+    this.contadorEntrarNivel3++
+  }  
+  public yaEntroBonusCondor()
+  {
+    this.cerrarBonusCondor++
   }
   /////////////////////// NIVEL 4 + Bonus //////////////////
   public aumentaContador4()

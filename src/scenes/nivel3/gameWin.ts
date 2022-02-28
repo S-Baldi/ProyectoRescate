@@ -3,7 +3,7 @@ import { getPhrase } from '~/services/translation';
 
 export default class gameWinCondor extends Phaser.Scene{
   private cantidadEstrellasCondor: any
-  private contadorEntrarNivel4:number=0
+  private contadorEntrarNivel3:number=0
   private estadoMusica:any
   private musicaWin:any
   private fuenteTexto =  {
@@ -69,7 +69,7 @@ export default class gameWinCondor extends Phaser.Scene{
         this.sfxPlay()
       }
       
-      if (this.contadorEntrarNivel4>0 && this.contadorEntrarNivel4<2)
+      if (this.contadorEntrarNivel3>0 && this.contadorEntrarNivel3<2)
       {
         this.scene.launch('popUpInformativo') 
         this.scene.get('popUpInformativo').mostrarInfoNiveles('bonusCondorDesbloqueado')
@@ -95,8 +95,8 @@ export default class gameWinCondor extends Phaser.Scene{
     }
   }
     
-  public aumentaContador4()
+  public aumentaContador3()
   {
-    this.contadorEntrarNivel4++
+    this.contadorEntrarNivel3++
   }
 }

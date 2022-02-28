@@ -17,6 +17,11 @@ export default class mapa extends Phaser.Scene
   private estrellaMasAltaMono : number =0  
   private cantidadEstrellasMonoBonus
   
+  //Condor
+  private cantidadEstrellasCondor: any
+  private estrellaMasAltaCondor : number =0  
+  private estrellasCondorBonus
+
   //Ballena
   private cantidadEstrellasBallena: any
   private estrellaMasAltaBallena : number =0  
@@ -175,7 +180,7 @@ export default class mapa extends Phaser.Scene
     }
     this.add.sprite(420, 105, 'estrellas', this.estrellaMasAltaMono).setDepth(7).setScale(0.8);
 
-    this.estrellasBallenaBonus= localStorage.getItem('estrellasMonoBonus') || '1';
+    this.cantidadEstrellasMonoBonus= localStorage.getItem('estrellasMonoBonus') || '1';
     
     const buttonNivel2 = this.add.image(420,80, 'botonNivel').setScale(0.25)
     .setInteractive()
@@ -196,14 +201,30 @@ export default class mapa extends Phaser.Scene
     
 
     //////////////////////////////////////////////NIVEL CONDOR//////////////////////////////////////////////
-    const buttonNivel3 = this.add.image(360,300, 'botonNivel').setScale(0.25)
-    .setInteractive()
-    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () =>
+    this.cantidadEstrellasCondor = localStorage.getItem('estrellasCondor') || '1';  
+    
+    if (this.cantidadEstrellasCondor>this.estrellaMasAltaCondor) 
     {
-      this.scene.start('nivelCondor')
+      this.estrellaMasAltaCondor = this.cantidadEstrellasCondor
+    }
+    this.add.sprite(360, 325, 'estrellas', this.estrellaMasAltaCondor).setDepth(7).setScale(0.8);
+    this.estrellasCondorBonus= localStorage.getItem('estrellasCondorBonus') || '1';
+    const buttonNivel3 = this.add.image(360, 300, 'botonNivel').setScale(0.25)
+    .setInteractive()
+    .on('pointerover', () => buttonNivel3.setScale(0.28))
+    .on('pointerout', () => buttonNivel3.setScale(0.25))
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => 
+    { 
+      this.scene.launch('popUpMapa') 
+      if (this.estadoMusica=='1') 
+      {
+        this.sfxPlay()
+      }
+      this.scene.pause() 
+      this.scene.get("popUpMapa").mostrarNiveles('condorNiveles')
     })
 
-    this.add.text(280,250, getPhrase('CÓNDOR'), this.fuenteTexto);
+    this.add.text(280,245, getPhrase('CÓNDOR'), this.fuenteTexto);
 
     //////////////////////////////////////////////NIVEL BALLENA//////////////////////////////////////////////
     this.cantidadEstrellasBallena = localStorage.getItem('estrellasBallena') || '1';  
@@ -214,7 +235,7 @@ export default class mapa extends Phaser.Scene
     }
     this.add.sprite(980, 490, 'estrellas', this.estrellaMasAltaBallena).setDepth(7).setScale(0.8);
 
-    this.cantidadEstrellasMonoBonus= localStorage.getItem('estrellasBallenaBonus') || '1';
+    this.estrellasBallenaBonus= localStorage.getItem('estrellasBallenaBonus') || '1';
     const buttonNivel4 = this.add.image(980,470, 'botonNivel').setScale(0.25)
     .setInteractive()
     .on('pointerover', () => buttonNivel4.setScale(0.28))
@@ -286,7 +307,7 @@ export default class mapa extends Phaser.Scene
   update()
   {
     const estrellasTotales = +this.estrellaMasAltaPingui + +this.estrellaMasAltaYagua + 
-    +this.cantidadEstrellasYaguaBonus + +this.cantidadEstrellasPinguiBonus + +this.estrellaMasAltaMono + +this.cantidadEstrellasMonoBonus + +this.cantidadEstrellasBallena + +this.estrellasBallenaBonus
+    +this.cantidadEstrellasYaguaBonus + +this.cantidadEstrellasPinguiBonus + +this.estrellaMasAltaMono + +this.cantidadEstrellasMonoBonus + +this.cantidadEstrellasBallena + +this.estrellasBallenaBonus + +this.cantidadEstrellasCondor + +this.estrellasCondorBonus
     
 
     this.add.text(1140, 625,`= ` + estrellasTotales,  

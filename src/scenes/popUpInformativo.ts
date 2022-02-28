@@ -79,5 +79,9 @@ export default class popUpInformativo extends Phaser.Scene
     {
       let txtInformativoBonusYagua= this.add.text(450, 400, getPhrase('-Nivel Bonus del Ballena desbloqueado'), this.Texto).setDepth(3);
     }
+    if (info== 'bonusCondorDesbloqueado')
+    {
+      let txtInformativoBonusYagua= this.add.text(450, 400, getPhrase('-Nivel Bonus del Condor desbloqueado'), this.Texto).setDepth(3);
+    }
   }
 }

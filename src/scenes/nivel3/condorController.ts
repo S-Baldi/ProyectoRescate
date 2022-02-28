@@ -103,7 +103,7 @@ export default class condorController
 					events.emit('crias-collected')
 					if (this.estadoMusica=='1') 
 					{
-						this.scene.scene.get('nivelCondor')//.sfxCriaPlay()
+						this.scene.scene.get('nivelCondor').sfxCriaPlay()
 					}
 					break
 				}
@@ -112,10 +112,10 @@ export default class condorController
 				{
 					events.emit('comida-collected')
 					sprite.destroy()
-					/* if (this.estadoMusica=='1') 
+					if (this.estadoMusica=='1') 
 					{
 						this.scene.scene.get('nivelCondor').sfxComidaPlay()
-					} */
+					}
 					break
 				}
 			}
@@ -154,7 +154,7 @@ export default class condorController
 
 	private venenoHitOnEnter(){
 		this.sprite.play('condor-death')		
-		this.scene.scene.get('nivelCondor')//.detenerMusica()
+		this.scene.scene.get('nivelCondor').detenerMusica()
 		this.scene.time.delayedCall(1500, () => {
 			this.scene.scene.launch('gameOverCondor') 
 			this.scene.scene.pause()
@@ -168,10 +168,10 @@ export default class condorController
 		this.scene.scene.launch('gameWinCondor')
 
 		this.cantEstrellas = this.cantEstrellas+1
-		this.scene.scene.get('popUpMapa')//.aumentaContador4()
-		this.scene.scene.get('gameWinCondor')//.aumentaContador4()
-		//this.scene.scene.get('pop_up_B_Ballena')//.aumentaContador4()
-		this.scene.scene.get('nivelCondor')//.detenerMusica()
+		this.scene.scene.get('popUpMapa').aumentaContador3()
+		this.scene.scene.get('gameWinCondor').aumentaContador3()
+		this.scene.scene.get('pop_up_B_Condor').aumentaContador3()
+		this.scene.scene.get('nivelCondor').detenerMusica()
 				
 
 		if (this.cantEstrellas == 2) 

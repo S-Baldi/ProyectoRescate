@@ -22,12 +22,12 @@ export default class nivel_3 extends Phaser.Scene
   private criaCondorController?: criaCondorController;
   private carne?: Phaser.Physics.Matter.Sprite
   private carneController?: carneController
-  private musicaBallena:any
+  private musicaCondor:any
   private estadoMusica:any;
   private sfxCria:any;
   private sfxComida:any;
 
-  /* public musicaPlay()
+  public musicaPlay()
   {
     this.musicaCondor.play({volume:0.3, loop: true})
   }
@@ -61,7 +61,7 @@ export default class nivel_3 extends Phaser.Scene
   {  
     this.sfxComida.stop()            
   } 
- */
+
   constructor(){
     super('nivelCondor')
   }
@@ -87,14 +87,14 @@ export default class nivel_3 extends Phaser.Scene
 
   create()
   {
-    /* this.musicaBallena= this.sound.add('musicaCondor')
+    this.musicaCondor= this.sound.add('musicaCondor')
     this.sfxComida = this.sound.add('sfxComida')
     this.sfxCria = this.sound.add('sfxCria')
     this.estadoMusica=localStorage.getItem('musicaPlay')|| '0';
     if (this.estadoMusica=='1') 
     {
       this.musicaPlay()   
-    } */
+    }
 
 
     this.scene.launch('uiCondor')
