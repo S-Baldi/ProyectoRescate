@@ -81,7 +81,7 @@ export default class bonusCondor extends Phaser.Scene{
     let preguntasBonus= new Array<preguntas>()
     preguntasBonus.push(new preguntas
     (getPhrase('                 ¿De que se alimenta principalmente el Cóndor Andino?'), 
-    getPhrase('Animales muertos (carroña)'),
+    getPhrase('Carroña'),
     getPhrase('Frutas y verduras'),
     getPhrase('Caza pequeños animales'),
     getPhrase('Todas son correctas')))

@@ -75,7 +75,7 @@ export default class pop_up_BonusCondor extends Phaser.Scene{
     {
       this.add.text(460, 50, getPhrase('Respuesta Incorrecta'), this.fuenteTexto).setDepth(3) //esto trae hacia delante o atras las cosas
       this.add.text(405, 240, getPhrase('Respuesta Correcta:'), this.fuenteTextoCorrecto).setDepth(3)
-      this.add.text(730, 240, getPhrase('"Caceria comercial"'), this.fuenteTextoCorrecto).setDepth(3)
+      this.add.text(730, 240, getPhrase('"Carroña"'), this.fuenteTextoCorrecto).setDepth(3)
       this.add.sprite(680, 165, 'estrellaBonus', 0).setDepth(3).setScale(0.6)
     }
     this.scene.get('popUpMapa').yaEntroBonusCondor()
