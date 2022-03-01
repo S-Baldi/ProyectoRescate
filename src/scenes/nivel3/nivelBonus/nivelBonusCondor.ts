@@ -80,11 +80,11 @@ export default class bonusCondor extends Phaser.Scene{
     
     let preguntasBonus= new Array<preguntas>()
     preguntasBonus.push(new preguntas
-    (getPhrase('Cual fue la principal causa de la disminucion de la población de la Ballena Franca Austral?'), 
-    getPhrase('Caceria comercial'),
-    getPhrase('Contaminación'),
-    getPhrase('Disminucion de sus presas'),
-    getPhrase('Reducción del hábitat')))
+    (getPhrase('                 ¿De que se alimenta principalmente el Cóndor Andino?'), 
+    getPhrase('Animales muertos (carroña)'),
+    getPhrase('Frutas y verduras'),
+    getPhrase('Caza pequeños animales'),
+    getPhrase('Todas son correctas')))
     
     const text_pregunta = this.add.text(130, 390, preguntasBonus[0].pregunta, this.fuenteTextoPreg);
 
