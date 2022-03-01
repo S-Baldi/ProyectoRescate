@@ -174,7 +174,7 @@ export default class nivel_4_2 extends Phaser.Scene
 
         case 'bandera':
           {
-            const bandera = this.matter.add.rectangle(x + (width * 0.5), y + (height * 0.5), width, 1200, {
+            const bandera = this.matter.add.rectangle(x + (width * 0.5), y + (height * 0.5), width, 2500, {
               isStatic: true
             })
             this.obstacles.add('bandera', bandera)
