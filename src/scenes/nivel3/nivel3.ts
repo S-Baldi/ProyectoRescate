@@ -161,7 +161,7 @@ export default class nivel_3 extends Phaser.Scene
             break
           }
 
-          case 'avion2': //altura 86,70
+          case 'avion2': //altura 86,7
           {
             const venenoAvion2 = this.matter.add.rectangle(x + (width * 2.9), y + (height * 0.2), 90, 320, {
               isStatic: true
